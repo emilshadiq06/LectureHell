@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LectureHell"
-run/main_scene="uid://cg71kjcbqa8cl"
+run/main_scene="uid://bn6hobuq56rob"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
