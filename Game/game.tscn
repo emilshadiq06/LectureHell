@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=3 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="1_bk3v5"]
+[ext_resource type="PackedScene" uid="uid://o5ctt85mntx7" path="res://luqman.tscn" id="2_1r4le"]
 
 [node name="game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bk3v5")]
+
+[node name="NPC" parent="." instance=ExtResource("2_1r4le")]
+position = Vector2(-537, -263)
