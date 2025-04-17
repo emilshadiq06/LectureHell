@@ -6,4 +6,4 @@ func _on_exit_pressed() -> void:
 
 
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://Game/game.tscn")
+	Function.load_screen_to_scene("res://Game/game.tscn")
