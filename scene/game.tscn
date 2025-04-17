@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwgrq1dk6kn6d"]
+
+[ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
+[ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="2_xwcet"]
+[ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://scene/menuscene/npc_sprite_02.png" id="3_p1ry8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_33cqm")
+
+[node name="Player" parent="." instance=ExtResource("2_xwcet")]
+position = Vector2(-12, -1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(307, 148)
+texture = ExtResource("3_p1ry8")
+hframes = 17
+
+[node name="ABU" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(310, 163)
+shape = SubResource("CircleShape2D_bk3v5")
