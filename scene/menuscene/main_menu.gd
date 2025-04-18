@@ -13,3 +13,7 @@ func _on_start_pressed():
 
 func _on_customize_pressed() -> void:
 	$AudioStreamPlayer2D2.play()
+
+
+func _on_setting_pressed() -> void:
+	pass # Replace with function body.
