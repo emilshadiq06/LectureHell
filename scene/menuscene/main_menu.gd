@@ -4,7 +4,7 @@ func _ready() -> void:
 	main()
 
 func _on_exit_pressed() -> void:
-	$AudioStreamPlayer2D2.play()
+	$click.play()
 	get_tree().quit()
 
 
