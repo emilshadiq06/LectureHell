@@ -1,5 +1,7 @@
 extends Control
 
+func _ready() -> void:
+	main()
 
 func _on_exit_pressed() -> void:
 	$AudioStreamPlayer2D2.play()
@@ -13,7 +15,31 @@ func _on_start_pressed():
 
 func _on_customize_pressed() -> void:
 	$AudioStreamPlayer2D2.play()
-
+	custom()
+	
 
 func _on_setting_pressed() -> void:
-	pass # Replace with function body.
+	$AudioStreamPlayer2D2.play()
+	settings()
+	
+func main():
+	$main.show()
+	$back.hide()
+	$custom.hide()
+	$settings.hide()
+	
+func custom():
+	$main.hide()
+	$back.show()
+	$custom.show()
+	$settings.hide()
+	
+func settings():
+	$main.hide()
+	$back.show()
+	$custom.hide()
+	$settings.show()
+
+
+func _on_back_pressed() -> void:
+	main()
