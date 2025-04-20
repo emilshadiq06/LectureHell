@@ -52,3 +52,19 @@ func tween_pop(panel):
 	panel.scale = Vector2(0.85,0.85)
 	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(panel, "scale", Vector2(1,1), 0.5)
+
+
+func _on_start_mouse_entered() -> void:
+	$hover.play()
+
+
+func _on_customize_mouse_entered() -> void:
+	$hover.play()
+
+
+func _on_setting_mouse_entered() -> void:
+	$hover.play()
+
+
+func _on_exit_mouse_entered() -> void:
+	$hover.play()
