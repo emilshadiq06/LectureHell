@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Function="*res://scene/menuscene/function.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
@@ -52,7 +53,7 @@ down={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://NPC DIALOGUE/NPC INTERACTIONS.dialogue")
+locale/translations_pot_files=PackedStringArray("res://NPC DIALOGUE/NPC INTERACTIONS.dialogue", "res://borak/dialogue.dialogue")
 
 [rendering]
 

@@ -160,12 +160,12 @@ motion_mode = 1
 script = ExtResource("1_s3asc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(164, 114)
+position = Vector2(3, -10)
 texture = ExtResource("1_4flbx")
 hframes = 21
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(163, 131)
+position = Vector2(-2, 3)
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

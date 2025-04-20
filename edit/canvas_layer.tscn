@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://22e8ba2hcnhh"]
+
+[ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="1_cr8sy"]
+[ext_resource type="Script" uid="uid://bf7qf5tuoyrq5" path="res://edit/margin_container.gd" id="1_su66y"]
+
+[sub_resource type="Theme" id="Theme_p1ry8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlg7c"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = -1.0
+offset_top = 510.0
+offset_right = 88.0
+offset_bottom = 550.0
+scale = Vector2(13.0069, 3.32579)
+script = ExtResource("1_su66y")
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_p1ry8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xlg7c")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_cr8sy")
+text = "OP GAZ69"
+vertical_alignment = 1
