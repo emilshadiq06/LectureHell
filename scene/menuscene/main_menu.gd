@@ -1,5 +1,6 @@
 extends Control
 
+
 func _ready() -> void:
 	main()
 
@@ -10,7 +11,8 @@ func _on_exit_pressed() -> void:
 
 func _on_start_pressed():
 	$click.play()
-	Function.load_screen_to_scene("res://scene/game.tscn")
+	Function.load_screen_to_scene("res://scene/game.tscn", {"test": "test"})
+
 
 
 func _on_customize_pressed() -> void:
