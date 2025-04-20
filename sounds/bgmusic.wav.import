@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ba0c4c0aqps13"
-path="res://.godot/imported/zoom.wav-7f58d32098a69bff766c44d1e89434cc.sample"
+uid="uid://byk7i577q64cc"
+path="res://.godot/imported/bgmusic.wav-d5d0dc550befe31332a7f622fe3b3224.sample"
 
 [deps]
 
-source_file="res://zoom.wav"
-dest_files=["res://.godot/imported/zoom.wav-7f58d32098a69bff766c44d1e89434cc.sample"]
+source_file="res://sounds/bgmusic.wav"
+dest_files=["res://.godot/imported/bgmusic.wav-d5d0dc550befe31332a7f622fe3b3224.sample"]
 
 [params]
 
