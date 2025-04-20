@@ -17,6 +17,6 @@ position = Vector2(307, 148)
 texture = ExtResource("2_1r4le")
 hframes = 17
 
-[node name="ABU1" type="CollisionShape2D" parent="Area2D"]
+[node name="ABU" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(310, 163)
 shape = SubResource("CircleShape2D_bk3v5")
