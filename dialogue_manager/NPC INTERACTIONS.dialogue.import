@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://djesbcyt85tuq"
+path="res://.godot/imported/NPC INTERACTIONS.dialogue-d6e350eaf3f93ef821a5044cab2dd6a8.tres"
+
+[deps]
+
+source_file="res://dialogue_manager/NPC INTERACTIONS.dialogue"
+dest_files=["res://.godot/imported/NPC INTERACTIONS.dialogue-d6e350eaf3f93ef821a5044cab2dd6a8.tres"]
+
+[params]
+
+defaults=true

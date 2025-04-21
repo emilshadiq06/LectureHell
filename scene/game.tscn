@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=5 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="2_xwcet"]
 [ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://scene/menuscene/npc_sprite_02.png" id="3_p1ry8"]
-[ext_resource type="PackedScene" uid="uid://22e8ba2hcnhh" path="res://edit/canvas_layer.tscn" id="4_xwcet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
 
@@ -29,5 +28,3 @@ hframes = 17
 [node name="ABU" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(310, 163)
 shape = SubResource("CircleShape2D_bk3v5")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("4_xwcet")]
