@@ -1,7 +1,7 @@
 extends MarginContainer
 
 
-@onready var label = $Panel/MarginContainer/Label
+@onready var label = $MarginContainer/Label
 @onready var timer = $Timer
 
 
@@ -57,4 +57,4 @@ func _display_letter():
 
 
 func _on_timer_timeout() -> void:
-	_display_letter() # Replace with function body.
+	_display_letter()
