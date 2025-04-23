@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cc1fjkhfvueq"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 221.0
+offset_bottom = 147.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -163.0
+offset_top = -267.0
+offset_right = 168.0
+offset_bottom = -54.0
+
+[node name="Name" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 80.0
+offset_bottom = 50.0
+text = "Name:"
