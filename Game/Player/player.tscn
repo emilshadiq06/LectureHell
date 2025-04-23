@@ -160,6 +160,7 @@ motion_mode = 1
 script = ExtResource("1_s3asc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(164, 114)
 texture = ExtResource("1_4flbx")
 hframes = 21
