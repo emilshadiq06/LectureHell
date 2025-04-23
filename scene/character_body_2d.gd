@@ -6,7 +6,12 @@ var direction = Vector2.ZERO
 var target_position = Vector2.ZERO
 
 const lines: Array[String] = [
-	"boo"
+	"b o bb bb bbbb bbbbbbbb bbbb bb",
+	"o hello",
+	"b o bb bb bbbb bbbbbbbb bbbb bb",
+	"p hey"
+	
+	
 ]
 
 # Node paths
@@ -17,10 +22,11 @@ func _ready():
 	# Set the initial target position (or you could move it based on game logic)
 	target_position = position
 
-func _process(delta):
+
+func _process(_delta):
 	# Move the NPC towards a target position or implement AI logic to control movement
 	#direction = (target_position - position).normalized()
-#move_and_slide()
+	#move_and_slide()
 	pass
 
 func set_target_position(new_position):
@@ -31,5 +37,6 @@ func set_target_position(new_position):
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("NPC: Hello, Player!") # Replace with function body.
-	DialogueManagerScript.start_dialog(global_position, lines)
+	if body.has_node("../Player") :
+		
+		DialogueManagerScript.start_dialog(global_position, lines)

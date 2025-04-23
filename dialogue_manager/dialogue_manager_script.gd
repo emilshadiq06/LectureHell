@@ -23,8 +23,8 @@ func start_dialog(position: Vector2, lines: Array[String]):
 	_show_text_box()
 	
 	is_dialog_active = true
-	
-	
+
+
 func _show_text_box():
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
@@ -36,6 +36,7 @@ func _show_text_box():
 	
 	
 func _on_text_box_finished_displaying():
+	
 	can_advance_line = true
 	
 	
