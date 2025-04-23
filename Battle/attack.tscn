@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://xy006ordrbsg"]
+
+[ext_resource type="Script" uid="uid://c1nhrhaa1ppug" path="res://Battle/scripts/area_2d.gd" id="1_01ko7"]
+[ext_resource type="Script" uid="uid://mcw5mvwti4dl" path="res://Battle/scripts/attack.gd" id="1_nsdix"]
+[ext_resource type="Texture2D" uid="uid://bdm1ch7nbm5o1" path="res://Battle/sprites/pick.png" id="2_01ko7"]
+[ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://npc_sprite_02.png" id="2_8h2au"]
+[ext_resource type="Script" uid="uid://dyrr1nkbjo8ft" path="res://Battle/scripts/ball.gd" id="3_8h2au"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h2au"]
+size = Vector2(59, 459)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsdix"]
+atlas = ExtResource("2_8h2au")
+region = Rect2(0, 0, 40, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32k74"]
+atlas = ExtResource("2_8h2au")
+region = Rect2(40, 0, 40, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4kon6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsdix")
+}, {
+"duration": 1.11,
+"texture": SubResource("AtlasTexture_32k74")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32k74"]
+radius = 32.0156
+
+[node name="Moves" type="Node2D"]
+script = ExtResource("1_nsdix")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(504, 92)
+script = ExtResource("1_01ko7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(60, 179)
+shape = SubResource("RectangleShape2D_8h2au")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(62, 215)
+scale = Vector2(1.575, 7.42188)
+sprite_frames = SubResource("SpriteFrames_4kon6")
+animation = &"pressed"
+frame = 1
+frame_progress = 1.0
+
+[node name="Ball" type="AnimatableBody2D" parent="."]
+position = Vector2(-227, 365)
+script = ExtResource("3_8h2au")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(26, -1)
+shape = SubResource("CircleShape2D_32k74")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+position = Vector2(24, -2)
+scale = Vector2(2.15385, 1)
+texture = ExtResource("2_01ko7")
+
+[node name="Ball2" type="AnimatableBody2D" parent="."]
+position = Vector2(78, 404)
+script = ExtResource("3_8h2au")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball2"]
+position = Vector2(-135, -164)
+shape = SubResource("CircleShape2D_32k74")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball2"]
+position = Vector2(-138, -166)
+scale = Vector2(2.15385, 1)
+texture = ExtResource("2_01ko7")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
