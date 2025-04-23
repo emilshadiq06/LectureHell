@@ -21,12 +21,13 @@ enum{
 func _ready():
 	randomize()
 	start_pos = position
-func _process(delta):
+func _process(_delta):
 	if current_state == 0 or current_state == 1:
 		$AnimatedSprite2D.play("idle")
 		
 	if Input.is_action_just_pressed("chat"):
 		print("chatting with npc")
+		$Dialogue.start()
 		is_roaming = false
 		is_chatting = true
 		$AnimatedSprite2D.play("idle")
@@ -50,3 +51,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	$Timer.wait_time = choose([0.5, 1 , 1.5])
 	current_state = choose([IDLE, NEW_DIR, MOVE])
+
+
+func _on_dialogue_dialogue_finished() -> void:
+	is_chatting = false
+	is_roaming = true
