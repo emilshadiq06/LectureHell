@@ -1,8 +1,11 @@
 extends Control
 
+@onready var brightness: HSlider = $settings/TabContainer/GENERAL/brightness
+
 
 func _ready() -> void:
 	main()
+
 
 func _on_exit_pressed() -> void:
 	$click.play()
@@ -86,3 +89,22 @@ func _on_resolution_item_selected(index: int) -> void:
 			DisplayServer.window_set_size(Vector2i(1600, 900))
 		2:
 			DisplayServer.window_set_size(Vector2i(1280, 720))
+
+
+func _on_display_item_selected(index: int) -> void:
+	match index:
+		0:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		1:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		2:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MINIMIZED)
+		3:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_brightness_value_changed(value: float) -> void:
+	GlobalSettings.update_brightness(value)
+
+
+	
