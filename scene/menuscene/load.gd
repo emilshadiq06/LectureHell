@@ -17,3 +17,4 @@ func _process(delta):
 		get_tree().get_root().add_child(new_node)
 		get_tree().current_scene = new_node
 		current_scene.queue_free()
+		
