@@ -1,0 +1,168 @@
+[gd_scene load_steps=11 format=3 uid="uid://btggau11lqgdm"]
+
+[ext_resource type="Script" uid="uid://bjv8b8c6ppcv3" path="res://pause.gd" id="1_6eyaj"]
+[ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="1_45vjg"]
+[ext_resource type="Shader" uid="uid://cv6tirfxtguox" path="res://pause.gdshader" id="1_aq7p1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6eyaj"]
+shader = ExtResource("1_aq7p1")
+shader_parameter/lod = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aq7p1"]
+content_margin_top = 147.0
+bg_color = Color(0.447958, 0.64076, 0.651949, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.630319, 0.55024, 0.798773, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.62, 0.37231, 0.3038, 0.796078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6eyaj"]
+bg_color = Color(0.23, 0.23, 0.23, 0.835294)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.634603, 0.864297, 0.71486, 1)
+border_blend = true
+corner_radius_top_left = 13
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.862745)
+
+[sub_resource type="Theme" id="Theme_8u653"]
+Button/styles/normal = SubResource("StyleBoxFlat_6eyaj")
+
+[sub_resource type="Animation" id="Animation_8u653"]
+resource_name = "blur"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.82]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bwtow"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05lnj"]
+_data = {
+&"RESET": SubResource("Animation_bwtow"),
+&"blur": SubResource("Animation_8u653")
+}
+
+[node name="Control" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6eyaj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6eyaj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -196.0
+offset_right = 212.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aq7p1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 13
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8u653")
+theme_override_fonts/font = ExtResource("1_45vjg")
+theme_override_font_sizes/font_size = 21
+text = "RESUME"
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8u653")
+theme_override_fonts/font = ExtResource("1_45vjg")
+theme_override_font_sizes/font_size = 21
+text = "SETTINGS"
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8u653")
+theme_override_fonts/font = ExtResource("1_45vjg")
+theme_override_font_sizes/font_size = 21
+text = "QUIT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_05lnj")
+}
