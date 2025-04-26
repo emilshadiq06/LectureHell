@@ -56,6 +56,10 @@ func _input(event):
 			event is InputEventKey ||
 			(event is InputEventMouseButton && event.pressed)
 		):
+			
+			if event is InputEventMouseButton && event.double_click:
+				event.double_click = false
+			
 			InputMap.action_erase_events(action_to_remap)
 			InputMap.action_add_event(action_to_remap, event)
 			_update_action_list(remapping_button, event)
@@ -63,6 +67,8 @@ func _input(event):
 			is_remapping = false
 			action_to_remap = null
 			remapping_button = null
+			
+			accept_event()
 			
 func _update_action_list(button, event):
 	button.find_child("LabelInput").text = event.as_text().trim_suffix(" (Physical)")
@@ -167,4 +173,5 @@ func _on_brightness_value_changed(value: float) -> void:
 	GlobalSettings.update_brightness(value)
 
 
-	
+func _on_reset_button_pressed() -> void:
+	_create_action_list()
