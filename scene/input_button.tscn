@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://hl7bvmvfpmi5"]
 
-[ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="1_8pwxk"]
+[ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="1_2drs1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7w1na"]
 
@@ -39,7 +39,7 @@ layout_mode = 2
 [node name="LabelAction" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("1_8pwxk")
+theme_override_fonts/font = ExtResource("1_2drs1")
 theme_override_font_sizes/font_size = 30
 text = "ACTION NAME"
 vertical_alignment = 1
@@ -52,7 +52,7 @@ mouse_filter = 1
 [node name="LabelInput" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("1_8pwxk")
+theme_override_fonts/font = ExtResource("1_2drs1")
 theme_override_font_sizes/font_size = 30
 text = "INPUT KEYBIND"
 vertical_alignment = 1

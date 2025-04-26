@@ -1,7 +1,7 @@
 extends Control
 
 @onready var brightness: HSlider = $settings/TabContainer/GENERAL/brightness
-@onready var input_button_scene = preload("res://input_button.tscn")
+@onready var input_button_scene = preload("res://scene/input_button.tscn")
 @onready var action_list: VBoxContainer = $settings/TabContainer/CONTROL/MarginContainer/VBoxContainer/ScrollContainer/ActionList
 
 var is_remapping = false
@@ -21,7 +21,7 @@ var input_actions = {
 func _ready() -> void:
 	main()
 	_create_action_list()
-	$main/Label2/AnimationPlayer.play("label")
+
 	
 func _create_action_list():
 	InputMap.load_from_project_settings()

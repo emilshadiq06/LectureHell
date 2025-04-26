@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://btggau11lqgdm"]
 
-[ext_resource type="Script" uid="uid://bjv8b8c6ppcv3" path="res://pause.gd" id="1_6eyaj"]
+[ext_resource type="Script" uid="uid://bjv8b8c6ppcv3" path="res://script/pause.gd" id="1_6eyaj"]
 [ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="1_45vjg"]
 [ext_resource type="Shader" uid="uid://cv6tirfxtguox" path="res://pause.gdshader" id="1_aq7p1"]
 

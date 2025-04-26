@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 Function="*res://scene/menuscene/function.gd"
 DialogueManagerScript="*res://dialogue_manager/dialogue_manager_script.gd"
 DialogueManager="res://addons/dialogue_manager/dialogue_manager.gd"
-GlobalSettings="*res://global_settings.gd"
+GlobalSettings="*res://script/global_settings.gd"
 
 [dialogue_manager]
 

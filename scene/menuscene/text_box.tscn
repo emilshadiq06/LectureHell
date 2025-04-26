@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://gu5jdhoiqj01"]
 
-[ext_resource type="Script" uid="uid://b57a08dvygy8g" path="res://margin_container.gd" id="1_55npq"]
-[ext_resource type="FontFile" uid="uid://p2o84j8t62iq" path="res://scene/menuscene/Pixel Digivolve.otf" id="2_bachm"]
+[ext_resource type="Script" uid="uid://b57a08dvygy8g" path="res://script/margin_container.gd" id="1_d3621"]
+[ext_resource type="FontFile" uid="uid://p2o84j8t62iq" path="res://scene/menuscene/Pixel Digivolve.otf" id="2_f0klp"]
 
 [node name="Textbox" type="MarginContainer"]
 offset_right = 17.0
@@ -9,7 +9,7 @@ offset_bottom = 36.0
 scale = Vector2(0.955836, 2.34262)
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource("1_55npq")
+script = ExtResource("1_d3621")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
@@ -25,7 +25,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_bachm")
+theme_override_fonts/font = ExtResource("2_f0klp")
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]

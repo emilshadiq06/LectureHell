@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="2_xwcet"]
 [ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://scene/menuscene/npc_sprite_02.png" id="3_p1ry8"]
 [ext_resource type="Script" uid="uid://d0f4mkhjupc3c" path="res://scene/character_body_2d.gd" id="3_xwcet"]
-[ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://world_environment.tscn" id="5_p1ry8"]
-[ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://pause.tscn" id="6_xlg7c"]
+[ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="5_p1ry8"]
+[ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="6_xlg7c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ry8"]
 size = Vector2(44, 67)
