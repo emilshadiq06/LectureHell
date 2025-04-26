@@ -1,0 +1,196 @@
+[gd_scene load_steps=22 format=3 uid="uid://djp6cqkek10sw"]
+
+[ext_resource type="Script" uid="uid://cqlgcn0tbi6xx" path="res://Battle/balls.gd" id="1_kacel"]
+[ext_resource type="Script" uid="uid://dyrr1nkbjo8ft" path="res://Battle/scripts/ball.gd" id="1_xu2ur"]
+[ext_resource type="Texture2D" uid="uid://bdm1ch7nbm5o1" path="res://Battle/sprites/pick.png" id="2_kacel"]
+[ext_resource type="Texture2D" uid="uid://cxqwn6htf0xek" path="res://Battle/sprites/Hit.png" id="4_e4agt"]
+[ext_resource type="Texture2D" uid="uid://bfafx2ihneb2o" path="res://Battle/sprites/miss.png" id="5_i878d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32k74"]
+radius = 27.1662
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i878d"]
+atlas = ExtResource("4_e4agt")
+region = Rect2(0, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rodkg"]
+atlas = ExtResource("4_e4agt")
+region = Rect2(45, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxom5"]
+atlas = ExtResource("4_e4agt")
+region = Rect2(90, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbxbv"]
+atlas = ExtResource("4_e4agt")
+region = Rect2(135, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qpwp"]
+atlas = ExtResource("4_e4agt")
+region = Rect2(180, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0skp"]
+atlas = ExtResource("4_e4agt")
+region = Rect2(225, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiy11"]
+atlas = ExtResource("4_e4agt")
+region = Rect2(270, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8vcy"]
+atlas = ExtResource("5_i878d")
+region = Rect2(0, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hl1e"]
+atlas = ExtResource("5_i878d")
+region = Rect2(45, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0eaa"]
+atlas = ExtResource("5_i878d")
+region = Rect2(90, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6o6k"]
+atlas = ExtResource("5_i878d")
+region = Rect2(135, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tuqq"]
+atlas = ExtResource("5_i878d")
+region = Rect2(180, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rilb"]
+atlas = ExtResource("5_i878d")
+region = Rect2(225, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwpx5"]
+atlas = ExtResource("5_i878d")
+region = Rect2(270, 0, 45, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kacel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kacel")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i878d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rodkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxom5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbxbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qpwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0skp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiy11")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8vcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hl1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0eaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6o6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tuqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rilb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwpx5")
+}],
+"loop": true,
+"name": &"miss",
+"speed": 5.0
+}]
+
+[node name="Balls" type="Node2D"]
+script = ExtResource("1_kacel")
+
+[node name="Ball" type="AnimatableBody2D" parent="."]
+position = Vector2(-333, 381)
+script = ExtResource("1_xu2ur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(26, -1)
+shape = SubResource("CircleShape2D_32k74")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Ball"]
+position = Vector2(42, -2.00001)
+scale = Vector2(3.25641, 1.60156)
+sprite_frames = SubResource("SpriteFrames_kacel")
+
+[node name="Area2D" type="Area2D" parent="Ball"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Area2D"]
+position = Vector2(26, -1)
+shape = SubResource("CircleShape2D_32k74")
+
+[node name="Ball2" type="AnimatableBody2D" parent="."]
+position = Vector2(-333, 381)
+script = ExtResource("1_xu2ur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball2"]
+position = Vector2(26, -1)
+shape = SubResource("CircleShape2D_32k74")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Ball2"]
+position = Vector2(42, -2)
+scale = Vector2(3.25641, 1.60156)
+sprite_frames = SubResource("SpriteFrames_kacel")
+
+[node name="Area2D" type="Area2D" parent="Ball2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball2/Area2D"]
+position = Vector2(26, -1)
+shape = SubResource("CircleShape2D_32k74")
+
+[node name="Ball3" type="AnimatableBody2D" parent="."]
+position = Vector2(-333, 381)
+script = ExtResource("1_xu2ur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball3"]
+position = Vector2(26, -1)
+shape = SubResource("CircleShape2D_32k74")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Ball3"]
+position = Vector2(42, -2)
+scale = Vector2(3.25641, 1.60156)
+sprite_frames = SubResource("SpriteFrames_kacel")
+
+[node name="Area2D" type="Area2D" parent="Ball3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball3/Area2D"]
+position = Vector2(26, -1)
+shape = SubResource("CircleShape2D_32k74")
+
+[connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Ball2/Area2D" to="Ball2" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Ball2/Area2D" to="Ball2" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Ball3/Area2D" to="Ball3" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Ball3/Area2D" to="Ball3" method="_on_area_2d_area_exited"]

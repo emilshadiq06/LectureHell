@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://w7uslflb1vs5"]
+
+[ext_resource type="PackedScene" uid="uid://been0jwwxflop" path="res://Battle/player_group.tscn" id="1_ksnli"]
+[ext_resource type="PackedScene" uid="uid://5dhap06uc3wk" path="res://Battle/enemy_group.tscn" id="2_o5tja"]
+
+[node name="Battle" type="Node2D"]
+
+[node name="PlayerGroup" parent="." instance=ExtResource("1_ksnli")]
+position = Vector2(853, 119)
+
+[node name="EnemyGroup" parent="." instance=ExtResource("2_o5tja")]
+position = Vector2(205, 124)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="choice" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -339.0
+offset_right = -9.0
+offset_bottom = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="attack" type="Button" parent="CanvasLayer/choice"]
+layout_mode = 2
+text = "attack"
+
+[node name="item" type="Button" parent="CanvasLayer/choice"]
+layout_mode = 2
+text = "item
+"
+
+[node name="act" type="Button" parent="CanvasLayer/choice"]
+layout_mode = 2
+text = "act"
+
+[connection signal="next_player" from="EnemyGroup" to="PlayerGroup" method="_on_enemy_group_next_player"]
+[connection signal="pressed" from="CanvasLayer/choice/attack" to="EnemyGroup" method="_on_attack_pressed"]
