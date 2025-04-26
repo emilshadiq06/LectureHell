@@ -10,7 +10,7 @@ func _ready():
 func _process(delta):
 	if ResourceLoader.load_threaded_get_status(next_scene_path) == ResourceLoader.THREAD_LOAD_LOADED:
 		set_process(false)
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(1).timeout
 		var new_scene: PackedScene = ResourceLoader.load_threaded_get(next_scene_path)
 		var new_node = new_scene.instantiate()
 		new_node.parameters = parameters
