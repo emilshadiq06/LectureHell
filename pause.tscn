@@ -166,3 +166,6 @@ text = "QUIT"
 libraries = {
 &"": SubResource("AnimationLibrary_05lnj")
 }
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
