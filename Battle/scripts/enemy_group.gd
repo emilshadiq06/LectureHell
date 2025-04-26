@@ -1,10 +1,14 @@
 extends Node
-
+@onready var attack_scene = preload("res://Battle/attack.tscn")
+@onready var player_group = load("res://Battle/player_group.tscn").instantiate()
+@onready var choice = $"../CanvasLayer/choice"
 var players : Array = []
 var action_queue : Array = []
+var attack 
+var ball_index : int = 0
+var hits : int = 0
 var is_battling: bool = false
-@onready var player_group = $"../PlayerGroup"
-@onready var choice = $"../CanvasLayer/choice"
+
 signal next_player
 
 var enemies: Array = []
@@ -12,6 +16,8 @@ var enemies: Array = []
 var index: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
+	
 	players = player_group.get_children()
 	enemies = get_children()
 	for i in enemies.size():
@@ -37,12 +43,23 @@ func _process(delta: float) -> void:
 			
 	if action_queue.size() == players.size() and not is_battling:
 		is_battling = true
+		
 		_action(action_queue) 
 
 func _action(stack):
+	
 	for i in stack:
-		enemies[i].take_damage(1)
-		await get_tree().create_timer(1).timeout
+		
+		attack = attack_scene.instantiate()
+		attack.position = Vector2(0,-150)
+		attack.finish.connect(_on_moves_finish) 
+		add_child(attack)
+		await get_tree().create_timer(2).timeout
+		remove_child(attack)
+		enemies[i].take_damage(2*hits)
+		ball_index = 0
+		
+	
 	action_queue.clear()
 	is_battling = false
 	show_choice()
@@ -69,3 +86,12 @@ func _start_choosing():
 func _on_attack_pressed() -> void:
 	choice.hide()
 	_start_choosing()
+
+func _on_moves_finish()-> bool:
+
+	ball_index = attack.get_ball_index()
+	hits =  attack.get_ball_hit()
+#	print(ball_index)
+#	print(hits)
+	return true
+	

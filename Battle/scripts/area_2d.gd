@@ -1,8 +1,9 @@
 extends Area2D
 @onready var animatedsprite = $AnimatedSprite2D
-@onready var  timer = $"../Timer"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	pass # Replace with function body.
 
 
@@ -13,21 +14,7 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left"):
 		animatedsprite.play("pressed")
-		if timer.get_time_left() > 0:
-			timer.stop()
-			print("hit")
-			
-			 
-		
 
+func attack():
+	pass
 		
-		
-func _on_body_entered(body: Node2D) -> void:
-	if body.has_node("../Ball"):
-		timer.start(0.3)
-		
-		
-
-
-func _on_timer_timeout() -> void:
-	print("miss")
