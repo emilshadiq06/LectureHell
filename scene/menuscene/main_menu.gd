@@ -21,7 +21,8 @@ var input_actions = {
 func _ready() -> void:
 	main()
 	_create_action_list()
-
+	$main/Label2/AnimationPlayer.play("label")
+	
 func _create_action_list():
 	InputMap.load_from_project_settings()
 	for item in action_list.get_children():
