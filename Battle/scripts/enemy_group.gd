@@ -8,7 +8,7 @@ var attack
 var ball_index : int = 0
 var hits : int = 0
 var is_battling: bool = false
-
+signal bullet_hell 
 signal next_player
 
 var enemies: Array = []
@@ -27,7 +27,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not choice.visible:
+	if is_battling == false:
 		if Input.is_action_just_pressed("up"):
 			if index > 0:
 				index -= 1
@@ -39,12 +39,16 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("left"):
 			emit_signal("next_player")
 			action_queue.push_back(index)
-			show_choice()
+			if action_queue.size() < players.size():
+				show_choice()
 			
 	if action_queue.size() == players.size() and not is_battling:
 		is_battling = true
-		
 		_action(action_queue) 
+		
+		
+		
+		
 
 func _action(stack):
 	
@@ -61,8 +65,9 @@ func _action(stack):
 		
 	
 	action_queue.clear()
-	is_battling = false
-	show_choice()
+	bullet_hell.emit()
+	
+	
 
 
 func switch_focus(x,y):
@@ -84,8 +89,10 @@ func _start_choosing():
 	
 	
 func _on_attack_pressed() -> void:
-	choice.hide()
-	_start_choosing()
+	
+	if is_battling == false:
+		choice.hide()
+		_start_choosing()
 
 func _on_moves_finish()-> bool:
 
@@ -95,3 +102,10 @@ func _on_moves_finish()-> bool:
 #	print(hits)
 	return true
 	
+
+
+func _on_bullet_hell_timer_timeout() -> void:
+	print("pp")
+	action_queue.clear()
+	is_battling = false
+	show_choice()

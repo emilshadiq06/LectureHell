@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://boxkl18or5x3u"]
+
+[ext_resource type="Script" uid="uid://rg3osv6apgbc" path="res://Game/Enemy/scripts/enemy.gd" id="1_o0bfm"]
+[ext_resource type="Texture2D" uid="uid://c53o36880a6r4" path="res://Battle/sprites/NakedBushMan.png" id="2_wdnsp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8nrlj"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_o0bfm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8nrlj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wdnsp")
+hframes = 21
