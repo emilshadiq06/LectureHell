@@ -27,11 +27,12 @@ func switch_focus(x,y):
 
 
 func _on_enemy_group_bullet_hell() -> void:
-	bullet_hell_timer.start(2)
+	bullet_hell_timer.start(4)
 	
 func start_hell():
 	if bullet_hell_timer.get_time_left() > 0:
-		DialogueManagerScript.start_dialog(Vector2(200,200), ["bullet hell goes here"])
+		print("smth2")
+		DialogueManagerScript.start_dialog(Vector2(300,500), ["bullet hell goes here"])
 	#add_child(bullet_hell)
 	
 func _process(delta: float) -> void:

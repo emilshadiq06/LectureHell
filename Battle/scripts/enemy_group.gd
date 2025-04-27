@@ -46,9 +46,9 @@ func _process(delta: float) -> void:
 		is_battling = true
 		_action(action_queue) 
 		
-		
-		
-		
+
+
+
 
 func _action(stack):
 	
@@ -66,8 +66,7 @@ func _action(stack):
 	
 	action_queue.clear()
 	bullet_hell.emit()
-	
-	
+		
 
 
 func switch_focus(x,y):
@@ -106,6 +105,7 @@ func _on_moves_finish()-> bool:
 
 func _on_bullet_hell_timer_timeout() -> void:
 	print("pp")
+	_reset_focus()
 	action_queue.clear()
 	is_battling = false
 	show_choice()
