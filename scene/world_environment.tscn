@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://pm4hxl6i5dty"]
+
+[ext_resource type="Script" uid="uid://h2wvkf2by4kb" path="res://script/world_environment.gd" id="1_x16oa"]
+
+[sub_resource type="Environment" id="Environment_wjtrd"]
+background_mode = 3
+adjustment_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_wjtrd")
+script = ExtResource("1_x16oa")
