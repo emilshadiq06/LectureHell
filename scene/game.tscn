@@ -12,6 +12,7 @@
 size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
+radius = 16.031
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -45,7 +46,7 @@ shape = SubResource("RectangleShape2D_p1ry8")
 
 [node name="ABU" type="CollisionShape2D" parent="CharacterBody2D"]
 y_sort_enabled = true
-position = Vector2(-0.296753, -1.27946)
+position = Vector2(-0.296997, -7.2795)
 shape = SubResource("CircleShape2D_bk3v5")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("5_p1ry8")]

@@ -17,6 +17,8 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player:
 		print("p")
+		DialogueManagerScript.is_dialog_active = false
+		DialogueManagerScript.current_line_index = 0
 		var current_scene = get_tree().current_scene
 		get_tree().get_root().add_child(fight)
 		get_tree().current_scene = fight

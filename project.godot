@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 Function="*res://scene/menuscene/function.gd"
 DialogueManagerScript="*res://dialogue_manager/dialogue_manager_script.gd"
-DialogueManager="res://addons/dialogue_manager/dialogue_manager.gd"
 GlobalSettings="*res://script/global_settings.gd"
 
 [dialogue_manager]
@@ -32,10 +31,6 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 

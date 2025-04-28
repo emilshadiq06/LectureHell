@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1nhrhaa1ppug" path="res://Battle/scripts/area_2d.gd" id="1_01ko7"]
 [ext_resource type="Script" uid="uid://clrehpya663d7" path="res://Battle/attack.gd" id="1_8h2au"]
-[ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://npc_sprite_02.png" id="2_8h2au"]
+[ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://scene/menuscene/npc_sprite_02.png" id="2_8h2au"]
 [ext_resource type="PackedScene" uid="uid://djp6cqkek10sw" path="res://Battle/balls.tscn" id="4_8h2au"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8h2au"]

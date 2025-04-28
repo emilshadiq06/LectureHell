@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right"):
 		animatedsprite.play("pressed")
 
 func attack():

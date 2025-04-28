@@ -31,7 +31,6 @@ func _on_enemy_group_bullet_hell() -> void:
 	
 func start_hell():
 	if bullet_hell_timer.get_time_left() > 0:
-		print("smth2")
 		DialogueManagerScript.start_dialog(Vector2(300,500), ["bullet hell goes here"])
 	#add_child(bullet_hell)
 	
