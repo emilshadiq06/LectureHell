@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://3thhii6rm7n2"]
 
-[ext_resource type="Script" uid="uid://1a0m6gnhwek4" path="res://scene/menuscene/load.gd" id="1_nl7ba"]
+[ext_resource type="Script" uid="uid://1a0m6gnhwek4" path="res://script/load.gd" id="1_nl7ba"]
 [ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="2_hjm0a"]
 
 [sub_resource type="Gradient" id="Gradient_hjm0a"]
