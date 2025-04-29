@@ -6,10 +6,7 @@ var direction = Vector2.ZERO
 var target_position = Vector2.ZERO
 
 const lines: Array[String] = [
-	"b o bb bb bbbb bbbbbbbb bbbb bb",
-	"o hello",
-	"b o bb bb bbbb bbbbbbbb bbbb bb",
-	"p hey"
+	"Welcome Player!!"
 	
 	
 ]
