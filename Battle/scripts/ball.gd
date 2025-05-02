@@ -14,7 +14,7 @@ func _ready() -> void:
 	animated_sprite.play("default")
 	await get_tree().create_timer(0.2).timeout
 	start_move = true
-	left = choose_randomly([false,true,false,false])
+	left = choose_randomly([false,true,false])
 	animated_sprite.scale.x = -1 if left ==true else 1
 	
 
@@ -23,7 +23,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 	if start_move == true:
-		position.x = position.x + 8* slow
+		position.x = position.x + 18* slow * (3/(balls.balls.size()+1))
 	
 		
 	

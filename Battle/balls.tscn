@@ -131,27 +131,8 @@ animations = [{
 [node name="Balls" type="Node2D"]
 script = ExtResource("1_kacel")
 
-[node name="Ball" type="AnimatableBody2D" parent="."]
-position = Vector2(-333, 381)
-script = ExtResource("1_xu2ur")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-position = Vector2(26, -1)
-shape = SubResource("CircleShape2D_32k74")
-
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Ball"]
-position = Vector2(42, -2.00001)
-scale = Vector2(3.25641, 1.60156)
-sprite_frames = SubResource("SpriteFrames_kacel")
-
-[node name="Area2D" type="Area2D" parent="Ball"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Area2D"]
-position = Vector2(26, -1)
-shape = SubResource("CircleShape2D_32k74")
-
 [node name="Ball2" type="AnimatableBody2D" parent="."]
-position = Vector2(-333, 381)
+position = Vector2(-414, 392)
 script = ExtResource("1_xu2ur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball2"]
@@ -170,7 +151,7 @@ position = Vector2(26, -1)
 shape = SubResource("CircleShape2D_32k74")
 
 [node name="Ball3" type="AnimatableBody2D" parent="."]
-position = Vector2(-333, 381)
+position = Vector2(-414, 392)
 script = ExtResource("1_xu2ur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball3"]
@@ -188,8 +169,6 @@ sprite_frames = SubResource("SpriteFrames_kacel")
 position = Vector2(26, -1)
 shape = SubResource("CircleShape2D_32k74")
 
-[connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_exited"]
 [connection signal="area_entered" from="Ball2/Area2D" to="Ball2" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Ball2/Area2D" to="Ball2" method="_on_area_2d_area_exited"]
 [connection signal="area_entered" from="Ball3/Area2D" to="Ball3" method="_on_area_2d_area_entered"]

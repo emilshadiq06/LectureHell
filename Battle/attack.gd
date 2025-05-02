@@ -8,7 +8,7 @@ var finished = false
 
 func _process(delta: float) -> void:
 	
-	if hits_result.index == 3 and has_emit == false:
+	if hits_result.index >= 2 and has_emit == false:
 		print("emitted sybau")
 		finish.emit()
 		has_emit= true

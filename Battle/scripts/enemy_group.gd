@@ -57,8 +57,10 @@ func _action(stack):
 		attack = attack_scene.instantiate()
 		attack.position = Vector2(0,-150)
 		attack.finish.connect(_on_moves_finish) 
+		attack.get_node("Balls").add_ball(0)
 		add_child(attack)
-		await get_tree().create_timer(2).timeout
+		
+		await get_tree().create_timer(2.4).timeout
 		remove_child(attack)
 		enemies[i].take_damage(2*hits)
 		ball_index = 0
@@ -67,6 +69,7 @@ func _action(stack):
 	action_queue.clear()
 	bullet_hell.emit()
 		
+
 
 
 func switch_focus(x,y):

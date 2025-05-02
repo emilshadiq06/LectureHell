@@ -8,7 +8,7 @@ var last_keycode = 0
 var direction : Vector2 = Vector2.ZERO
 var cardinal_direction : Vector2 = Vector2.DOWN
 var run: int = 1
-
+var stats
 @onready var animation_player : AnimationPlayer= $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
@@ -64,7 +64,11 @@ func SetDirection() -> bool:
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	return true
 	
-
+func get_stats():
+	stats = get_node("stats")
+	var hp = stats.get_hp()
+	print(hp)
+	return hp
 	
 func UpdateAnimation(state : String) -> void:
 	animation_player.play(state + "_" + AnimDirect())
