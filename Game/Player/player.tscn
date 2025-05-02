@@ -156,6 +156,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_s3asc")
 
