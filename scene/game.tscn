@@ -33,7 +33,7 @@ layer_1/tile_data = PackedInt32Array(-2228278, 1572865, 80, -2162742, 1572865, 8
 
 [node name="Player" parent="." instance=ExtResource("2_xwcet")]
 y_sort_enabled = true
-position = Vector2(22, 22)
+position = Vector2(25, 133)
 scale = Vector2(1, 0.897915)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -81,3 +81,4 @@ position = Vector2(-315, -29)
 scale = Vector2(1.23553, 1)
 
 [connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]

@@ -5,8 +5,7 @@ extends Area2D
 var scene_folder = "res://scene/"
 
 func _on_body_entered(body: Node2D) -> void:
-	DialogueManagerScript.is_dialog_active = false
-	DialogueManagerScript.current_line_index = 0
+
 	var full_path = scene_folder + connected_scene + ".tscn"
 	var scene_tree = get_tree()
 	scene_tree.call_deferred("change_scene_to_file", full_path)
