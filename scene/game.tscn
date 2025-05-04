@@ -56,7 +56,7 @@ shape = SubResource("CircleShape2D_bk3v5")
 [node name="Control" parent="CanvasLayer" instance=ExtResource("6_xlg7c")]
 
 [node name="Enemy" parent="." instance=ExtResource("7_qpk70")]
-position = Vector2(-89, 291)
+position = Vector2(435, 226)
 collision_mask = 16
 
 [connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]

@@ -14,7 +14,7 @@ func _ready() -> void:
 	animated_sprite.play("default")
 	await get_tree().create_timer(0.2).timeout
 	start_move = true
-	left = choose_randomly([false,true,false])
+	left = choose_randomly([false,true])
 	animated_sprite.scale.x = -1 if left ==true else 1
 	
 

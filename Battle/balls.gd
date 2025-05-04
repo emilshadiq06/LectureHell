@@ -16,7 +16,7 @@ func _ready() -> void:
 	print(balls.size())
 	for i in balls.size()-1:
 		var displace = choose_randomly([2,1.5,0.4])
-		balls[i].position.x = -200* i * displace
+		balls[i].position.x = -150 +( -200* i * displace)
 
 	
 func add_ball(ball_added: int):

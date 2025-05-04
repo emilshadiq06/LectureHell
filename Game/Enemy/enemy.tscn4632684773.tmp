@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://boxkl18or5x3u"]
+[gd_scene load_steps=9 format=3 uid="uid://boxkl18or5x3u"]
 
 [ext_resource type="Script" uid="uid://b4kxx3btqho8m" path="res://Game/Enemy/scripts/enemy.gd" id="1_a8tps"]
 [ext_resource type="Texture2D" uid="uid://c53o36880a6r4" path="res://Battle/sprites/NakedBushMan.png" id="2_wdnsp"]
@@ -6,15 +6,11 @@
 [ext_resource type="Script" uid="uid://cbgcr466bbopr" path="res://Game/Enemy/scripts/states/idle.gd" id="4_o0bfm"]
 [ext_resource type="Script" uid="uid://chudb7lwcd015" path="res://Game/Enemy/scripts/states/roam.gd" id="5_wdnsp"]
 [ext_resource type="Script" uid="uid://l8whmbvmagkg" path="res://Game/Enemy/scripts/states/dir.gd" id="6_ruxiu"]
-[ext_resource type="Script" uid="uid://dh5vnedyj47w0" path="res://Game/Enemy/scripts/states/chase.gd" id="7_2ghbj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8nrlj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8tps"]
 size = Vector2(46, 50)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2ghbj"]
-radius = 317.191
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_a8tps")
@@ -35,25 +31,17 @@ shape = SubResource("RectangleShape2D_a8tps")
 [node name="EnemyStateMachine" type="Node" parent="."]
 script = ExtResource("3_xhwg1")
 
-[node name="dir" type="Node" parent="EnemyStateMachine"]
-script = ExtResource("6_ruxiu")
-
 [node name="idle" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("4_o0bfm")
 
 [node name="roam" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("5_wdnsp")
 
+[node name="dir" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("6_ruxiu")
+
 [node name="chase" type="Node" parent="EnemyStateMachine"]
-script = ExtResource("7_2ghbj")
 
 [node name="StateTimer" type="Timer" parent="."]
 
-[node name="ChaseArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
-position = Vector2(-2, 4)
-shape = SubResource("CircleShape2D_2ghbj")
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="ChaseArea" to="." method="_on_chase_area_body_entered"]
