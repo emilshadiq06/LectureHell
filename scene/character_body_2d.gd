@@ -6,7 +6,7 @@ var direction = Vector2.ZERO
 var target_position = Vector2.ZERO
 
 const lines: Array[String] = [
-	"Welcome Player!!"
+	"Go to the next room!! "
 	
 	
 ]

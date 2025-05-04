@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=13 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://d0f4mkhjupc3c" path="res://scene/character_body_2d.gd" id="3_xwcet"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="5_p1ry8"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="6_xlg7c"]
-[ext_resource type="Texture2D" uid="uid://cvqvf7qkmp88v" path="res://character/Sprite NPC Normal/2 - Holly/Standing (32 x 32).png" id="7_qpk70"]
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
 [ext_resource type="PackedScene" uid="uid://bx4emfdjlb5gq" path="res://npc_2.tscn" id="10_yq8tf"]
 
@@ -15,9 +14,6 @@
 size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpk70"]
-size = Vector2(35, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
 size = Vector2(193, 81)
@@ -70,20 +66,6 @@ shape = SubResource("CircleShape2D_bk3v5")
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("6_xlg7c")]
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
-y_sort_enabled = true
-collision_layer = 16
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
-position = Vector2(-417, -38)
-scale = Vector2(1.20273, 1.17292)
-texture = ExtResource("7_qpk70")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
-position = Vector2(-418, -37.5)
-shape = SubResource("RectangleShape2D_qpk70")
-
 [node name="Portal" parent="." instance=ExtResource("9_17rxn")]
 position = Vector2(15, 196)
 connected_scene = "gameworld"
@@ -94,6 +76,8 @@ position = Vector2(9, 53)
 shape = SubResource("RectangleShape2D_yq8tf")
 
 [node name="npc2" parent="." instance=ExtResource("10_yq8tf")]
+y_sort_enabled = true
 position = Vector2(-315, -29)
+scale = Vector2(1.23553, 1)
 
 [connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]

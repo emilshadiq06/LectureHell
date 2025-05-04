@@ -1,13 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpwabfncr34l6"]
+[gd_scene load_steps=8 format=3 uid="uid://dpwabfncr34l6"]
 
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="1_hx0jg"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_bjxfv"]
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="3_bjxfv"]
+[ext_resource type="Texture2D" uid="uid://cvqvf7qkmp88v" path="res://character/Sprite NPC Normal/2 - Holly/Standing (32 x 32).png" id="4_wm3ic"]
+[ext_resource type="PackedScene" uid="uid://g02cmrdrnaje" path="res://npc_green.tscn" id="5_eu1nv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wm3ic"]
 size = Vector2(54, 52)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu1nv"]
+size = Vector2(35, 47)
+
 [node name="Gameworld" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-411.0]
 
 [node name="Player" parent="." instance=ExtResource("1_hx0jg")]
 
@@ -21,3 +27,21 @@ connected_scene = "game"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
 position = Vector2(3, -7)
 shape = SubResource("RectangleShape2D_wm3ic")
+
+[node name="npc_kid" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+collision_layer = 16
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="npc_kid"]
+position = Vector2(155, 166)
+scale = Vector2(1.20273, 1.17292)
+texture = ExtResource("4_wm3ic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="npc_kid"]
+position = Vector2(157, 168)
+shape = SubResource("RectangleShape2D_eu1nv")
+
+[node name="npc_green" parent="." instance=ExtResource("5_eu1nv")]
+position = Vector2(309, 121)
+scale = Vector2(1.9471, 1.7397)
