@@ -17,7 +17,7 @@ var index: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-	
+	await get_tree().create_timer(0.05).timeout
 	players = player_group.get_children()
 	enemies = get_children()
 	for i in enemies.size():
@@ -25,6 +25,11 @@ func _ready() -> void:
 
 	_start_choosing()
 
+func add_character():
+	
+	var new_char = get_node("Character").duplicate()
+	add_child(new_char)
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_battling == false:
@@ -57,7 +62,9 @@ func _action(stack):
 		attack = attack_scene.instantiate()
 		attack.position = Vector2(0,-150)
 		attack.finish.connect(_on_moves_finish) 
-		attack.get_node("Balls").add_ball(0)
+	#	print("here")
+	#	print(players[i].weapon)
+		attack.get_node("Balls").add_ball(players[i].weapon)
 		add_child(attack)
 		
 		await get_tree().create_timer(2.4).timeout
@@ -107,7 +114,7 @@ func _on_moves_finish()-> bool:
 
 
 func _on_bullet_hell_timer_timeout() -> void:
-	print("pp")
+	
 	_reset_focus()
 	action_queue.clear()
 	is_battling = false

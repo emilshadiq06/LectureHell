@@ -4,6 +4,7 @@ class_name Enemy extends CharacterBody2D
 @onready var fight = preload("res://Battle/battle.tscn").instantiate()
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
+
 const SPEED = 100.0
 var chase_dir : Vector2
 var chase : bool = false 
@@ -33,13 +34,22 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		DialogueManagerScript.current_line_index = 0
 		var current_scene = get_tree().current_scene
 		get_tree().get_root().add_child(fight)
-		var player_turn_based = fight.get_node("PlayerGroup").get_node("Character")
-		var player_hp = body.get_stats()
-		player_turn_based.set_stats(player_hp)
+		var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
+		get_whole_group("enemies")
+		
+		player_Battle.set_stats(body.get_stats())
 		
 		get_tree().current_scene = fight
 		current_scene.queue_free()
 
+func get_whole_group(group):
+	if self.is_in_group(group):
+		for i in get_tree().get_nodes_in_group(group).size()-1:
+			var enemy_Battle = fight.get_node("EnemyGroup")
+			enemy_Battle.add_character()
+	
+			
+	
 
 func _on_chase_area_body_entered(body) -> void:
 	if body == player:

@@ -9,6 +9,8 @@ var down = Vector2(0,1)
 var move_list : Array = [left,right,up,down]
 var old_dir : Vector2 
 
+func init() -> void:
+	pass
 #what happens when player enters state
 func Enter() ->void:
 	
@@ -27,11 +29,3 @@ func Process(_delta:float)->Enemy_State:
 	if move_list.size() < 2:
 		move_list = [left,right,up,down]
 	return idle
-
-#what happens during physics process in state 
-func Physics(_delta:float)->Enemy_State:
-	
-	return null
-#what happens to inputs event in state
-func HandleInput(_event: InputEvent)->Enemy_State:
-	return null

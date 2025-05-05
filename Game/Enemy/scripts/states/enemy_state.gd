@@ -1,7 +1,9 @@
 class_name Enemy_State extends Node
 ##ref to what this state belongs to
-static var enemy : Enemy
-
+var enemy : Enemy
+var state_machine = EnemyStateMachine
+func _init() -> void:
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

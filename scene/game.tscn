@@ -55,8 +55,13 @@ shape = SubResource("CircleShape2D_bk3v5")
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("6_xlg7c")]
 
+[node name="Enemy2" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
+position = Vector2(-293, -266)
+
+[node name="Enemy3" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
+position = Vector2(-479, -249)
+
 [node name="Enemy" parent="." instance=ExtResource("7_qpk70")]
-position = Vector2(435, 226)
-collision_mask = 16
+position = Vector2(413, -284)
 
 [connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]

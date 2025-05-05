@@ -6,6 +6,9 @@ class_name Enemy_State_Roam extends Enemy_State
 @onready var chasing =$"../chase"
 var result
 #what happens when player enters state
+func init() -> void:
+	pass
+	
 func Enter() ->void:
 	timer.start(2)
 #	enemy.UpdateAnimation("idle")
@@ -28,12 +31,4 @@ func Process(_delta:float)->Enemy_State:
 
 		return dir
 	
-	return null
-
-#what happens during physics process in state 
-func Physics(_delta:float)->Enemy_State:
-	
-	return null
-#what happens to inputs event in state
-func HandleInput(_event: InputEvent)->Enemy_State:
 	return null

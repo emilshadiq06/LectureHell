@@ -10,10 +10,9 @@ func _ready() -> void:
 	
 	
 	balls = get_children()
-#	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1).timeout
 	
 	
-	print(balls.size())
 	for i in balls.size()-1:
 		var displace = choose_randomly([2,1.5,0.4])
 		balls[i].position.x = -150 +( -200* i * displace)

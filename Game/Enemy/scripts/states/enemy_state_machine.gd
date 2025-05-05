@@ -26,9 +26,14 @@ func initialize(_enemy:Enemy)->void:
 	for c in get_children():
 		if c is Enemy_State:
 			states.append(c)
-	
+			
+	for s in states:
+		s.enemy = _enemy
+		s.state_machine = self
+		s.init()
+
 	if states.size()>0:
-		states[0].enemy = _enemy
+		
 		ChangeState(states[0])
 		process_mode = Node.PROCESS_MODE_INHERIT
 

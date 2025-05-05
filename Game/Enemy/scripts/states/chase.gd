@@ -3,6 +3,9 @@ class_name Enemy_State_Chase extends Enemy_State
 @onready var timer = $"../../StateTimer"
 @onready var idle =$"../idle"
 
+func init() -> void:
+	pass
+
 #what happens when player enters state
 func Enter() ->void:
 	timer.start(10)

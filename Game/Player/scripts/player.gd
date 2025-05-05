@@ -67,8 +67,8 @@ func SetDirection() -> bool:
 func get_stats():
 	stats = get_node("stats")
 	var hp = stats.get_hp()
-	print(hp)
-	return hp
+	var weapon = stats.get_weapon()
+	return [hp,weapon]
 	
 func UpdateAnimation(state : String) -> void:
 	animation_player.play(state + "_" + AnimDirect())

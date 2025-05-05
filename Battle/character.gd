@@ -3,6 +3,9 @@ extends CharacterBody2D
 @onready var progress_bar = $ProgressBar
 @onready var focus = $Focus
 @export var MAX_HP : float = 20
+var weapon : int = 0:
+	set(value):
+		weapon = value
 var start_battle = true
 var hp : float = 20:
 	set(value):
@@ -17,10 +20,13 @@ func _ready() -> void:
 	start_battle = false
 	_update_progress_bar()
 	
-func set_stats(stat_hp):
-	print('ppp')
-	hp = stat_hp
-	MAX_HP = stat_hp
+func set_stats(stats):
+	
+	hp = stats[0]
+	MAX_HP = stats[0]
+	print("here")
+	print(stats[1])
+	weapon = stats[1]
 	
 	
 func _update_progress_bar():

@@ -3,10 +3,14 @@ class_name Enemy_State_Idle extends Enemy_State
 @onready var timer = $"../../StateTimer"
 @onready var roam =$"../roam"
 @onready var chasing =$"../chase"
+
 #what happens when player enters state
+func init() -> void:
+	pass
 func Enter() ->void:
+	
 	print("sss")
-	timer.start(1.5)
+	timer.start(enemy.choose_randomly([0.5,1.5,2,5]))
 #	enemy.UpdateAnimation("idle")
 	pass
 	
@@ -25,11 +29,4 @@ func Process(_delta:float)->Enemy_State:
 		print("ok")
 		
 		return roam
-	return null
-
-#what happens during physics process in state 
-func Physics(_delta:float)->Enemy_State:
-	return null
-#what happens to inputs event in state
-func HandleInput(_event: InputEvent)->Enemy_State:
 	return null
