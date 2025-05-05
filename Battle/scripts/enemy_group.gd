@@ -64,7 +64,7 @@ func _action(stack):
 		attack.finish.connect(_on_moves_finish) 
 	#	print("here")
 	#	print(players[i].weapon)
-		attack.get_node("Balls").add_ball(players[i].weapon)
+		attack.get_node("Balls").add_ball(2)
 		add_child(attack)
 		
 		await get_tree().create_timer(2.4).timeout
