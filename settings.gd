@@ -1,5 +1,5 @@
 extends Control
-@onready var brightness: HSlider = $settings/TabContainer/GENERAL/brightness
+@onready var brightness_2: HSlider = $ColorRect/TabContainer/GAMEPLAY/brightness2
 @onready var input_button_scene = preload("res://scene/input_button.tscn")
 @onready var action_list: VBoxContainer = $ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer/ScrollContainer/ActionList
 
@@ -76,3 +76,37 @@ func _update_action_list(button, event):
 
 func _on_reset_button_pressed() -> void:
 	_create_action_list()
+
+
+func _on_brightness_2_value_changed(value: float) -> void:
+	GlobalSettings.update_brightness(value)
+
+
+func _on_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0,value)
+
+
+func _on_check_box_toggled(toggled_on: bool) -> void:
+	AudioServer.set_bus_mute(0,toggled_on)
+
+
+func _on_resolution_item_selected(index: int) -> void:
+	match index:
+		0:
+			DisplayServer.window_set_size(Vector2i(1920, 1080))
+		1:
+			DisplayServer.window_set_size(Vector2i(1600, 900))
+		2:
+			DisplayServer.window_set_size(Vector2i(1280, 720))
+
+
+func _on_display_item_selected(index: int) -> void:
+	match index:
+		0:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		1:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		2:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MINIMIZED)
+		3:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
