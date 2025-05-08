@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://g02cmrdrnaje"]
+[gd_scene load_steps=25 format=3 uid="uid://g02cmrdrnaje"]
 
 [ext_resource type="Texture2D" uid="uid://dgyh50qydv1bx" path="res://character/Sprite NPC Normal/sprite npc2/survivalgame-player-green.png" id="1_k5r0k"]
 [ext_resource type="Script" uid="uid://cmefovwu3434n" path="res://npc_green.gd" id="1_loiwc"]
+[ext_resource type="PackedScene" uid="uid://cerkvqvegnvh3" path="res://dialogue/dialogue.tscn" id="3_pvewt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_loiwc"]
 atlas = ExtResource("1_k5r0k")
@@ -182,4 +183,7 @@ shape = SubResource("CircleShape2D_ummto")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Dialogue" parent="." instance=ExtResource("3_pvewt")]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="dialogue_finished" from="Dialogue" to="." method="_on_dialogue_dialogue_finished"]

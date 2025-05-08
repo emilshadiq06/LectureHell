@@ -1,0 +1,9 @@
+[
+	{"name": "Worker", "text": "Hello there!"},
+	{"name": "Worker", "text": "What are you doing here?"},
+	{"name": "You", "text": "Nothing, I'm bored..."},
+	{"name": "Worker", "text": "Do you like to dance?"},
+	{"name": "You", "text": "YES!!"},
+	{"name": "Worker", "text": "Let's dance together!"},
+	{"name": "You", "text": "AIGHT BET"},
+]
