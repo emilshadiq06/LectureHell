@@ -50,9 +50,6 @@ _data = {
 
 [node name="Load" type="CanvasLayer"]
 script = ExtResource("1_nl7ba")
-next_scene_path = null
-scene_args = null
-tips = null
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
