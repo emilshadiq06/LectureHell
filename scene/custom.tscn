@@ -114,5 +114,6 @@ texture = ExtResource("3_tqyd2")
 hframes = 6
 vframes = 3
 
+[connection signal="pressed" from="select" to="." method="_on_select_pressed"]
 [connection signal="pressed" from="right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="left" to="." method="_on_left_pressed"]
