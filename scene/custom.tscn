@@ -1,19 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3sphyoi74dka"]
+[gd_scene load_steps=10 format=3 uid="uid://c3sphyoi74dka"]
 
+[ext_resource type="Script" uid="uid://dsfagsms0flm0" path="res://scene/custom.gd" id="1_evje3"]
 [ext_resource type="Texture2D" uid="uid://ncemb4le66dp" path="res://gui/ui.png" id="1_lmjef"]
 [ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="2_a5x3t"]
 [ext_resource type="Texture2D" uid="uid://v3e0e1k5q5x6" path="res://character/16x16 top down characters pixel art/character 1/16x16 top down character 1-1.png" id="3_tqyd2"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pxfll"]
-texture = ExtResource("1_lmjef")
-texture_margin_top = 29.0
-texture_margin_bottom = 21.0
-region_rect = Rect2(727, 72, 34, 32)
-modulate_color = Color(0.942823, 0.942823, 0.942823, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqyd2"]
+atlas = ExtResource("1_lmjef")
+region = Rect2(563, 19, 42, 58)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7w1na"]
 texture = ExtResource("1_lmjef")
-region_rect = Rect2(562, 82, 44, 60)
+region_rect = Rect2(73, 132, 36, 39)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evje3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xtgyu"]
+modulate_color = Color(0.642984, 0.474732, 0.316025, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqyd2"]
 bg_color = Color(0.879426, 0.44786, 0.501805, 1)
@@ -28,17 +31,19 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
-[node name="custom" type="Panel"]
+[node name="custom" type="CanvasLayer"]
+script = ExtResource("1_evje3")
+
+[node name="ColorRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(320, 180)
-theme_override_styles/panel = SubResource("StyleBoxTexture_pxfll")
+texture = SubResource("AtlasTexture_tqyd2")
 
 [node name="information" type="Panel" parent="."]
-layout_mode = 0
 offset_left = 754.0
 offset_top = 124.0
 offset_right = 1182.0
@@ -46,7 +51,6 @@ offset_bottom = 589.0
 scale = Vector2(0.901381, 0.929749)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 0
 offset_left = 91.0
 offset_top = 97.0
 offset_right = 597.0
@@ -67,38 +71,45 @@ text = "SELECT YOUR CHARACTER"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 0
 offset_left = 268.0
 offset_top = 446.0
 offset_right = 331.0
 offset_bottom = 477.0
 scale = Vector2(1.90817, 3.0125)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_evje3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xtgyu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
 text = "SELECT"
 
 [node name="Button2" type="Button" parent="."]
-layout_mode = 0
 offset_left = 450.0
 offset_top = 300.0
 offset_right = 513.0
 offset_bottom = 331.0
 scale = Vector2(1.90817, 3.0125)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_evje3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xtgyu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
 text = ">"
 
 [node name="Button3" type="Button" parent="."]
-layout_mode = 0
 offset_left = 97.0
 offset_top = 298.0
 offset_right = 160.0
 offset_bottom = 329.0
 scale = Vector2(1.90817, 3.0125)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_evje3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xtgyu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
 text = "<"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(338, 299)
-scale = Vector2(-11.59, 14.7204)
+rotation = -3.14159
+scale = Vector2(11.59, -14.7204)
 texture = ExtResource("3_tqyd2")
 hframes = 6
 vframes = 3
+
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
