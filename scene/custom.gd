@@ -17,8 +17,12 @@ func update_potrait(index):
 	char_potrait.texture = characters[index]
 	
 func _on_button_2_pressed() -> void:
-	pass # Replace with function body.
+	if(index_selection < characters.size()-1):
+		index_selection +=1
+	update_potrait(index_selection)
 
 
 func _on_button_3_pressed() -> void:
-	pass # Replace with function body.
+	if(index_selection > 0):
+		index_selection -=1
+	update_potrait(index_selection)
