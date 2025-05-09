@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3sphyoi74dka"]
+[gd_scene load_steps=11 format=3 uid="uid://c3sphyoi74dka"]
 
 [ext_resource type="Script" uid="uid://dsfagsms0flm0" path="res://scene/custom.gd" id="1_evje3"]
 [ext_resource type="Texture2D" uid="uid://ncemb4le66dp" path="res://gui/ui.png" id="1_lmjef"]
@@ -15,8 +15,33 @@ region_rect = Rect2(73, 132, 36, 39)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evje3"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xtgyu"]
-modulate_color = Color(0.642984, 0.474732, 0.316025, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evje3"]
+bg_color = Color(0.520365, 0.167342, 0.104852, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.478601, 0.278673, 0.0387558, 1)
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtgyu"]
+bg_color = Color(0.732904, 0.23573, 0.465876, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.63339, 0.089607, 0.169869, 1)
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqyd2"]
 bg_color = Color(0.879426, 0.44786, 0.501805, 1)
@@ -65,7 +90,7 @@ theme_override_constants/separation = 175
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.373098, 0.194137, 0.0975032, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_a5x3t")
@@ -80,7 +105,8 @@ offset_right = 331.0
 offset_bottom = 477.0
 scale = Vector2(1.90817, 3.0125)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_evje3")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xtgyu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_evje3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xtgyu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
 text = "SELECT"
 
@@ -91,7 +117,8 @@ offset_right = 513.0
 offset_bottom = 331.0
 scale = Vector2(1.90817, 3.0125)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_evje3")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xtgyu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_evje3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xtgyu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
 text = ">"
 
@@ -102,7 +129,8 @@ offset_right = 160.0
 offset_bottom = 329.0
 scale = Vector2(1.90817, 3.0125)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_evje3")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xtgyu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_evje3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xtgyu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
 text = "<"
 
@@ -114,6 +142,5 @@ texture = ExtResource("3_tqyd2")
 hframes = 6
 vframes = 3
 
-[connection signal="pressed" from="select" to="." method="_on_select_pressed"]
 [connection signal="pressed" from="right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="left" to="." method="_on_left_pressed"]

@@ -42,4 +42,5 @@ func _on_left_pressed() -> void:
 
 
 func _on_select_pressed() -> void:
+	GlobalSettings.selected_character
 	print("mantap sekali pilihan anda")
