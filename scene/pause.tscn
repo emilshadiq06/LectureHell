@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://btggau11lqgdm"]
+[gd_scene load_steps=17 format=3 uid="uid://btggau11lqgdm"]
 
 [ext_resource type="Script" uid="uid://bjv8b8c6ppcv3" path="res://script/pause.gd" id="1_6eyaj"]
 [ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="1_45vjg"]
 [ext_resource type="Shader" uid="uid://cv6tirfxtguox" path="res://pause.gdshader" id="1_aq7p1"]
+[ext_resource type="PackedScene" uid="uid://b2et0dg66tn71" path="res://settings.tscn" id="4_2yf20"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6eyaj"]
 shader = ExtResource("1_aq7p1")
@@ -39,6 +40,8 @@ shadow_color = Color(0, 0, 0, 0.862745)
 
 [sub_resource type="Theme" id="Theme_8u653"]
 Button/styles/normal = SubResource("StyleBoxFlat_6eyaj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_km4a5"]
 
 [sub_resource type="Animation" id="Animation_bwtow"]
 length = 0.001
@@ -101,6 +104,29 @@ _data = {
 &"blur": SubResource("Animation_8u653")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2yf20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km4a5"]
+bg_color = Color(0.616159, 0.592741, 0.940892, 1)
+shadow_color = Color(0.711711, 0.587545, 0.931248, 0.6)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bygcr"]
+bg_color = Color(0.550906, 0.354514, 0.878229, 1)
+shadow_color = Color(0.474953, 0.245155, 0.824717, 0.6)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxtby"]
+bg_color = Color(0.25812, 0.2484, 0.54, 1)
+border_color = Color(0.822081, 0.768511, 0.936804, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 3
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 3
+corner_detail = 11
+shadow_color = Color(0.0177324, 0.0177324, 0.0177324, 0.6)
+shadow_size = 4
+
 [node name="Control" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -146,6 +172,7 @@ layout_mode = 2
 theme = SubResource("Theme_8u653")
 theme_override_fonts/font = ExtResource("1_45vjg")
 theme_override_font_sizes/font_size = 21
+theme_override_styles/focus = SubResource("StyleBoxEmpty_km4a5")
 text = "RESUME"
 
 [node name="Button2" type="Button" parent="PanelContainer/VBoxContainer"]
@@ -153,6 +180,7 @@ layout_mode = 2
 theme = SubResource("Theme_8u653")
 theme_override_fonts/font = ExtResource("1_45vjg")
 theme_override_font_sizes/font_size = 21
+theme_override_styles/focus = SubResource("StyleBoxEmpty_km4a5")
 text = "SETTINGS"
 
 [node name="Button3" type="Button" parent="PanelContainer/VBoxContainer"]
@@ -160,6 +188,7 @@ layout_mode = 2
 theme = SubResource("Theme_8u653")
 theme_override_fonts/font = ExtResource("1_45vjg")
 theme_override_font_sizes/font_size = 21
+theme_override_styles/focus = SubResource("StyleBoxEmpty_km4a5")
 text = "QUIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -167,5 +196,22 @@ libraries = {
 &"": SubResource("AnimationLibrary_05lnj")
 }
 
+[node name="settings" parent="." instance=ExtResource("4_2yf20")]
+visible = false
+layout_mode = 1
+
+[node name="backsetting" type="Button" parent="settings"]
+offset_left = 1037.0
+offset_top = 610.0
+offset_right = 1180.0
+offset_bottom = 666.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2yf20")
+theme_override_styles/hover = SubResource("StyleBoxFlat_km4a5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bygcr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bxtby")
+text = "BACK"
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="settings/backsetting" to="." method="_on_backsetting_pressed"]
