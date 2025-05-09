@@ -2,8 +2,15 @@ extends CanvasLayer
 
 const characters = [
 	preload("res://character/16x16 top down characters pixel art/character 1/16x16 top down character 1-1.png"),
+	preload("res://character/16x16 top down characters pixel art/character 2/16x16 top down character 2-3.png"),
+	preload("res://character/16x16 top down characters pixel art/character 3/16x16 top down character 3-3.png"),
+	preload("res://character/16x16 top down characters pixel art/character 4/16x16 top down character 4-1.png"),
 	preload("res://character/16x16 top down characters pixel art/character 5/16x16 top down character 5-2.png"),
-	preload("res://character/16x16 top down characters pixel art/character 4/16x16 top down character 4-2.png"),
+	preload("res://character/16x16 top down characters pixel art/character 6/16x16 top down character 6-1.png"),
+	preload("res://character/16x16 top down characters pixel art/character 7/16x16 top down character 7-1.png"),
+	preload("res://character/16x16 top down characters pixel art/character 8/16x16 top down character 8-2.png"),
+	preload("res://character/16x16 top down characters pixel art/character 9/16x16 top down character 9-2.png"),
+	preload("res://character/16x16 top down characters pixel art/character 10/16x16 top down character 10-1.png"),
 	preload("res://character/16x16 top down characters pixel art/character 3/16x16 top down character 3-2.png"),
 ]
 var index_selection = 3
