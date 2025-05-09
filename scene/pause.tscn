@@ -201,6 +201,7 @@ visible = false
 layout_mode = 1
 
 [node name="backsetting" type="Button" parent="settings"]
+layout_mode = 0
 offset_left = 1037.0
 offset_top = 610.0
 offset_right = 1180.0
