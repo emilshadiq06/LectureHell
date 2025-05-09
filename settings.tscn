@@ -341,6 +341,7 @@ script = SubResource("GDScript_3ykye")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("5_cj1lu")]
 
+[connection signal="toggled" from="ColorRect/TabContainer/GAMEPLAY/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="toggled" from="ColorRect/TabContainer/GAMEPLAY/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="value_changed" from="ColorRect/TabContainer/GAMEPLAY/slider" to="." method="_on_slider_value_changed"]
 [connection signal="item_selected" from="ColorRect/TabContainer/GAMEPLAY/HBoxContainer2/resolution" to="." method="_on_resolution_item_selected"]

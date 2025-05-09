@@ -2,6 +2,7 @@ extends Control
 @onready var brightness_2: HSlider = $ColorRect/TabContainer/GAMEPLAY/brightness2
 @onready var input_button_scene = preload("res://scene/input_button.tscn")
 @onready var action_list: VBoxContainer = $ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer/ScrollContainer/ActionList
+@onready var check_button: CheckButton = $ColorRect/TabContainer/GAMEPLAY/CheckButton
 
 
 var is_remapping = false
@@ -110,3 +111,9 @@ func _on_display_item_selected(index: int) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MINIMIZED)
 		3:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	GlobalSettings.toggle_bloom(toggled_on)
