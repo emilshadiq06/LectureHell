@@ -70,7 +70,7 @@ theme_override_font_sizes/font_size = 29
 text = "SELECT YOUR CHARACTER"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="select" type="Button" parent="."]
 offset_left = 268.0
 offset_top = 446.0
 offset_right = 331.0
@@ -81,7 +81,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_xtgyu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
 text = "SELECT"
 
-[node name="Button2" type="Button" parent="."]
+[node name="right" type="Button" parent="."]
 offset_left = 450.0
 offset_top = 300.0
 offset_right = 513.0
@@ -92,7 +92,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_xtgyu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
 text = ">"
 
-[node name="Button3" type="Button" parent="."]
+[node name="left" type="Button" parent="."]
 offset_left = 97.0
 offset_top = 298.0
 offset_right = 160.0
@@ -111,5 +111,5 @@ texture = ExtResource("3_tqyd2")
 hframes = 6
 vframes = 3
 
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="left" to="." method="_on_left_pressed"]

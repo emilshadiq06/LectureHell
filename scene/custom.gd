@@ -16,13 +16,15 @@ func _ready() -> void:
 func update_potrait(index):
 	char_potrait.texture = characters[index]
 	
-func _on_button_2_pressed() -> void:
+
+func _on_right_pressed() -> void:
 	if(index_selection < characters.size()-1):
 		index_selection +=1
 	update_potrait(index_selection)
 
 
-func _on_button_3_pressed() -> void:
+
+func _on_left_pressed() -> void:
 	if(index_selection > 0):
 		index_selection -=1
 	update_potrait(index_selection)
