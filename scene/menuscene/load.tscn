@@ -92,3 +92,4 @@ text = "LOADING..."
 libraries = {
 &"": SubResource("AnimationLibrary_cunha")
 }
+speed_scale = 0.8
