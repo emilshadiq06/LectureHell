@@ -28,7 +28,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bov73"]
 resource_name = "new_animation"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,6 +40,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.491882, 0.607715, 0, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Label/../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"open_new_scene"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cunha"]
 _data = {
@@ -50,9 +63,6 @@ _data = {
 
 [node name="Load" type="CanvasLayer"]
 script = ExtResource("1_nl7ba")
-next_scene_path = null
-scene_args = null
-tips = null
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
