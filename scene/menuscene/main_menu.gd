@@ -13,7 +13,7 @@ var input_actions = {
 	"left": "Move Left",
 	"right": "Move Right",
 	"down": "Move Down",
-	"advance_dialog": "Dialogue",
+	"chat": "Dialogue",
 	
 }
 
