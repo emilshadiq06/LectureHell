@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready() -> void:
+	Input.set_custom_mouse_cursor(GlobalSettings.HAND_POINT, Input.CURSOR_POINTING_HAND)
 	main()
 
 
