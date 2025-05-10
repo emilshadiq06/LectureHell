@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4fvyanm0f5d3"]
+
+[ext_resource type="Script" uid="uid://lmybve0efaar" path="res://scene/characterui.gd" id="1_efyvx"]
+[ext_resource type="Texture2D" uid="uid://v3e0e1k5q5x6" path="res://character/16x16 top down characters pixel art/character 1/16x16 top down character 1-1.png" id="1_xr8ev"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_efyvx"]
+
+[node name="characterui" type="Node2D"]
+scale = Vector2(2.17142, 2.00233)
+script = ExtResource("1_efyvx")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(172, 81)
+scale = Vector2(8.08153, 8.58721)
+texture = ExtResource("1_xr8ev")
+hframes = 6
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(173, 100)
+scale = Vector2(-5, 4)
+shape = SubResource("CircleShape2D_efyvx")

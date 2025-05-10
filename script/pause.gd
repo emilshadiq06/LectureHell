@@ -28,3 +28,11 @@ func _on_button_3_pressed() -> void:
 	
 func _process(delta):
 	testEsc()
+
+
+func _on_button_2_pressed() -> void:
+	$settings.show()
+
+
+func _on_backsetting_pressed() -> void:
+	$settings.hide()

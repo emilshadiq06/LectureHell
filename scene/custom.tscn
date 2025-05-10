@@ -1,0 +1,152 @@
+[gd_scene load_steps=12 format=3 uid="uid://c3sphyoi74dka"]
+
+[ext_resource type="Script" uid="uid://dsfagsms0flm0" path="res://scene/custom.gd" id="1_evje3"]
+[ext_resource type="Texture2D" uid="uid://ncemb4le66dp" path="res://gui/ui.png" id="1_lmjef"]
+[ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="2_a5x3t"]
+[ext_resource type="Texture2D" uid="uid://v3e0e1k5q5x6" path="res://character/16x16 top down characters pixel art/character 1/16x16 top down character 1-1.png" id="3_tqyd2"]
+[ext_resource type="PackedScene" uid="uid://d4fvyanm0f5d3" path="res://scene/characterui.tscn" id="3_xtgyu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqyd2"]
+atlas = ExtResource("1_lmjef")
+region = Rect2(563, 19, 42, 58)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7w1na"]
+texture = ExtResource("1_lmjef")
+region_rect = Rect2(73, 132, 36, 39)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evje3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evje3"]
+bg_color = Color(0.880395, 0.482972, 0.64995, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 5
+border_color = Color(0.99913, 0.97329, 0.95127, 1)
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtgyu"]
+bg_color = Color(0.732904, 0.23573, 0.465876, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.63339, 0.089607, 0.169869, 1)
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqyd2"]
+bg_color = Color(0.879426, 0.44786, 0.501805, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.953303, 0.75341, 0.619051, 1)
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="custom" type="CanvasLayer"]
+script = ExtResource("1_evje3")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_tqyd2")
+
+[node name="information" type="Panel" parent="."]
+offset_left = 754.0
+offset_top = 124.0
+offset_right = 1182.0
+offset_bottom = 589.0
+scale = Vector2(0.901381, 0.929749)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 91.0
+offset_top = 97.0
+offset_right = 597.0
+offset_bottom = 594.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7w1na")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 175
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a5x3t")
+theme_override_font_sizes/font_size = 29
+text = "SELECT YOUR CHARACTER"
+horizontal_alignment = 1
+
+[node name="select" type="Button" parent="."]
+offset_left = 268.0
+offset_top = 446.0
+offset_right = 331.0
+offset_bottom = 477.0
+scale = Vector2(1.90817, 3.0125)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_evje3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_evje3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xtgyu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
+text = "SELECT"
+
+[node name="right" type="Button" parent="."]
+offset_left = 450.0
+offset_top = 300.0
+offset_right = 513.0
+offset_bottom = 331.0
+scale = Vector2(1.90817, 3.0125)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_evje3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_evje3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xtgyu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
+text = ">"
+
+[node name="left" type="Button" parent="."]
+offset_left = 97.0
+offset_top = 298.0
+offset_right = 160.0
+offset_bottom = 329.0
+scale = Vector2(1.90817, 3.0125)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_evje3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_evje3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xtgyu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tqyd2")
+text = "<"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(338, 299)
+rotation = -3.14159
+scale = Vector2(11.59, -14.7204)
+texture = ExtResource("3_tqyd2")
+hframes = 6
+vframes = 3
+
+[node name="characterui" parent="." instance=ExtResource("3_xtgyu")]
+position = Vector2(579, 96)
+scale = Vector2(2.14322, 2.15072)
+
+[connection signal="pressed" from="select" to="." method="_on_select_pressed"]
+[connection signal="pressed" from="right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="left" to="." method="_on_left_pressed"]
