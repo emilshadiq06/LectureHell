@@ -4,6 +4,8 @@ signal brightness_updated(value)
 signal bloom_toggled(value)
 signal selected_character_changed
 
+const HAND_POINT = preload("res://character/Light/Hands/Hand3.png")
+
 var selected_character = 0
 const characters = [
 	preload("res://character/16x16 top down characters pixel art/character 1/16x16 top down character 1-1.png"),
