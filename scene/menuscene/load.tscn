@@ -71,6 +71,9 @@ _data = {
 &"new_animation": SubResource("Animation_bov73")
 }
 
+[sub_resource type="Animation" id="Animation_7rr74"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_cunha"]
 resource_name = "completed"
 tracks/0/type = "method"
@@ -87,9 +90,6 @@ tracks/0/keys = {
 "method": &"open_new_scene"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_7rr74"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7rr74"]
 _data = {
