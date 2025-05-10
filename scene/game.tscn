@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=12 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -7,16 +7,13 @@
 [ext_resource type="Script" uid="uid://d0f4mkhjupc3c" path="res://scene/character_body_2d.gd" id="3_xwcet"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="5_p1ry8"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="6_xlg7c"]
-[ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
+[ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/door.tscn" id="9_17rxn"]
 [ext_resource type="PackedScene" uid="uid://bx4emfdjlb5gq" path="res://npc_2.tscn" id="10_yq8tf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ry8"]
 size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
-size = Vector2(193, 81)
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -66,19 +63,20 @@ shape = SubResource("CircleShape2D_bk3v5")
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("6_xlg7c")]
 
-[node name="Portal" parent="." instance=ExtResource("9_17rxn")]
-position = Vector2(15, 196)
-connected_scene = "gameworld"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-z_index = 1
-position = Vector2(9, 53)
-shape = SubResource("RectangleShape2D_yq8tf")
-
 [node name="npc2" parent="." instance=ExtResource("10_yq8tf")]
 y_sort_enabled = true
 position = Vector2(-315, -29)
 scale = Vector2(1.23553, 1)
 
+[node name="Door_1" parent="." instance=ExtResource("9_17rxn")]
+position = Vector2(21, 194)
+destination_level_tag = "gameworld"
+destination_door_tag = "2"
+
+[node name="Spawn" parent="Door_1" index="1"]
+position = Vector2(3, -41)
+
 [connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
+
+[editable path="Door_1"]
