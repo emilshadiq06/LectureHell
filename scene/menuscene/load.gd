@@ -19,31 +19,31 @@ func _ready():
 	%TipLabel.text = "Tip: %s" % selected_tips.title
 	%TipText.text = selected_tips.text
 	ResourceLoader.load_threaded_request(next_scene_path)
-	$Control/Label/AnimationPlayer.play("new_animation")
+
 	
-func _process(delta):
+func _process(delta: float):
 	if ResourceLoader.load_threaded_get_status(next_scene_path) == ResourceLoader.THREAD_LOAD_LOADED:
 		set_process(false)
 		await get_tree().create_timer(1).timeout
 		loaded = true
 		%Label.text = "Touch screen to continue"
-		var new_scene: PackedScene = ResourceLoader.load_threaded_get(next_scene_path)
-		var new_node = new_scene.instantiate()
-		new_node.parameters = parameters
-		var current_scene = get_tree().current_scene
-		get_tree().get_root().add_child(new_node)
-		get_tree().current_scene = new_node
-		current_scene.queue_free()
+		%AnimationPlayerLoading.play("RESET")
 		
-		
+
 func open_new_scene():
 	if loaded:
 		var new_scene: PackedScene = ResourceLoader.load_threaded_get(next_scene_path)
 		var new_node = new_scene.instantiate()
-		if "parameters" in new_node:
-			new_node.parameters = parameters
+		if "parameters" in new_node: new_node.parameters = parameters
 		var last_scene = get_tree().current_scene
 		get_tree().current_scene = new_node
 		get_tree().get_root().add_child(new_node)
 		last_scene.queue_free()
 		
+
+
+func _on_texture_rect_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and loaded:
+		$AnimationPlayer.play_backwards("completed")
+		await $AnimationPlayer.animation_finished
+		queue_free()
