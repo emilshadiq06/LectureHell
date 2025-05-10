@@ -36,6 +36,8 @@ func open_new_scene():
 		var new_node = new_scene.instantiate()
 		if "parameters" in new_node: new_node.parameters = parameters
 		var last_scene = get_tree().current_scene
+		if last_scene:
+			last_scene.queue_free()
 		get_tree().current_scene = new_node
 		get_tree().get_root().add_child(new_node)
 		last_scene.queue_free()
