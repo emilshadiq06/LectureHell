@@ -26,7 +26,7 @@ func _process(delta: float):
 		set_process(false)
 		await get_tree().create_timer(1).timeout
 		loaded = true
-		%Label.text = "Touch screen to continue"
+		%Label.text = "Touch screen to continue..."
 		%AnimationPlayerLoading.play("RESET")
 		
 
