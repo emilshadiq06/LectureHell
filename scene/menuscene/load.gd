@@ -40,7 +40,8 @@ func open_new_scene():
 			last_scene.queue_free()
 		get_tree().current_scene = new_node
 		get_tree().get_root().add_child(new_node)
-		last_scene.queue_free()
+		if last_scene:
+			last_scene.queue_free()
 		
 
 
