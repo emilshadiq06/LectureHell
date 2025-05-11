@@ -19,7 +19,7 @@ func _ready():
 	%TipLabel.text = "Tip: %s" % selected_tips.title
 	%TipText.text = selected_tips.text
 	ResourceLoader.load_threaded_request(next_scene_path)
-	$Control/Label/AnimationPlayer.play("new_animation")
+	$Control/Label/AnimationPlayerLabel.play("new_animation")
 	
 func _process(_delta):
 	if ResourceLoader.load_threaded_get_status(next_scene_path) == ResourceLoader.THREAD_LOAD_LOADED:
