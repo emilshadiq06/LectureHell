@@ -1,0 +1,350 @@
+[gd_scene load_steps=21 format=3 uid="uid://b2et0dg66tn71"]
+
+[ext_resource type="Texture2D" uid="uid://ncemb4le66dp" path="res://gui/ui.png" id="1_nkug2"]
+[ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="2_3ykye"]
+[ext_resource type="PackedScene" uid="uid://hl7bvmvfpmi5" path="res://scene/input_button.tscn" id="3_3ykye"]
+[ext_resource type="Script" uid="uid://c7r3k3aqjq1dh" path="res://settings.gd" id="4_gc0em"]
+[ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="5_cj1lu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gc0em"]
+texture = ExtResource("1_nkug2")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 28.0
+texture_margin_bottom = 27.0
+region_rect = Rect2(724, 68, 41, 40)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkug2"]
+bg_color = Color(0.653278, 0.586185, 0.537945, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.871603, 0.814852, 0.30399, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.66578, 0.149703, 0.402002, 0.6)
+shadow_size = 5
+
+[sub_resource type="Theme" id="Theme_3ykye"]
+TabContainer/styles/tabbar_background = SubResource("StyleBoxFlat_nkug2")
+
+[sub_resource type="Theme" id="Theme_cj1lu"]
+Button/styles/normal = null
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nkug2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ykye"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gc0em"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cj1lu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_se6v0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypgnn"]
+bg_color = Color(0.580946, 0.204153, 0.300359, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.355219, 0.127681, 0.0333853, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Theme" id="Theme_nkug2"]
+Button/styles/focus = SubResource("StyleBoxEmpty_se6v0")
+Button/styles/hover = SubResource("StyleBoxFlat_ypgnn")
+Button/styles/normal = SubResource("StyleBoxFlat_ypgnn")
+Button/styles/pressed = SubResource("StyleBoxFlat_ypgnn")
+PopupMenu/styles/embedded_unfocused_border = SubResource("StyleBoxFlat_ypgnn")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_ypgnn")
+PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxFlat_ypgnn")
+PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxFlat_ypgnn")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_ypgnn")
+PopupMenu/styles/separator = SubResource("StyleBoxFlat_ypgnn")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ypgnn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmkt0"]
+bg_color = Color(0.580946, 0.204153, 0.300359, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.355219, 0.127681, 0.0333853, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Theme" id="Theme_gc0em"]
+Button/styles/focus = SubResource("StyleBoxEmpty_ypgnn")
+Button/styles/hover = SubResource("StyleBoxFlat_bmkt0")
+Button/styles/normal = SubResource("StyleBoxFlat_bmkt0")
+Button/styles/pressed = SubResource("StyleBoxFlat_bmkt0")
+PopupMenu/styles/embedded_unfocused_border = SubResource("StyleBoxFlat_bmkt0")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_bmkt0")
+PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxFlat_bmkt0")
+PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxFlat_bmkt0")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_bmkt0")
+PopupMenu/styles/separator = SubResource("StyleBoxFlat_bmkt0")
+
+[sub_resource type="GDScript" id="GDScript_3ykye"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_gc0em")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gc0em")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -543.0
+offset_top = -313.0
+offset_right = 556.0
+offset_bottom = 287.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.462291, 0.462291, 0.462291, 1)
+
+[node name="TabContainer" type="TabContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3ykye")
+current_tab = 0
+
+[node name="GAMEPLAY" type="TabBar" parent="ColorRect/TabContainer"]
+layout_mode = 2
+theme = SubResource("Theme_cj1lu")
+theme_override_fonts/font = ExtResource("2_3ykye")
+metadata/_tab_index = 0
+
+[node name="CheckButton" type="CheckButton" parent="ColorRect/TabContainer/GAMEPLAY"]
+layout_mode = 2
+offset_left = 139.0
+offset_top = 387.0
+offset_right = 183.0
+offset_bottom = 427.0
+scale = Vector2(2.02162, 2.40948)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nkug2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3ykye")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/TabContainer/GAMEPLAY"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 34.0
+offset_right = 178.0
+offset_bottom = 74.0
+
+[node name="Label" type="Label" parent="ColorRect/TabContainer/GAMEPLAY/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_3ykye")
+theme_override_font_sizes/font_size = 32
+text = "SOUNDS:"
+
+[node name="CheckBox" type="CheckBox" parent="ColorRect/TabContainer/GAMEPLAY/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gc0em")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cj1lu")
+
+[node name="slider" type="HSlider" parent="ColorRect/TabContainer/GAMEPLAY"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 45.0
+offset_right = 799.0
+offset_bottom = 61.0
+min_value = 10.0
+max_value = 30.0
+step = 0.5
+value = 10.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/TabContainer/GAMEPLAY"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 122.0
+offset_right = 328.0
+offset_bottom = 162.0
+
+[node name="Label" type="Label" parent="ColorRect/TabContainer/GAMEPLAY/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_3ykye")
+theme_override_font_sizes/font_size = 32
+text = "RESOLUTION:"
+
+[node name="resolution" type="OptionButton" parent="ColorRect/TabContainer/GAMEPLAY/HBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_nkug2")
+selected = 2
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect/TabContainer/GAMEPLAY"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 229.0
+offset_right = 323.0
+offset_bottom = 269.0
+
+[node name="Label" type="Label" parent="ColorRect/TabContainer/GAMEPLAY/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_3ykye")
+theme_override_font_sizes/font_size = 32
+text = "DISPLAY:"
+
+[node name="display" type="OptionButton" parent="ColorRect/TabContainer/GAMEPLAY/HBoxContainer3"]
+layout_mode = 2
+theme = SubResource("Theme_gc0em")
+selected = 2
+item_count = 4
+popup/item_0/text = "FullScreen"
+popup/item_0/id = 0
+popup/item_1/text = "Maximixed"
+popup/item_1/id = 1
+popup/item_2/text = "Minimized"
+popup/item_2/id = 2
+popup/item_3/text = "Windowed"
+popup/item_3/id = 3
+
+[node name="brightness" type="Label" parent="ColorRect/TabContainer/GAMEPLAY"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 322.0
+offset_right = 212.0
+offset_bottom = 355.0
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_3ykye")
+theme_override_font_sizes/font_size = 32
+text = "BRIGHTNESS:"
+
+[node name="brightness2" type="HSlider" parent="ColorRect/TabContainer/GAMEPLAY"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 332.0
+offset_right = 832.0
+offset_bottom = 348.0
+min_value = 0.5
+max_value = 2.0
+step = 0.1
+value = 0.5
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ColorRect/TabContainer/GAMEPLAY"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 402.0
+offset_right = 152.0
+offset_bottom = 463.0
+
+[node name="Label" type="Label" parent="ColorRect/TabContainer/GAMEPLAY/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_3ykye")
+theme_override_font_sizes/font_size = 32
+text = "BLOOM:"
+
+[node name="KEYBIND" type="TabBar" parent="ColorRect/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3ykye")
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/TabContainer/KEYBIND"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 17.0
+offset_right = -21.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/TabContainer/KEYBIND/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputButton" parent="ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("3_3ykye")]
+layout_mode = 2
+
+[node name="InputButton2" parent="ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("3_3ykye")]
+layout_mode = 2
+
+[node name="InputButton3" parent="ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("3_3ykye")]
+layout_mode = 2
+
+[node name="InputButton4" parent="ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("3_3ykye")]
+layout_mode = 2
+
+[node name="InputButton5" parent="ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("3_3ykye")]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_3ykye")
+theme_override_font_sizes/font_size = 27
+text = "RESET TO DEFAULT"
+script = SubResource("GDScript_3ykye")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("5_cj1lu")]
+
+[connection signal="toggled" from="ColorRect/TabContainer/GAMEPLAY/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="ColorRect/TabContainer/GAMEPLAY/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="ColorRect/TabContainer/GAMEPLAY/slider" to="." method="_on_slider_value_changed"]
+[connection signal="item_selected" from="ColorRect/TabContainer/GAMEPLAY/HBoxContainer2/resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="item_selected" from="ColorRect/TabContainer/GAMEPLAY/HBoxContainer3/display" to="." method="_on_display_item_selected"]
+[connection signal="value_changed" from="ColorRect/TabContainer/GAMEPLAY/brightness2" to="." method="_on_brightness_2_value_changed"]
+[connection signal="pressed" from="ColorRect/TabContainer/KEYBIND/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

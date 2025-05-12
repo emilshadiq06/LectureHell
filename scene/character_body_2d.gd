@@ -4,12 +4,9 @@ extends CharacterBody2D
 var speed = 100
 var direction = Vector2.ZERO
 var target_position = Vector2.ZERO
-
+var is_chatting : bool = false
 const lines: Array[String] = [
-	"b o bb bb bbbb bbbbbbbb bbbb bb",
-	"o hello",
-	"b o bb bb bbbb bbbbbbbb bbbb bb",
-	"p hey"
+	"Go to the next room!! "
 	
 	
 ]
@@ -40,3 +37,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_node("../Player") :
 		
 		DialogueManagerScript.start_dialog(global_position, lines)
+		is_chatting = true
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.has_node("../Player") :
+		if is_chatting and DialogueManagerScript.is_dialog_active == true:
+			DialogueManagerScript.text_box.queue_free()
+			DialogueManagerScript.is_dialog_active = false
+			DialogueManagerScript.current_line_index = 0
+		is_chatting = false
+		
+		

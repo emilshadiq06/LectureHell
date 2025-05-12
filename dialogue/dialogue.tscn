@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cerkvqvegnvh3"]
+
+[ext_resource type="Texture2D" uid="uid://dnnka64ot8trb" path="res://dialogue/art/inventory-background.png" id="1_k0ki1"]
+[ext_resource type="Script" uid="uid://c8ybp3n6s7wsc" path="res://dialogue/dialogueplayer.gd" id="1_vigd0"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 214.0
+offset_bottom = 191.0
+script = ExtResource("1_vigd0")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -74.0
+offset_right = 42.0
+offset_bottom = -22.0
+texture = ExtResource("1_k0ki1")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 63.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+text = "Name:"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 12.0
+offset_right = 196.0
+offset_bottom = 102.0
+scale = Vector2(0.4, 0.4)
+text = "Chatting....."
