@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	
 	if start_move == true:
 		
-		position.x = position.x + 18* slow #* float((3/(balls.balls.size()+1)))
+		position.x = position.x + 24*  slow *3 /(balls.balls.size()+1)
 	
 		
 	

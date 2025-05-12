@@ -33,12 +33,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		DialogueManagerScript.is_dialog_active = false
 		DialogueManagerScript.current_line_index = 0
 		var current_scene = get_tree().current_scene
-		get_tree().get_root().add_child(fight)
-		var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
+		
 		get_whole_group("enemies")
+		var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
+		player_Battle.add_child(body.get_node("skill").duplicate())
+		player_Battle.set_stats(StatLoader.return_stats())
+		StatLoader.get_skill(body.get_node("skill"))
+
+		#print(StatLoader.return_skill().get_skill_effects())
 		
-		player_Battle.set_stats(body.get_stats())
 		
+		#print("here xoxo")
+		#print(player_Battle.get_node("skill").update_skill())
+		get_tree().get_root().add_child(fight)
 		get_tree().current_scene = fight
 		current_scene.queue_free()
 

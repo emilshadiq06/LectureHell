@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://w7uslflb1vs5"]
+[gd_scene load_steps=4 format=3 uid="uid://w7uslflb1vs5"]
 
 [ext_resource type="PackedScene" uid="uid://been0jwwxflop" path="res://Battle/player_group.tscn" id="1_ksnli"]
 [ext_resource type="PackedScene" uid="uid://5dhap06uc3wk" path="res://Battle/enemy_group.tscn" id="2_o5tja"]
+[ext_resource type="Script" uid="uid://c3xxqlttsdeef" path="res://Battle/effect_machine.gd" id="3_o5tja"]
 
 [node name="Battle" type="Node2D"]
 
@@ -39,10 +40,56 @@ text = "item
 layout_mode = 2
 text = "act"
 
+[node name="attackChoice" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+offset_left = 1008.0
+offset_top = 345.0
+offset_right = 1128.0
+offset_bottom = 411.0
+
+[node name="normalAttack" type="Button" parent="CanvasLayer/attackChoice"]
+layout_mode = 2
+text = "Normal Attack
+"
+
+[node name="criticalAttack" type="Button" parent="CanvasLayer/attackChoice"]
+layout_mode = 2
+text = "Critical attack"
+
+[node name="back" type="Button" parent="CanvasLayer/attackChoice"]
+layout_mode = 2
+text = "Back"
+
+[node name="actChoice" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+offset_left = 1036.0
+offset_top = 499.0
+offset_right = 1153.0
+offset_bottom = 530.0
+
+[node name="back" type="Button" parent="CanvasLayer/actChoice"]
+layout_mode = 2
+text = "Back"
+
+[node name="brace" type="Button" parent="CanvasLayer/actChoice"]
+layout_mode = 2
+text = "brace (skip round)"
+
 [node name="BulletHellTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="effectMachine" type="Node" parent="."]
+script = ExtResource("3_o5tja")
+
+[connection signal="start_turn" from="PlayerGroup" to="effectMachine" method="_on_player_group_start_turn"]
 [connection signal="bullet_hell" from="EnemyGroup" to="PlayerGroup" method="_on_enemy_group_bullet_hell"]
 [connection signal="next_player" from="EnemyGroup" to="PlayerGroup" method="_on_enemy_group_next_player"]
 [connection signal="pressed" from="CanvasLayer/choice/attack" to="EnemyGroup" method="_on_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/choice/act" to="PlayerGroup" method="_on_act_pressed"]
+[connection signal="pressed" from="CanvasLayer/attackChoice/normalAttack" to="EnemyGroup" method="_on_normal_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/attackChoice/criticalAttack" to="EnemyGroup" method="_on_critical_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/attackChoice/back" to="EnemyGroup" method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/actChoice/back" to="PlayerGroup" method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/actChoice/back" to="EnemyGroup" method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/actChoice/brace" to="PlayerGroup" method="_on_brace_pressed"]
 [connection signal="timeout" from="BulletHellTimer" to="EnemyGroup" method="_on_bullet_hell_timer_timeout"]

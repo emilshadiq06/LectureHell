@@ -1,11 +1,14 @@
 class_name stat extends Node
-
-var hp : int = 30
+var take_damage: int = 0
+var hp : int = 40
 var pp = 20
 var inventory = []
-var weapon = 2
-func get_hp():
-	return hp
+var weapon = 1
 
-func get_weapon():
-	return weapon 
+func _ready() -> void:
+	StatLoader.get_stats_player(self)
+
+func update_stats():
+	hp = StatLoader.hp
+	pp = StatLoader.pp
+	weapon = StatLoader.weapon

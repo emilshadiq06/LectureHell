@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://daprrjii34ki7"]
+[gd_scene load_steps=19 format=3 uid="uid://daprrjii34ki7"]
 
 [ext_resource type="Texture2D" uid="uid://c3bvsa0hx26wx" path="res://Game/Player/sprites/ExamplePlayerSprite.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cu6x2eqp8lrjq" path="res://Game/Player/scripts/player.gd" id="1_s3asc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ci86h3bm1350e" path="res://Game/Player/scripts/state_walk.gd" id="5_vh1aq"]
 [ext_resource type="Script" uid="uid://dcj03lvuf6pqy" path="res://Game/Player/scripts/state_run.gd" id="6_4ddeg"]
 [ext_resource type="Script" uid="uid://6lthaiq3kynq" path="res://Game/Player/stats.gd" id="7_ch4ko"]
+[ext_resource type="Script" uid="uid://c45xn5qfk105b" path="res://Game/Player/scripts/skill/skill_jj.gd" id="8_vh1aq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 
@@ -190,3 +191,6 @@ script = ExtResource("6_4ddeg")
 
 [node name="stats" type="Node" parent="."]
 script = ExtResource("7_ch4ko")
+
+[node name="skill" type="Node" parent="."]
+script = ExtResource("8_vh1aq")

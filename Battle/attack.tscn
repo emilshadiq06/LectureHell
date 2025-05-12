@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djp6cqkek10sw" path="res://Battle/balls.tscn" id="4_8h2au"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8h2au"]
-size = Vector2(37, 608.75)
+size = Vector2(69, 608.75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsdix"]
 atlas = ExtResource("2_8h2au")
@@ -39,12 +39,12 @@ position = Vector2(504, 92)
 script = ExtResource("1_01ko7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(57, 236.125)
+position = Vector2(55.5, 236.125)
 shape = SubResource("RectangleShape2D_8h2au")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-position = Vector2(58, 253)
-scale = Vector2(1.625, 10.2422)
+position = Vector2(51.875, 252)
+scale = Vector2(1.70625, 10.2422)
 sprite_frames = SubResource("SpriteFrames_4kon6")
 animation = &"pressed"
 frame = 1
@@ -53,4 +53,4 @@ frame_progress = 1.0
 [node name="Balls" parent="." instance=ExtResource("4_8h2au")]
 position = Vector2(116, -88)
 
-[connection signal="body_exited" from="Area2D" to="Balls" method="_on_area_2d_body_exited"]
+[connection signal="send_result" from="Balls" to="." method="_on_balls_send_result"]

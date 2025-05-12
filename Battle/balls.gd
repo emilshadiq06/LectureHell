@@ -1,5 +1,5 @@
 extends Node
-#signal send_result
+signal send_result
 
 var index : int = 0
 var balls: Array = []
@@ -8,13 +8,13 @@ var newball
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	
-	balls = get_children()
 	await get_tree().create_timer(0.1).timeout
+	balls = get_children()
+	
 	
 	
 	for i in balls.size()-1:
-		var displace = choose_randomly([2,1.5,0.4])
+		var displace = choose_randomly([2,1.5,0.75])
 		balls[i].position.x = -150 +( -200* i * displace)
 
 	
@@ -33,4 +33,13 @@ func choose_randomly(list_of_entries):
 	
 #	send_result.emit()
 #	return hitted
+		
+func _process(delta: float) -> void:
+	
+	if index >= balls.size():
+		send_result.emit()
+		#sent = true
+		
+		
+
 		
