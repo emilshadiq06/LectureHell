@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=11 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -13,9 +13,6 @@
 size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
-size = Vector2(193, 81)
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true

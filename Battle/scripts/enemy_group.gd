@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 			if index < enemies.size()-1:
 				index += 1
 				switch_focus(index,index-1)
-		if Input.is_action_just_pressed("advance_dialog"):
+		if Input.is_action_just_pressed("chat"):
 			emit_signal("next_player")
 			action_queue.push_back(index)
 			if crit == true:
