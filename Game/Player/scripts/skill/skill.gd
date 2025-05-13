@@ -7,6 +7,7 @@ var pp_regen = 0
 var dmg_multiplier_attack = 1
 var dmg_multiplier_received= 1
 var turns_duration = 1
+var cooldown = turns_duration + 1
 
 func get_skill_effects():
 	return [skill_name,skill_desc,hp_regen,pp_regen,dmg_multiplier_attack,dmg_multiplier_received,turns_duration]

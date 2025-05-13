@@ -7,6 +7,7 @@ var weapon : int = 0:
 	set(value):
 		weapon = value
 var start_battle = true
+var MAX_PP : float = 20
 var pp : float = 20:
 	set(value):
 		pp = value
@@ -32,6 +33,7 @@ func set_stats(stats):
 
 	weapon = stats[1]
 	pp = stats[2]
+	MAX_PP = stats[2]
 	
 	
 func _update_progress_bar():
@@ -55,3 +57,5 @@ func _stop_animation():
 	
 func take_stamina(value):
 	pp -= value
+	if pp > MAX_PP:
+		pp = MAX_PP

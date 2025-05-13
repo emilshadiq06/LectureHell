@@ -15,7 +15,7 @@ var hits : int = 0
 var is_battling: bool = false
 signal bullet_hell 
 signal next_player
-
+signal start_turn
 var enemies: Array = []
 
 var index: int = 0
@@ -126,7 +126,10 @@ func _on_attack_pressed() -> void:
 
 
 func _on_bullet_hell_timer_timeout() -> void:
-	
+	DialogueManagerScript.text_box.queue_free()
+	DialogueManagerScript.is_dialog_active = false
+	DialogueManagerScript.current_line_index = 0
+	start_turn.emit()
 	_reset_focus()
 	action_queue.clear()
 	is_battling = false

@@ -4,7 +4,7 @@ var players: Array = []
 @onready var enemies = $"../EnemyGroup"
 @onready var choice = $"../CanvasLayer/choice"
 @onready var actChoice = $"../CanvasLayer/actChoice"
-signal start_turn
+
 @onready var effect_machine = $"../effectMachine"
 @onready var bullet_hell_timer =  $"../BulletHellTimer"
 var skill_button
@@ -39,8 +39,7 @@ func _skill_button_pressed():
 		#print(effect_machine.origin)
 	
 func _on_enemy_group_next_player() -> void:
-	if index == 0:
-		start_turn.emit()
+
 	if index < players.size()-1:
 		index += 1
 		switch_focus(index,index-1)
@@ -70,6 +69,9 @@ func _process(delta: float) -> void:
 	if bullet_hell_timer.get_time_left() < 0:
 		#remove_child(bullet_hell)
 		pass
+			
+		
+
 
 
 func _on_act_pressed() -> void:
@@ -98,3 +100,10 @@ func _on_brace_pressed() -> void:
 	enemies.action_queue.push_back("null")
 	actChoice.hide()
 	pass # Replace with function body.
+
+
+func _on_enemy_group_start_turn() -> void:
+	for i in players:
+		i.take_stamina(-2)
+		print("herhh")
+		print(i.pp)

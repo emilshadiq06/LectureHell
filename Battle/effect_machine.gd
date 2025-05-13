@@ -29,15 +29,14 @@ func DoEffect():
 		
 		if i.turn == 0:
 			i.Enter()
-			players.play_dance()
+			
 		if i.turn < i.turns_duration:
-			enemies.damage_multiplier = 20
+			#enemies.damage_multiplier = i.dmg_multiplier_attack
 			i.Process()
 		if i.turn == i.turns_duration:
-			players.stop_anim()
-			enemies.damage_multiplier = 1
+
 			i.Exit()
-		if i.turn >= i.turns_duration:
+		if i.turn > i.cooldown:
 			print(skill_increment)
 			i.turn = 0
 			skill.erase(i)
@@ -48,7 +47,6 @@ func DoEffect():
 	
 
 
-func _on_player_group_start_turn() -> void:
+func _on_enemy_group_start_turn() -> void:
 	if skill.size()>0 and started:
 		DoEffect()
-	 # Replace with function body.
