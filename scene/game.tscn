@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=13 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -8,11 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="5_p1ry8"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="6_xlg7c"]
 [ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="7_qpk70"]
+[ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ry8"]
 size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
+size = Vector2(253, 100.5)
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -73,6 +77,12 @@ collision_mask = 17
 [node name="Enemy" parent="." instance=ExtResource("7_qpk70")]
 position = Vector2(413, -284)
 collision_mask = 17
+
+[node name="Portal" parent="." instance=ExtResource("9_17rxn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(29, 197)
+shape = SubResource("RectangleShape2D_yq8tf")
 
 [connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
