@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="7_qpk70"]
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
+size = Vector2(253, 100.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ry8"]
 size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
-size = Vector2(253, 100.5)
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -35,6 +35,13 @@ layer_1/tile_data = PackedInt32Array(-2228278, 1572865, 80, -2162742, 1572865, 8
 y_sort_enabled = true
 position = Vector2(25, 133)
 scale = Vector2(1, 0.897915)
+
+[node name="Portal" parent="." instance=ExtResource("9_17rxn")]
+connected_scene = "gameworld"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(29, 197)
+shape = SubResource("RectangleShape2D_yq8tf")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
@@ -77,12 +84,6 @@ collision_mask = 17
 [node name="Enemy" parent="." instance=ExtResource("7_qpk70")]
 position = Vector2(413, -284)
 collision_mask = 17
-
-[node name="Portal" parent="." instance=ExtResource("9_17rxn")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-position = Vector2(29, 197)
-shape = SubResource("RectangleShape2D_yq8tf")
 
 [connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
