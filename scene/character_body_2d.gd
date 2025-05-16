@@ -6,7 +6,7 @@ var direction = Vector2.ZERO
 var target_position = Vector2.ZERO
 var is_chatting : bool = false
 const lines: Array[String] = [
-	"Go to the next room!! "
+	"Go to green hat guy!! "
 	
 	
 ]

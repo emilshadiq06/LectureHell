@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpwabfncr34l6"]
+[gd_scene load_steps=10 format=3 uid="uid://dpwabfncr34l6"]
 
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="1_hx0jg"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_bjxfv"]
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="3_bjxfv"]
 [ext_resource type="Texture2D" uid="uid://cvqvf7qkmp88v" path="res://character/Sprite NPC Normal/2 - Holly/Standing (32 x 32).png" id="4_wm3ic"]
 [ext_resource type="PackedScene" uid="uid://g02cmrdrnaje" path="res://npc_green.tscn" id="5_eu1nv"]
+[ext_resource type="PackedScene" uid="uid://b80p78ctksb4s" path="res://scene/npc_3.tscn" id="6_vk3vl"]
+[ext_resource type="PackedScene" uid="uid://dh3wca7w4q4uh" path="res://scene/npc_4.tscn" id="7_380ub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wm3ic"]
 size = Vector2(54, 52)
@@ -45,3 +47,11 @@ shape = SubResource("RectangleShape2D_eu1nv")
 [node name="npc_green" parent="." instance=ExtResource("5_eu1nv")]
 position = Vector2(309, 121)
 scale = Vector2(1.9471, 1.7397)
+
+[node name="npc_3" parent="." instance=ExtResource("6_vk3vl")]
+position = Vector2(520, 155)
+scale = Vector2(2.33597, 1.93941)
+
+[node name="npc_4" parent="." instance=ExtResource("7_380ub")]
+position = Vector2(-39, 122)
+scale = Vector2(2.55743, 2.05042)
