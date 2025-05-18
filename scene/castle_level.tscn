@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://8jh4jpecua05"]
+[gd_scene load_steps=3 format=3 uid="uid://8jh4jpecua05"]
 
 [ext_resource type="PackedScene" uid="uid://cc3moollslxju" path="res://scene/scrolling_background.tscn" id="1_4b5bx"]
+[ext_resource type="PackedScene" uid="uid://c17u11l5pw1lw" path="res://scene/playerbullet.tscn" id="2_ynxpe"]
 
 [node name="CastleLevel" type="Node"]
 
 [node name="ScrollingBackground" parent="." instance=ExtResource("1_4b5bx")]
+
+[node name="Player" parent="." instance=ExtResource("2_ynxpe")]
+position = Vector2(114, 406)

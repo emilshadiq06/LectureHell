@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://c17u11l5pw1lw"]
+[gd_scene load_steps=17 format=3 uid="uid://c17u11l5pw1lw"]
 
+[ext_resource type="Script" uid="uid://bp7kps02w7unu" path="res://script/playerbullet.gd" id="1_7013s"]
 [ext_resource type="Texture2D" uid="uid://beheqyio3208x" path="res://BULLETHELLASSET/Player/Horror game player animations.png" id="1_aflp7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7013s"]
@@ -175,9 +176,10 @@ size = Vector2(56, 113)
 
 [node name="Player" type="Area2D"]
 collision_mask = 32
+script = ExtResource("1_7013s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_37khu")
 animation = &"arzim_shooting"
 
