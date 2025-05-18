@@ -4,6 +4,8 @@ class_name UI
 
 @onready var health_container: HBoxContainer = %HealthContainer
 @onready var wave_counter: Label = $MarginContainer/WaveCounter
+@onready var boss_health_bar: ProgressBar = $MarginContainer/BossHealthBar
+@onready var boss_name: Label = $MarginContainer/BossName
 
 const LIFE_FULL_UI = preload("res://BULLETHELLASSET/UIElements/LifeFullUI.png")
 const LIFE_HALF_UI = preload("res://BULLETHELLASSET/UIElements/LifeHalfUI.png")
@@ -35,6 +37,26 @@ func decrease_health(current_health):
 		
 func on_wave_started(current_wave, total_waves):
 	wave_counter.text = "Wave %d of %d" % [current_wave, total_waves]
+	
+func change_boss_health_bar_value(new_value: int):
+	boss_health_bar.value = new_value
+	
+func on_vlad_died():
+	pass
+	
+func init_boss_health_bar(max_health: int):
+	boss_name.visible = true
+	boss_health_bar.visible = true
+	boss_health_bar.max_value = max_health
+	boss_health_bar.value = max_health
+	wave_counter.text = "Boss Fight"
+	
+	
+	
+	
+	
+	
+	
 	
 		
 		

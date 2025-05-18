@@ -20,7 +20,11 @@ func on_waves_finished():
 	vlad_boss.global_position = Vector2(1116, 310)
 	vlad_boss.movement_points = enemy_movement_points.get_children()
 	vlad_boss.init()
+	vlad_boss.vlad_damage.connect(ui.change_boss_health_bar_value)
+	vlad_boss.vlad_died.connect(ui.on_vlad_died)
+	ui.init_boss_health_bar(vlad_boss.get_health())
 	
+
 
 func on_player_damaged(current_health: int):
 	ui.decrease_health(current_health)

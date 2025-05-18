@@ -39,6 +39,14 @@ func on_died():
 func on_damaged(current_health: int):
 	vlad_damage.emit(current_health)
 	
+func get_health():
+	return health_system.health
+	
+	
+	
+	
+	
+	
 func _process(delta: float) -> void:
 	global_position = global_position.move_toward(current_movement_point, delta * speed)
 	

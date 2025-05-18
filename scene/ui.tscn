@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://iuwq1jwjasf8"]
+[gd_scene load_steps=5 format=3 uid="uid://iuwq1jwjasf8"]
 
 [ext_resource type="Script" uid="uid://bdcv0yclpuvha" path="res://script/ui.gd" id="1_onfsl"]
 [ext_resource type="FontFile" uid="uid://dkekkugm8xgmk" path="res://scene/menuscene/Mad Pixel Club.ttf" id="2_s2f8l"]
+[ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="3_kee8w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2f8l"]
+bg_color = Color(0.696169, 0, 0.107757, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_onfsl")
@@ -30,3 +34,20 @@ size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_s2f8l")
 theme_override_font_sizes/font_size = 26
 text = "Wave 0 of 2"
+
+[node name="BossHealthBar" type="ProgressBar" parent="MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/fill = SubResource("StyleBoxFlat_s2f8l")
+show_percentage = false
+
+[node name="BossName" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_kee8w")
+theme_override_font_sizes/font_size = 20
+text = "VLAD"
