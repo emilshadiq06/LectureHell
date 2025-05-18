@@ -2,7 +2,7 @@ extends CanvasLayer
 
 class_name LevelSelection
 
-var panel_material = preload("res://scene/level_selection.gdshader")
+var panel_material = preload("res://scene/shaders/level_selection.material")
 
 @onready var levels = [
 	preload("res://scene/forest_level.tscn"),
@@ -55,7 +55,8 @@ func _input(event: InputEvent) -> void:
 		unselect_level(level_selection_index)
 		level_selection_index += 1
 		select_level(level_selection_index)
-		
+	elif Input.is_action_just_pressed("ui_accept"):
+		get_tree().change_scene_to_packed(levels[level_selection_index])
 	
 	
 	

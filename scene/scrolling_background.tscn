@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc3moollslxju"]
+
+[ext_resource type="Script" uid="uid://kvwx10i1bye1" path="res://script/scrolling_background.gd" id="1_pjfsy"]
+[ext_resource type="Texture2D" uid="uid://bloxp2shvndpx" path="res://BULLETHELLASSET/Backgrounds/Skybox Castle outside.png" id="2_36oud"]
+
+[node name="ScrollingBackground" type="Node2D"]
+script = ExtResource("1_pjfsy")
+bg_image = ExtResource("2_36oud")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.988235)
+position = Vector2(226, 357)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_36oud")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.988235)
+position = Vector2(651, 357)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_36oud")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.988235)
+position = Vector2(1159, 357)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_36oud")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.988235)
+position = Vector2(1641, 357)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_36oud")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.988235)
+position = Vector2(2110, 357)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_36oud")

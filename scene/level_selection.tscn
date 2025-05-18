@@ -1,23 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dclcfjn6wh7xh"]
+[gd_scene load_steps=10 format=3 uid="uid://dclcfjn6wh7xh"]
 
 [ext_resource type="Script" uid="uid://hwo8nkwcb6lo" path="res://script/level_selection.gd" id="1_1oi0j"]
 [ext_resource type="Texture2D" uid="uid://bspnvjakwyd76" path="res://BULLETHELLASSET/Backgrounds/classroom.png" id="1_6i7ii"]
 [ext_resource type="FontFile" uid="uid://d370phyelf2v8" path="res://BULLETHELLASSET/font/font.otf" id="2_cm7rv"]
-[ext_resource type="Shader" uid="uid://0uvq3xtaipwj" path="res://scene/level_selection.gdshader" id="3_c2mor"]
 [ext_resource type="Texture2D" uid="uid://c7rnp72rm6uhu" path="res://BULLETHELLASSET/Backgrounds/Skybox Forest.png" id="4_1oi0j"]
 [ext_resource type="Theme" uid="uid://cqygq76was0bs" path="res://scene/shaders/level_selection.theme" id="4_ptm61"]
+[ext_resource type="Material" uid="uid://bqlyo4tpeb3qa" path="res://scene/shaders/level_selection.material" id="5_03pky"]
 [ext_resource type="FontFile" uid="uid://cjj08rh7nqj5q" path="res://scene/menuscene/kindergarten.ttf" id="5_ptm61"]
 [ext_resource type="Texture2D" uid="uid://bloxp2shvndpx" path="res://BULLETHELLASSET/Backgrounds/Skybox Castle outside.png" id="6_03pky"]
 [ext_resource type="Texture2D" uid="uid://cqhetthyr1dki" path="res://BULLETHELLASSET/Backgrounds/Skybox Pyramid outside.png" id="7_tjin8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmyi7"]
-shader = ExtResource("3_c2mor")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptm61"]
-shader = ExtResource("3_c2mor")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_03pky"]
-shader = ExtResource("3_c2mor")
 
 [node name="LevelSelection" type="CanvasLayer"]
 script = ExtResource("1_1oi0j")
@@ -81,7 +72,7 @@ size_flags_vertical = 4
 theme = ExtResource("4_ptm61")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/LevelContainer/Forest"]
-material = SubResource("ShaderMaterial_gmyi7")
+material = ExtResource("5_03pky")
 layout_mode = 2
 texture = ExtResource("4_1oi0j")
 
@@ -105,7 +96,7 @@ size_flags_vertical = 4
 theme = ExtResource("4_ptm61")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/LevelContainer/Castle"]
-material = SubResource("ShaderMaterial_ptm61")
+material = ExtResource("5_03pky")
 layout_mode = 2
 texture = ExtResource("6_03pky")
 
@@ -126,11 +117,11 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("4_ptm61")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/LevelContainer/Pyramids"]
-material = SubResource("ShaderMaterial_03pky")
+material = ExtResource("5_03pky")
 layout_mode = 2
-theme = ExtResource("4_ptm61")
 texture = ExtResource("7_tjin8")
 
 [node name="LevelTitle" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/LevelContainer/Pyramids"]

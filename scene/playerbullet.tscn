@@ -1,0 +1,186 @@
+[gd_scene load_steps=16 format=3 uid="uid://c17u11l5pw1lw"]
+
+[ext_resource type="Texture2D" uid="uid://beheqyio3208x" path="res://BULLETHELLASSET/Player/Horror game player animations.png" id="1_aflp7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7013s"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq7f5"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi4it"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkiys"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj4wa"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq4wu"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prfj6"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om0lk"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de8od"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft1y6"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyeov"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7irgq"]
+atlas = ExtResource("1_aflp7")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37khu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7013s")
+}],
+"loop": true,
+"name": &"arzim_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq7f5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi4it")
+}],
+"loop": true,
+"name": &"arzim_shooting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkiys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj4wa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq4wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prfj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om0lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de8od")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq7f5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi4it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7013s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft1y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyeov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7irgq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7irgq")
+}],
+"loop": true,
+"name": &"haruni_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft1y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyeov")
+}],
+"loop": true,
+"name": &"haruni_shooting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq4wu")
+}],
+"loop": true,
+"name": &"ipang_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkiys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj4wa")
+}],
+"loop": true,
+"name": &"ipang_shooting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de8od")
+}],
+"loop": true,
+"name": &"milo_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prfj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om0lk")
+}],
+"loop": true,
+"name": &"milo_shooting",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aflp7"]
+size = Vector2(56, 113)
+
+[node name="Player" type="Area2D"]
+collision_mask = 32
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_37khu")
+animation = &"arzim_shooting"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -2.5)
+shape = SubResource("RectangleShape2D_aflp7")
