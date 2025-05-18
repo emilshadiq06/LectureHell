@@ -12,5 +12,5 @@ speed = 0.0
 health = 0
 projectile_collision_shape = ExtResource("2_0n3p2")
 projectile_texture = ExtResource("3_83kjv")
-enemy_name = "devils"
+enemy_name = "devil"
 enemy_collision_shape = ExtResource("1_sd27w")

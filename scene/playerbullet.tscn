@@ -196,4 +196,5 @@ script = ExtResource("3_mq7f5")
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("4_mi4it")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="ShootingSystem" method="_on_animated_sprite_2d_animation_finished"]

@@ -90,6 +90,8 @@ animations = [{
 size = Vector2(124, 136)
 
 [node name="Enemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_sj55t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -109,5 +111,6 @@ script = ExtResource("12_0n578")
 one_shot = true
 script = ExtResource("12_rs6j2")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="ShootingSystem/Timer" to="ShootingSystem" method="_on_timer_timeout"]

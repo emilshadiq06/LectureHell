@@ -22,3 +22,18 @@ func set_initial_health(health: int):
 		half_life_texture_rect.texture = LIFE_HALF_UI
 		half_life_texture_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		health_container.add_child(half_life_texture_rect)
+		
+		
+func decrease_health(current_health):
+	var health_textures = health_container.get_children()
+	if current_health % 2 == 0:
+		health_textures.pop_back().queue_free()
+	else:
+		health_textures.back().texture = LIFE_HALF_UI
+		
+			
+		
+		
+		
+		
+		

@@ -18,3 +18,6 @@ func _on_timer_timeout() -> void:
 	projectile.global_position = global_position
 	timer.setup()
 	shot.emit()
+	
+func stop():
+	timer.stop()
