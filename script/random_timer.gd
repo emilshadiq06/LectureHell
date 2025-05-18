@@ -1,11 +1,15 @@
 extends Timer
 
 
-# Called when the node enters the scene tree for the first time.
+class_name RandomTimer
+
+@export var min_time: float = 1
+@export var max_time: float = 2
+
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	setup()
+	
+func setup():
+	var random_time = randf_range(min_time, max_time)
+	wait_time = random_time
+	start()

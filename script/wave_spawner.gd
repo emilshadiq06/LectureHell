@@ -15,6 +15,10 @@ signal starting_wave(wave_index: int, total_waves)
 @onready var wave_spawn_timer: Timer = $WaveSpawnTimer
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
+
+const ENEMY = preload("res://scene/enemy.tscn")
+
+
 @onready var time_between_waves = 3
 
 var enemy_types = [EnemyType.DEVIL, EnemyType.MUMMY, EnemyType.SKELETON]
@@ -67,9 +71,19 @@ func on_spawn_timeout():
 	
 				
 func spawn(spawn_point: Vector2, enemy_type: EnemyType, enemy_config):
-	print_debug(enemy_type)
+	var enemy = ENEMY.instantiate()
+	add_child(enemy)
+	enemy.killed.connect(on_enemy_killed)
+	enemy.init(enemy_config, enemy_movement_pointS)
+	enemy.position = spawn_point
 				
-	
+func on_enemy_killed():
+	enemy_count -= 1
+	if enemy_count == 0:
+		progress_to_next_wave()
+		
+func progress_to_next_wave():
+	pass
 	
 	
 func initiate_next_wave():
