@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://8jh4jpecua05"]
+[gd_scene load_steps=10 format=3 uid="uid://8jh4jpecua05"]
 
 [ext_resource type="PackedScene" uid="uid://cc3moollslxju" path="res://scene/scrolling_background.tscn" id="1_4b5bx"]
 [ext_resource type="PackedScene" uid="uid://c17u11l5pw1lw" path="res://scene/playerbullet.tscn" id="2_ynxpe"]
 [ext_resource type="PackedScene" uid="uid://iuwq1jwjasf8" path="res://scene/ui.tscn" id="3_fo4oa"]
 [ext_resource type="Script" uid="uid://bcr80st8r5sw6" path="res://script/level_manager.gd" id="3_l8no2"]
+[ext_resource type="PackedScene" uid="uid://bsbcutpki7jfx" path="res://scene/wave_spawner.tscn" id="5_e8exh"]
+[ext_resource type="Script" uid="uid://c84afc1ag5pp2" path="res://script/wave.gd" id="5_ls3fc"]
+[ext_resource type="Resource" uid="uid://ip5gmj0jog8u" path="res://Resources/devil_enemy_config.tres" id="7_rvo8u"]
+[ext_resource type="Resource" uid="uid://brakjmfoadqyt" path="res://Resources/mummy_enemy_config.tres" id="8_dtxd3"]
+[ext_resource type="Resource" uid="uid://bjcayge2nh81d" path="res://Resources/skeleton_enemy_config.tres" id="9_041ca"]
 
 [node name="CastleLevel" type="Node"]
 
@@ -16,3 +21,42 @@ position = Vector2(114, 406)
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("3_l8no2")
+
+[node name="WaveSpawner" parent="." node_paths=PackedStringArray("enemy_movement_pointS") instance=ExtResource("5_e8exh")]
+position = Vector2(1165, 355)
+enemy_movement_pointS = [NodePath("../EnemyMovementPoints/TopLeft"), NodePath("../EnemyMovementPoints/TopRight"), NodePath("../EnemyMovementPoints/MidLeft"), NodePath("../EnemyMovementPoints/MidRight"), NodePath("../EnemyMovementPoints/BottomLeft"), NodePath("../EnemyMovementPoints/BottomRight")]
+
+[node name="Wave1" type="Node" parent="WaveSpawner"]
+script = ExtResource("5_ls3fc")
+devil_config = ExtResource("7_rvo8u")
+mummy_config = ExtResource("8_dtxd3")
+skeleton_config = ExtResource("9_041ca")
+
+[node name="Wave2" type="Node" parent="WaveSpawner"]
+script = ExtResource("5_ls3fc")
+devil_config = ExtResource("7_rvo8u")
+mummy_config = ExtResource("8_dtxd3")
+skeleton_config = ExtResource("9_041ca")
+devils_count = 5
+mummy_count = 5
+skeleton_count = 5
+
+[node name="EnemyMovementPoints" type="Node" parent="."]
+
+[node name="TopLeft" type="Marker2D" parent="EnemyMovementPoints"]
+position = Vector2(1036, 23)
+
+[node name="TopRight" type="Marker2D" parent="EnemyMovementPoints"]
+position = Vector2(1248, 28)
+
+[node name="MidLeft" type="Marker2D" parent="EnemyMovementPoints"]
+position = Vector2(1037, 327)
+
+[node name="MidRight" type="Marker2D" parent="EnemyMovementPoints"]
+position = Vector2(1255, 332)
+
+[node name="BottomLeft" type="Marker2D" parent="EnemyMovementPoints"]
+position = Vector2(926, 590)
+
+[node name="BottomRight" type="Marker2D" parent="EnemyMovementPoints"]
+position = Vector2(1222, 660)

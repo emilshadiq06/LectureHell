@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsbcutpki7jfx"]
+
+[ext_resource type="Script" uid="uid://dt7aq3os6253w" path="res://script/wave_spawner.gd" id="1_1wvnn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo4fa"]
+size = Vector2(168, 646)
+
+[node name="WaveSpawner" type="Area2D"]
+script = ExtResource("1_1wvnn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xo4fa")
+
+[node name="WaveSpawnTimer" type="Timer" parent="."]

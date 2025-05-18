@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyConfig" load_steps=5 format=3 uid="uid://bjcayge2nh81d"]
+
+[ext_resource type="Shape2D" uid="uid://ccrmtyipfnap2" path="res://Resources/CollisionShapes/skeleton_collision_shape.tres" id="1_0jvk3"]
+[ext_resource type="Shape2D" uid="uid://36pg4wj5136c" path="res://Resources/CollisionShapes/skeleton_projectile_collision_shape.tres" id="2_tpkki"]
+[ext_resource type="Texture2D" uid="uid://dh0pcb48fnx1a" path="res://BULLETHELLASSET/Enemies/EnemyProjectiles/bone.png" id="3_fwbbu"]
+[ext_resource type="Script" uid="uid://cqi7alhw2vjkp" path="res://script/enemy_config.gd" id="4_i88lr"]
+
+[resource]
+script = ExtResource("4_i88lr")
+projectile_speed = 0.0
+speed = 0.0
+health = 0
+projectile_collision_shape = ExtResource("2_tpkki")
+projectile_texture = ExtResource("3_fwbbu")
+enemy_name = "skeleton"
+enemy_collision_shape = ExtResource("1_0jvk3")
