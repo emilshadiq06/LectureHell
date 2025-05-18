@@ -3,6 +3,8 @@ extends CanvasLayer
 class_name UI
 
 @onready var health_container: HBoxContainer = %HealthContainer
+@onready var wave_counter: Label = $MarginContainer/WaveCounter
+
 const LIFE_FULL_UI = preload("res://BULLETHELLASSET/UIElements/LifeFullUI.png")
 const LIFE_HALF_UI = preload("res://BULLETHELLASSET/UIElements/LifeHalfUI.png")
 
@@ -31,7 +33,9 @@ func decrease_health(current_health):
 	else:
 		health_textures.back().texture = LIFE_HALF_UI
 		
-			
+func on_wave_started(current_wave, total_waves):
+	wave_counter.text = "Wave %d of %d" % [current_wave, total_waves]
+	
 		
 		
 		

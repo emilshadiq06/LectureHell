@@ -31,6 +31,8 @@ script = ExtResource("5_ls3fc")
 devil_config = ExtResource("7_rvo8u")
 mummy_config = ExtResource("8_dtxd3")
 skeleton_config = ExtResource("9_041ca")
+mummy_count = 2
+skeleton_count = 2
 
 [node name="Wave2" type="Node" parent="WaveSpawner"]
 script = ExtResource("5_ls3fc")

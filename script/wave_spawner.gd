@@ -83,7 +83,10 @@ func on_enemy_killed():
 		progress_to_next_wave()
 		
 func progress_to_next_wave():
-	pass
+	if waves.size() == 0:
+		waves_finished.emit()
+	else:
+		initiate_next_wave()
 	
 	
 func initiate_next_wave():
