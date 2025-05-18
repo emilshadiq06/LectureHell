@@ -9,6 +9,8 @@ signal killed
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: RandomTimer = $ShootingSystem/Timer
 
+@export var speed = 250
+
 var movement_points
 
 var default_animation_name
@@ -23,11 +25,17 @@ func init(config, enemy_movement_points):
 	collision_shape_2d.shape = config.enemy_collision_shape
 	
 	var random_point = movement_points.pick_random()
-	current_movement_point = random_point
+	current_movement_point = random_point.position
 	
 	shooting_system.shot.connect(on_shot)
 	shooting_system.projectile_texture = config.projectile_texture
 	shooting_system.projectile_collision_shape = config.projectile_collision_shape
+
+func _process(delta: float) -> void:
+	global_position = global_position.move_toward(current_movement_point, delta * speed)
+	
+	if global_position.distance_squared_to(current_movement_point) < .1:
+		current_movement_point = movement_points.pick_random().global_position
 	
 func on_shot():
 	animated_sprite_2d.play(shooting_animation_name)

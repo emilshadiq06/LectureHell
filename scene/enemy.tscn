@@ -29,7 +29,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_1e552")
 }],
-"loop": false,
+"loop": true,
 "name": &"devil_shoot",
 "speed": 5.0
 }, {
@@ -95,7 +95,7 @@ script = ExtResource("1_sj55t")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_rs6j2")
-animation = &"skeleton_default"
+animation = &"devil_shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, -2)
