@@ -186,3 +186,6 @@ animation = &"arzim_shooting"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, -2.5)
 shape = SubResource("RectangleShape2D_aflp7")
+
+[node name="ShootingSystem" type="Node2D" parent="."]
+position = Vector2(36, -3)

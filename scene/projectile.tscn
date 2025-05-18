@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dmei8mg2868fv"]
+
+[node name="Projectile" type="Area2D"]

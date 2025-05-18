@@ -2,11 +2,13 @@ extends Area2D
 
 class_name Character
 
+
+
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
-@export var speed = 400
+@export var speed = 500
 var direction
 
 var animation_prefix

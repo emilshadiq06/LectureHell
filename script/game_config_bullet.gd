@@ -7,4 +7,4 @@ enum PlayerType {
 	Arzim
 }
 
-var player_type: PlayerType = PlayerType.Haruni
+var player_type: PlayerType = PlayerType.Milo
