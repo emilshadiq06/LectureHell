@@ -12,7 +12,7 @@ var can_shoot = true
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("shoot") && can_shoot:
 		shoot()
-		can_shoot = true
+		can_shoot = false
 		
 func shoot():
 	var projectile = PROJECTILE.instantiate()

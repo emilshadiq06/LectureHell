@@ -70,7 +70,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mi4it")
 }],
-"loop": true,
+"loop": false,
 "name": &"arzim_shooting",
 "speed": 5.0
 }, {
@@ -130,7 +130,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jyeov")
 }],
-"loop": true,
+"loop": false,
 "name": &"haruni_shooting",
 "speed": 5.0
 }, {
@@ -149,7 +149,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wj4wa")
 }],
-"loop": true,
+"loop": false,
 "name": &"ipang_shooting",
 "speed": 5.0
 }, {
@@ -168,7 +168,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_om0lk")
 }],
-"loop": true,
+"loop": false,
 "name": &"milo_shooting",
 "speed": 5.0
 }]
@@ -183,7 +183,7 @@ script = ExtResource("1_7013s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_37khu")
-animation = &"milo_default"
+animation = &"milo_shooting"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, -2.5)
