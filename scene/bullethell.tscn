@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsm6qxga62ctu"]
+
+[ext_resource type="Script" uid="uid://d262yvmsy2my7" path="res://scene/bullethell.gd" id="1_8ivek"]
+[ext_resource type="Texture2D" uid="uid://bspnvjakwyd76" path="res://BULLETHELLASSET/Backgrounds/classroom.png" id="1_x0dy3"]
+[ext_resource type="Texture2D" uid="uid://seuol3n7jldw" path="res://BULLETHELLASSET/UIElements/Select.png" id="2_8ivek"]
+[ext_resource type="FontFile" uid="uid://d370phyelf2v8" path="res://BULLETHELLASSET/font/font.otf" id="3_pqjf8"]
+[ext_resource type="Texture2D" uid="uid://dqfqcgvyrrr2s" path="res://BULLETHELLASSET/UIElements/PlayerPortaits/Frankie.png" id="4_p0qep"]
+[ext_resource type="Texture2D" uid="uid://bcp1jo2afppjg" path="res://BULLETHELLASSET/UIElements/PlayerPortaits/Hunter.png" id="5_pixw8"]
+[ext_resource type="Texture2D" uid="uid://jiggefrmbvvg" path="res://BULLETHELLASSET/UIElements/PlayerPortaits/Witch.png" id="6_d7fc3"]
+[ext_resource type="Texture2D" uid="uid://ptclhiyr1s31" path="res://BULLETHELLASSET/UIElements/PlayerPortaits/Wolfie.png" id="7_lgw2c"]
+
+[node name="Bullethell" type="CanvasLayer"]
+script = ExtResource("1_8ivek")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 0.62, 0.62, 0.364706)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x0dy3")
+expand_mode = 2
+
+[node name="Pointer" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 20)
+offset_left = 563.0
+offset_top = 308.0
+offset_right = 587.0
+offset_bottom = 328.0
+size_flags_horizontal = 4
+texture = ExtResource("2_8ivek")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+modulate = Color(1, 0.26, 0.26, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_pqjf8")
+theme_override_font_sizes/font_size = 51
+text = "BULLET HELL"
+
+[node name="ChooseFighterLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_pqjf8")
+theme_override_font_sizes/font_size = 45
+text = "Choose your fighter
+"
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="HaruniTexture" type="TextureRect" parent="MarginContainer/CenterContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(36, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_p0qep")
+
+[node name="IpangTexture" type="TextureRect" parent="MarginContainer/CenterContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_pixw8")
+
+[node name="MiloTexture" type="TextureRect" parent="MarginContainer/CenterContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(44, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_d7fc3")
+
+[node name="ArzimTexture" type="TextureRect" parent="MarginContainer/CenterContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_lgw2c")
+
+[node name="SelectorPositions" type="Node" parent="."]
+
+[node name="HaruniPosition" type="Marker2D" parent="SelectorPositions"]
+position = Vector2(576, 316)
+
+[node name="IpangPosition" type="Marker2D" parent="SelectorPositions"]
+position = Vector2(576, 366)
+
+[node name="MiloPosition" type="Marker2D" parent="SelectorPositions"]
+position = Vector2(576, 419)
+
+[node name="ArzimPosition" type="Marker2D" parent="SelectorPositions"]
+position = Vector2(576, 468)

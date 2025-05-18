@@ -21,6 +21,7 @@ Function="*res://scene/menuscene/function.gd"
 DialogueManagerScript="*res://dialogue_manager/dialogue_manager_script.gd"
 GlobalSettings="*res://script/global_settings.gd"
 SceneManager="*res://scene_manager.gd"
+GameConfigBullet="*res://script/game_config_bullet.gd"
 
 [dialogue_manager]
 
@@ -88,4 +89,4 @@ locale/translations_pot_files=PackedStringArray("res://borak/dialogue.dialogue",
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.212469, 0.30473, 0.431474, 1)
+environment/defaults/default_clear_color=Color(0.0124902, 0.026169, 0.0536003, 1)
