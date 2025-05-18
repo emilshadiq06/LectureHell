@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dsm6qxga62ctu"]
 
-[ext_resource type="Script" uid="uid://d262yvmsy2my7" path="res://scene/bullethell.gd" id="1_8ivek"]
+[ext_resource type="Script" uid="uid://d262yvmsy2my7" path="res://script/bullethell.gd" id="1_8ivek"]
 [ext_resource type="Texture2D" uid="uid://bspnvjakwyd76" path="res://BULLETHELLASSET/Backgrounds/classroom.png" id="1_x0dy3"]
 [ext_resource type="Texture2D" uid="uid://seuol3n7jldw" path="res://BULLETHELLASSET/UIElements/Select.png" id="2_8ivek"]
 [ext_resource type="FontFile" uid="uid://d370phyelf2v8" path="res://BULLETHELLASSET/font/font.otf" id="3_pqjf8"]

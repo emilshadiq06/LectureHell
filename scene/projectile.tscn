@@ -1,3 +1,26 @@
-[gd_scene format=3 uid="uid://dmei8mg2868fv"]
+[gd_scene load_steps=4 format=3 uid="uid://dmei8mg2868fv"]
+
+[ext_resource type="Script" uid="uid://bgrg6coycyw38" path="res://script/projectile.gd" id="1_u6xv6"]
+[ext_resource type="Texture2D" uid="uid://ddahr17ph5582" path="res://BULLETHELLASSET/Player/witch_projectile.png" id="2_c0tm2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujo14"]
+size = Vector2(30, 54)
 
 [node name="Projectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_u6xv6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_c0tm2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -2)
+shape = SubResource("RectangleShape2D_ujo14")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.5, 0)
+scale = Vector2(1.15, 1)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

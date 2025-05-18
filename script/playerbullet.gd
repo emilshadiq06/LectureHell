@@ -6,6 +6,7 @@ class_name Character
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var shooting_system: Node2D = $ShootingSystem
 
 
 @export var speed = 500
@@ -13,10 +14,14 @@ var direction
 
 var animation_prefix
 
-
-func _process(delta: float) -> void:
+func _ready() -> void:
 	animation_prefix = GameConfigBullet.PlayerType.keys()[GameConfigBullet.player_type].to_snake_case()
 	animated_sprite_2d.play("%s_default" % animation_prefix)
+	shooting_system.animation_prefix = animation_prefix
+	
+
+
+func _process(delta: float) -> void:
 	var next_position = position + direction * speed * delta
 	if !is_within_screen_bounds(next_position):
 		return

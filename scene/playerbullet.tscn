@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c17u11l5pw1lw"]
+[gd_scene load_steps=18 format=3 uid="uid://c17u11l5pw1lw"]
 
 [ext_resource type="Script" uid="uid://bp7kps02w7unu" path="res://script/playerbullet.gd" id="1_7013s"]
 [ext_resource type="Texture2D" uid="uid://beheqyio3208x" path="res://BULLETHELLASSET/Player/Horror game player animations.png" id="1_aflp7"]
+[ext_resource type="Script" uid="uid://be6bs8isipfr0" path="res://script/shooting_system.gd" id="3_mq7f5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7013s"]
 atlas = ExtResource("1_aflp7")
@@ -189,3 +190,6 @@ shape = SubResource("RectangleShape2D_aflp7")
 
 [node name="ShootingSystem" type="Node2D" parent="."]
 position = Vector2(36, -3)
+script = ExtResource("3_mq7f5")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="ShootingSystem" method="_on_animated_sprite_2d_animation_finished"]
