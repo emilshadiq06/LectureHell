@@ -1,0 +1,97 @@
+[gd_scene load_steps=16 format=3 uid="uid://dj4kjiv7fmmjy"]
+
+[ext_resource type="Script" uid="uid://b6a7ko2nrye4b" path="res://script/vlad_boss.gd" id="1_5ut25"]
+[ext_resource type="Texture2D" uid="uid://m1je1wjsds57" path="res://BULLETHELLASSET/Enemies/Vlad/VladBlocking1.png" id="2_je6vc"]
+[ext_resource type="Texture2D" uid="uid://dim3y87hxutq" path="res://BULLETHELLASSET/Enemies/Vlad/VladBlocking2.png" id="3_yo5qr"]
+[ext_resource type="Texture2D" uid="uid://c0de1vp4i1qag" path="res://BULLETHELLASSET/Enemies/Vlad/VladIdle1.png" id="4_pvkox"]
+[ext_resource type="Texture2D" uid="uid://lpkv6ed7ds3f" path="res://BULLETHELLASSET/Enemies/Vlad/VladShooting1.png" id="5_3g6qi"]
+[ext_resource type="Texture2D" uid="uid://bnft0yr5mbwwc" path="res://BULLETHELLASSET/Enemies/Vlad/VladShooting2.png" id="6_ejyq5"]
+[ext_resource type="Texture2D" uid="uid://dlc65t857t88g" path="res://BULLETHELLASSET/Enemies/SmokeFX/FX001_01.png" id="7_qcuhh"]
+[ext_resource type="Texture2D" uid="uid://cmb3ayrwdvv1k" path="res://BULLETHELLASSET/Enemies/SmokeFX/FX001_02.png" id="8_gblhf"]
+[ext_resource type="Texture2D" uid="uid://c5di3uhs7qu2a" path="res://BULLETHELLASSET/Enemies/SmokeFX/FX001_03.png" id="9_qw3up"]
+[ext_resource type="Texture2D" uid="uid://ddi0prjmcnlxx" path="res://BULLETHELLASSET/Enemies/SmokeFX/FX001_04.png" id="10_86t3s"]
+[ext_resource type="Texture2D" uid="uid://cktfakakkaia3" path="res://BULLETHELLASSET/Enemies/SmokeFX/FX001_05.png" id="11_kygyj"]
+[ext_resource type="Script" uid="uid://c36608y58pyg5" path="res://script/health_system.gd" id="12_yo5qr"]
+[ext_resource type="Script" uid="uid://dben4gs4gffak" path="res://script/random_timer.gd" id="13_pvkox"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbf16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_je6vc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yo5qr")
+}],
+"loop": true,
+"name": &"blocking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pvkox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pvkox")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3g6qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ejyq5")
+}],
+"loop": true,
+"name": &"shooting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_qcuhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gblhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qw3up")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_86t3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kygyj")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fe8m8"]
+size = Vector2(77, 228)
+
+[node name="VladBoss" type="Area2D"]
+script = ExtResource("1_5ut25")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_jbf16")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.5, -2)
+shape = SubResource("RectangleShape2D_fe8m8")
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("12_yo5qr")
+
+[node name="ShootingPoint" type="Marker2D" parent="."]
+position = Vector2(-96, -33)
+
+[node name="ActionTimer" type="Timer" parent="."]
+script = ExtResource("13_pvkox")
+min_time = 2.0
+max_time = 3.0
+metadata/_custom_type_script = "uid://dben4gs4gffak"
