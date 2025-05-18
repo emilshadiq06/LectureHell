@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://c17u11l5pw1lw"]
+[gd_scene load_steps=19 format=3 uid="uid://c17u11l5pw1lw"]
 
 [ext_resource type="Script" uid="uid://bp7kps02w7unu" path="res://script/playerbullet.gd" id="1_7013s"]
 [ext_resource type="Texture2D" uid="uid://beheqyio3208x" path="res://BULLETHELLASSET/Player/Horror game player animations.png" id="1_aflp7"]
 [ext_resource type="Script" uid="uid://be6bs8isipfr0" path="res://script/shooting_system.gd" id="3_mq7f5"]
+[ext_resource type="Script" uid="uid://c36608y58pyg5" path="res://script/health_system.gd" id="4_mi4it"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7013s"]
 atlas = ExtResource("1_aflp7")
@@ -182,7 +183,7 @@ script = ExtResource("1_7013s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_37khu")
-animation = &"arzim_shooting"
+animation = &"milo_default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, -2.5)
@@ -191,5 +192,8 @@ shape = SubResource("RectangleShape2D_aflp7")
 [node name="ShootingSystem" type="Node2D" parent="."]
 position = Vector2(36, -3)
 script = ExtResource("3_mq7f5")
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("4_mi4it")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="ShootingSystem" method="_on_animated_sprite_2d_animation_finished"]

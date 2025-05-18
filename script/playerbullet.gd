@@ -7,10 +7,11 @@ class_name Character
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shooting_system: Node2D = $ShootingSystem
+@onready var health_system: Node = $HealthSystem
 
 
 @export var speed = 500
-var direction
+var direction = Vector2.ZERO
 
 var animation_prefix
 
@@ -48,6 +49,10 @@ func is_within_screen_bounds(next_position: Vector2):
 		return true
 	
 	return false
+	
+
+func get_health():
+	return health_system.health
 	
 		
 	
