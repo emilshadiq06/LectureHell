@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=16 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="6_xlg7c"]
 [ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="7_qpk70"]
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
+[ext_resource type="Script" uid="uid://1rwhud8vnync" path="res://Game/Enemy/scripts/stats.gd" id="10_yq8tf"]
+[ext_resource type="Script" uid="uid://diij37k1m8hxh" path="res://Game/Player/add_player_group.gd" id="11_ym5sv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
 size = Vector2(253, 100.5)
@@ -17,6 +19,9 @@ size = Vector2(253, 100.5)
 size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sng2h"]
+radius = 30.8058
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -77,6 +82,9 @@ shape = SubResource("CircleShape2D_bk3v5")
 position = Vector2(-293, -266)
 collision_mask = 17
 
+[node name="stats" type="Node" parent="Enemy2"]
+script = ExtResource("10_yq8tf")
+
 [node name="Enemy3" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
 position = Vector2(-479, -249)
 collision_mask = 17
@@ -85,5 +93,21 @@ collision_mask = 17
 position = Vector2(413, -284)
 collision_mask = 17
 
+[node name="AddPlayerGroup" type="Area2D" parent="."]
+script = ExtResource("11_ym5sv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AddPlayerGroup"]
+position = Vector2(-165, 241)
+shape = SubResource("CircleShape2D_sng2h")
+
+[node name="Label" type="Label" parent="AddPlayerGroup"]
+offset_left = -240.0
+offset_top = 227.0
+offset_right = -96.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Change skill"
+
 [connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="AddPlayerGroup" to="AddPlayerGroup" method="_on_body_entered"]

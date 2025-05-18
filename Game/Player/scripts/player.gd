@@ -8,16 +8,32 @@ var last_keycode = 0
 var direction : Vector2 = Vector2.ZERO
 var cardinal_direction : Vector2 = Vector2.DOWN
 var run: int = 1
-var stats
+@onready var skill = $skill
+@onready var stats = $stats
 @onready var animation_player : AnimationPlayer= $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if StatLoader.hp == 0:
+		StatLoader.get_stats_player(get_stats())
+	else:
+		stats.update_stats()
+	if StatLoader.skill_node != null:
+		skill.set_script(StatLoader.return_skill().get_script())
+		#StatLoader.skill_node = null
 	state_machine.initialize(self)
-	pass # Replace with function body.
+	if StatLoader.was_just_inBattle == true:
+		StatLoader.was_just_inBattle = false
+		stats.money = StatLoader.money
+		print("KKKKKKKKKKKKKK")
+		print(stats.money)
+		
+		global_position = StatLoader.previous_position
 	
+	pass # Replace with function body.
+
 
 
 
@@ -65,10 +81,13 @@ func SetDirection() -> bool:
 	return true
 	
 func get_stats():
-	stats = get_node("stats")
-	var hp = stats.get_hp()
-	var weapon = stats.get_weapon()
-	return [hp,weapon]
+
+	var hp = stats.hp
+	var weapon = stats.weapon
+	var pp = stats.pp
+	var money = stats.money
+	var inventory = stats.inventory
+	return [hp,weapon,pp,money,inventory]
 	
 func UpdateAnimation(state : String) -> void:
 	animation_player.play(state + "_" + AnimDirect())

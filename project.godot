@@ -37,7 +37,11 @@ mouse_cursor/custom_image="uid://se1wdvknon0x"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray()
+
+[global_group]
+
+player_group=""
 
 [input]
 

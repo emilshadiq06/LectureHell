@@ -60,7 +60,9 @@ func _on_enemy_group_bullet_hell() -> void:
 	bullet_hell_timer.start(4)
 	
 func start_hell():
+	
 	if bullet_hell_timer.get_time_left() > 0:
+		enemies.choice.hide()
 		DialogueManagerScript.start_dialog(Vector2(300,500), ["bullet hell goes here"])
 	#add_child(bullet_hell)
 	
@@ -103,7 +105,10 @@ func _on_brace_pressed() -> void:
 
 
 func _on_enemy_group_start_turn() -> void:
+	#print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+	#print(enemies.action_queue)
 	for i in players:
+		
 		i.take_stamina(-2)
 		print("herhh")
 		print(i.pp)

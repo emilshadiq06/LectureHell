@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://boxkl18or5x3u"]
+[gd_scene load_steps=12 format=3 uid="uid://boxkl18or5x3u"]
 
 [ext_resource type="Script" uid="uid://b4kxx3btqho8m" path="res://Game/Enemy/scripts/enemy.gd" id="1_a8tps"]
 [ext_resource type="Texture2D" uid="uid://c53o36880a6r4" path="res://Battle/sprites/NakedBushMan.png" id="2_wdnsp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://chudb7lwcd015" path="res://Game/Enemy/scripts/states/roam.gd" id="5_wdnsp"]
 [ext_resource type="Script" uid="uid://l8whmbvmagkg" path="res://Game/Enemy/scripts/states/dir.gd" id="6_ruxiu"]
 [ext_resource type="Script" uid="uid://dh5vnedyj47w0" path="res://Game/Enemy/scripts/states/chase.gd" id="7_2ghbj"]
+[ext_resource type="Script" uid="uid://wrjjyb0pwu7s" path="res://Game/Enemy/dead.gd" id="8_8nrlj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8nrlj"]
 
@@ -46,6 +47,9 @@ script = ExtResource("5_wdnsp")
 
 [node name="chase" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("7_2ghbj")
+
+[node name="dead" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("8_8nrlj")
 
 [node name="StateTimer" type="Timer" parent="."]
 

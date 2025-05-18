@@ -9,8 +9,9 @@ func _ready() -> void:
 	Garamramaram Madududung"
 	skill_desc = "taunt enemies to raise attack damage dealt but also raise incoming damage too"
 	dmg_multiplier_attack = 20
+	
 	dmg_multiplier_received= 1.25
-	turns_duration = 2
+	turns_duration = 3
 	cooldown += 1
 	
 	pass

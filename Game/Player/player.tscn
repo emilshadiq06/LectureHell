@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://ci86h3bm1350e" path="res://Game/Player/scripts/state_walk.gd" id="5_vh1aq"]
 [ext_resource type="Script" uid="uid://dcj03lvuf6pqy" path="res://Game/Player/scripts/state_run.gd" id="6_4ddeg"]
 [ext_resource type="Script" uid="uid://6lthaiq3kynq" path="res://Game/Player/stats.gd" id="7_ch4ko"]
-[ext_resource type="Script" uid="uid://c45xn5qfk105b" path="res://Game/Player/scripts/skill/skill_jj.gd" id="8_vh1aq"]
+[ext_resource type="Script" uid="uid://dusl07hlwigir" path="res://Game/Player/scripts/skill/skill_nap.gd" id="8_vh1aq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 
@@ -157,7 +157,7 @@ _data = {
 &"walk_up": SubResource("Animation_tqhgd")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player_group"]]
 collision_layer = 9
 collision_mask = 16
 motion_mode = 1

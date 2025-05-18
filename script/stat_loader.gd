@@ -1,25 +1,34 @@
 extends Node
-
 var skill_node
-var take_damage: int = 0
-var hp : int = 40
-var pp = 20
+var dead_array : Array
+var take_damage: int
+var hp : int
+var pp : int
+var money : int
 var inventory = []
 var weapon = 1
+var previous_scene : String
+var was_just_inBattle: bool =  false
+var previous_position : Vector2
 
 func get_stats_player(target_body):
-	hp = target_body.hp
-	pp = target_body.pp
-	weapon = target_body.weapon
+	hp = target_body[0]
+	weapon = target_body[1]
+	pp = target_body[2]
+	
+	money = target_body[3]
+	inventory = target_body[4]
 
 func return_stats():
-	return [hp,weapon,pp,inventory]
+	print([hp,weapon,pp,inventory,money])
+	return [hp,weapon,pp,inventory,money]
 	
 func get_skill(target_node:Node):
+	
 	skill_node = target_node
 	
 func return_skill():
-	print(skill_node.get_skill_effects())
 	return skill_node
+	
 	
 	

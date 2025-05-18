@@ -9,7 +9,6 @@ func init() -> void:
 	pass
 func Enter() ->void:
 	
-	print("sss")
 	timer.start(enemy.choose_randomly([0.5,1.5,2,5]))
 #	enemy.UpdateAnimation("idle")
 	pass
@@ -26,7 +25,6 @@ func Process(_delta:float)->Enemy_State:
 	if enemy.chase:
 		return chasing
 	if timer.get_time_left() <= 0.1:
-		print("ok")
 		
 		return roam
 	return null

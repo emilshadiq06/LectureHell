@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var sprite = $Sprite2D
 @onready var animation_player = $AnimationPlayer
 @onready var progress_bar = $ProgressBar
 @onready var focus = $Focus

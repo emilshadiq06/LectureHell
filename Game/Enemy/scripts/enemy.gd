@@ -29,7 +29,7 @@ func choose_randomly(list_of_entries):
 	return list_of_entries[randi() % list_of_entries.size()]
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == player:
+	if body == player and state_machine.current_state != $EnemyStateMachine/dead:
 		DialogueManagerScript.is_dialog_active = false
 		DialogueManagerScript.current_line_index = 0
 		var current_scene = get_tree().current_scene
@@ -37,9 +37,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		get_whole_group("enemies")
 		var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
 		player_Battle.add_child(body.get_node("skill").duplicate())
+		#print("herre")
+		#print(body.get_stats())
+		StatLoader.get_stats_player(body.get_stats())
 		player_Battle.set_stats(StatLoader.return_stats())
 		StatLoader.get_skill(body.get_node("skill"))
-
+		StatLoader.previous_scene = get_parent().scene_file_path
+		StatLoader.previous_position =body.global_position
+		#StatLoader.dead_array.push_back(self)
+		print(StatLoader.dead_array)
+		#print(StatLoader.previous_scene)
 		#print(StatLoader.return_skill().get_skill_effects())
 		
 		
@@ -50,11 +57,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		current_scene.queue_free()
 
 func get_whole_group(group):
-	if self.is_in_group(group):
-		for i in get_tree().get_nodes_in_group(group).size()-1:
-			var enemy_Battle = fight.get_node("EnemyGroup")
-			enemy_Battle.add_character()
+	var enemy_Battle = fight.get_node("EnemyGroup")
 	
+	if self.is_in_group(group):
+		for i in get_tree().get_nodes_in_group(group).size():
+			StatLoader.dead_array.push_back((get_tree().get_nodes_in_group(group)[i]).name)
+			enemy_Battle.add_character()
+			if get_tree().get_nodes_in_group(group)[i].find_child("stats"):
+				
+				var enemyGroup_Battle = fight.get_node("EnemyGroup").get_child(i +1).set_stats(get_tree().get_nodes_in_group(group)[i].get_node("stats").get_stats())
+	else:
+		StatLoader.dead_array.push_back(self.name)
+		enemy_Battle.add_character()
 			
 	
 

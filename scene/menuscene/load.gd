@@ -36,14 +36,14 @@ func _process(delta):
 		current_scene.queue_free()
 		
 		
-func open_new_scene():
-	if loaded:
-		var new_scene: PackedScene = ResourceLoader.load_threaded_get(next_scene_path)
-		var new_node = new_scene.instantiate()
-		if "parameters" in new_node:
-			new_node.parameters = parameters
-		var last_scene = get_tree().current_scene
-		get_tree().current_scene = new_node
-		get_tree().get_root().add_child(new_node)
-		last_scene.queue_free()
+#func open_new_scene():
+#	if loaded:
+	#	var new_scene: PackedScene = ResourceLoader.load_threaded_get(next_scene_path)
+	#	var new_node = new_scene.instantiate()
+#		if "parameters" in new_node:
+	#		new_node.parameters = parameters
+	#	var last_scene = get_tree().current_scene
+#		get_tree().current_scene = new_node
+	#	get_tree().get_root().add_child(new_node)
+#		last_scene.queue_free()
 		

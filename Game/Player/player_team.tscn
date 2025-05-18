@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5efgetg7rv68"]
+
+[ext_resource type="Script" uid="uid://dfqsramcgjged" path="res://Game/Player/team_stats.gd" id="1_shguf"]
+[ext_resource type="Script" uid="uid://dusl07hlwigir" path="res://Game/Player/scripts/skill/skill_nap.gd" id="2_2g5fp"]
+[ext_resource type="Script" uid="uid://c45xn5qfk105b" path="res://Game/Player/scripts/skill/skill_jj.gd" id="3_2g5fp"]
+
+[node name="player_team" type="Node2D"]
+
+[node name="friend1" type="Node2D" parent="."]
+
+[node name="stats" type="Node" parent="friend1"]
+script = ExtResource("1_shguf")
+
+[node name="skill" type="Node" parent="friend1"]
+script = ExtResource("2_2g5fp")
+
+[node name="friend2" type="Node2D" parent="."]
+
+[node name="stats" type="Node" parent="friend2"]
+script = ExtResource("1_shguf")
+
+[node name="skill" type="Node" parent="friend2"]
+script = ExtResource("3_2g5fp")

@@ -8,7 +8,7 @@ var damage_multiplier = 1
 var crit_list : Array = []
 var crit : bool = false
 var players : Array = []
-var action_queue : Array = []
+var action_queue : Array
 var attack 
 var ball_index : int = 0
 var hits : int = 0
@@ -26,6 +26,8 @@ func _ready() -> void:
 	#player_group.instantiate()
 	players = player_group.get_children()
 	enemies = get_children()
+	remove_child(enemies[0])
+	enemies.remove_at(0)
 	for i in enemies.size():
 		enemies[i].position =  Vector2(0,100*i)
 
@@ -38,7 +40,10 @@ func add_character():
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#print("action_queue")
+	#print(action_queue)
 	if is_battling == false and actChoice.visible == false and attkChoice.visible == false and choice.visible == false:
+
 		if Input.is_action_just_pressed("up"):
 			if index > 0:
 				index -= 1
@@ -57,15 +62,16 @@ func _process(delta: float) -> void:
 				show_choice()
 			
 	if action_queue.size() == players.size() and not is_battling:
-		is_battling = true
-		_action(action_queue) 
+			is_battling = true
+			_action(action_queue) 
 		
 
 
 
 
 func _action(stack):
-	
+	print("stack")
+	print(stack)
 	for i in stack:
 		if i is int:
 			attack = attack_scene.instantiate()
@@ -116,7 +122,7 @@ func _start_choosing():
 	
 	
 func _on_attack_pressed() -> void:
-	
+	#print(action_queue)
 	#if is_battling == false:
 	choice.hide()
 	attkChoice.show()
@@ -131,7 +137,7 @@ func _on_bullet_hell_timer_timeout() -> void:
 	DialogueManagerScript.current_line_index = 0
 	start_turn.emit()
 	_reset_focus()
-	action_queue.clear()
+	#action_queue.clear()
 	is_battling = false
 	show_choice()
 
