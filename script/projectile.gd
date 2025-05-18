@@ -12,6 +12,7 @@ var speed = 500
 var projectile_prefix
 
 func _ready() -> void:
+	print_debug(projectile_prefix)
 	match projectile_prefix:
 		"Haruni":
 			sprite_2d.texture = FRANKIE_PROJECTILE
