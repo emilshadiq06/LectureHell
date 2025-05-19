@@ -6,6 +6,7 @@ var hp : int
 var pp : int
 var money : int
 var inventory = []
+var player_group= []
 var weapon = 1
 var previous_scene : String
 var was_just_inBattle: bool =  false

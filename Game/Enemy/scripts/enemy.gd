@@ -35,10 +35,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var current_scene = get_tree().current_scene
 		
 		get_whole_group("enemies")
+		
 		var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
 		player_Battle.add_child(body.get_node("skill").duplicate())
 		#print("herre")
 		#print(body.get_stats())
+		#get_whole_group_player()
 		StatLoader.get_stats_player(body.get_stats())
 		player_Battle.set_stats(StatLoader.return_stats())
 		StatLoader.get_skill(body.get_node("skill"))
@@ -70,7 +72,13 @@ func get_whole_group(group):
 		StatLoader.dead_array.push_back(self.name)
 		enemy_Battle.add_character()
 			
-	
+func get_whole_group_player():
+	for i in StatLoader.player_group.size() - 1:
+		var player_inBattle = fight.get_node("PlayerGroup")
+		player_inBattle.add_character()
+		#var enemyGroup_Battle = fight.get_node("EnemyGroup").get_child(i +1).set_stats(get_tree().get_nodes_in_group("players")[i].get_node("stats").get_stats())
+		
+		
 
 func _on_chase_area_body_entered(body) -> void:
 	if body == player:
