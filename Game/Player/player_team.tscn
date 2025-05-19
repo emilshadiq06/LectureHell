@@ -12,7 +12,7 @@
 script = ExtResource("1_shguf")
 
 [node name="skill" type="Node" parent="friend1"]
-script = ExtResource("2_2g5fp")
+script = ExtResource("3_2g5fp")
 
 [node name="friend2" type="Node2D" parent="."]
 
@@ -20,4 +20,4 @@ script = ExtResource("2_2g5fp")
 script = ExtResource("1_shguf")
 
 [node name="skill" type="Node" parent="friend2"]
-script = ExtResource("3_2g5fp")
+script = ExtResource("2_2g5fp")

@@ -22,6 +22,10 @@ func Enter() ->void:
 	players = $"../../PlayerGroup"
 	enemies.damage_multiplier *= dmg_multiplier_attack
 	players.play_dance()
+	enemies.emit_signal("next_player")
+	enemies.action_queue.push_back("null")
+	if enemies.action_queue.size() < players.players.size():
+		enemies.show_choice()
 	pass
 	
 #what happens when player enters state

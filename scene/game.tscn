@@ -106,7 +106,8 @@ offset_top = 227.0
 offset_right = -96.0
 offset_bottom = 250.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Change skill"
+text = "add bro
+"
 
 [connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]

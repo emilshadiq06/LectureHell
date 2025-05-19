@@ -1,7 +1,7 @@
 class_name Enemy_State_Dead extends Enemy_State
 ##ref to what this state belongs to
-@onready var timer = $"../../StateTimer"
-@onready var idle =$"../idle"
+#@onready var timer = $"../../StateTimer"
+#@onready var idle =$"../idle"
 
 func init() -> void:
 	pass

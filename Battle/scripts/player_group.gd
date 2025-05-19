@@ -13,9 +13,10 @@ var effect_array = []
 func _ready() -> void:
 	
 	players = get_children()
-	for i in players.size():
+	for i in range(players.size()):
 		players[i].position =  Vector2(0,100*i)
 		effect_array.push_back(players[i].get_node("skill"))
+		print(players[i].get_node("skill").skill_name)
 		
 		#print(players[i].get_node("skill").new_skill.get_skill_effects())
 
@@ -26,11 +27,14 @@ func _ready() -> void:
 
 
 	players[0]._focus()
+func add_character():
 	
+	var new_char = get_node("Character").duplicate()
+	add_child(new_char)
 func _skill_button_pressed():
 	if effect_array[index].get_skill_effects() not in effect_machine.origin:
 		
-		enemies.action_queue.push_back("null")
+		
 		effect_machine.add_child(effect_array[index].duplicate())
 		actChoice.hide()
 		effect_machine.initialize()
@@ -99,8 +103,13 @@ func stop_anim():
 
 
 func _on_brace_pressed() -> void:
+	
 	enemies.action_queue.push_back("null")
 	actChoice.hide()
+	#if enemies.action_queue.size() < players.size():
+	enemies.next_player.emit()
+	enemies.show_choice()
+	
 	pass # Replace with function body.
 
 

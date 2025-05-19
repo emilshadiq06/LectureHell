@@ -8,6 +8,7 @@ var damage_multiplier = 1
 var crit_list : Array = []
 var crit : bool = false
 var players : Array = []
+var weapons : Array = []
 var action_queue : Array
 var attack 
 var ball_index : int = 0
@@ -53,6 +54,7 @@ func _process(delta: float) -> void:
 				index += 1
 				switch_focus(index,index-1)
 		if Input.is_action_just_pressed("chat"):
+			weapons.push_back(players[player_group.index].weapon)
 			emit_signal("next_player")
 			action_queue.push_back(index)
 			if crit == true:
@@ -60,6 +62,8 @@ func _process(delta: float) -> void:
 				crit = false
 			if action_queue.size() < players.size():
 				show_choice()
+
+
 			
 	if action_queue.size() == players.size() and not is_battling:
 			is_battling = true
@@ -72,6 +76,7 @@ func _process(delta: float) -> void:
 func _action(stack):
 	print("stack")
 	print(stack)
+	var j : int = 0
 	for i in stack:
 		if i is int:
 			attack = attack_scene.instantiate()
@@ -84,7 +89,8 @@ func _action(stack):
 		#print("here2")
 		#print(players[player_group.index].weapon)
 		#print("here3")
-			attack.get_node("Balls").add_ball(players[player_group.index].weapon)
+			attack.get_node("Balls").add_ball(weapons[j])
+			
 			add_child(attack)
 			await get_tree().create_timer(2).timeout
 			ball_index = attack.get_ball_index()
@@ -92,10 +98,11 @@ func _action(stack):
 		
 		
 			remove_child(attack)
-			enemies[i].take_damage(4*damage_multiplier*hits/(players[player_group.index].weapon +1))
+			enemies[i].take_damage(4*damage_multiplier*hits/(weapons[j] +1))
+			j+=1
 		
 			ball_index = 0
-		
+	weapons.clear()
 	crit_list.clear()
 	action_queue.clear()
 	bullet_hell.emit()

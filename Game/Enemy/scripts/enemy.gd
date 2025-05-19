@@ -29,7 +29,7 @@ func choose_randomly(list_of_entries):
 	return list_of_entries[randi() % list_of_entries.size()]
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == player and state_machine.current_state != $EnemyStateMachine/dead:
+	if body == player and self.name not in StatLoader.dead_array:
 		DialogueManagerScript.is_dialog_active = false
 		DialogueManagerScript.current_line_index = 0
 		var current_scene = get_tree().current_scene
@@ -37,12 +37,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		get_whole_group("enemies")
 		
 		var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
-		player_Battle.add_child(body.get_node("skill").duplicate())
+		player_Battle.get_node("skill").set_script(body.get_node("skill").get_script())
 		#print("herre")
 		#print(body.get_stats())
-		#get_whole_group_player()
+		get_whole_group_player()
 		StatLoader.get_stats_player(body.get_stats())
-		player_Battle.set_stats(StatLoader.return_stats())
+		player_Battle.set_stats(body.get_stats())
 		StatLoader.get_skill(body.get_node("skill"))
 		StatLoader.previous_scene = get_parent().scene_file_path
 		StatLoader.previous_position =body.global_position
@@ -62,7 +62,7 @@ func get_whole_group(group):
 	var enemy_Battle = fight.get_node("EnemyGroup")
 	
 	if self.is_in_group(group):
-		for i in get_tree().get_nodes_in_group(group).size():
+		for i in range(get_tree().get_nodes_in_group(group).size()):
 			StatLoader.dead_array.push_back((get_tree().get_nodes_in_group(group)[i]).name)
 			enemy_Battle.add_character()
 			if get_tree().get_nodes_in_group(group)[i].find_child("stats"):
@@ -73,11 +73,11 @@ func get_whole_group(group):
 		enemy_Battle.add_character()
 			
 func get_whole_group_player():
-	for i in StatLoader.player_group.size() - 1:
+	for i in range(StatLoader.player_group.size()):
 		var player_inBattle = fight.get_node("PlayerGroup")
 		player_inBattle.add_character()
-		#var enemyGroup_Battle = fight.get_node("EnemyGroup").get_child(i +1).set_stats(get_tree().get_nodes_in_group("players")[i].get_node("stats").get_stats())
-		
+		player_inBattle.get_child(i+1).set_stats(StatLoader.player_group[i].get_node("stats").get_stats())
+		player_inBattle.get_child(i+1).get_node("skill").set_script(StatLoader.player_group[i].get_node("skill").get_script())
 		
 
 func _on_chase_area_body_entered(body) -> void:

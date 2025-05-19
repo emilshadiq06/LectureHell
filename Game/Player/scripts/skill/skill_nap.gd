@@ -18,11 +18,13 @@ func Enter() ->void:
 	enemies  = $"../../EnemyGroup"
 	players = $"../../PlayerGroup"
 	sleeping_player = players.index
-	enemies.action_queue.remove_at(players.index)
 	#print(enemies.action_queue)
 	#print("mmimimimi")
 	players.players[sleeping_player].sprite.rotation_degrees += 90
-	#enemies.action_queue.push_back("null")
+	enemies.emit_signal("next_player")
+	enemies.action_queue.push_back("null")
+	if enemies.action_queue.size() < players.players.size():
+		enemies.show_choice()
 	pass
 	
 #what happens when player enters state
@@ -34,11 +36,11 @@ func Exit() ->void:
 func Process():
 	players.players[sleeping_player].hp += hp_regen
 	if players.index == sleeping_player:
-		enemies.next_player.emit()
+		
+		enemies.emit_signal("next_player")
 		enemies.action_queue.push_back("null")
-		
-		
-		
+	if enemies.action_queue.size() < players.players.size():
+		enemies.show_choice()
 		print(enemies.action_queue)
 		print("honkshooo mmimimimi")
 	return null

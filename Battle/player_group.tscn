@@ -14,4 +14,6 @@ script = ExtResource("1_c2m8u")
 position = Vector2(-2, -21)
 texture = ExtResource("3_hrqnr")
 
+[node name="skill" type="Node" parent="Character"]
+
 [editable path="Character"]

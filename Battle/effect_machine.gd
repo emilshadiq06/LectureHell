@@ -30,7 +30,7 @@ func DoEffect():
 		if i.turn == 0:
 			i.Enter()
 			
-		if i.turn < i.turns_duration:
+		if i.turn < i.turns_duration and i.turn > 0:
 			#enemies.damage_multiplier = i.dmg_multiplier_attack
 			i.Process()
 		if i.turn == i.turns_duration:
