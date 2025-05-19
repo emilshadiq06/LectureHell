@@ -31,17 +31,18 @@ script = ExtResource("5_ls3fc")
 devil_config = ExtResource("7_rvo8u")
 mummy_config = ExtResource("8_dtxd3")
 skeleton_config = ExtResource("9_041ca")
-mummy_count = 2
-skeleton_count = 2
+devils_count = 1
+mummy_count = 1
+skeleton_count = 1
 
 [node name="Wave2" type="Node" parent="WaveSpawner"]
 script = ExtResource("5_ls3fc")
 devil_config = ExtResource("7_rvo8u")
 mummy_config = ExtResource("8_dtxd3")
 skeleton_config = ExtResource("9_041ca")
-devils_count = 5
-mummy_count = 5
-skeleton_count = 5
+devils_count = 1
+mummy_count = 0
+skeleton_count = 0
 
 [node name="EnemyMovementPoints" type="Node" parent="."]
 
