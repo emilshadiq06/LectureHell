@@ -21,7 +21,7 @@ func update_slots():
 		
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("inventory"):
+	if Input.is_action_just_pressed("inventory") and get_parent().name == "Player":
 		if is_open:
 			close()
 		else:
@@ -40,18 +40,15 @@ func _process(delta: float) -> void:
 		
 			
 func close():
+	print("vvvv")
 	selected_items = 999
 	self.visible = false
 	is_open = false
 	
 
 func open():
-	
+	print("bbbb")
 	self.visible = true
-	#self.grab_focus()
-	for i in slots:
-		i.grab_focus()
-		#i.grab_click_focus()
 	is_open = true
 
 
@@ -65,9 +62,23 @@ func _on_throw_pressed() -> void:
 
 
 func _on_use_pressed() -> void:
+	var is_battle:bool = false
+	var battle:String = get_tree().current_scene.get_path()
+	var target =get_parent().get_node("stats")
+		
+		
+		
 	if selected_items < 12:
-		var target =get_parent().get_node("stats")
+		var item_picked:int = selected_items
+		print(selected_items)
 		slots[selected_items].is_interacted = false
 		slots[selected_items].toggle = false
-		inv.use(selected_items,inv.items[selected_items],target)
+		if battle == "/root/Battle":
+			var player_group = $"../../PlayerGroup"
+			target = player_group.players[player_group.index]
+			player_group._on_brace_pressed()
+			player_group._on_back_pressed()
+
+		inv.use(item_picked,inv.items[item_picked],target)
 		selected_items = 999
+ 

@@ -64,3 +64,8 @@ func take_stamina(value):
 	pp -= value
 	if pp > MAX_PP:
 		pp = MAX_PP
+
+func addhealth(hp_regen,pp_regen):
+	hp += hp_regen
+	pp += pp_regen
+	

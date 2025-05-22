@@ -7,7 +7,7 @@ var sleeping_player
 func _ready() -> void:
 	skill_name = "nap"
 	skill_desc = "take a nap to regen health, but unable to make a move"
-	hp_regen = 5
+	hp_regen = 2
 	turns_duration = 4
 	cooldown += 2
 	

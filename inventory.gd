@@ -38,4 +38,5 @@ func use(index:int,item:InvItem,target:Node):
 	update.emit()
 	
 func on_item_used(itemUsed:InvItem,used:bool):
+	
 	pass

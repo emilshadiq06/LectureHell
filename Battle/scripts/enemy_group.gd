@@ -131,6 +131,7 @@ func _start_choosing():
 func _on_attack_pressed() -> void:
 	#print(action_queue)
 	#if is_battling == false:
+	#player_group.inventory.hide()
 	choice.hide()
 	attkChoice.show()
 		#_start_choosing()

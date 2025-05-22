@@ -5,4 +5,4 @@ extends stat
 func get_stats():
 	hp = 35
 	weapon = 0
-	return [hp,weapon,pp,money,inventory]
+	return [hp,weapon,pp,pp,money,hp]

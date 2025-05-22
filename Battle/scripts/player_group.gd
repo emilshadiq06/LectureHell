@@ -5,14 +5,18 @@ var players: Array = []
 @onready var enemies = $"../EnemyGroup"
 @onready var choice = $"../CanvasLayer/choice"
 @onready var actChoice = $"../CanvasLayer/actChoice"
+@onready var inventory = $"../CanvasLayer/inventory"
 
 @onready var effect_machine = $"../effectMachine"
 @onready var bullet_hell_timer =  $"../BulletHellTimer"
+
+@export var inv: Inv
+
 var skill_button
 var effect_array = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+
 	players = get_children()
 	for i in range(players.size()):
 		players[i].position =  Vector2(0,100*i)
@@ -66,13 +70,15 @@ func _on_enemy_group_bullet_hell() -> void:
 func start_hell():
 	
 	if bullet_hell_timer.get_time_left() > 0:
+		#inventory.hide()
 		enemies.choice.hide()
 		DialogueManagerScript.start_dialog(Vector2(300,500), ["bullet hell goes here"])
 	#add_child(bullet_hell)
 	
 func _process(delta: float) -> void:
-	start_hell()
-	if bullet_hell_timer.get_time_left() < 0:
+	if bullet_hell_timer.get_time_left() > 3.99:
+		start_hell()
+	if bullet_hell_timer.get_time_left() < 0.01:
 		#remove_child(bullet_hell)
 		pass
 			
@@ -81,7 +87,9 @@ func _process(delta: float) -> void:
 
 
 func _on_act_pressed() -> void:
+	#var battle = get_tree().current_scene.get_path()
 	
+	#print(battle)
 	choice.hide()
 	
 	
@@ -91,9 +99,12 @@ func _on_act_pressed() -> void:
 
 
 func _on_back_pressed() -> void:
-	
+	if inventory.is_open:
+		inventory.close()
+	else:
+		actChoice.hide()
 	choice.show()
-	actChoice.hide()
+
 
 func play_dance():
 	
@@ -107,6 +118,8 @@ func _on_brace_pressed() -> void:
 	
 	enemies.action_queue.push_back("null")
 	actChoice.hide()
+	#if inventory.is_open:
+	#	inventory.close()
 	#if enemies.action_queue.size() < players.size():
 	enemies.next_player.emit()
 	enemies.show_choice()
@@ -118,8 +131,19 @@ func _on_enemy_group_start_turn() -> void:
 	#print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
 	#print(enemies.action_queue)
 	for i in players:
-		if i.hp > i.MAX_HP:
-			i.take_damage(int((i.hp-i.MAX_HP)*0.25))
+
 		i.take_stamina(-2)
 		#print("herhh")
 	#	print(i.pp)
+
+
+func _on_item_pressed() -> void:
+	choice.hide()
+
+	if !inventory.is_open:
+		inventory.open()
+		
+	
+		
+	
+	 # Replace with function body.

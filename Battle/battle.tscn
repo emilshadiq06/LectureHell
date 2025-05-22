@@ -1,20 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://w7uslflb1vs5"]
+[gd_scene load_steps=7 format=3 uid="uid://w7uslflb1vs5"]
 
 [ext_resource type="Script" uid="uid://s64at01rj22r" path="res://Battle/battle.gd" id="1_5pv0p"]
 [ext_resource type="PackedScene" uid="uid://been0jwwxflop" path="res://Battle/player_group.tscn" id="1_ksnli"]
 [ext_resource type="PackedScene" uid="uid://5dhap06uc3wk" path="res://Battle/enemy_group.tscn" id="2_o5tja"]
+[ext_resource type="PackedScene" uid="uid://cgthgj1yqy0rl" path="res://inventory/inventory.tscn" id="3_do635"]
 [ext_resource type="Script" uid="uid://c3xxqlttsdeef" path="res://Battle/effect_machine.gd" id="3_o5tja"]
+[ext_resource type="Resource" uid="uid://c64jap0qamgb6" path="res://inventory/player_inventory.tres" id="3_ploow"]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_5pv0p")
 
 [node name="PlayerGroup" parent="." instance=ExtResource("1_ksnli")]
-position = Vector2(853, 119)
+position = Vector2(1036, 115)
+inv = ExtResource("3_ploow")
 
 [node name="EnemyGroup" parent="." instance=ExtResource("2_o5tja")]
 position = Vector2(205, 124)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="inventory" parent="CanvasLayer" instance=ExtResource("3_do635")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 262.0
+offset_top = 328.0
+offset_right = 262.0
+offset_bottom = 363.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="back" type="Button" parent="CanvasLayer/inventory"]
+layout_mode = 2
+offset_left = 383.0
+offset_top = 250.0
+offset_right = 428.0
+offset_bottom = 285.0
+scale = Vector2(1.50808, 0.867257)
+text = "Back"
 
 [node name="choice" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 3
@@ -107,7 +130,10 @@ script = ExtResource("3_o5tja")
 [connection signal="start_turn" from="EnemyGroup" to="." method="_on_enemy_group_start_turn"]
 [connection signal="start_turn" from="EnemyGroup" to="PlayerGroup" method="_on_enemy_group_start_turn"]
 [connection signal="start_turn" from="EnemyGroup" to="effectMachine" method="_on_enemy_group_start_turn"]
+[connection signal="pressed" from="CanvasLayer/inventory/back" to="PlayerGroup" method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/inventory/back" to="EnemyGroup" method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/choice/attack" to="EnemyGroup" method="_on_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/choice/item" to="PlayerGroup" method="_on_item_pressed"]
 [connection signal="pressed" from="CanvasLayer/choice/act" to="PlayerGroup" method="_on_act_pressed"]
 [connection signal="pressed" from="CanvasLayer/attackChoice/normalAttack" to="EnemyGroup" method="_on_normal_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/attackChoice/criticalAttack" to="EnemyGroup" method="_on_critical_attack_pressed"]

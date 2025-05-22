@@ -1,6 +1,6 @@
 class_name stat extends Node
 var take_damage: int = 0
-var max_hp : int =20
+var max_hp : int = 20
 var hp : int = 20
 var pp: int = 20
 var inventory = []

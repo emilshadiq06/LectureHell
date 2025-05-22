@@ -17,6 +17,7 @@ func _ready() -> void:
 
 
 
+
 func _on_enemy_group_start_turn() -> void:
 	lose = count_hp(group_player_array)
 	win = count_hp(group_enemy_array)
