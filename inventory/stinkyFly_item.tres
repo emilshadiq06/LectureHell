@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bfbv7dmwu2ahs"]
+
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory_item_script.gd" id="1_tdj0d"]
+[ext_resource type="Texture2D" uid="uid://bsn14mq55f2my" path="res://inventory/stinky_fly.png" id="2_6yq5h"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_tdj0d")
+name = "stinky_fly"
+texture = ExtResource("2_6yq5h")
+metadata/_custom_type_script = "uid://3tvxh44mg67g"

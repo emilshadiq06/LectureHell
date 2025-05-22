@@ -8,6 +8,7 @@ var last_keycode = 0
 var direction : Vector2 = Vector2.ZERO
 var cardinal_direction : Vector2 = Vector2.DOWN
 var run: int = 1
+@export var inv :Inv
 @onready var skill = $skill
 @onready var stats = $stats
 @onready var animation_player : AnimationPlayer= $AnimationPlayer
@@ -100,3 +101,6 @@ func AnimDirect() -> String:
 		return "up"
 	else:
 		return "side"
+
+func collect_item(item:InvItem):
+	inv.insert(item)

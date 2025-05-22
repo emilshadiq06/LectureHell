@@ -1,5 +1,6 @@
 extends Node2D
 #signal return_battle
+
 var parameters: Dictionary
 var win : bool = false
 var lose : bool = false

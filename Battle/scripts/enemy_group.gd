@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 
 
 			
-	if action_queue.size() == players.size() and not is_battling:
+	if action_queue.size() >= players.size() and not is_battling:
 			is_battling = true
 			_action(action_queue) 
 		
@@ -161,7 +161,7 @@ func _on_normal_attack_pressed() -> void:
 
 func _on_critical_attack_pressed() -> void:
 	if players[player_group.index].pp >= 10:
-		print(players[player_group.index].pp)
+		#print(players[player_group.index].pp)
 		attkChoice.hide()
 		_start_choosing()
 		crit = true

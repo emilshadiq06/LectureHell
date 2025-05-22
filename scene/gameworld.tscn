@@ -52,6 +52,7 @@ position = Vector2(309, 121)
 scale = Vector2(1.9471, 1.7397)
 
 [node name="weapon+" type="Area2D" parent="."]
+visible = false
 script = ExtResource("6_vk3vl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapon+"]
@@ -67,6 +68,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "change weapon +1"
 
 [node name="weapon-" type="Area2D" parent="."]
+visible = false
 script = ExtResource("6_vk3vl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapon-"]
@@ -82,6 +84,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "change weapon -1"
 
 [node name="change_skill" type="Area2D" parent="."]
+visible = false
 script = ExtResource("7_380ub")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="change_skill"]

@@ -47,7 +47,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		StatLoader.previous_scene = get_parent().scene_file_path
 		StatLoader.previous_position =body.global_position
 		#StatLoader.dead_array.push_back(self)
-		print(StatLoader.dead_array)
+		#print(StatLoader.dead_array)
 		#print(StatLoader.previous_scene)
 		#print(StatLoader.return_skill().get_skill_effects())
 		

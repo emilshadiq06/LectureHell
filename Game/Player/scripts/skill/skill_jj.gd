@@ -1,5 +1,6 @@
 extends skills
 var enemies
+var dancer : int
 var players
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,18 +11,20 @@ func _ready() -> void:
 	skill_desc = "taunt enemies to raise attack damage dealt but also raise incoming damage too"
 	dmg_multiplier_attack = 20
 	
-	dmg_multiplier_received= 1.25
+	dmg_multiplier_received= 1.5
 	turns_duration = 3
-	cooldown += 1
+	cooldown = 4
 	
 	pass
 
 #what happens when player enters state
 func Enter() ->void:
+	
 	enemies = $"../../EnemyGroup"
 	players = $"../../PlayerGroup"
 	enemies.damage_multiplier *= dmg_multiplier_attack
 	players.play_dance()
+	dancer = players.index
 	enemies.emit_signal("next_player")
 	enemies.action_queue.push_back("null")
 	if enemies.action_queue.size() < players.players.size():
@@ -31,7 +34,8 @@ func Enter() ->void:
 #what happens when player enters state
 func Exit() ->void:
 	enemies.damage_multiplier /= dmg_multiplier_attack
-	players.stop_anim()
+	#print("i cant stop")
+	players.stop_anim(dancer)
 	pass
 	
 #what happens during process in state

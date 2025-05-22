@@ -1,4 +1,5 @@
 extends Node
+
 var index : int = 0
 var players: Array = []
 @onready var enemies = $"../EnemyGroup"
@@ -16,17 +17,14 @@ func _ready() -> void:
 	for i in range(players.size()):
 		players[i].position =  Vector2(0,100*i)
 		effect_array.push_back(players[i].get_node("skill"))
-		print(players[i].get_node("skill").skill_name)
-		
-		#print(players[i].get_node("skill").new_skill.get_skill_effects())
-
+		#print(players[i].get_node("skill").skill_name)
 		
 	skill_button = Button.new()
 	skill_button.pressed.connect(_skill_button_pressed)
 #print(effect_array)
-
-
 	players[0]._focus()
+
+
 func add_character():
 	
 	var new_char = get_node("Character").duplicate()
@@ -50,10 +48,12 @@ func _on_enemy_group_next_player() -> void:
 
 	else:
 		index = 0
+		
 		switch_focus(index,players.size()-1)
 
 	
 func switch_focus(x,y):
+	
 	players[x]._focus()
 	players[y]._unfocus()
 
@@ -86,7 +86,7 @@ func _on_act_pressed() -> void:
 	
 	
 	skill_button.text = effect_array[index].get_skill_effects()[0]
-	actChoice.add_child(skill_button)
+	actChoice.get_child(0).add_child(skill_button)
 	actChoice.show()
 
 
@@ -96,10 +96,11 @@ func _on_back_pressed() -> void:
 	actChoice.hide()
 
 func play_dance():
+	
 	players[index]._play_animation("dance")
 
-func stop_anim():
-	players[index]._stop_animation()
+func stop_anim(i):
+	players[i]._stop_animation()
 
 
 func _on_brace_pressed() -> void:
@@ -117,7 +118,7 @@ func _on_enemy_group_start_turn() -> void:
 	#print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
 	#print(enemies.action_queue)
 	for i in players:
-		
+		i.take_damage(1)
 		i.take_stamina(-2)
-		print("herhh")
-		print(i.pp)
+		#print("herhh")
+	#	print(i.pp)

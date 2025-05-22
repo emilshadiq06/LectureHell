@@ -42,7 +42,9 @@ func _update_progress_bar():
 	progress_bar.value = (hp)
 
 func _play_animation(anim: String):
+	#var current_anim = animation_player.current_animation
 	animation_player.play(anim)
+#	animation_player.play(current_anim)
 
 func _focus():
 	focus.show()

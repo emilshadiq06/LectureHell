@@ -36,17 +36,27 @@ func DoEffect():
 		if i.turn == i.turns_duration:
 
 			i.Exit()
+		
 		if i.turn > i.cooldown:
-			print(skill_increment)
+			#print(skill)
 			i.turn = 0
 			skill.erase(i)
-			origin.remove_at(skill_increment)
+			origin.pop_at(skill_increment)
 			remove_child(i)
 		i.turn += 1
 		skill_increment += 1
+		
 	
 
 
 func _on_enemy_group_start_turn() -> void:
 	if skill.size()>0 and started:
 		DoEffect()
+
+
+func _on_enemy_group_next_player() -> void:
+	if skill.size()>0 and started:
+		for i in skill:
+			if i.turn < i.turns_duration and i.turn > 0 and enemies.action_queue.size()<players.players.size():
+				i.Process()
+		print(enemies.action_queue)

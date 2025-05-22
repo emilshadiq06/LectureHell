@@ -8,7 +8,7 @@ func _ready() -> void:
 	skill_name = "nap"
 	skill_desc = "take a nap to regen health, but unable to make a move"
 	hp_regen = 5
-	turns_duration = 3
+	turns_duration = 4
 	cooldown += 2
 	
 	pass
@@ -34,13 +34,14 @@ func Exit() ->void:
 	
 #what happens during process in state
 func Process():
-	players.players[sleeping_player].hp += hp_regen
-	if players.index == sleeping_player:
 		
-		enemies.emit_signal("next_player")
+	if players.index == sleeping_player and enemies.action_queue.size() < players.index + 1:
+		players.players[sleeping_player].hp += hp_regen
+		if players.players.size() > 1:
+			enemies.emit_signal("next_player")
 		enemies.action_queue.push_back("null")
 	if enemies.action_queue.size() < players.players.size():
 		enemies.show_choice()
-		print(enemies.action_queue)
-		print("honkshooo mmimimimi")
+		#print(enemies.action_queue)
+		#print("honkshooo mmimimimi")
 	return null
