@@ -26,10 +26,10 @@ scale = Vector2(3.55443, 3.60143)
 
 [node name="choices" type="VBoxContainer" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = -22.5071
-offset_top = 31.3764
-offset_right = 32.4929
-offset_bottom = 97.3764
+offset_left = -40.0
+offset_top = 40.0
+offset_right = 15.0
+offset_bottom = 135.0
 scale = Vector2(0.373551, 0.271925)
 
 [node name="Label" type="Label" parent="NinePatchRect/choices"]
@@ -87,4 +87,5 @@ layout_mode = 2
 [node name="inv_slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
 
+[connection signal="pressed" from="NinePatchRect/choices/use" to="." method="_on_use_pressed"]
 [connection signal="pressed" from="NinePatchRect/choices/throw" to="." method="_on_throw_pressed"]

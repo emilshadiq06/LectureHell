@@ -6,6 +6,6 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_tdj0d")
-name = "stinky_fly"
+name = "stinkyFly"
 texture = ExtResource("2_6yq5h")
 metadata/_custom_type_script = "uid://3tvxh44mg67g"

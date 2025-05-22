@@ -3,6 +3,7 @@ class_name Inv
 signal update
 @export var items : Array[InvItem]
 
+var scene : String
 func insert(item: InvItem):
 	var empty_index : int = 0
 	#print("add")
@@ -19,14 +20,22 @@ func insert(item: InvItem):
 	print(items)
 	update.emit()
 
-func throw(index:int,item):
+func throw(index:int,item:InvItem):
 	if items[index] == item:
 		items[index] = null
 		print(items)
 		print(items.size())
 	update.emit()
+	
+func use(index:int,item:InvItem,target:Node):
+	if items[index] == item:
+		item.use(target)
+	if item is consumable and item.lose_on_use:
+		item.item_used.connect(on_item_used) #inv.update.connect(update_slots)
+		throw(index,item)
 
-func clear():
-	for i in range(items.size()):
-		if items[i] != null and items[i].name == "":
-			items[i]=null
+
+	update.emit()
+	
+func on_item_used(itemUsed:InvItem,used:bool):
+	pass

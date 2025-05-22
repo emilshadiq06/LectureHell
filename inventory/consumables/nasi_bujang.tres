@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="consumable" load_steps=3 format=3 uid="uid://cugngsxc1vyxp"]
+
+[ext_resource type="Script" uid="uid://c5mufo0u4vd54" path="res://consumable.gd" id="1_y11lg"]
+[ext_resource type="Texture2D" uid="uid://c87x5o3cyvu6f" path="res://inventory/nasi_bujang.png" id="2_7eq2s"]
+
+[resource]
+script = ExtResource("1_y11lg")
+lose_on_use = true
+hp_regen = 4
+pp_regen = 4
+name = "nasi bujang"
+texture = ExtResource("2_7eq2s")
+metadata/_custom_type_script = "uid://c5mufo0u4vd54"

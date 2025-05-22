@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
 [ext_resource type="Script" uid="uid://1rwhud8vnync" path="res://Game/Enemy/scripts/stats.gd" id="10_yq8tf"]
 [ext_resource type="Script" uid="uid://diij37k1m8hxh" path="res://Game/Player/add_player_group.gd" id="11_ym5sv"]
-[ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/stinkyFly_item.tres" id="12_sng2h"]
+[ext_resource type="Resource" uid="uid://cugngsxc1vyxp" path="res://inventory/consumables/nasi_bujang.tres" id="12_sng2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
 size = Vector2(253, 100.5)

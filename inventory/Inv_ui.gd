@@ -62,3 +62,12 @@ func _on_throw_pressed() -> void:
 		inv.throw(selected_items,inv.items[selected_items])
 		selected_items = 999
 	
+
+
+func _on_use_pressed() -> void:
+	if selected_items < 12:
+		var target =get_parent().get_node("stats")
+		slots[selected_items].is_interacted = false
+		slots[selected_items].toggle = false
+		inv.use(selected_items,inv.items[selected_items],target)
+		selected_items = 999

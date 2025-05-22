@@ -83,12 +83,8 @@ func SetDirection() -> bool:
 	
 func get_stats():
 
-	var hp = stats.hp
-	var weapon = stats.weapon
-	var pp = stats.pp
-	var money = stats.money
-	var inventory = stats.inventory
-	return [hp,weapon,pp,money,inventory]
+
+	return [stats.hp, stats.weapon, stats.pp, stats.pp ,stats.max_hp ,stats.money, stats.inventory]
 	
 func UpdateAnimation(state : String) -> void:
 	animation_player.play(state + "_" + AnimDirect())

@@ -118,7 +118,8 @@ func _on_enemy_group_start_turn() -> void:
 	#print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
 	#print(enemies.action_queue)
 	for i in players:
-		i.take_damage(1)
+		if i.hp > i.MAX_HP:
+			i.take_damage(int((i.hp-i.MAX_HP)*0.25))
 		i.take_stamina(-2)
 		#print("herhh")
 	#	print(i.pp)

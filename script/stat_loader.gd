@@ -2,6 +2,7 @@ extends Node
 var skill_node
 var dead_array : Array
 var take_damage: int
+var max_hp : int
 var hp : int
 var pp : int
 var money : int
@@ -19,10 +20,11 @@ func get_stats_player(target_body):
 	
 	money = target_body[3]
 	inventory = target_body[4]
+	max_hp = target_body[5]
 
 func return_stats():
-	print([hp,weapon,pp,inventory,money])
-	return [hp,weapon,pp,inventory,money]
+	print([hp,weapon,pp,inventory,money,max_hp])
+	return [hp,weapon,pp,inventory,money,max_hp]
 	
 func get_skill(target_node:Node):
 	

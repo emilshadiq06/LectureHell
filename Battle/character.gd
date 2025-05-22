@@ -31,6 +31,8 @@ func _ready() -> void:
 func set_stats(stats):
 	hp = stats[0]
 	MAX_HP = stats[0]
+	if get_parent().name == "PlayerGroup":
+		MAX_HP = stats[5]
 
 	weapon = stats[1]
 	pp = stats[2]
