@@ -14,13 +14,14 @@ var was_just_inBattle: bool =  false
 var previous_position : Vector2
 
 func get_stats_player(target_body):
+	# [stats.hp, stats.weapon, stats.pp, stats.pp ,stats.max_hp ,stats.money, stats.inventory]
 	hp = target_body[0]
 	weapon = target_body[1]
 	pp = target_body[2]
 	
-	money = target_body[3]
-	inventory = target_body[4]
-	max_hp = target_body[5]
+	money = target_body[5]
+	#inventory = target_body[4]
+	max_hp = target_body[4]
 
 func return_stats():
 	print([hp,weapon,pp,inventory,money,max_hp])

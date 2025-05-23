@@ -20,7 +20,7 @@ script = ExtResource("1_62wf1")
 layout_mode = 0
 offset_left = 522.0
 offset_top = 7.0
-offset_right = 604.0
+offset_right = 635.0
 offset_bottom = 83.0
 scale = Vector2(3.55443, 3.60143)
 
@@ -41,7 +41,7 @@ text = "use"
 
 [node name="throw" type="Button" parent="NinePatchRect/choices"]
 layout_mode = 2
-text = "throw"
+text = "remove"
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
 layout_mode = 0
@@ -85,6 +85,20 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="inv_slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 81.8697
+offset_top = 9.44069
+offset_right = 98.8697
+offset_bottom = 68.4407
+scale = Vector2(1.61055, 1.66233)
+
+[node name="inv_slot" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+
+[node name="inv_slot2" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
 
 [connection signal="pressed" from="NinePatchRect/choices/use" to="." method="_on_use_pressed"]

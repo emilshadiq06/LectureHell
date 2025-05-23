@@ -167,6 +167,18 @@ wall_min_slide_angle = 0.174533
 script = ExtResource("1_s3asc")
 inv = ExtResource("2_db2hk")
 
+[node name="RichTextLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_bottom = 1.916
+offset_left = 498.0
+offset_top = 273.0
+offset_right = 564.0
+offset_bottom = 322.0
+scale = Vector2(1.75902, 1.47685)
+theme_override_colors/font_color = Color(0.828095, 0.671393, 0.317466, 1)
+text = "$ 0
+"
+
 [node name="inventory" parent="." instance=ExtResource("9_4ddeg")]
 anchors_preset = -1
 anchor_left = -0.512

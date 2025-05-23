@@ -19,7 +19,8 @@ func update_stats():
 
 func addhealth(hp_regen,pp_regen):
 	StatLoader.hp += hp_regen
-	StatLoader.pp += pp_regen
+	if (StatLoader.pp + pp_regen) < (40):
+		StatLoader.pp += pp_regen
 	update_stats()
 	print(hp)
 	
