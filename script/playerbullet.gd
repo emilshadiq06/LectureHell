@@ -23,7 +23,6 @@ func _ready() -> void:
 	health_system.died.connect(on_died)
 	
 
-
 func _process(delta: float) -> void:
 	var next_position = position + direction * speed * delta
 	if !is_within_screen_bounds(next_position):

@@ -42,8 +42,9 @@ func get_vertical_position(x_position: float, delta: float):
 			return 0
 			
 
-
-
-
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
+	
+func _on_area_entered(area):
+	area.queue_free()
 	queue_free()

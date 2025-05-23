@@ -52,12 +52,16 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	set_collision_layer_value(2, false)
-	shooting_system.stop()
-	set_process(false)
-	animated_sprite_2d.play("die")
-	killed.emit()
-	area.queue_free()
-	queue_free()
+	if area is Projectile:
+		set_collision_layer_value(2, false)
+		shooting_system.stop()
+		set_process(false)
+		animated_sprite_2d.play("die")
+		killed.emit()
+		area.queue_free()
+		queue_free()
+		
+		
+
 
 	
