@@ -77,3 +77,7 @@ func AnimDirect() -> String:
 		return "up"
 	else:
 		return "side"
+
+
+func _on_portal_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

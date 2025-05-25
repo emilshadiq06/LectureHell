@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b24hj8swj33e1"]
+[gd_scene load_steps=12 format=3 uid="uid://b24hj8swj33e1"]
 
-[ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="1_s65we"]
-[ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="2_l0wej"]
-[ext_resource type="Texture2D" uid="uid://bigdrdqoqmmk1" path="res://map/32x32/HKU tileset.png" id="3_d0mg7"]
-[ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="4_l0wej"]
+[ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="1_vcd8o"]
+[ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="2_n8qtl"]
+[ext_resource type="Texture2D" uid="uid://bigdrdqoqmmk1" path="res://map/32x32/HKU tileset.png" id="3_xy65r"]
+[ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="4_gkad8"]
+[ext_resource type="Script" uid="uid://btq0f56iqlbgg" path="res://script/portal.gd" id="5_n8qtl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pltrj"]
-texture = ExtResource("1_s65we")
+texture = ExtResource("1_vcd8o")
 2:1/0 = 0
 3:1/0 = 0
 4:1/0 = 0
@@ -3648,7 +3649,7 @@ texture = ExtResource("1_s65we")
 11:71/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6ys6"]
-texture = ExtResource("2_l0wej")
+texture = ExtResource("2_n8qtl")
 11:0/0 = 0
 12:0/0 = 0
 15:0/0 = 0
@@ -4564,7 +4565,7 @@ texture = ExtResource("2_l0wej")
 19:41/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wah0k"]
-texture = ExtResource("3_d0mg7")
+texture = ExtResource("3_xy65r")
 1:1/0 = 0
 2:1/0 = 0
 4:1/0 = 0
@@ -5273,6 +5274,12 @@ sources/0 = SubResource("TileSetAtlasSource_pltrj")
 sources/1 = SubResource("TileSetAtlasSource_n6ys6")
 sources/2 = SubResource("TileSetAtlasSource_wah0k")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy65r"]
+size = Vector2(162, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8qtl"]
+size = Vector2(72, 95)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5285,5 +5292,28 @@ layer_1/tile_data = PackedInt32Array(1114158, 65538, 20, 1179694, 65538, 21, 124
 layer_2/name = "Layer2"
 layer_2/tile_data = PackedInt32Array(1966085, 1376258, 10, 2031621, 1376258, 11, 2097157, 1376258, 12, 2031622, 1441794, 11, 2097158, 1441794, 12, 2031623, 1507330, 11, 2097159, 1507330, 12, 1966088, 1572866, 10, 2031624, 1572866, 11, 2097160, 1572866, 12, 1966095, 1376258, 10, 2031631, 1376258, 11, 2097167, 1376258, 12, 2031632, 1441794, 11, 2097168, 1441794, 12, 2031633, 1507330, 11, 2097169, 1507330, 12, 1966098, 1572866, 10, 2031634, 1572866, 11, 2097170, 1572866, 12, 2424847, 1376258, 10, 2490383, 1376258, 11, 2555919, 1376258, 12, 2490384, 1441794, 11, 2555920, 1441794, 12, 2490385, 1507330, 11, 2555921, 1507330, 12, 2424850, 1572866, 10, 2490386, 1572866, 11, 2555922, 1572866, 12, 2424837, 1376258, 10, 2490373, 1376258, 11, 2555909, 1376258, 12, 2490374, 1441794, 11, 2555910, 1441794, 12, 2490375, 1507330, 11, 2555911, 1507330, 12, 2424840, 1572866, 10, 2490376, 1572866, 11, 2555912, 1572866, 12, 1114158, 1310720, 94, 1179694, 1310720, 95, 1179695, 1376256, 95, 1114160, 1441792, 94, 1179696, 1441792, 95, 1114161, 1507328, 94, 1179697, 1507328, 95, 1114162, 1310720, 94, 1179698, 1310720, 95, 1179699, 1376256, 95, 1114164, 1441792, 94, 1179700, 1441792, 95, 1114165, 1507328, 94, 1179701, 1507328, 95, 1114166, 1310720, 94, 1179702, 1310720, 95, 1179703, 1376256, 95, 1114168, 1441792, 94, 1179704, 1441792, 95, 1114169, 1507328, 94, 1179705, 1507328, 95, 1114170, 1310720, 94, 1179706, 1310720, 95, 1179707, 1376256, 95, 1114172, 1441792, 94, 1179708, 1441792, 95, 1114173, 1507328, 94, 1179709, 1507328, 95, 131110, 1310720, 94, 196646, 1310720, 95, 196647, 1376256, 95, 131112, 1441792, 94, 196648, 1441792, 95, 131113, 1310720, 94, 196649, 1310720, 95, 196650, 1376256, 95, 131115, 1441792, 94, 196651, 1441792, 95, 131116, 1507328, 94, 196652, 1507328, 95, 131122, 1310720, 94, 196658, 1310720, 95, 196659, 1376256, 95, 131124, 1441792, 94, 196660, 1441792, 95, 131125, 1310720, 94, 196661, 1310720, 95, 196662, 1376256, 95, 131127, 1441792, 94, 196663, 1441792, 95, 131128, 1507328, 94, 196664, 1507328, 95, 131134, 1310720, 94, 196670, 1310720, 95, 196671, 1376256, 95, 131136, 1441792, 94, 196672, 1441792, 95, 131137, 1310720, 94, 196673, 1310720, 95, 196674, 1376256, 95, 131139, 1441792, 94, 196675, 1441792, 95, 131140, 1507328, 94, 196676, 1507328, 95, 1900568, 1376258, 10, 1966104, 1376258, 11, 2031640, 1376258, 12, 1966105, 1441794, 11, 2031641, 1441794, 12, 1966106, 1507330, 11, 2031642, 1507330, 12, 1900571, 1572866, 10, 1966107, 1572866, 11, 2031643, 1572866, 12, 2162712, 1376258, 10, 2228248, 1376258, 11, 2293784, 1376258, 12, 2228249, 1441794, 11, 2293785, 1441794, 12, 2228250, 1507330, 11, 2293786, 1507330, 12, 2162715, 1572866, 10, 2228251, 1572866, 11, 2293787, 1572866, 12, 1900574, 1376258, 10, 1966110, 1376258, 11, 2031646, 1376258, 12, 1966111, 1441794, 11, 2031647, 1441794, 12, 1966112, 1507330, 11, 2031648, 1507330, 12, 1900577, 1572866, 10, 1966113, 1572866, 11, 2031649, 1572866, 12, 2162718, 1376258, 10, 2228254, 1376258, 11, 2293790, 1376258, 12, 2228255, 1441794, 11, 2293791, 1441794, 12, 2228256, 1507330, 11, 2293792, 1507330, 12, 2162721, 1572866, 10, 2228257, 1572866, 11, 2293793, 1572866, 12, 2490392, 1376258, 10, 2555928, 1376258, 11, 2621464, 1376258, 12, 2555929, 1441794, 11, 2621465, 1441794, 12, 2555930, 1507330, 11, 2621466, 1507330, 12, 2490395, 1572866, 10, 2555931, 1572866, 11, 2621467, 1572866, 12, 2490398, 1376258, 10, 2555934, 1376258, 11, 2621470, 1376258, 12, 2555935, 1441794, 11, 2621471, 1441794, 12, 2555936, 1507330, 11, 2621472, 1507330, 12, 2490401, 1572866, 10, 2555937, 1572866, 11, 2621473, 1572866, 12)
 
-[node name="Player2" parent="." instance=ExtResource("4_l0wej")]
-position = Vector2(272, 36)
+[node name="Player2" parent="." instance=ExtResource("4_gkad8")]
+position = Vector2(271, 120)
+
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2(241, 42)
+script = ExtResource("5_n8qtl")
+connected_scene = "gameworld"
+metadata/_custom_type_script = "uid://btq0f56iqlbgg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(31, 4)
+shape = SubResource("RectangleShape2D_xy65r")
+
+[node name="Portal2" type="Area2D" parent="."]
+position = Vector2(1180, 150)
+script = ExtResource("5_n8qtl")
+connected_scene = "hallway"
+metadata/_custom_type_script = "uid://btq0f56iqlbgg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal2"]
+position = Vector2(13, -1)
+shape = SubResource("RectangleShape2D_n8qtl")
+
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]
