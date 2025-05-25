@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp4efdxwwk5q0"]
+
+[ext_resource type="Script" uid="uid://ccwovdqgtjj0d" path="res://scene/shop/vending.gd" id="1_6lah5"]
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="2_gmb2m"]
+[ext_resource type="Resource" uid="uid://bnvvcja800qer" path="res://inventory/item/expendable/pipe_bomb.tres" id="3_8kdgp"]
+[ext_resource type="Script" uid="uid://c0gxfjuv2prb7" path="res://scene/shop/buy_item.gd" id="4_myf4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63w8i"]
+size = Vector2(68.1875, 29.5)
+
+[node name="shop" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 0
+script = ExtResource("1_6lah5")
+shop_items = Array[ExtResource("2_gmb2m")]([ExtResource("3_8kdgp")])
+shop_prices = Array[float]([49.9])
+metadata/_custom_type_script = "uid://ccwovdqgtjj0d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(562.906, -4)
+shape = SubResource("RectangleShape2D_63w8i")
+
+[node name="buy" type="Button" parent="."]
+visible = false
+offset_left = 593.0
+offset_top = -14.0
+offset_right = 643.0
+offset_bottom = 18.0
+text = "buy
+"
+
+[node name="scroll" type="ScrollContainer" parent="."]
+anchors_preset = -1
+offset_left = 647.0
+offset_top = -13.0
+offset_right = 754.0
+offset_bottom = 194.0
+scale = Vector2(0.951881, 0.999026)
+pivot_offset = Vector2(146, -2)
+size_flags_horizontal = 8
+scroll_vertical_custom_step = 20.0
+horizontal_scroll_mode = 0
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="scroll"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="buy_item" type="Button" parent="scroll/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_myf4l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="pressed" from="buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="scroll/VBoxContainer/buy_item" to="scroll/VBoxContainer/buy_item" method="_on_pressed"]

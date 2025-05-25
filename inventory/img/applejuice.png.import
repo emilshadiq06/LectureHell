@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c87x5o3cyvu6f"
-path="res://.godot/imported/nasi_bujang.png-4fd2bce6a405bc66b73b0a6fdbd92723.ctex"
+uid="uid://c416lykk3k8dk"
+path="res://.godot/imported/applejuice.png-bf0e0b379780165f9ac4ff1cb3063970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inventory/nasi_bujang.png"
-dest_files=["res://.godot/imported/nasi_bujang.png-4fd2bce6a405bc66b73b0a6fdbd92723.ctex"]
+source_file="res://inventory/img/applejuice.png"
+dest_files=["res://.godot/imported/applejuice.png-bf0e0b379780165f9ac4ff1cb3063970.ctex"]
 
 [params]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://caa083s2eik2m"]
+[gd_scene load_steps=21 format=3 uid="uid://caa083s2eik2m"]
 
 [ext_resource type="Script" uid="uid://cswh4ywd7ol04" path="res://Battle/character.gd" id="1_fssi7"]
 [ext_resource type="Texture2D" uid="uid://c53o36880a6r4" path="res://Battle/sprites/NakedBushMan.png" id="1_xuk3e"]
 [ext_resource type="Texture2D" uid="uid://bdm1ch7nbm5o1" path="res://Battle/sprites/pick.png" id="2_fssi7"]
+[ext_resource type="Texture2D" uid="uid://b7834ce0m5c3v" path="res://Game/Player/sprites/explode.png" id="4_ghpu6"]
 
 [sub_resource type="Animation" id="Animation_fssi7"]
 length = 0.001
@@ -95,6 +96,96 @@ _data = {
 &"hurt": SubResource("Animation_xuk3e")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8603"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(4, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a2yd"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(43, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3par5"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(82, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ohv6"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(121, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o65hg"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(160, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3er0s"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(199, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ds6r"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(238, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fjt1"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(277, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okxm1"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(316, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mptn"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(355, 0, 39, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k0eo"]
+atlas = ExtResource("4_ghpu6")
+region = Rect2(394, 0, 39, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swf0q"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8603")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a2yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3par5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ohv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o65hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3er0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ds6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fjt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okxm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mptn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k0eo")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}]
+
 [node name="Character" type="CharacterBody2D"]
 position = Vector2(83, 122)
 script = ExtResource("1_fssi7")
@@ -115,9 +206,25 @@ position = Vector2(-35, -2)
 texture = ExtResource("2_fssi7")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -3.0
-offset_top = 8.0
-offset_right = 1.0
+z_index = 3
+custom_minimum_size = Vector2(200, 40)
+offset_left = -28.0
+offset_top = 30.0
+offset_right = 1239.0
+offset_bottom = 70.0
+scale = Vector2(0.0615299, 0.307997)
+allow_greater = true
+show_percentage = false
+
+[node name="HP" type="Label" parent="."]
+offset_left = -23.0
+offset_top = 12.0
+offset_right = 17.0
 offset_bottom = 35.0
-value = 100.0
-metadata/_edit_use_anchors_ = true
+scale = Vector2(0.694852, 0.782192)
+text = "HP"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -21)
+sprite_frames = SubResource("SpriteFrames_swf0q")
+speed_scale = 4.0

@@ -15,7 +15,7 @@ func _ready() -> void:
 	
 	for i in balls.size()-1:
 		var displace = choose_randomly([0,0.5,0.75])
-		balls[i].position.x = (-300 * (i)) +( -400 * displace)
+		balls[i].position.x = 200 + (-300 * (i)) +( -300 * displace)
 
 	
 func add_ball(ball_added: int):
@@ -23,7 +23,12 @@ func add_ball(ball_added: int):
 		newball = get_node("Ball2").duplicate()
 
 		add_child(newball)
-
+func ball_speed(speed:float):
+	balls = get_children()
+	for i in balls:
+		i.speed = speed
+		#print("here")
+		#print(i.speed)
 		
 func choose_randomly(list_of_entries):
 	return list_of_entries[randi() % list_of_entries.size()]

@@ -25,17 +25,24 @@ func Enter() ->void:
 	enemies.damage_multiplier *= dmg_multiplier_attack
 	players.play_dance()
 	dancer = players.index
-	enemies.emit_signal("next_player")
-	enemies.action_queue.push_back("null")
-	if enemies.action_queue.size() < players.players.size():
-		enemies.show_choice()
+	players._on_brace_pressed()
+	#enemies.emit_signal("next_player")
+	#enemies.action_queue.push_back("null")
+#	if enemies.action_queue.size() < players.players.size():
+		#enemies.show_choice()
+	var sfx = load("res://sounds/Maimunah.mp3")
+	$"../../AudioStreamPlayer2D".stream = sfx
+	$"../../AudioStreamPlayer2D".play()
 	pass
 	
 #what happens when player enters state
 func Exit() ->void:
 	enemies.damage_multiplier /= dmg_multiplier_attack
 	#print("i cant stop")
+	
 	players.stop_anim(dancer)
+	players.players[dancer].sprite.set_frame(15)
+	
 	pass
 	
 #what happens during process in state

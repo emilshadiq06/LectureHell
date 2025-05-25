@@ -35,7 +35,7 @@ position = Vector2(3, 2)
 script = ExtResource("1_8h2au")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(504, 92)
+position = Vector2(877, 123)
 script = ExtResource("1_01ko7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

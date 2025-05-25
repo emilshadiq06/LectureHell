@@ -21,10 +21,14 @@ func Enter() ->void:
 	#print(enemies.action_queue)
 	#print("mmimimimi")
 	players.players[sleeping_player].sprite.rotation_degrees += 90
-	enemies.emit_signal("next_player")
-	enemies.action_queue.push_back("null")
-	if enemies.action_queue.size() < players.players.size():
-		enemies.show_choice()
+	players._on_brace_pressed()
+	#enemies.emit_signal("next_player")
+	#enemies.action_queue.push_back("null")
+	#if enemies.action_queue.size() < players.players.size():
+	#	enemies.show_choice()
+	var sfx = load("res://sounds/sleeping.mp3")
+	$"../../AudioStreamPlayer2D".stream = sfx
+	$"../../AudioStreamPlayer2D".play()
 	pass
 	
 #what happens when player enters state
@@ -34,14 +38,18 @@ func Exit() ->void:
 	
 #what happens during process in state
 func Process():
-		
-	if players.index == sleeping_player and enemies.action_queue.size() < players.index + 1:
+	var sfx = load("res://sounds/sleeping.mp3")
+	$"../../AudioStreamPlayer2D".stream = sfx
+	$"../../AudioStreamPlayer2D".play()
+	$"../../AudioStreamPlayer2D".play()
+	if players.index == sleeping_player: # and enemies.action_queue.size() < players.index + 1:
 		players.players[sleeping_player].hp += hp_regen
-		if players.players.size() > 1:
-			enemies.emit_signal("next_player")
-		enemies.action_queue.push_back("null")
-	if enemies.action_queue.size() < players.players.size():
-		enemies.show_choice()
+		players._on_brace_pressed()
+		#if players.players.size() > 1:
+		#	enemies.emit_signal("next_player")
+		#enemies.action_queue.push_back("null")
+	#if enemies.action_queue.size() < players.players.size():
+		#enemies.show_choice()
 		#print(enemies.action_queue)
 		#print("honkshooo mmimimimi")
 	return null

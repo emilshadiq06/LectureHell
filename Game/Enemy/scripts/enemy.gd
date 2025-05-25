@@ -2,6 +2,7 @@ class_name Enemy extends CharacterBody2D
 @onready var player = get_node("../Player")
 @onready var state_machine  = $EnemyStateMachine
 @onready var fight = preload("res://Battle/battle.tscn").instantiate()
+@export var stats : stat
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
@@ -41,8 +42,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		#print("herre")
 		#print(body.get_stats())
 		get_whole_group_player()
-		StatLoader.get_stats_player(body.get_stats())
-		player_Battle.set_stats(body.get_stats())
+		#StatLoader.get_stats_player(body.get_stats())
+		player_Battle.set_stats(body.stats)
 		StatLoader.get_skill(body.get_node("skill"))
 		StatLoader.previous_scene = get_parent().scene_file_path
 		StatLoader.previous_position =body.global_position
@@ -65,18 +66,19 @@ func get_whole_group(group):
 		for i in range(get_tree().get_nodes_in_group(group).size()):
 			StatLoader.dead_array.push_back((get_tree().get_nodes_in_group(group)[i]).name)
 			enemy_Battle.add_character()
-			if get_tree().get_nodes_in_group(group)[i].find_child("stats"):
+			#if get_tree().get_nodes_in_group(group)[i].find_child("stats"):
 				
-				var enemyGroup_Battle = fight.get_node("EnemyGroup").get_child(i +1).set_stats(get_tree().get_nodes_in_group(group)[i].get_node("stats").get_stats())
+			var enemyGroup_Battle = fight.get_node("EnemyGroup").get_child(i +1).set_stats(get_tree().get_nodes_in_group(group)[i].stats)
 	else:
 		StatLoader.dead_array.push_back(self.name)
 		enemy_Battle.add_character()
+		var enemyGroup_Battle = fight.get_node("EnemyGroup").get_child(1).set_stats(stats)
 			
 func get_whole_group_player():
 	for i in range(StatLoader.player_group.size()):
 		var player_inBattle = fight.get_node("PlayerGroup")
 		player_inBattle.add_character()
-		player_inBattle.get_child(i+1).set_stats(StatLoader.player_group[i].get_node("stats").get_stats())
+		player_inBattle.get_child(i+1).set_stats(StatLoader.player_group[i].stats)
 		player_inBattle.get_child(i+1).get_node("skill").set_script(StatLoader.player_group[i].get_node("skill").get_script())
 		
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="consumable" load_steps=3 format=3 uid="uid://dkuv2qj38lp56"]
+
+[ext_resource type="Script" uid="uid://c5mufo0u4vd54" path="res://inventory/item/consumables/consumable.gd" id="1_68yr5"]
+[ext_resource type="Texture2D" uid="uid://c416lykk3k8dk" path="res://inventory/img/applejuice.png" id="2_bgko8"]
+
+[resource]
+script = ExtResource("1_68yr5")
+lose_on_use = true
+hp_regen = 5
+pp_regen = 0
+bites = 0
+name = "apple juice"
+texture = ExtResource("2_bgko8")
+metadata/_custom_type_script = "uid://c5mufo0u4vd54"

@@ -2,7 +2,7 @@ extends AnimatableBody2D
 @onready var balls = $".."
 @onready var animated_sprite = $AnimatedSprite
 var left = false
-
+var speed : float = 1
 var inside = false
 var slow = 1
 var start_move = false
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	
 	if start_move == true:
 		
-		position.x = position.x + 24*  slow *3 /(balls.balls.size()+1)
+		position.x = position.x + 24* speed *  slow *3 /(balls.balls.size()+1)
 	
 		
 	

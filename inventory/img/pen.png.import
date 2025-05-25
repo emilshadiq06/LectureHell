@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsn14mq55f2my"
-path="res://.godot/imported/stinky_fly.png-63e909f8a78ccb6ec4b438f666d38d1f.ctex"
+uid="uid://nbbui6udw81g"
+path="res://.godot/imported/pen.png-60ccdc4429da04bc2c74613d28e2801e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inventory/stinky_fly.png"
-dest_files=["res://.godot/imported/stinky_fly.png-63e909f8a78ccb6ec4b438f666d38d1f.ctex"]
+source_file="res://inventory/img/pen.png"
+dest_files=["res://.godot/imported/pen.png-60ccdc4429da04bc2c74613d28e2801e.ctex"]
 
 [params]
 

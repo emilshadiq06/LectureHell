@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="6_xlg7c"]
 [ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="7_qpk70"]
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
-[ext_resource type="Script" uid="uid://1rwhud8vnync" path="res://Game/Enemy/scripts/stats.gd" id="10_yq8tf"]
+[ext_resource type="Resource" uid="uid://cgcohqreyjngq" path="res://Game/enemy_stat1.tres" id="10_sng2h"]
 [ext_resource type="Script" uid="uid://diij37k1m8hxh" path="res://Game/Player/add_player_group.gd" id="11_ym5sv"]
-[ext_resource type="Resource" uid="uid://cugngsxc1vyxp" path="res://inventory/consumables/nasi_bujang.tres" id="12_sng2h"]
+[ext_resource type="Resource" uid="uid://cugngsxc1vyxp" path="res://inventory/item/consumables/nasi_bujang.tres" id="12_sng2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
 size = Vector2(253, 100.5)
@@ -83,17 +83,17 @@ visible = false
 [node name="Enemy2" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
 position = Vector2(-293, -266)
 collision_mask = 17
-
-[node name="stats" type="Node" parent="Enemy2"]
-script = ExtResource("10_yq8tf")
+stats = ExtResource("10_sng2h")
 
 [node name="Enemy3" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
 position = Vector2(-479, -249)
 collision_mask = 17
+stats = ExtResource("10_sng2h")
 
 [node name="Enemy" parent="." instance=ExtResource("7_qpk70")]
 position = Vector2(413, -284)
 collision_mask = 17
+stats = ExtResource("10_sng2h")
 
 [node name="AddPlayerGroup" type="Area2D" parent="."]
 script = ExtResource("11_ym5sv")

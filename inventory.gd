@@ -1,24 +1,26 @@
 extends Resource
 class_name Inv
 signal update
+var using_items:InvItem
 @export var items : Array[InvItem]
 
 var scene : String
 func insert(item: InvItem):
-	var empty_index : int = 0
+	var empty_index : int = 999
 	#print("add")
-	for i in range(items.size()):
+	for i in range(items.size()-2):
 		if items[i] == null:
 			empty_index = i
 			break
-	
-	items[empty_index]= item
+	if empty_index < 12:
+		items[empty_index]= item
+		update.emit()
 	#var emptyslots = items.filter(func(item): return item==null)
 	#if !emptyslots.is_empty():
 		
 	#	emptyslots[0]=item
-	print(items)
-	update.emit()
+		print(items)
+	
 
 func throw(index:int,item:InvItem):
 	if items[index] == item:
@@ -28,15 +30,30 @@ func throw(index:int,item:InvItem):
 	update.emit()
 	
 func use(index:int,item:InvItem,target:Node):
+	#using_items = index
+	var remove : bool = false
+
+	if (item is consumable or item is expendable)  and item.lose_on_use:
+		#item.item_used.connect(on_item_used) #inv.update.connect(update_slots)
+		remove = true
+	elif item is equipment and target.name == "Player":
+		item.item_equip.connect(item_equip)
+		remove = true
+		#throw(index,item)
 	if items[index] == item:
 		item.use(target)
-	if item is consumable and item.lose_on_use:
-		item.item_used.connect(on_item_used) #inv.update.connect(update_slots)
-		throw(index,item)
-
-
 	update.emit()
+	if remove:
+		throw(index,item)
 	
-func on_item_used(itemUsed:InvItem,used:bool):
+func item_equip(itemUsed:equipment):
+	var equip_index : int = 12
+	if itemUsed is weapon:
+		equip_index = 13
+	using_items = itemUsed
 	
-	pass
+	if items[equip_index] != null:
+		var moving_item = items.pop_at(equip_index)
+		insert(moving_item)
+	items[equip_index] = itemUsed
+	update.emit()

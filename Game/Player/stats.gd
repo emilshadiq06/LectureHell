@@ -1,26 +1,14 @@
-class_name stat extends Node
-var take_damage: int = 0
-var max_hp : int = 20
-var hp : int = 20
-var pp: int = 20
-var inventory = []
-var weapon = 1
-var money : int
+class_name stat extends Resource
+@export var name : String
+#@export var take_damage: int = 0
+@export var max_hp : int = 20
+@export var hp : int = 20
+#@export var max_pp: int = 20
+##@export var pp: int = 20
+#@export var weapon = 1
+#@export var weapon_speed: float = 1
+#@export var money : int
 
 #func _ready() -> void:
 #	StatLoader.get_stats_player(self)
-
-func update_stats():
-	max_hp = StatLoader.max_hp
-	hp = StatLoader.hp
-	pp = StatLoader.pp
-	weapon = StatLoader.weapon
-	money =  StatLoader.money
-
-func addhealth(hp_regen,pp_regen):
-	StatLoader.hp += hp_regen
-	if (StatLoader.pp + pp_regen) < (40):
-		StatLoader.pp += pp_regen
-	update_stats()
-	print(hp)
 	

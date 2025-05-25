@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="weapon" load_steps=3 format=3 uid="uid://bm1l18r5rp8rl"]
+
+[ext_resource type="Script" uid="uid://cvrib4clgrh1i" path="res://inventory/item/weapon/weapon.gd" id="1_3y68t"]
+[ext_resource type="Texture2D" uid="uid://c30opk7tla0lb" path="res://inventory/item/weapon/metal_ruler.png" id="2_a3v5m"]
+
+[resource]
+script = ExtResource("1_3y68t")
+weapon_arrow = 1
+weapon_speed = 1.2
+hp_changed = 0
+pp_changed = 0
+name = "metal ruler"
+texture = ExtResource("2_a3v5m")
+metadata/_custom_type_script = "uid://cvrib4clgrh1i"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="consumable" load_steps=3 format=3 uid="uid://c5g7jek2vuj3s"]
+
+[ext_resource type="Script" uid="uid://c5mufo0u4vd54" path="res://inventory/item/consumables/consumable.gd" id="1_qxiao"]
+[ext_resource type="Texture2D" uid="uid://ldij314080ft" path="res://inventory/img/can_of_water.png" id="2_ekgsr"]
+
+[resource]
+script = ExtResource("1_qxiao")
+lose_on_use = false
+hp_regen = 6
+pp_regen = 6
+bites = 2
+name = "Can o'  Water"
+texture = ExtResource("2_ekgsr")
+metadata/_custom_type_script = "uid://c5mufo0u4vd54"

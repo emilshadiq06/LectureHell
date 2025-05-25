@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="weapon" load_steps=3 format=3 uid="uid://ddqehfrhqfbbt"]
+
+[ext_resource type="Script" uid="uid://cvrib4clgrh1i" path="res://inventory/item/weapon/weapon.gd" id="1_k86tl"]
+[ext_resource type="Texture2D" uid="uid://nbbui6udw81g" path="res://inventory/img/pen.png" id="2_k1bf4"]
+
+[resource]
+script = ExtResource("1_k86tl")
+weapon_arrow = 2
+weapon_speed = 1.5
+hp_changed = 0
+pp_changed = 0
+name = "pen"
+texture = ExtResource("2_k1bf4")
+metadata/_custom_type_script = "uid://cvrib4clgrh1i"

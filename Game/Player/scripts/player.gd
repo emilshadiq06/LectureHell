@@ -7,30 +7,31 @@ var last_keycode = 0
 
 var direction : Vector2 = Vector2.ZERO
 var cardinal_direction : Vector2 = Vector2.DOWN
+@onready var player_team = $inventory/player_team_ui
 var run: int = 1
 @export var inv :Inv
 @onready var skill = $skill
-@onready var stats = $stats
+#@onready var stats = $stats
 @onready var animation_player : AnimationPlayer= $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
-
+@export var stats : playerStat
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	if StatLoader.hp == 0:
-		StatLoader.get_stats_player(get_stats())
-	else:
-		stats.update_stats()
-		stats.money = StatLoader.money
-		$RichTextLabel.text =  "$" + str(stats.money)
+	#if StatLoader.hp == 0:
+		#stats.update_statloader()
+	#else:
+	#stats.update_stats()
+	#stats.money = StatLoader.money
+	$RichTextLabel.text =  "$" + str(stats.money)
 	if StatLoader.skill_node != null:
 		skill.set_script(StatLoader.return_skill().get_script())
 		#StatLoader.skill_node = null
 	state_machine.initialize(self)
 	if StatLoader.was_just_inBattle == true:
 		StatLoader.was_just_inBattle = false
-		stats.money = StatLoader.money
+		stats.money += StatLoader.money
 		$RichTextLabel.text =  "$" + str(stats.money)
 		print("KKKKKKKKKKKKKK")
 		print(stats.money)
@@ -86,9 +87,10 @@ func SetDirection() -> bool:
 	return true
 	
 func get_stats():
+	return stats
 
 
-	return [stats.hp, stats.weapon, stats.pp, stats.pp ,stats.max_hp ,stats.money, stats.inventory]
+	#return [stats.hp, stats.weapon, stats.max_pp, stats.pp ,stats.max_hp ,stats.money]
 	
 func UpdateAnimation(state : String) -> void:
 	animation_player.play(state + "_" + AnimDirect())
@@ -104,3 +106,48 @@ func AnimDirect() -> String:
 
 func collect_item(item:InvItem):
 	inv.insert(item)
+
+func addhealth(hp_regen,pp_regen):
+	if player_team.index == 0:
+		stats.hp += hp_regen
+		stats.pp += pp_regen
+		player_team.update_group(stats,player_team.index)
+	else:
+		StatLoader.player_group[player_team.index-1].stats.hp += hp_regen
+		StatLoader.player_group[player_team.index-1].stats.pp += pp_regen
+		player_team.update_group(StatLoader.player_group[player_team.index-1].stats,player_team.index)
+	
+	
+func change_stat(hp_changed,pp_changed):
+	stats.max_hp = hp_changed
+	
+	stats.max_pp = pp_changed
+	player_team.update_group(stats,0)
+	
+func buy(price:float):
+	stats.money -= price
+	$RichTextLabel.text =  "$" + str(stats.money)
+	
+func change_weapon(weapon_arrow,weapon_speed):
+	stats.weapons = weapon_arrow
+	stats.weapon_speed = weapon_speed
+
+func removehealth(hp_loss):
+	var sfx = load("res://sounds/explosion.mp3")
+	$AudioStreamPlayer2D.stream = sfx
+	$AudioStreamPlayer2D.play()
+	if player_team.index == 0:
+		stats.hp -= hp_loss
+		player_team.update_group(stats,player_team.index)
+		$AnimatedSprite2D.show()
+		$AnimatedSprite2D.play("explode")
+		await get_tree().create_timer(0.5).timeout
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.hide()
+		#self.queue_free()
+		#$AnimatedSprite2D.play("default")
+	else:
+		StatLoader.player_group[player_team.index-1].stats.hp -= hp_loss
+		player_team.update_group(StatLoader.player_group[player_team.index-1].stats,player_team.index)
+	
+	

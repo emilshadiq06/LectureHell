@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="consumable" load_steps=3 format=3 uid="uid://degcegrnisho2"]
+
+[ext_resource type="Script" uid="uid://c5mufo0u4vd54" path="res://inventory/item/consumables/consumable.gd" id="1_c44nq"]
+[ext_resource type="Texture2D" uid="uid://cspha3juat0fi" path="res://inventory/img/coffee.png" id="2_wrkus"]
+
+[resource]
+script = ExtResource("1_c44nq")
+lose_on_use = true
+hp_regen = 2
+pp_regen = 12
+bites = 0
+name = "coffee"
+texture = ExtResource("2_wrkus")
+metadata/_custom_type_script = "uid://c5mufo0u4vd54"

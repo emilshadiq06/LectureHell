@@ -11,7 +11,7 @@ var started = false
 func initialize()->void:
 	skill = []  
 	origin = []
-	
+
 	for c in get_children():
 		if c is skills:
 			skill.append(c)
@@ -26,7 +26,7 @@ func initialize()->void:
 func DoEffect():
 	var skill_increment = 0
 	for i in skill:
-		
+		 
 		if i.turn == 0:
 			i.Enter()
 			
@@ -50,6 +50,7 @@ func DoEffect():
 
 
 func _on_enemy_group_start_turn() -> void:
+	await get_tree().create_timer(0.5).timeout
 	if skill.size()>0 and started:
 		DoEffect()
 

@@ -19,7 +19,9 @@ func _ready() -> void:
 
 	players = get_children()
 	for i in range(players.size()):
-		players[i].position =  Vector2(0,100*i)
+		players[i].position =  Vector2(0,125*i)
+		players[i].sprite.set_frame(15)
+		players[i].sprite.scale.x = -1
 		effect_array.push_back(players[i].get_node("skill"))
 		#print(players[i].get_node("skill").skill_name)
 		
@@ -91,8 +93,7 @@ func _on_act_pressed() -> void:
 	
 	#print(battle)
 	choice.hide()
-	
-	
+
 	skill_button.text = effect_array[index].get_skill_effects()[0]
 	actChoice.get_child(0).add_child(skill_button)
 	actChoice.show()
@@ -131,9 +132,17 @@ func _on_enemy_group_start_turn() -> void:
 	#print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
 	#print(enemies.action_queue)
 	for i in players:
-
+		i.take_damage(2)
 		i.take_stamina(-2)
-		#print("herhh")
+		if i.pp > i.MAX_PP:
+			i.pp -= 4
+			if i.pp < i.MAX_PP:
+				i.pp =  i.MAX_PP 
+		if i.hp > i.MAX_HP:
+			i.hp -= 4
+			if i.hp < i.MAX_HP:
+				i.hp =  i.MAX_HP 
+		
 	#	print(i.pp)
 
 

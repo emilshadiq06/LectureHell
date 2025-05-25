@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="stat" load_steps=2 format=3 uid="uid://cgcohqreyjngq"]
+
+[ext_resource type="Script" uid="uid://6lthaiq3kynq" path="res://Game/Player/stats.gd" id="1_klpft"]
+
+[resource]
+script = ExtResource("1_klpft")
+name = "Evil Ahmad"
+take_damage = 0
+max_hp = 20
+hp = 20
+max_pp = 0
+pp = 0
+weapon = 0
+money = 0
+metadata/_custom_type_script = "uid://6lthaiq3kynq"

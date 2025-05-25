@@ -9,6 +9,7 @@ var crit_list : Array = []
 var crit : bool = false
 var players : Array = []
 var weapons : Array = []
+var weapons_speed : Array = []
 var action_queue : Array
 var attack 
 var ball_index : int = 0
@@ -30,9 +31,10 @@ func _ready() -> void:
 	remove_child(enemies[0])
 	enemies.remove_at(0)
 	for i in enemies.size():
-		enemies[i].position =  Vector2(0,100*i)
+		enemies[i].position =  Vector2(0,125*i)
 
 	_start_choosing()
+	
 
 func add_character():
 	
@@ -54,7 +56,10 @@ func _process(delta: float) -> void:
 				index += 1
 				switch_focus(index,index-1)
 		if Input.is_action_just_pressed("chat"):
-			weapons.push_back(players[player_group.index].weapon)
+			weapons.push_back(players[player_group.index].weapons)
+			weapons_speed.push_back(players[player_group.index].weapon_speed)
+			print("weapons_speed")
+			print(weapons_speed)
 			emit_signal("next_player")
 			action_queue.push_back(index)
 			if crit == true:
@@ -90,23 +95,28 @@ func _action(stack):
 		#print(players[player_group.index].weapon)
 		#print("here3")
 			attack.get_node("Balls").add_ball(weapons[j])
+			attack.get_node("Balls").ball_speed(weapons_speed[j])
+			await get_tree().create_timer(0.1).timeout
+			add_sibling(attack)
 			
-			add_child(attack)
 			await get_tree().create_timer(2).timeout
 			ball_index = attack.get_ball_index()
 			hits =  attack.get_ball_hit()
 		
 		
-			remove_child(attack)
-			enemies[i].take_damage(4*damage_multiplier*hits/(weapons[j] +1))
+			get_parent().remove_child(attack)
+			enemies[i].take_damage(4*damage_multiplier* (weapons_speed[j]**3) *hits/(weapons[j] +1) )
 			j+=1
 		
 			ball_index = 0
+	weapons_speed.clear()
 	weapons.clear()
 	crit_list.clear()
 	action_queue.clear()
-	bullet_hell.emit()
-		
+	if $"..".count_hp(enemies) == false:
+		bullet_hell.emit()
+	else:
+		$".."._on_enemy_group_start_turn()
 
 
 
@@ -119,6 +129,7 @@ func show_choice():
 	choice.find_child("attack").grab_focus()
 
 func _reset_focus():
+	
 	index = 0
 	for enemy in enemies:
 		enemy._unfocus()
@@ -126,6 +137,8 @@ func _reset_focus():
 func _start_choosing():
 	_reset_focus()
 	enemies[0]._focus()
+	
+	
 	
 	
 func _on_attack_pressed() -> void:
@@ -157,6 +170,7 @@ func _on_normal_attack_pressed() -> void:
 		attkChoice.hide()
 		_start_choosing()
 		players[player_group.index].take_stamina(5)
+		players[player_group.index]._update_progress_bar()
 	
 
 
@@ -167,6 +181,7 @@ func _on_critical_attack_pressed() -> void:
 		_start_choosing()
 		crit = true
 		players[player_group.index].take_stamina(10)
+		players[player_group.index]._update_progress_bar()
 
 		
 	

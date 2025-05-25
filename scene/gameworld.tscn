@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpwabfncr34l6"]
+[gd_scene load_steps=20 format=3 uid="uid://dpwabfncr34l6"]
 
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="1_hx0jg"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_bjxfv"]
@@ -7,6 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://g02cmrdrnaje" path="res://npc_green.tscn" id="5_eu1nv"]
 [ext_resource type="Script" uid="uid://bhhvfqk65lrww" path="res://scene/weapon_.gd" id="6_vk3vl"]
 [ext_resource type="Script" uid="uid://cl8by7lyd0gfi" path="res://scene/change_skill.gd" id="7_380ub"]
+[ext_resource type="PackedScene" uid="uid://cp4efdxwwk5q0" path="res://shop.tscn" id="8_63w8i"]
+[ext_resource type="Texture2D" uid="uid://b5t7j38iv5bs1" path="res://Game/Player/sprites/vendingMachine.png" id="9_mhtqh"]
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="9_y8buu"]
+[ext_resource type="Resource" uid="uid://bnvvcja800qer" path="res://inventory/item/expendable/pipe_bomb.tres" id="10_3ys1n"]
+[ext_resource type="Resource" uid="uid://dkuv2qj38lp56" path="res://inventory/item/consumables/apple_juice.tres" id="11_0qo4l"]
+[ext_resource type="Resource" uid="uid://burcucborqljf" path="res://inventory/item/consumables/choccy_milk.tres" id="12_ou7om"]
+[ext_resource type="Resource" uid="uid://degcegrnisho2" path="res://inventory/item/consumables/coffee.tres" id="13_jfy1l"]
+[ext_resource type="Resource" uid="uid://c5g7jek2vuj3s" path="res://inventory/item/consumables/water.tres" id="14_qflkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wm3ic"]
 size = Vector2(54, 52)
@@ -17,7 +25,12 @@ size = Vector2(35, 47)
 [sub_resource type="CircleShape2D" id="CircleShape2D_380ub"]
 radius = 30.8058
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8buu"]
+size = Vector2(58, 82.5)
+
 [node name="Gameworld" type="Node2D"]
+z_index = -1
+y_sort_enabled = true
 metadata/_edit_vertical_guides_ = [-411.0]
 
 [node name="Player" parent="." instance=ExtResource("1_hx0jg")]
@@ -98,6 +111,22 @@ offset_right = -96.0
 offset_bottom = 250.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Change skill"
+
+[node name="vending_machine" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vending_machine"]
+position = Vector2(561, -33.75)
+shape = SubResource("RectangleShape2D_y8buu")
+
+[node name="shop" parent="vending_machine" instance=ExtResource("8_63w8i")]
+shop_items = Array[ExtResource("9_y8buu")]([ExtResource("10_3ys1n"), ExtResource("11_0qo4l"), ExtResource("12_ou7om"), ExtResource("13_jfy1l"), ExtResource("14_qflkg")])
+shop_prices = Array[float]([59.9, 4.0, 5.2, 3.5, 2.0])
+
+[node name="Sprite2D" type="Sprite2D" parent="vending_machine"]
+position = Vector2(562, -36)
+texture = ExtResource("9_mhtqh")
 
 [connection signal="body_entered" from="weapon+" to="weapon+" method="_on_body_entered"]
 [connection signal="body_entered" from="weapon-" to="weapon-" method="_on_body_entered"]

@@ -24,7 +24,13 @@ func _on_enemy_group_start_turn() -> void:
 	print(win)
 	var scene_tree = get_tree()
 	if win == true:
-		StatLoader.money += 50
+		#await get_tree().create_timer(1).timeout
+		StatLoader.money = 50.33
+		var player_stat = preload("res://Game/Player/player_stats.tres")
+		player_stat.hp = group_player_array[0].hp
+		for i in range(group_player_array.size()-1):
+			StatLoader.player_group[i].stats.hp = group_player_array[i+1].hp
+		await get_tree().create_timer(2).timeout
 		scene_tree.call_deferred("change_scene_to_file", StatLoader.previous_scene)
 	
 
