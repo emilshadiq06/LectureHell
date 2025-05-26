@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp4efdxwwk5q0"]
+[gd_scene load_steps=5 format=3 uid="uid://cp4efdxwwk5q0"]
 
 [ext_resource type="Script" uid="uid://ccwovdqgtjj0d" path="res://scene/shop/vending.gd" id="1_6lah5"]
 [ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="2_gmb2m"]
 [ext_resource type="Resource" uid="uid://bnvvcja800qer" path="res://inventory/item/expendable/pipe_bomb.tres" id="3_8kdgp"]
 [ext_resource type="Script" uid="uid://c0gxfjuv2prb7" path="res://scene/shop/buy_item.gd" id="4_myf4l"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_63w8i"]
-size = Vector2(68.1875, 29.5)
 
 [node name="shop" type="Area2D"]
 y_sort_enabled = true
@@ -16,21 +13,18 @@ shop_items = Array[ExtResource("2_gmb2m")]([ExtResource("3_8kdgp")])
 shop_prices = Array[float]([49.9])
 metadata/_custom_type_script = "uid://ccwovdqgtjj0d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(562.906, -4)
-shape = SubResource("RectangleShape2D_63w8i")
-
 [node name="buy" type="Button" parent="."]
 visible = false
+light_mask = 0
 offset_left = 593.0
 offset_top = -14.0
 offset_right = 643.0
 offset_bottom = 18.0
+disabled = true
 text = "buy
 "
 
 [node name="scroll" type="ScrollContainer" parent="."]
-anchors_preset = -1
 offset_left = 647.0
 offset_top = -13.0
 offset_right = 754.0

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="enemy_stats" load_steps=2 format=3 uid="uid://cqdluynxv6peo"]
+
+[ext_resource type="Script" uid="uid://bxu1nri0o51p" path="res://Game/Enemy/scripts/enemy_stat.gd" id="1_8wk6y"]
+
+[resource]
+script = ExtResource("1_8wk6y")
+name = "Reasonable Alif"
+max_hp = 20
+hp = 20
+metadata/_custom_type_script = "uid://bxu1nri0o51p"

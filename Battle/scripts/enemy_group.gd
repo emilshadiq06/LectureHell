@@ -31,7 +31,7 @@ func _ready() -> void:
 	remove_child(enemies[0])
 	enemies.remove_at(0)
 	for i in enemies.size():
-		enemies[i].position =  Vector2(0,125*i)
+		enemies[i].position =  Vector2(0,130*i)
 
 	_start_choosing()
 	
@@ -153,9 +153,10 @@ func _on_attack_pressed() -> void:
 
 
 func _on_bullet_hell_timer_timeout() -> void:
-	DialogueManagerScript.text_box.queue_free()
-	DialogueManagerScript.is_dialog_active = false
-	DialogueManagerScript.current_line_index = 0
+	if DialogueManagerScript.text_box:
+		DialogueManagerScript.text_box.queue_free()
+		DialogueManagerScript.is_dialog_active = false
+		DialogueManagerScript.current_line_index = 0
 	start_turn.emit()
 	_reset_focus()
 	#action_queue.clear()

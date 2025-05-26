@@ -20,8 +20,21 @@ func insert(item: InvItem):
 		
 	#	emptyslots[0]=item
 		print(items)
+func find(item_name:String):
+	var full_index : int = 999
+	#print("add")
+	for i in range(items.size()-2):
+		if items[i] != null and items[i].name == (item_name):
+			#print(items[i].name)
+			#print(item_name)
+			
+			full_index = i
+				#print(full_index)
+				#print(item_name)
+			return full_index
+	#if full_index < 12:
+		
 	
-
 func throw(index:int,item:InvItem):
 	if items[index] == item:
 		items[index] = null
@@ -50,10 +63,10 @@ func item_equip(itemUsed:equipment):
 	var equip_index : int = 12
 	if itemUsed is weapon:
 		equip_index = 13
-	using_items = itemUsed
+	#using_items = itemUsed
 	
 	if items[equip_index] != null:
-		var moving_item = items.pop_at(equip_index)
-		insert(moving_item)
+		var moving_item = items[equip_index]
+		insert(moving_item.duplicate())
 	items[equip_index] = itemUsed
 	update.emit()

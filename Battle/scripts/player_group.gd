@@ -19,7 +19,7 @@ func _ready() -> void:
 
 	players = get_children()
 	for i in range(players.size()):
-		players[i].position =  Vector2(0,125*i)
+		players[i].position =  Vector2(0,130*i)
 		players[i].sprite.set_frame(15)
 		players[i].sprite.scale.x = -1
 		effect_array.push_back(players[i].get_node("skill"))
@@ -74,7 +74,7 @@ func start_hell():
 	if bullet_hell_timer.get_time_left() > 0:
 		#inventory.hide()
 		enemies.choice.hide()
-		DialogueManagerScript.start_dialog(Vector2(300,500), ["bullet hell goes here"])
+		#DialogueManagerScript.start_dialog(Vector2(300,500), ["bullet hell goes here"])
 	#add_child(bullet_hell)
 	
 func _process(delta: float) -> void:

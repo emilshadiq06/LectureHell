@@ -26,6 +26,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player = body
 		$buy.show()
+		$buy.disabled = false
 	pass # Replace with function body.
 
 func item_pressed(item_index:int):
@@ -40,12 +41,21 @@ func item_pressed(item_index:int):
 
 func _on_buy_pressed() -> void:
 	stuff_list.show()
+	for i in stuff_list.get_children():
+		if i is Button:
+			i.grab_focus()
 	pass # Replace with function body.
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body == player:
 		$buy.hide()
+		for i in stuff_list.get_children():
+			if i is Button:
+				i.release_focus()
+		$buy.disabled = true
 		stuff_list.hide()
+	
+
 		body = null
 	pass # Replace with function body.

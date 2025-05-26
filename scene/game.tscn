@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=22 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -6,12 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://scene/menuscene/npc_sprite_02.png" id="3_p1ry8"]
 [ext_resource type="Script" uid="uid://d0f4mkhjupc3c" path="res://scene/character_body_2d.gd" id="3_xwcet"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="5_p1ry8"]
+[ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="6_0lu6w"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="6_xlg7c"]
+[ext_resource type="Resource" uid="uid://bk4gi1m6smc7y" path="res://inventory/item/weapon/flail_weapon.tres" id="7_i6gbm"]
 [ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="7_qpk70"]
+[ext_resource type="Script" uid="uid://c0gxfjuv2prb7" path="res://scene/shop/buy_item.gd" id="7_ve786"]
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
 [ext_resource type="Resource" uid="uid://cgcohqreyjngq" path="res://Game/enemy_stat1.tres" id="10_sng2h"]
+[ext_resource type="Resource" uid="uid://dcafxmkpvtwqw" path="res://Game/enemy_stat2.tres" id="11_81276"]
 [ext_resource type="Script" uid="uid://diij37k1m8hxh" path="res://Game/Player/add_player_group.gd" id="11_ym5sv"]
 [ext_resource type="Resource" uid="uid://cugngsxc1vyxp" path="res://inventory/item/consumables/nasi_bujang.tres" id="12_sng2h"]
+[ext_resource type="Resource" uid="uid://cqdluynxv6peo" path="res://Game/enemy_stat3.tres" id="12_ve786"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
 size = Vector2(253, 100.5)
@@ -55,6 +60,15 @@ position = Vector2(-363.703, -24.7205)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("3_xwcet")
+item = ExtResource("6_0lu6w")
+prized_item = ExtResource("7_i6gbm")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(0, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(-1.29675, -7.77946)
+shape = SubResource("RectangleShape2D_p1ry8")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(0, -14)
@@ -62,16 +76,19 @@ texture = ExtResource("3_p1ry8")
 offset = Vector2(-2.5, -2)
 hframes = 17
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D/Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Sprite2D/Area2D"]
-position = Vector2(-1.29675, -7.77946)
-shape = SubResource("RectangleShape2D_p1ry8")
-
 [node name="ABU" type="CollisionShape2D" parent="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(-0.296997, -7.2795)
 shape = SubResource("CircleShape2D_bk3v5")
+
+[node name="DialogueOptions" type="VBoxContainer" parent="CharacterBody2D"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Option1" type="Button" parent="CharacterBody2D/DialogueOptions"]
+layout_mode = 2
+script = ExtResource("7_ve786")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("5_p1ry8")]
 
@@ -81,19 +98,21 @@ visible = false
 [node name="Control" parent="CanvasLayer" instance=ExtResource("6_xlg7c")]
 
 [node name="Enemy2" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
-position = Vector2(-293, -266)
+position = Vector2(387, -215)
 collision_mask = 17
 stats = ExtResource("10_sng2h")
+group = "enemies"
 
 [node name="Enemy3" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
-position = Vector2(-479, -249)
+position = Vector2(443, -194)
 collision_mask = 17
-stats = ExtResource("10_sng2h")
+stats = ExtResource("11_81276")
+group = "enemies"
 
 [node name="Enemy" parent="." instance=ExtResource("7_qpk70")]
-position = Vector2(413, -284)
+position = Vector2(446, -113)
 collision_mask = 17
-stats = ExtResource("10_sng2h")
+stats = ExtResource("12_ve786")
 
 [node name="AddPlayerGroup" type="Area2D" parent="."]
 script = ExtResource("11_ym5sv")
@@ -112,6 +131,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "add bro
 "
 
-[connection signal="body_entered" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="CharacterBody2D/Sprite2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="CharacterBody2D/DialogueOptions/Option1" to="CharacterBody2D/DialogueOptions/Option1" method="_on_pressed"]
 [connection signal="body_entered" from="AddPlayerGroup" to="AddPlayerGroup" method="_on_body_entered"]

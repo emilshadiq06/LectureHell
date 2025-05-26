@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="3_bjxfv"]
 [ext_resource type="Texture2D" uid="uid://cvqvf7qkmp88v" path="res://character/Sprite NPC Normal/2 - Holly/Standing (32 x 32).png" id="4_wm3ic"]
 [ext_resource type="PackedScene" uid="uid://g02cmrdrnaje" path="res://npc_green.tscn" id="5_eu1nv"]
-[ext_resource type="Script" uid="uid://bhhvfqk65lrww" path="res://scene/weapon_.gd" id="6_vk3vl"]
 [ext_resource type="Script" uid="uid://cl8by7lyd0gfi" path="res://scene/change_skill.gd" id="7_380ub"]
 [ext_resource type="PackedScene" uid="uid://cp4efdxwwk5q0" path="res://shop.tscn" id="8_63w8i"]
 [ext_resource type="Texture2D" uid="uid://b5t7j38iv5bs1" path="res://Game/Player/sprites/vendingMachine.png" id="9_mhtqh"]
@@ -16,6 +15,12 @@
 [ext_resource type="Resource" uid="uid://degcegrnisho2" path="res://inventory/item/consumables/coffee.tres" id="13_jfy1l"]
 [ext_resource type="Resource" uid="uid://c5g7jek2vuj3s" path="res://inventory/item/consumables/water.tres" id="14_qflkg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8buu"]
+size = Vector2(58, 82.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rapul"]
+size = Vector2(74.9998, 43.75)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wm3ic"]
 size = Vector2(54, 52)
 
@@ -25,13 +30,30 @@ size = Vector2(35, 47)
 [sub_resource type="CircleShape2D" id="CircleShape2D_380ub"]
 radius = 30.8058
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8buu"]
-size = Vector2(58, 82.5)
-
 [node name="Gameworld" type="Node2D"]
 z_index = -1
 y_sort_enabled = true
 metadata/_edit_vertical_guides_ = [-411.0]
+
+[node name="vending_machine" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vending_machine"]
+position = Vector2(561, -33.75)
+shape = SubResource("RectangleShape2D_y8buu")
+
+[node name="shop" parent="vending_machine" instance=ExtResource("8_63w8i")]
+shop_items = Array[ExtResource("9_y8buu")]([ExtResource("10_3ys1n"), ExtResource("11_0qo4l"), ExtResource("12_ou7om"), ExtResource("13_jfy1l"), ExtResource("14_qflkg")])
+shop_prices = Array[float]([59.9, 4.0, 5.2, 3.5, 2.0])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vending_machine/shop"]
+position = Vector2(559.5, 3.125)
+shape = SubResource("RectangleShape2D_rapul")
+
+[node name="Sprite2D" type="Sprite2D" parent="vending_machine"]
+position = Vector2(562, -36)
+texture = ExtResource("9_mhtqh")
 
 [node name="Player" parent="." instance=ExtResource("1_hx0jg")]
 
@@ -50,51 +72,26 @@ shape = SubResource("RectangleShape2D_wm3ic")
 y_sort_enabled = true
 collision_layer = 16
 collision_mask = 0
+platform_floor_layers = 4294967041
 
 [node name="Sprite2D" type="Sprite2D" parent="npc_kid"]
+y_sort_enabled = true
 position = Vector2(155, 166)
 scale = Vector2(1.20273, 1.17292)
 texture = ExtResource("4_wm3ic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npc_kid"]
+y_sort_enabled = true
 position = Vector2(157, 168)
 shape = SubResource("RectangleShape2D_eu1nv")
 
 [node name="npc_green" parent="." instance=ExtResource("5_eu1nv")]
+y_sort_enabled = true
 position = Vector2(309, 121)
 scale = Vector2(1.9471, 1.7397)
-
-[node name="weapon+" type="Area2D" parent="."]
-visible = false
-script = ExtResource("6_vk3vl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon+"]
-position = Vector2(-155, 24)
-shape = SubResource("CircleShape2D_380ub")
-
-[node name="Label" type="Label" parent="weapon+"]
-offset_left = -233.0
-offset_top = 9.0
-offset_right = -89.0
-offset_bottom = 32.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "change weapon +1"
-
-[node name="weapon-" type="Area2D" parent="."]
-visible = false
-script = ExtResource("6_vk3vl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon-"]
-position = Vector2(-158, 149)
-shape = SubResource("CircleShape2D_380ub")
-
-[node name="Label" type="Label" parent="weapon-"]
-offset_left = -245.0
-offset_top = 136.0
-offset_right = -101.0
-offset_bottom = 159.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "change weapon -1"
+collision_layer = 16
+collision_mask = 0
+platform_floor_layers = 4294967041
 
 [node name="change_skill" type="Area2D" parent="."]
 visible = false
@@ -112,22 +109,4 @@ offset_bottom = 250.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Change skill"
 
-[node name="vending_machine" type="StaticBody2D" parent="."]
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vending_machine"]
-position = Vector2(561, -33.75)
-shape = SubResource("RectangleShape2D_y8buu")
-
-[node name="shop" parent="vending_machine" instance=ExtResource("8_63w8i")]
-shop_items = Array[ExtResource("9_y8buu")]([ExtResource("10_3ys1n"), ExtResource("11_0qo4l"), ExtResource("12_ou7om"), ExtResource("13_jfy1l"), ExtResource("14_qflkg")])
-shop_prices = Array[float]([59.9, 4.0, 5.2, 3.5, 2.0])
-
-[node name="Sprite2D" type="Sprite2D" parent="vending_machine"]
-position = Vector2(562, -36)
-texture = ExtResource("9_mhtqh")
-
-[connection signal="body_entered" from="weapon+" to="weapon+" method="_on_body_entered"]
-[connection signal="body_entered" from="weapon-" to="weapon-" method="_on_body_entered"]
 [connection signal="body_entered" from="change_skill" to="change_skill" method="_on_body_entered"]

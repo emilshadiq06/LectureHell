@@ -52,3 +52,22 @@ func _on_button_3_pressed() -> void:
 		
 	#index = 1
 	#pass # Replace with function body.
+
+
+func _on_draw() -> void:
+	for i in team:
+		print("mimimimininininini")
+		var j = i.get_child(1)
+		if j is Button:
+				j.grab_focus()
+				
+
+
+
+func _on_hidden() -> void:
+	for i in team:
+		print("mimimimi")
+		var j = i.get_child(1)
+		if j is Button:
+			j.release_focus()
+				

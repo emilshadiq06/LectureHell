@@ -184,6 +184,7 @@ shape = SubResource("CircleShape2D_ummto")
 autostart = true
 
 [node name="Dialogue" parent="." instance=ExtResource("3_pvewt")]
+mouse_filter = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="dialogue_finished" from="Dialogue" to="." method="_on_dialogue_dialogue_finished"]

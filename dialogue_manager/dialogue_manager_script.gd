@@ -1,5 +1,5 @@
 extends Node
-
+signal finish_lines
 
 @onready var text_box_scene = preload("res://scene/menuscene/text_box.tscn")
 
@@ -42,7 +42,7 @@ func _on_text_box_finished_displaying():
 	
 func _unhandled_input(event):
 	if (
-		event.is_action_pressed("advance_dialog") &&
+		event.is_action_pressed("chat") &&
 		is_dialog_active &&
 		can_advance_line
 	):
@@ -50,6 +50,7 @@ func _unhandled_input(event):
 		
 		current_line_index += 1
 		if current_line_index >= dialog_lines.size():
+			finish_lines.emit()
 			is_dialog_active = false
 			current_line_index = 0
 			return

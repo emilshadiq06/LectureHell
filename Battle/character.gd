@@ -36,7 +36,7 @@ func _ready() -> void:
 func set_stats(stats):
 	hp = stats.hp
 	MAX_HP = stats.max_hp
-	
+	$Name.text = stats.name
 	if stats is playerStat:
 		
 		weapons = stats.weapons
@@ -55,7 +55,7 @@ func _update_progress_bar():
 func _play_animation(anim: String):
 	var current_frame = sprite.get_frame()
 	var current_anim = animation_player.current_animation
-	
+	await get_tree().create_timer(0.05).timeout
 	
 	animation_player.play(anim)
 	await get_tree().create_timer(animation_player.current_animation_length).timeout

@@ -106,7 +106,9 @@ func AnimDirect() -> String:
 
 func collect_item(item:InvItem):
 	inv.insert(item)
-
+func find_item(item_name:String):
+	var found: int = inv.find(item_name)
+	return found
 func addhealth(hp_regen,pp_regen):
 	if player_team.index == 0:
 		stats.hp += hp_regen

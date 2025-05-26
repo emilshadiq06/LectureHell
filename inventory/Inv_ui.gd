@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 			if slots[i].is_interacted and selected_items < 12:
 				choices.show()
 				
-				$NinePatchRect/choices/Label.text = inv.items[i].name
+				$NinePatchRect/choices/Label.text = inv.items[selected_items].name
 		for i in range(min(inv.items.size()-12,equip_slots.size())):
 			if equip_slots[i].is_interacted and selected_items < 15:
 				deequip.show()

@@ -3,6 +3,7 @@ class_name Enemy extends CharacterBody2D
 @onready var state_machine  = $EnemyStateMachine
 @onready var fight = preload("res://Battle/battle.tscn").instantiate()
 @export var stats : stat
+@export var group: String
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
@@ -35,7 +36,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		DialogueManagerScript.current_line_index = 0
 		var current_scene = get_tree().current_scene
 		
-		get_whole_group("enemies")
+		get_whole_group(group)
 		
 		var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
 		player_Battle.get_node("skill").set_script(body.get_node("skill").get_script())
