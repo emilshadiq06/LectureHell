@@ -15,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_7tb0e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
 position = Vector2(8.00001, 7.99999)
 scale = Vector2(0.134615, 0.116667)
 texture = ExtResource("2_fdbwx")
@@ -30,15 +31,16 @@ offset_bottom = 17.0
 layout_mode = 2
 
 [node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+z_index = 6
 scale = Vector2(0.5, 0.5)
 
 [node name="unequip" type="Button" parent="."]
-z_index = 5
+z_index = 4
 layout_mode = 0
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 12.0
-offset_bottom = 11.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 13.0
 scale = Vector2(1.02339, 1.14135)
 
 [connection signal="pressed" from="unequip" to="." method="_on_unequip_pressed"]
