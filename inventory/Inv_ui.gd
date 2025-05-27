@@ -13,13 +13,17 @@ func _ready() -> void:
 	inv.update.connect(update_slots)
 	update_slots()
 	close()
-	
+	for i in range(min(inv.items.size(),slots.size())):
+		slots[i].interact.connect(item_interact)
+	for i in range(min(inv.items.size()-12,equip_slots.size())):
+		equip_slots[i].interact.connect(item_interact)
 	pass # Replace with function body.
 
 func update_slots():
 	#print("add plss")
 	for i in range(min(inv.items.size(),slots.size())):
 		slots[i].update(inv.items[i])
+		
 	for i in range(min(inv.items.size()-12,equip_slots.size())):
 		equip_slots[i].update(inv.items[i+12])
 
@@ -30,19 +34,20 @@ func _process(delta: float) -> void:
 			close()
 		else:
 			open()
-	if is_open:
-		for i in range(min(inv.items.size(),slots.size())):
-			if slots[i].is_interacted and selected_items < 12:
-				choices.show()
+func item_interact(item_index:int):
+	
+		#for i in range(min(inv.items.size(),slots.size())):
+		if item_index < 12 and inv.items[item_index]!=null:
+			choices.show()
 				
-				$NinePatchRect/choices/Label.text = inv.items[selected_items].name
-		for i in range(min(inv.items.size()-12,equip_slots.size())):
-			if equip_slots[i].is_interacted and selected_items < 15:
-				deequip.show()
-				
-		if selected_items > 11:
+			$NinePatchRect/choices/Label.text = inv.items[item_index].name
+		#for i in range(min(inv.items.size()-12,equip_slots.size())):
+		else: #if item_index > 11 or inv.items[item_index]==null:
 			choices.hide()
-		if selected_items > 14:
+		if item_index > 11 and item_index< 15 and inv.items[item_index]!=null:
+			deequip.show()
+			print("penile dysfunction")
+		else:
 			deequip.hide()
 		
 		
@@ -63,8 +68,7 @@ func open():
 func _on_throw_pressed() -> void:
 	var target = get_parent()
 	if selected_items < 12 and target.name=="Player":
-		slots[selected_items].is_interacted = false
-		slots[selected_items].toggle = false
+		choices.hide()
 		inv.throw(selected_items,inv.items[selected_items])
 		selected_items = 999
 	
@@ -74,14 +78,12 @@ func _on_use_pressed() -> void:
 	#var is_battle:bool = false
 	#var battle:String = get_tree().current_scene.get_path()
 	var target = get_parent()
-		
+	choices.hide()
 		
 		
 	if selected_items < 12:
 		var item_picked:int = selected_items
 		print(selected_items)
-		slots[selected_items].is_interacted = false
-		slots[selected_items].toggle = false
 		if target.name != "Player":
 			var player_group = $"../../PlayerGroup"
 			
@@ -101,13 +103,13 @@ func _on_use_pressed() -> void:
 
 func _on_deequip_pressed() -> void:
 	var target = get_parent()
+	deequip.hide()
 	if selected_items < 15 and target.name == "Player":
 		if selected_items == 12:
 			target.change_stat(20,20)
 		elif selected_items == 13:
 			target.change_weapon(1,1)
-		equip_slots[selected_items-12].is_interacted = false
-		equip_slots[selected_items-12].toggle = false
+
 		inv.insert(inv.items[selected_items])
 		inv.throw(selected_items,inv.items[selected_items])
 		selected_items = 999

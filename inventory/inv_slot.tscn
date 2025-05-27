@@ -52,4 +52,3 @@ offset_bottom = 13.0
 scale = Vector2(1.02339, 1.14135)
 
 [connection signal="pressed" from="interact" to="." method="_on_interact_pressed"]
-[connection signal="toggled" from="interact" to="." method="_on_interact_toggled"]

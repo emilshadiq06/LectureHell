@@ -1,7 +1,7 @@
 extends Area2D
 class_name DialogueBranch
-#var index: int = 0
-var quest_completed:bool = false
+@export var quest_name : String
+#var quest_completed:bool = false
 @export var dialogue: dialogue_lines  
 @export var item: InvItem 
 @export var prized_item: InvItem 
@@ -51,9 +51,10 @@ func item_pressed(item_index:int):
 		if dialogue.index == dialogue.event_index and player.find_item(item) is int:
 			player.collect_item(prized_item.duplicate())
 			player.inv.throw(player.find_item(item),player.inv.items[player.find_item(item)])
-			quest_completed = true
+			#quest_completed = true
+			StatLoader.quest_array.append(quest_name)
 			player.buy(-money) 
-		elif dialogue.index == dialogue.event_index and player.find_item(item) == null and quest_completed==false:
+		elif dialogue.index == dialogue.event_index and player.find_item(item) == null and quest_name not in StatLoader.quest_array:
 			dialogue.index = lines_array.size()-1
 		#print(index)
 		#print(lines_array[index])
@@ -65,7 +66,8 @@ func item_pressed(item_index:int):
 		
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player :
-		
+		if quest_name in StatLoader.quest_array:
+			dialogue.index = dialogue.event_index
 		DialogueManagerScript.start_dialog(global_position, lines_array[dialogue.index])
 		is_chatting = true
 		player = body

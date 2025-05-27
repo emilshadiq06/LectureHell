@@ -70,6 +70,7 @@ script = ExtResource("3_xwcet")
 
 [node name="Chat" parent="CharacterBody2D" instance=ExtResource("6_i6gbm")]
 position = Vector2(0, -14)
+quest_name = "Odd Pet"
 item = SubResource("Resource_jhlss")
 money = 1.0
 

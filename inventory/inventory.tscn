@@ -26,6 +26,7 @@ offset_bottom = 83.0
 scale = Vector2(3.55443, 3.60143)
 
 [node name="equipmentChoice" type="VBoxContainer" parent="NinePatchRect"]
+visible = false
 layout_mode = 0
 offset_left = -40.0
 offset_top = 40.0
@@ -38,6 +39,7 @@ layout_mode = 2
 text = "unequip"
 
 [node name="choices" type="VBoxContainer" parent="NinePatchRect"]
+visible = false
 layout_mode = 0
 offset_left = -40.0
 offset_top = 40.0
@@ -69,36 +71,47 @@ layout_mode = 2
 
 [node name="inv_slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 1
 
 [node name="inv_slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 2
 
 [node name="inv_slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 3
 
 [node name="inv_slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 4
 
 [node name="inv_slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 5
 
 [node name="inv_slot7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 6
 
 [node name="inv_slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 7
 
 [node name="inv_slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 8
 
 [node name="inv_slot10" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 9
 
 [node name="inv_slot11" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 10
 
 [node name="inv_slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
 layout_mode = 2
+item_index = 11
 
 [node name="equipment" type="VBoxContainer" parent="NinePatchRect"]
 layout_mode = 0
@@ -110,9 +123,11 @@ scale = Vector2(1.61055, 1.66233)
 
 [node name="equipment_slot" parent="NinePatchRect/equipment" instance=ExtResource("3_f8i2h")]
 layout_mode = 2
+item_index = 12
 
 [node name="equipment_slot2" parent="NinePatchRect/equipment" instance=ExtResource("3_f8i2h")]
 layout_mode = 2
+item_index = 13
 
 [connection signal="pressed" from="NinePatchRect/equipmentChoice/deequip" to="." method="_on_deequip_pressed"]
 [connection signal="pressed" from="NinePatchRect/choices/use" to="." method="_on_use_pressed"]
