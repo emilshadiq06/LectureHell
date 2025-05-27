@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=23 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://scene/menuscene/npc_sprite_02.png" id="3_p1ry8"]
 [ext_resource type="Script" uid="uid://d0f4mkhjupc3c" path="res://scene/character_body_2d.gd" id="3_xwcet"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="5_p1ry8"]
-[ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="6_0lu6w"]
+[ext_resource type="PackedScene" uid="uid://mojc683gpjm6" path="res://dialogue/chat.tscn" id="6_i6gbm"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="6_xlg7c"]
-[ext_resource type="Resource" uid="uid://bk4gi1m6smc7y" path="res://inventory/item/weapon/flail_weapon.tres" id="7_i6gbm"]
 [ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="7_qpk70"]
-[ext_resource type="Script" uid="uid://c0gxfjuv2prb7" path="res://scene/shop/buy_item.gd" id="7_ve786"]
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="7_ux4dc"]
+[ext_resource type="Texture2D" uid="uid://bsn14mq55f2my" path="res://inventory/img/stinky_fly.png" id="8_jrd6n"]
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
 [ext_resource type="Resource" uid="uid://cgcohqreyjngq" path="res://Game/enemy_stat1.tres" id="10_sng2h"]
 [ext_resource type="Resource" uid="uid://dcafxmkpvtwqw" path="res://Game/enemy_stat2.tres" id="11_81276"]
@@ -21,7 +21,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
 size = Vector2(253, 100.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ry8"]
+[sub_resource type="Resource" id="Resource_jhlss"]
+resource_local_to_scene = true
+script = ExtResource("7_ux4dc")
+name = "stinkyFly"
+texture = ExtResource("8_jrd6n")
+metadata/_custom_type_script = "uid://3tvxh44mg67g"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ww6yf"]
 size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
@@ -60,15 +67,15 @@ position = Vector2(-363.703, -24.7205)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("3_xwcet")
-item = ExtResource("6_0lu6w")
-prized_item = ExtResource("7_i6gbm")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+[node name="Chat" parent="CharacterBody2D" instance=ExtResource("6_i6gbm")]
 position = Vector2(0, -14)
+item = SubResource("Resource_jhlss")
+money = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Chat"]
 position = Vector2(-1.29675, -7.77946)
-shape = SubResource("RectangleShape2D_p1ry8")
+shape = SubResource("RectangleShape2D_ww6yf")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(0, -14)
@@ -80,15 +87,6 @@ hframes = 17
 y_sort_enabled = true
 position = Vector2(-0.296997, -7.2795)
 shape = SubResource("CircleShape2D_bk3v5")
-
-[node name="DialogueOptions" type="VBoxContainer" parent="CharacterBody2D"]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Option1" type="Button" parent="CharacterBody2D/DialogueOptions"]
-layout_mode = 2
-script = ExtResource("7_ve786")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("5_p1ry8")]
 
@@ -131,7 +129,4 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "add bro
 "
 
-[connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
-[connection signal="pressed" from="CharacterBody2D/DialogueOptions/Option1" to="CharacterBody2D/DialogueOptions/Option1" method="_on_pressed"]
 [connection signal="body_entered" from="AddPlayerGroup" to="AddPlayerGroup" method="_on_body_entered"]

@@ -20,11 +20,11 @@ func insert(item: InvItem):
 		
 	#	emptyslots[0]=item
 		print(items)
-func find(item_name:String):
+func find(item:InvItem):
 	var full_index : int = 999
 	#print("add")
 	for i in range(items.size()-2):
-		if items[i] != null and items[i].name == (item_name):
+		if items[i] != null and items[i].name == (item.name):
 			#print(items[i].name)
 			#print(item_name)
 			
@@ -32,7 +32,7 @@ func find(item_name:String):
 				#print(full_index)
 				#print(item_name)
 			return full_index
-	#if full_index < 12:
+	return null
 		
 	
 func throw(index:int,item:InvItem):
