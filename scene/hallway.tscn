@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdgrioisq2rv2"]
+[gd_scene load_steps=12 format=3 uid="uid://bagxqtev2wrrm"]
 
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_sb1hd"]
 [ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="2_rjx13"]
@@ -5525,12 +5525,13 @@ layer_2/name = "Layer2"
 layer_2/tile_data = PackedInt32Array(852011, 655361, 73, 917547, 655361, 74, 852012, 720897, 73, 917548, 720897, 74, 852013, 786433, 73, 917549, 786433, 74, 852014, 851969, 73, 917550, 851969, 74, 983086, 851969, 75, 983083, 655361, 75, 720940, 1, 71, 786476, 1, 72, 720941, 65537, 71, 786477, 65537, 72, 983065, 983041, 77, 1048601, 983041, 78, 983066, 1048577, 77, 1048602, 1048577, 78, 983067, 1114113, 77, 1048603, 1114113, 78, 983068, 1179649, 77, 1048604, 1179649, 78, 1114140, 1179649, 79, 1114137, 983041, 79, 851998, 1310721, 80, 917534, 1310721, 81, 983070, 1310721, 82, 1048606, 1310721, 83, 851999, 1376257, 80, 917535, 1376257, 81, 983071, 1376257, 82, 1048607, 1376257, 83, 852000, 1441793, 80, 917536, 1441793, 81, 983072, 1441793, 82, 1048608, 1441793, 83, 852001, 1507329, 80, 917537, 1507329, 81, 983073, 1507329, 82, 1048609, 1507329, 83)
 
 [node name="Player" parent="." instance=ExtResource("4_rjx13")]
-position = Vector2(157, 160)
+position = Vector2(160, 143)
 
 [node name="Portal" type="Area2D" parent="."]
 position = Vector2(82, 144)
 script = ExtResource("5_yna0l")
 connected_scene = "irfan's_map"
+enter_pos = Vector2(1120, 165)
 metadata/_custom_type_script = "uid://btq0f56iqlbgg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
@@ -5538,7 +5539,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_fe337")
 
 [node name="Portal2" type="Area2D" parent="."]
-position = Vector2(1276, 663)
+position = Vector2(1280, 659)
 script = ExtResource("5_yna0l")
 connected_scene = "park"
 metadata/_custom_type_script = "uid://btq0f56iqlbgg"

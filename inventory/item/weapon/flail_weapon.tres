@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="weapon" load_steps=3 format=3 uid="uid://bk4gi1m6smc7y"]
+
+[ext_resource type="Script" uid="uid://cvrib4clgrh1i" path="res://inventory/item/weapon/weapon.gd" id="1_0fqd7"]
+[ext_resource type="Texture2D" uid="uid://cpvnxxqcoxlow" path="res://inventory/item/weapon/laptop_charger_flail.png" id="2_d1dmb"]
+
+[resource]
+script = ExtResource("1_0fqd7")
+weapon_arrow = 0
+weapon_speed = 1.2
+hp_changed = 0
+pp_changed = 0
+name = "charger flail"
+texture = ExtResource("2_d1dmb")
+metadata/_custom_type_script = "uid://cvrib4clgrh1i"

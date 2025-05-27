@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="playerStat" load_steps=2 format=3 uid="uid://b84vv0hveag7k"]
+
+[ext_resource type="Script" uid="uid://c18hy6u1wlti2" path="res://Game/Player/player_stat.gd" id="1_impuw"]
+
+[resource]
+script = ExtResource("1_impuw")
+take_damage = 0
+max_pp = 20
+pp = 20
+weapons = 0
+weapon_speed = 1.0
+money = 0
+name = "Abu"
+max_hp = 20
+hp = 20
+metadata/_custom_type_script = "uid://c18hy6u1wlti2"

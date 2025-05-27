@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2qhhx0kd8bvp"]
+
+[ext_resource type="Script" uid="uid://m0d5jtn7pg21" path="res://inventory/equipment_slot.gd" id="1_7tb0e"]
+[ext_resource type="Texture2D" uid="uid://lijbpfld4mby" path="res://inventory/Screenshot 2025-05-20 192354.png" id="2_fdbwx"]
+
+[node name="equipment_slot" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1264.0
+offset_bottom = -703.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7tb0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(8.00001, 7.99999)
+scale = Vector2(0.134615, 0.116667)
+texture = ExtResource("2_fdbwx")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_top = 1.0
+offset_right = 16.0
+offset_bottom = 17.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+z_index = 6
+scale = Vector2(0.5, 0.5)
+
+[node name="unequip" type="Button" parent="."]
+z_index = 4
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 13.0
+scale = Vector2(1.02339, 1.14135)
+
+[connection signal="pressed" from="unequip" to="." method="_on_unequip_pressed"]

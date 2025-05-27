@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgthgj1yqy0rl"]
+
+[ext_resource type="Script" uid="uid://d2maj5fllpa4w" path="res://inventory/Inv_ui.gd" id="1_62wf1"]
+[ext_resource type="PackedScene" uid="uid://dnbfonx75kd05" path="res://inventory/inv_slot.tscn" id="2_qse2j"]
+[ext_resource type="PackedScene" uid="uid://c2qhhx0kd8bvp" path="res://inventory/item/gear/equipment_slot.tscn" id="3_f8i2h"]
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62wf1")
+
+[node name="NinePatchRect" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 7.0
+offset_right = 635.0
+offset_bottom = 83.0
+scale = Vector2(3.55443, 3.60143)
+
+[node name="equipmentChoice" type="VBoxContainer" parent="NinePatchRect"]
+visible = false
+layout_mode = 0
+offset_left = -40.0
+offset_top = 40.0
+offset_right = 27.0
+offset_bottom = 135.0
+scale = Vector2(0.373551, 0.271925)
+
+[node name="deequip" type="Button" parent="NinePatchRect/equipmentChoice"]
+layout_mode = 2
+text = "unequip"
+
+[node name="choices" type="VBoxContainer" parent="NinePatchRect"]
+visible = false
+layout_mode = 0
+offset_left = -40.0
+offset_top = 40.0
+offset_right = 15.0
+offset_bottom = 135.0
+scale = Vector2(0.373551, 0.271925)
+
+[node name="Label" type="Label" parent="NinePatchRect/choices"]
+layout_mode = 2
+
+[node name="use" type="Button" parent="NinePatchRect/choices"]
+layout_mode = 2
+text = "use"
+
+[node name="throw" type="Button" parent="NinePatchRect/choices"]
+layout_mode = 2
+text = "remove"
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 9.0
+offset_right = 95.0
+offset_bottom = 128.0
+columns = 4
+
+[node name="inv_slot" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+
+[node name="inv_slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 1
+
+[node name="inv_slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 2
+
+[node name="inv_slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 3
+
+[node name="inv_slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 4
+
+[node name="inv_slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 5
+
+[node name="inv_slot7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 6
+
+[node name="inv_slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 7
+
+[node name="inv_slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 8
+
+[node name="inv_slot10" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 9
+
+[node name="inv_slot11" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 10
+
+[node name="inv_slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qse2j")]
+layout_mode = 2
+item_index = 11
+
+[node name="equipment" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 8.0
+offset_right = 100.0
+offset_bottom = 37.0
+scale = Vector2(1.61055, 1.66233)
+
+[node name="equipment_slot" parent="NinePatchRect/equipment" instance=ExtResource("3_f8i2h")]
+layout_mode = 2
+item_index = 12
+
+[node name="equipment_slot2" parent="NinePatchRect/equipment" instance=ExtResource("3_f8i2h")]
+layout_mode = 2
+item_index = 13
+
+[connection signal="pressed" from="NinePatchRect/equipmentChoice/deequip" to="." method="_on_deequip_pressed"]
+[connection signal="pressed" from="NinePatchRect/choices/use" to="." method="_on_use_pressed"]
+[connection signal="pressed" from="NinePatchRect/choices/throw" to="." method="_on_throw_pressed"]

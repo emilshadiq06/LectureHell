@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://5xrymokedfeo"]
+[gd_scene load_steps=27 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
 [ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="2_x2hm1"]
@@ -6623,8 +6623,12 @@ position = Vector2(119, 601)
 [node name="Portal" type="Area2D" parent="."]
 position = Vector2(71, 623)
 script = ExtResource("13_ecln5")
+connected_scene = "hallway"
+enter_pos = Vector2(1216, 667)
 metadata/_custom_type_script = "uid://btq0f56iqlbgg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
 position = Vector2(-7, -15.5)
 shape = SubResource("RectangleShape2D_57otx")
+
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

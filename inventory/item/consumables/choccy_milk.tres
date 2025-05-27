@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="consumable" load_steps=3 format=3 uid="uid://burcucborqljf"]
+
+[ext_resource type="Script" uid="uid://c5mufo0u4vd54" path="res://inventory/item/consumables/consumable.gd" id="1_wf2hp"]
+[ext_resource type="Texture2D" uid="uid://cixs7rmn7bo31" path="res://inventory/img/choccy_milk.png" id="2_rrl6d"]
+
+[resource]
+script = ExtResource("1_wf2hp")
+lose_on_use = true
+hp_regen = 8
+pp_regen = 4
+bites = 0
+name = "Choccy Milk"
+texture = ExtResource("2_rrl6d")
+metadata/_custom_type_script = "uid://c5mufo0u4vd54"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="expendable" load_steps=3 format=3 uid="uid://bnvvcja800qer"]
+
+[ext_resource type="Script" uid="uid://b1swbfjw5yyka" path="res://inventory/item/expendable/expendable.gd" id="1_g00vt"]
+[ext_resource type="Texture2D" uid="uid://dqu8g7xdaqw8h" path="res://inventory/img/pipe_bomb.png" id="2_scgry"]
+
+[resource]
+script = ExtResource("1_g00vt")
+lose_on_use = true
+use_onSelf = false
+use_onEnemy = true
+hp_loss = 20
+stats_change = 0.0
+name = "pipe bomb"
+texture = ExtResource("2_scgry")
+metadata/_custom_type_script = "uid://b1swbfjw5yyka"

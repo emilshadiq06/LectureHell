@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="equipment" load_steps=3 format=3 uid="uid://hpbpvsiloe1o"]
+
+[ext_resource type="Script" uid="uid://jiv0rpbirird" path="res://inventory/item/gear/equipment.gd" id="1_7fky0"]
+[ext_resource type="Texture2D" uid="uid://dsuqkughlrkxc" path="res://inventory/img/will_power.png" id="2_7fky0"]
+
+[resource]
+script = ExtResource("1_7fky0")
+hp_changed = 10
+pp_changed = 30
+name = "willpower"
+texture = ExtResource("2_7fky0")
+metadata/_custom_type_script = "uid://jiv0rpbirird"

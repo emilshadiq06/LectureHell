@@ -1,0 +1,50 @@
+extends Node
+signal send_result
+
+var index : int = 0
+var balls: Array = []
+var hitted : int = 0
+var newball
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	
+	await get_tree().create_timer(0.1).timeout
+	balls = get_children()
+	
+	
+	
+	for i in balls.size()-1:
+		var displace = choose_randomly([0,0.5,0.75])
+		balls[i].position.x = 200 + (-300 * (i)) +( -300 * displace)
+
+	
+func add_ball(ball_added: int):
+	for i in ball_added:
+		newball = get_node("Ball2").duplicate()
+
+		add_child(newball)
+func ball_speed(speed:float):
+	balls = get_children()
+	for i in balls:
+		i.speed = speed
+		#print("here")
+		#print(i.speed)
+		
+func choose_randomly(list_of_entries):
+	return list_of_entries[randi() % list_of_entries.size()]
+
+
+#func _on_area_2d_body_exited(body: Node2D):
+	
+#	send_result.emit()
+#	return hitted
+		
+func _process(delta: float) -> void:
+	
+	if index >= balls.size():
+		send_result.emit()
+		#sent = true
+		
+		
+
+		
