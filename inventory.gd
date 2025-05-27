@@ -21,18 +21,18 @@ func insert(item: InvItem):
 	#	emptyslots[0]=item
 		print(items)
 func find(item:InvItem):
-	var full_index : int = 999
-	#print("add")
+	var full_list : Array[int]
+	
 	for i in range(items.size()-2):
 		if items[i] != null and items[i].name == (item.name):
 			#print(items[i].name)
 			#print(item_name)
 			
-			full_index = i
+			full_list.append(i)
 				#print(full_index)
 				#print(item_name)
-			return full_index
-	return null
+	return full_list
+	
 		
 	
 func throw(index:int,item:InvItem):

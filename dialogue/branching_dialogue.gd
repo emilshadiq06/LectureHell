@@ -4,7 +4,10 @@ class_name DialogueBranch
 #var quest_completed:bool = false
 @export var dialogue: dialogue_lines  
 @export var item: InvItem 
-@export var prized_item: InvItem 
+@export var item_count: int
+@export var lose_on_found :bool
+@export var prized_item: InvItem
+@export var add_to_group: int =999
 @export var money: float
 var player
 
@@ -20,7 +23,7 @@ func _ready():
 	
 	lines_array = dialogue.get_lines() 
 	dialog_branch = dialogue.get_lines_option()
-	print("i scrape my left nut in each odd numbered seat corner in the CNMX3 lecture hall and my right one on the even ones")
+	#print("i scrape my left nut in each odd numbered seat corner in the CNMX3 lecture hall and my right one on the even ones")
 	DialogueManagerScript.finish_lines.connect(next_line)
 
 
@@ -48,16 +51,22 @@ func item_pressed(item_index:int):
 			$DialogueOptions.remove_child($DialogueOptions.get_child($DialogueOptions.get_children().size()-1))
 			
 		dialogue.index = dialog_branch[dialogue.position[dialogue.index]][item_index][1]
-		if dialogue.index == dialogue.event_index and player.find_item(item) is int:
-			player.collect_item(prized_item.duplicate())
-			player.inv.throw(player.find_item(item),player.inv.items[player.find_item(item)])
-			#quest_completed = true
+		if dialogue.index == dialogue.event_index and player.find_item(item).size()>=item_count:
+			if prized_item != null:
+				player.collect_item(prized_item.duplicate())
+			if lose_on_found:
+				for i in player.find_item(item):
+					player.inv.throw(i,player.inv.items[i])
+			if add_to_group < 2 and StatLoader.player_group.size()<3:
+				var team = load("res://Game/Player/player_team.tscn").instantiate()
+				StatLoader.addplayer_to_group(team.get_child(add_to_group).duplicate())
+				team = null
+				
 			StatLoader.quest_array.append(quest_name)
 			player.buy(-money) 
 		elif dialogue.index == dialogue.event_index and player.find_item(item) == null and quest_name not in StatLoader.quest_array:
 			dialogue.index = lines_array.size()-1
-		#print(index)
-		#print(lines_array[index])
+
 		DialogueManagerScript.start_dialog(global_position, lines_array[dialogue.index])
 		$DialogueOptions.hide()
 	
