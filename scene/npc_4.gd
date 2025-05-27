@@ -11,7 +11,7 @@ func _physics_process(delta):
 		direction = (player.position - position).normalized()
 		velocity = direction * speed
 		#print(direction)
-		print(velocity)
+		#print(velocity)
 		
 		$AnimatedSprite2D.play("walk_e")
 		
@@ -24,12 +24,15 @@ func _physics_process(delta):
 
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	player = body
-	player_chase = true
+	#print("migga")
+	if body is Player:
+		player = body
+		player_chase = true
 
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
-	player = null
-	direction = Vector2.ZERO
-	velocity = Vector2.ZERO
-	player_chase = false
+	if body == player:
+		player = null
+		direction = Vector2.ZERO
+		velocity = Vector2.ZERO
+		player_chase = false

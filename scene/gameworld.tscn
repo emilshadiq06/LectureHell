@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpwabfncr34l6"]
+[gd_scene load_steps=24 format=3 uid="uid://dpwabfncr34l6"]
 
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="1_hx0jg"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_bjxfv"]
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="3_bjxfv"]
 [ext_resource type="Texture2D" uid="uid://cvqvf7qkmp88v" path="res://character/Sprite NPC Normal/2 - Holly/Standing (32 x 32).png" id="4_wm3ic"]
 [ext_resource type="PackedScene" uid="uid://g02cmrdrnaje" path="res://npc_green.tscn" id="5_eu1nv"]
-[ext_resource type="PackedScene" path="res://scene/npc_3.tscn" id="6_vk3vl"]
+[ext_resource type="PackedScene" uid="uid://b80p78ctksb4s" path="res://scene/npc_3.tscn" id="6_vk3vl"]
 [ext_resource type="Script" uid="uid://cl8by7lyd0gfi" path="res://scene/change_skill.gd" id="7_380ub"]
 [ext_resource type="PackedScene" uid="uid://cp4efdxwwk5q0" path="res://shop.tscn" id="8_63w8i"]
 [ext_resource type="Texture2D" uid="uid://b5t7j38iv5bs1" path="res://Game/Player/sprites/vendingMachine.png" id="9_mhtqh"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://degcegrnisho2" path="res://inventory/item/consumables/coffee.tres" id="13_jfy1l"]
 [ext_resource type="Resource" uid="uid://c5g7jek2vuj3s" path="res://inventory/item/consumables/water.tres" id="14_qflkg"]
 [ext_resource type="Script" uid="uid://btq0f56iqlbgg" path="res://script/portal.gd" id="16_ou7om"]
+[ext_resource type="PackedScene" uid="uid://dhos1w5fvtsgg" path="res://scene/npc_4.tscn" id="17_jfy1l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8buu"]
 size = Vector2(58, 82.5)
@@ -131,6 +132,9 @@ metadata/_custom_type_script = "uid://btq0f56iqlbgg"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal2"]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_mhtqh")
+
+[node name="npc_4" parent="." instance=ExtResource("17_jfy1l")]
+position = Vector2(254, 188)
 
 [connection signal="body_entered" from="change_skill" to="change_skill" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]
