@@ -183,7 +183,7 @@ script = ExtResource("1_lm4ag")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cs0iy")
-animation = &"idle"
+animation = &"walk_e"
 offset = Vector2(0, -6)
 
 [node name="detection_area" type="Area2D" parent="."]
