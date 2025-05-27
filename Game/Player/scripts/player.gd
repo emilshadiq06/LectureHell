@@ -19,11 +19,7 @@ var run: int = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	#if StatLoader.hp == 0:
-		#stats.update_statloader()
-	#else:
-	#stats.update_stats()
-	#stats.money = StatLoader.money
+	update_pos()
 	$RichTextLabel.text =  "$" + str(stats.money)
 	if StatLoader.skill_node != null:
 		skill.set_script(StatLoader.return_skill().get_script())
@@ -35,8 +31,7 @@ func _ready() -> void:
 		$RichTextLabel.text =  "$" + str(stats.money)
 		print("KKKKKKKKKKKKKK")
 		print(stats.money)
-		
-		global_position = StatLoader.previous_position
+		position = StatLoader.previous_position
 	
 	pass # Replace with function body.
 
@@ -151,5 +146,8 @@ func removehealth(hp_loss):
 	else:
 		StatLoader.player_group[player_team.index-1].stats.hp -= hp_loss
 		player_team.update_group(StatLoader.player_group[player_team.index-1].stats,player_team.index)
-	
-	
+
+func update_pos():
+	if StatLoader.previous_position != Vector2.ZERO:
+		position = StatLoader.previous_position
+	#print(position)
