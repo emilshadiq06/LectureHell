@@ -1,26 +1,24 @@
 class_name Player extends CharacterBody2D
-
+@export var dashes : int = 4
 const DOUBLETAP_DELAY = .30
 var doubletap_time = DOUBLETAP_DELAY
 var last_keycode = 0
 
 var direction : Vector2 = Vector2.ZERO
 var cardinal_direction : Vector2 = Vector2.DOWN
-#@onready var player_team = $inventory/player_team_ui
 var run: int = 1
-#@export var inv :Inv
-#@onready var skill = $skill
-#@onready var stats = $stats
-var dash_cooldown 
-var dash_window 
+var dashing:bool = false
+var dash_cooldown : float
+var dash_window :float
+@export var play_dash: bool = true
+@export var dash_window_duration : float
 @onready var animation_player : AnimationPlayer= $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
-#@export var stats : playerStat
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	dash_window=$dash_window
-	dash_cooldown=$dash_cooldown
+	#dash_window=$dash_window
+	#dash_cooldown=$dash_cooldown
 
 	state_machine.initialize(self)
 
@@ -33,41 +31,44 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $Label:
-		$Label.text = str(dash_cooldown.get_time_left())
-	#print(dash_cooldown.get_time_left())
-	if dash_window.get_time_left()  < 0.01 and run == 2:
-		direction = Vector2.ZERO
-		velocity = Vector2.ZERO
-		state_machine.current_state = $StateMachine/walk
-		run = 1
-		dash_window.stop()
-
-		#print(dash_window.time_left)
-		
-		#dash_cooldown.start(3)
-	if dash_cooldown.get_time_left()  < 0.1:
-		dash_cooldown.stop()
+	if dash_cooldown<= 0 and dashes < 4:
+		#dash_cooldown.stop()
+		dashes +=1
+		dash_cooldown = 1.5
 	doubletap_time -= delta
+	if dash_cooldown> 0:
+		dash_cooldown -= delta
+	if dash_window> 0:
+		dash_window -= delta
 	direction = Vector2(Input.get_axis("left","right"),Input.get_axis("up","down")).normalized()
-	#print(state_machine.current_state.name)
+	if dash_window > 0 and dashing:
+		direction*=1.75
+		#current_anim = animation_player.current_animation
+		if dash_window_duration> 0.1 and play_dash:
+			animation_player.play("dash")
+	else:
+		#if animation_player.current_animation == "dash":
+		#	animation_player.stop()
+		dash_window = 0
+		#if current_anim != null:
+	#		animation_player.play(current_anim)
+		direction.normalized()
+		dashing =  false
+		
 	pass
 	
 func _input(event: InputEvent):
 	if Input.is_action_just_pressed("left")||Input.is_action_just_pressed("right")||Input.is_action_just_pressed("up")||Input.is_action_just_pressed("down") :
 		
 		if last_keycode == event.keycode and  doubletap_time >= 0 and doubletap_time < 0.2: 
-			#print(dash_cooldown.get_time_left())
-			print(last_keycode)
+			
 			last_keycode = 0
-			print(last_keycode)
-			if dash_cooldown.get_time_left() < 0.1 and run == 1:
-				
-				run = 2
-				#print(run)
-				dash_window.start(0.3)
-				dash_cooldown.start(3)
-
+			run = 2
+			if dashes>0 and dash_window==0:
+				dash_window= (dash_window_duration)
+				dash_cooldown=1.25
+				dashes -= 1
+				dashing = true
 		else:
 			last_keycode = event.keycode
 		
@@ -90,4 +91,15 @@ func SetDirection() -> bool:
 	cardinal_direction = new_dir
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	return true
+
+func UpdateAnimation(state : String) -> void:
+	animation_player.play(state + "_" + AnimDirect())
+	pass
 	
+func AnimDirect() -> String:
+	if cardinal_direction == Vector2.DOWN:
+		return "down"
+	elif cardinal_direction == Vector2.UP:
+		return "up"
+	else:
+		return "side"

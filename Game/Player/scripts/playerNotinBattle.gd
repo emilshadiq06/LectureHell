@@ -1,23 +1,15 @@
 
 extends Player
 
-#const DOUBLETAP_DELAY = .30
-#var doubletap_time = DOUBLETAP_DELAY
-#var last_keycode = 0
-
-#var cardinal_direction : Vector2 = Vector2.DOWN
 @onready var player_team = $inventory/player_team_ui
-#var run: int = 1
+
 @export var inv :Inv
 @onready var skill = $skill
-#@onready var stats = $stats
-#@onready var animation_player : AnimationPlayer= $AnimationPlayer
-#@onready var sprite : Sprite2D = $Sprite2D
-#@onready var state_machine: PlayerStateMachine = $StateMachine
+
 @export var stats : playerStat
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	
+	run = 1
 	update_pos()
 	$RichTextLabel.text =  "$" + str(stats.money)
 	if StatLoader.skill_node != null:
@@ -31,7 +23,7 @@ func _ready() -> void:
 		print("KKKKKKKKKKKKKK")
 		print(stats.money)
 		position = StatLoader.previous_position
-	
+		
 	pass # Replace with function body.
 
 
