@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://daprrjii34ki7"]
 
 [ext_resource type="Texture2D" uid="uid://c3bvsa0hx26wx" path="res://Game/Player/sprites/ExamplePlayerSprite.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://cu6x2eqp8lrjq" path="res://Game/Player/scripts/player.gd" id="1_s3asc"]
+[ext_resource type="Script" uid="uid://cu6x2eqp8lrjq" path="res://Game/Player/scripts/playerNotinBattle.gd" id="1_s3asc"]
 [ext_resource type="Resource" uid="uid://c64jap0qamgb6" path="res://inventory/player_inventory.tres" id="2_db2hk"]
 [ext_resource type="Resource" uid="uid://iaxtbs02j25k" path="res://Game/Player/player_stats.tres" id="3_db2hk"]
 [ext_resource type="Script" uid="uid://65kt8tnau70s" path="res://Game/Player/scripts/player_state_machine.gd" id="3_p2hw7"]
@@ -312,9 +312,11 @@ script = ExtResource("4_ch4ko")
 
 [node name="walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_vh1aq")
+move_speed = 150.0
 
 [node name="running" type="Node" parent="StateMachine"]
 script = ExtResource("6_4ddeg")
+move_speed = 300.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

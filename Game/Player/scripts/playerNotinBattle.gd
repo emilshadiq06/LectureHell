@@ -1,20 +1,19 @@
 
-class_name Player extends CharacterBody2D
+extends Player
 
-const DOUBLETAP_DELAY = .30
-var doubletap_time = DOUBLETAP_DELAY
-var last_keycode = 0
+#const DOUBLETAP_DELAY = .30
+#var doubletap_time = DOUBLETAP_DELAY
+#var last_keycode = 0
 
-var direction : Vector2 = Vector2.ZERO
-var cardinal_direction : Vector2 = Vector2.DOWN
+#var cardinal_direction : Vector2 = Vector2.DOWN
 @onready var player_team = $inventory/player_team_ui
-var run: int = 1
+#var run: int = 1
 @export var inv :Inv
 @onready var skill = $skill
 #@onready var stats = $stats
-@onready var animation_player : AnimationPlayer= $AnimationPlayer
-@onready var sprite : Sprite2D = $Sprite2D
-@onready var state_machine: PlayerStateMachine = $StateMachine
+#@onready var animation_player : AnimationPlayer= $AnimationPlayer
+#@onready var sprite : Sprite2D = $Sprite2D
+#@onready var state_machine: PlayerStateMachine = $StateMachine
 @export var stats : playerStat
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,8 +42,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	doubletap_time -= delta
-	#direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	#direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	direction = Vector2(Input.get_axis("left","right"),Input.get_axis("up","down")).normalized()
 
 	pass
@@ -63,23 +60,23 @@ func _input(event: InputEvent):
 		
 		doubletap_time = DOUBLETAP_DELAY
 
-func _physics_process(_delta: float) -> void:
-	move_and_slide()
+#func _physics_process(_delta: float) -> void:
+	#move_and_slide()
 	
-func SetDirection() -> bool:
-	var new_dir : Vector2 = cardinal_direction
-	if direction == Vector2.ZERO:
+#func SetDirection() -> bool:
+#	var new_dir : Vector2 = cardinal_direction
+#	if direction == Vector2.ZERO:
 
-		return false
-	if direction.y == 0:
-		new_dir = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
-	elif direction.x == 0:
-		new_dir = Vector2.UP if direction.y < 0 else Vector2.DOWN
-	if new_dir == cardinal_direction:
-		return false
-	cardinal_direction = new_dir
-	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
-	return true
+	#	return false
+	#if direction.y == 0:
+	#	new_dir = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
+	#elif direction.x == 0:
+	#	new_dir = Vector2.UP if direction.y < 0 else Vector2.DOWN
+	#if new_dir == cardinal_direction:
+	#	return false
+	#cardinal_direction = new_dir
+	#sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	#return true
 	
 func get_stats():
 	return stats

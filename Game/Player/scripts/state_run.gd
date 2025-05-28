@@ -12,6 +12,7 @@ func Enter() ->void:
 	
 #what happens when player enters state
 func Exit() ->void:
+	#player.velocity = Vector2.ZERO
 	pass
 	
 #what happens during process in state
