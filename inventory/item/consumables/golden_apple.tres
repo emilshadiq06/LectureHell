@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="consumable" load_steps=3 format=3 uid="uid://bkiu7rusrnnb2"]
+
+[ext_resource type="Script" uid="uid://c5mufo0u4vd54" path="res://inventory/item/consumables/consumable.gd" id="1_303t8"]
+[ext_resource type="Texture2D" uid="uid://bss82yb7kdss3" path="res://inventory/img/apple_golden_30_30px.png" id="2_2qsri"]
+
+[resource]
+script = ExtResource("1_303t8")
+lose_on_use = true
+hp_regen = 5
+pp_regen = 3
+bites = 1
+name = "golden_apple"
+texture = ExtResource("2_2qsri")
+metadata/_custom_type_script = "uid://c5mufo0u4vd54"
