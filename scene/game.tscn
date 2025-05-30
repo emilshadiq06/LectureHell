@@ -86,7 +86,7 @@ shape = SubResource("RectangleShape2D_ww6yf")
 position = Vector2(0, -14)
 texture = ExtResource("3_p1ry8")
 offset = Vector2(-2.5, -2)
-hframes = 17
+hframes = 21
 
 [node name="ABU" type="CollisionShape2D" parent="CharacterBody2D"]
 y_sort_enabled = true
