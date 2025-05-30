@@ -159,6 +159,7 @@ func _on_bullet_hell_timer_timeout() -> void:
 		DialogueManagerScript.current_line_index = 0
 	start_turn.emit()
 	_reset_focus()
+	get_parent().remove_child(player_group.stage)
 	#action_queue.clear()
 	is_battling = false
 	show_choice()

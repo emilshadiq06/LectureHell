@@ -104,13 +104,13 @@ visible = false
 position = Vector2(387, -215)
 collision_mask = 17
 stats = ExtResource("10_sng2h")
-group = "enemies"
+group_str = "enemies"
 
 [node name="Enemy3" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
 position = Vector2(443, -194)
 collision_mask = 17
 stats = ExtResource("11_81276")
-group = "enemies"
+group_str = "enemies"
 
 [node name="Enemy" parent="." instance=ExtResource("7_qpk70")]
 position = Vector2(446, -113)

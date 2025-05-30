@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_4m7ht")
+randomize = true
+attack = Array[String](["res://Battle/enemy_attack/basic_enemy_attack.tscn", "res://Battle/enemy_attack/basic_attack_2.tscn"])
+attack_duration = 5.5
 name = "Evil Ahmad"
 max_hp = 20
 hp = 20

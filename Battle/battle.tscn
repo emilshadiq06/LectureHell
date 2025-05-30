@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://c64jap0qamgb6" path="res://inventory/player_inventory.tres" id="3_ploow"]
 
 [node name="Battle" type="Node2D"]
-position = Vector2(0, 57)
 script = ExtResource("1_5pv0p")
 
 [node name="PlayerGroup" parent="." instance=ExtResource("1_ksnli")]

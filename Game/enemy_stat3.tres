@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_8wk6y")
+randomize = true
+attack = Array[String](["res://Battle/enemy_attack/basic_attack_2.tscn"])
+attack_duration = 4.0
 name = "Reasonable Alif"
 max_hp = 20
 hp = 20

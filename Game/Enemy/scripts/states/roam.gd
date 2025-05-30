@@ -11,7 +11,7 @@ func init() -> void:
 	
 func Enter() ->void:
 	timer.start(2)
-#	enemy.UpdateAnimation("idle")
+	enemy.UpdateAnimation("walk")
 	
 	pass
 	

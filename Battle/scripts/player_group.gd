@@ -1,12 +1,12 @@
 extends Node
-
+var in_damage_multiplier : float = 1
 var index : int = 0
 var players: Array = []
 @onready var enemies = $"../EnemyGroup"
 @onready var choice = $"../CanvasLayer/choice"
 @onready var actChoice = $"../CanvasLayer/actChoice"
 @onready var inventory = $"../CanvasLayer/inventory"
-
+var stage = load("res://Battle/stage.tscn").instantiate()
 @onready var effect_machine = $"../effectMachine"
 @onready var bullet_hell_timer =  $"../BulletHellTimer"
 
@@ -65,26 +65,27 @@ func switch_focus(x,y):
 
 
 func _on_enemy_group_bullet_hell() -> void:
+	enemies.choice.hide()
+	var duration: float
+	get_parent().add_child(stage) 
+	await get_tree().create_timer(1).timeout
+	for i in enemies.enemies:
+		if i.hp>0:
+			var attack
+			if i.randomize:
+				
+				attack = load(i.attk_str[randi() % i.attk_str.size()]).instantiate()
+			else:
+				attack = load(i.attk_str[ceil((i.hp/i.MAX_HP)*i.attk_str.size())-1]).instantiate()
+			var attk_dmg = attack.get_children()
+
+			duration += i.attk_duration
+			duration /= enemies.enemies.size()
+			stage.add_child(attack)
+			await get_tree().create_timer(0.5).timeout
 	
 	
-	bullet_hell_timer.start(4)
-	
-func start_hell():
-	
-	if bullet_hell_timer.get_time_left() > 0:
-		#inventory.hide()
-		enemies.choice.hide()
-		#DialogueManagerScript.start_dialog(Vector2(300,500), ["bullet hell goes here"])
-	#add_child(bullet_hell)
-	
-func _process(delta: float) -> void:
-	if bullet_hell_timer.get_time_left() > 3.99:
-		start_hell()
-	if bullet_hell_timer.get_time_left() < 0.01:
-		#remove_child(bullet_hell)
-		pass
-			
-		
+	bullet_hell_timer.start(duration)
 
 
 
@@ -132,7 +133,7 @@ func _on_enemy_group_start_turn() -> void:
 	#print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
 	#print(enemies.action_queue)
 	for i in players:
-		i.take_damage(2)
+		#i.take_damage(2)
 		i.take_stamina(-2)
 		if i.pp > i.MAX_PP:
 			i.pp -= 4

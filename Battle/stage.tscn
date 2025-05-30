@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhi0eobtuu5en"]
+
+[ext_resource type="Texture2D" uid="uid://duqukvqa3wtvb" path="res://Battle/sprites/box.png" id="1_tof6y"]
+[ext_resource type="PackedScene" uid="uid://d3kif264efyk2" path="res://Game/Player/player_base.tscn" id="2_bcvnr"]
+
+[node name="Battle_stage" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = 456.0
+offset_top = 167.0
+offset_right = 845.0
+offset_bottom = 547.0
+texture = ExtResource("1_tof6y")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(835, 176, 837, 539, 858, 135, 463, 176)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(464, 538, 837, 539, 445, 568, 464, 175)
+
+[node name="Player_base" parent="." instance=ExtResource("2_bcvnr")]
+position = Vector2(631, 297)
