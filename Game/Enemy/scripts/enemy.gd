@@ -2,13 +2,13 @@ class_name Enemy extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var animation_player = $AnimationPlayer
 @onready var state_machine  = $EnemyStateMachine
-@onready var player = get_node("../Player")
+var player
 @export var stats : stat
 @export var group_str: String
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
-const SPEED = 100.0
+const SPEED = 150.0
 var chase_dir : Vector2
 var chase : bool = false 
 
@@ -18,8 +18,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _process(delta: float) -> void:
-	if chase == true:
+	if player != null and abs(player.velocity.x) + abs(player.velocity.y)>50:
+		chase = true
+	if player != null and chase == true:
 		chase_dir = (player.position-position).normalized()
+	$ChaseArea.position = cardinal_direction*200
+	$ChaseArea.rotation =  (cardinal_direction).angle()
 	pass
 	
 func _physics_process(delta: float) -> void:
@@ -62,5 +66,11 @@ func choose_randomly(list_of_entries):
 		
 
 func _on_chase_area_body_entered(body) -> void:
-	if body == player:
-		chase = true
+	if body is Player   :
+		player = body
+
+
+#func _on_chase_area_body_exited(body: Node2D) -> void:
+	#if body == player:
+		#await get_tree().create_timer(0.5).timeout
+		#player = null

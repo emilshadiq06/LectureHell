@@ -4,7 +4,7 @@ class_name battle_teleport
 @onready var fight = preload("res://Battle/battle.tscn").instantiate()
 func _on_body_entered(body: Node2D) -> void:
 
-	if body == get_parent().player and get_parent().name not in StatLoader.dead_array:
+	if body == get_parent().player and get_parent().name not in StatLoader.dead_array and get_parent().chase:
 		DialogueManagerScript.is_dialog_active = false
 		DialogueManagerScript.current_line_index = 0
 		var current_scene = get_tree().current_scene

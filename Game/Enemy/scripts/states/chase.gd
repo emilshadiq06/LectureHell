@@ -8,7 +8,7 @@ func init() -> void:
 
 #what happens when player enters state
 func Enter() ->void:
-	enemy.cardinal_direction = Vector2.ZERO
+	#enemy.cardinal_direction = Vector2.ZERO
 	timer.start(10)
 	await get_tree().create_timer(1).timeout
 
@@ -22,7 +22,7 @@ func Exit() ->void:
 #what happens during process in state
 func Process(_delta:float)->Enemy_State:
 
-	enemy.velocity = enemy.chase_dir * enemy.SPEED * 1.5
+	enemy.velocity = enemy.chase_dir * enemy.SPEED * 1.8
 	if abs(enemy.chase_dir.x) > abs(enemy.chase_dir.y):
 		enemy.direction = Vector2(enemy.chase_dir.x,0).normalized()
 	elif abs(enemy.chase_dir.x) <= abs(enemy.chase_dir.y):
@@ -37,6 +37,7 @@ func Process(_delta:float)->Enemy_State:
 	
 	#enemy.AnimDirect()
 	if timer.get_time_left() <= 0.1:
+		enemy.player = null
 		enemy.chase = false
 		return idle
 	return null
