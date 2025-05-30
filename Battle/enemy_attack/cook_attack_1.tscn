@@ -1,0 +1,144 @@
+[gd_scene load_steps=21 format=3 uid="uid://cmahcdptjk04p"]
+
+[ext_resource type="Script" uid="uid://behrpjij30r01" path="res://Battle/enemy_attack/script/pan.gd" id="1_t5axc"]
+[ext_resource type="Texture2D" uid="uid://ddo4kagbdtthg" path="res://Battle/sprites/pan_flip.png" id="2_d1pu5"]
+[ext_resource type="Script" uid="uid://egf8g8wi4plx" path="res://Battle/enemy_attack/script/food.gd" id="3_y7wl8"]
+[ext_resource type="Texture2D" uid="uid://bmpp6s67sxhls" path="res://Battle/sprites/fire.png" id="4_6cmkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tof6y"]
+size = Vector2(83, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70un1"]
+atlas = ExtResource("2_d1pu5")
+region = Rect2(0, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lugxm"]
+atlas = ExtResource("2_d1pu5")
+region = Rect2(32, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apnbr"]
+atlas = ExtResource("2_d1pu5")
+region = Rect2(64, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktc4k"]
+atlas = ExtResource("2_d1pu5")
+region = Rect2(96, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0av8k"]
+atlas = ExtResource("2_d1pu5")
+region = Rect2(128, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbkmt"]
+atlas = ExtResource("2_d1pu5")
+region = Rect2(160, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdj1y"]
+atlas = ExtResource("2_d1pu5")
+region = Rect2(192, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50k28"]
+atlas = ExtResource("2_d1pu5")
+region = Rect2(224, 0, 32, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d21r6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70un1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lugxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apnbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktc4k")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_0av8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbkmt")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_cdj1y")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_50k28")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d21r6"]
+atlas = ExtResource("4_6cmkd")
+region = Rect2(0, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4uee"]
+atlas = ExtResource("4_6cmkd")
+region = Rect2(32, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0icj"]
+atlas = ExtResource("4_6cmkd")
+region = Rect2(64, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuj0y"]
+atlas = ExtResource("4_6cmkd")
+region = Rect2(96, 0, 32, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70un1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d21r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4uee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0icj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuj0y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj1h7"]
+radius = 4.11096
+height = 43.4055
+
+[node name="CookAttack1" type="Node2D"]
+
+[node name="pan" type="AnimatableBody2D" parent="."]
+position = Vector2(699, 596)
+script = ExtResource("1_t5axc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pan"]
+position = Vector2(2.00012, 0.25)
+shape = SubResource("RectangleShape2D_tof6y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="pan"]
+position = Vector2(6, 1.25)
+scale = Vector2(3.4375, 1.71739)
+sprite_frames = SubResource("SpriteFrames_d21r6")
+frame_progress = 0.421947
+
+[node name="food" type="AnimatableBody2D" parent="."]
+position = Vector2(585, 774)
+scale = Vector2(1.7, 0.906667)
+script = ExtResource("3_y7wl8")
+damage = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="food"]
+sprite_frames = SubResource("SpriteFrames_70un1")
+frame_progress = 0.816975
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="food"]
+position = Vector2(1, -1)
+scale = Vector2(2.43252, 1.33624)
+shape = SubResource("CapsuleShape2D_aj1h7")

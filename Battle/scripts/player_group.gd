@@ -9,7 +9,7 @@ var players: Array = []
 var stage = load("res://Battle/stage.tscn").instantiate()
 @onready var effect_machine = $"../effectMachine"
 @onready var bullet_hell_timer =  $"../BulletHellTimer"
-
+var attk_groups : Array
 @export var inv: Inv
 
 var skill_button
@@ -77,13 +77,13 @@ func _on_enemy_group_bullet_hell() -> void:
 				attack = load(i.attk_str[randi() % i.attk_str.size()]).instantiate()
 			else:
 				attack = load(i.attk_str[ceil((i.hp/i.MAX_HP)*i.attk_str.size())-1]).instantiate()
-			var attk_dmg = attack.get_children()
+			attk_groups.append(attack)
 
 
 			stage.add_child(attack)
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.2).timeout
 		duration += i.attk_duration
-		duration /= enemies.enemies.size()
+	duration /= enemies.enemies.size()
 	
 	
 	bullet_hell_timer.start(duration)

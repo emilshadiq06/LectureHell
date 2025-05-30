@@ -1,0 +1,141 @@
+[gd_scene load_steps=14 format=3 uid="uid://dfjmgwk8nidia"]
+
+[ext_resource type="Script" uid="uid://dmckske6g6qm8" path="res://Battle/enemy_attack/script/stove_fire.gd" id="1_2ib17"]
+[ext_resource type="Texture2D" uid="uid://bmpp6s67sxhls" path="res://Battle/sprites/fire.png" id="2_mr5d0"]
+[ext_resource type="Texture2D" uid="uid://mk6e6teprdk7" path="res://Battle/sprites/warninh.png" id="3_ub8d6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tof6y"]
+size = Vector2(30.1349, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e27g"]
+atlas = ExtResource("2_mr5d0")
+region = Rect2(0, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h88j4"]
+atlas = ExtResource("2_mr5d0")
+region = Rect2(32, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70un1"]
+atlas = ExtResource("2_mr5d0")
+region = Rect2(64, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lugxm"]
+atlas = ExtResource("2_mr5d0")
+region = Rect2(96, 0, 32, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_apnbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e27g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h88j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70un1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lugxm")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apnbr"]
+atlas = ExtResource("3_ub8d6")
+region = Rect2(0, 0, 33, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktc4k"]
+atlas = ExtResource("3_ub8d6")
+region = Rect2(33, 0, 33, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0av8k"]
+atlas = ExtResource("3_ub8d6")
+region = Rect2(66, 0, 33, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbkmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apnbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktc4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0av8k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Cook_Attack2" type="Node2D"]
+
+[node name="Markers" type="Node" parent="."]
+
+[node name="Marker2D3" type="Marker2D" parent="Markers"]
+position = Vector2(768, 352)
+
+[node name="Marker2D2" type="Marker2D" parent="Markers"]
+position = Vector2(640, 352)
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+position = Vector2(512, 352)
+
+[node name="stove_fire" type="AnimatableBody2D" parent="."]
+position = Vector2(776, 560)
+scale = Vector2(3.84, 1)
+script = ExtResource("1_2ib17")
+appear = 0.3
+follow = 2.3
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stove_fire"]
+position = Vector2(-2.6226e-06, 0)
+scale = Vector2(1.05753, 1)
+shape = SubResource("RectangleShape2D_tof6y")
+
+[node name="fire" type="AnimatedSprite2D" parent="stove_fire"]
+visible = false
+position = Vector2(7.62939e-06, -40)
+scale = Vector2(0.949275, 1.27536)
+sprite_frames = SubResource("SpriteFrames_apnbr")
+animation = &"fire"
+frame_progress = 0.913982
+
+[node name="warning" type="AnimatedSprite2D" parent="stove_fire"]
+position = Vector2(2.6226e-06, -200)
+scale = Vector2(1.06818, 5.36957)
+sprite_frames = SubResource("SpriteFrames_dbkmt")
+frame_progress = 0.757872
+
+[node name="stove_fire2" type="AnimatableBody2D" parent="."]
+position = Vector2(776, 560)
+scale = Vector2(3.84, 1)
+script = ExtResource("1_2ib17")
+index = 1
+appear = 0.6
+follow = 2.6
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stove_fire2"]
+position = Vector2(-2.6226e-06, 0)
+scale = Vector2(1.05753, 1)
+shape = SubResource("RectangleShape2D_tof6y")
+
+[node name="fire" type="AnimatedSprite2D" parent="stove_fire2"]
+visible = false
+position = Vector2(7.62939e-06, -40)
+scale = Vector2(0.949275, 1.27536)
+sprite_frames = SubResource("SpriteFrames_apnbr")
+animation = &"fire"
+frame_progress = 0.245143
+
+[node name="warning" type="AnimatedSprite2D" parent="stove_fire2"]
+position = Vector2(2.6226e-06, -200)
+scale = Vector2(1.06818, 5.36957)
+sprite_frames = SubResource("SpriteFrames_dbkmt")
+frame_progress = 0.643812

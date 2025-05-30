@@ -16,7 +16,7 @@
 size = Vector2(46, 50)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4qpj5"]
-points = PackedVector2Array(0, -100, 70.711, 70.711, -70.711, 70.711)
+points = PackedVector2Array(0, -100, 86.6, 50, -86.6, 50)
 
 [sub_resource type="Animation" id="Animation_q0m6d"]
 length = 0.001
@@ -29,7 +29,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [0]
 }
 
@@ -46,7 +46,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [0, 1, 2]
 }
 
@@ -63,7 +63,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [0, 1, 2]
 }
 
@@ -80,7 +80,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [14, 15, 16]
 }
 
@@ -97,7 +97,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.199514, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [7, 8, 9]
 }
 
@@ -114,7 +114,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [3, 4, 5, 6]
 }
 
@@ -131,7 +131,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [17, 18, 19, 20]
 }
 
@@ -148,7 +148,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [10, 11, 12, 13]
 }
 
@@ -214,5 +214,22 @@ libraries = {
 &"": SubResource("AnimationLibrary_n4lia")
 }
 
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -69.0
+offset_right = 18.0
+offset_bottom = -29.0
+scale = Vector2(1.03624, 1.03779)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 11.0
+offset_right = 41.0
+offset_bottom = 34.0
+text = "   !!!"
+
 [connection signal="body_entered" from="BattleTeleporter" to="BattleTeleporter" method="_on_body_entered"]
 [connection signal="body_entered" from="ChaseArea" to="." method="_on_chase_area_body_entered"]
+[connection signal="body_exited" from="ChaseArea" to="." method="_on_chase_area_body_exited"]

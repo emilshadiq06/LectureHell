@@ -1,5 +1,6 @@
 class_name Enemy extends CharacterBody2D
 @onready var sprite = $Sprite2D
+@export var sprite2 : Texture
 @onready var animation_player = $AnimationPlayer
 @onready var state_machine  = $EnemyStateMachine
 var player
@@ -13,6 +14,8 @@ var chase_dir : Vector2
 var chase : bool = false 
 
 func _ready() -> void:
+	if sprite2:
+		sprite.texture = sprite2
 	state_machine.initialize(self)
 	#direction.y = 1
 	pass # Replace with function body.
@@ -20,6 +23,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player != null and abs(player.velocity.x) + abs(player.velocity.y)>50:
 		chase = true
+		if name not in StatLoader.dead_array:
+			$Panel.show()
 	if player != null and chase == true:
 		chase_dir = (player.position-position).normalized()
 	$ChaseArea.position = cardinal_direction*200
@@ -67,10 +72,12 @@ func choose_randomly(list_of_entries):
 
 func _on_chase_area_body_entered(body) -> void:
 	if body is Player   :
+		
 		player = body
-
-
-#func _on_chase_area_body_exited(body: Node2D) -> void:
-	#if body == player:
 		#await get_tree().create_timer(0.5).timeout
 		#player = null
+
+
+func _on_chase_area_body_exited(body: Node2D) -> void:
+	if player == body and !chase:
+		player = null

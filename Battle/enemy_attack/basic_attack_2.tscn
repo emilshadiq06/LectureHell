@@ -60,7 +60,7 @@ visible = false
 position = Vector2(410, 185)
 scale = Vector2(1.8, 4.2)
 collision_layer = 0
-collision_mask = 16
+collision_mask = 0
 script = ExtResource("1_unfm5")
 damage = 4
 
@@ -76,7 +76,7 @@ visible = false
 position = Vector2(794, 167)
 scale = Vector2(1.73527, 4.80603)
 collision_layer = 0
-collision_mask = 16
+collision_mask = 0
 script = ExtResource("1_unfm5")
 appear = 0.1
 follow = 1.1

@@ -10,8 +10,9 @@ func init() -> void:
 func Enter() ->void:
 	#enemy.cardinal_direction = Vector2.ZERO
 	timer.start(10)
+	
 	await get_tree().create_timer(1).timeout
-
+	$"../../Panel".hide()
 	enemy.UpdateAnimation("walk")
 	pass
 	
