@@ -10,7 +10,7 @@ func init() -> void:
 	pass
 	
 func Enter() ->void:
-	timer.start(2)
+	timer.start(enemy.choose_randomly([2,4]))
 	enemy.UpdateAnimation("walk")
 	
 	pass
