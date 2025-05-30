@@ -3,7 +3,7 @@ var dashes : int = 4
 const DOUBLETAP_DELAY = .30
 var doubletap_time = DOUBLETAP_DELAY
 var last_keycode = 0
-
+var max_dashes = dashes
 var direction : Vector2 = Vector2.ZERO
 var cardinal_direction : Vector2 = Vector2.DOWN
 var run: int = 1
@@ -17,24 +17,30 @@ var dash_window :float
 @onready var state_machine: PlayerStateMachine = $StateMachine
 
 func _ready() -> void:
+	
 	#dash_window=$dash_window
 	#dash_cooldown=$dash_cooldown
 	#dashes = 4
 	state_machine.initialize(self)
-
+	update_progress()
 	pass # Replace with function body.
 
 
 
 
-
+func update_progress():
+	if max_dashes > 0:
+		$"../ProgressBar".value = dashes*100/max_dashes 
+	#print()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if dash_cooldown<= 0 and dashes < 4:
 		#dash_cooldown.stop()
+		
 		dashes +=1
 		dash_cooldown = 1.5
+		update_progress()
 	doubletap_time -= delta
 	if dash_cooldown> 0:
 		dash_cooldown -= delta
@@ -64,6 +70,7 @@ func _input(event: InputEvent):
 				dash_window= (dash_window_duration)
 				dash_cooldown=1.25
 				dashes -= 1
+				update_progress()
 				dashing = true
 		else:
 			last_keycode = event.keycode

@@ -27,3 +27,10 @@ polygon = PackedVector2Array(464, 538, 837, 539, 445, 568, 464, 175)
 
 [node name="Player_base" parent="." instance=ExtResource("2_bcvnr")]
 position = Vector2(631, 297)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 536.0
+offset_top = 138.0
+offset_right = 783.0
+offset_bottom = 165.0
+show_percentage = false

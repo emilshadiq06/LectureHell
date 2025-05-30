@@ -79,10 +79,11 @@ func _on_enemy_group_bullet_hell() -> void:
 				attack = load(i.attk_str[ceil((i.hp/i.MAX_HP)*i.attk_str.size())-1]).instantiate()
 			var attk_dmg = attack.get_children()
 
-			duration += i.attk_duration
-			duration /= enemies.enemies.size()
+
 			stage.add_child(attack)
 			await get_tree().create_timer(0.5).timeout
+		duration += i.attk_duration
+		duration /= enemies.enemies.size()
 	
 	
 	bullet_hell_timer.start(duration)

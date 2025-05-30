@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		#print(rotation)
 	else:
 		#anim_player.stop()
-		await get_tree().create_timer(0.2).timeout
+		#await get_tree().create_timer(0.2).timeout
 		anim_player.play("kick")
 		await get_tree().create_timer(0.3).timeout
 		
