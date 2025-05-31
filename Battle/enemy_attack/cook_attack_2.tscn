@@ -77,13 +77,13 @@ animations = [{
 [node name="Markers" type="Node" parent="."]
 
 [node name="Marker2D3" type="Marker2D" parent="Markers"]
-position = Vector2(768, 352)
+position = Vector2(778, 559)
 
 [node name="Marker2D2" type="Marker2D" parent="Markers"]
-position = Vector2(640, 352)
+position = Vector2(650, 559)
 
 [node name="Marker2D" type="Marker2D" parent="Markers"]
-position = Vector2(512, 352)
+position = Vector2(522, 559)
 
 [node name="stove_fire" type="AnimatableBody2D" parent="."]
 position = Vector2(776, 560)
@@ -99,9 +99,8 @@ scale = Vector2(1.05753, 1)
 shape = SubResource("RectangleShape2D_tof6y")
 
 [node name="fire" type="AnimatedSprite2D" parent="stove_fire"]
-visible = false
-position = Vector2(7.62939e-06, -40)
-scale = Vector2(0.949275, 1.27536)
+position = Vector2(-0.520826, -2)
+scale = Vector2(0.949275, 0.917633)
 sprite_frames = SubResource("SpriteFrames_apnbr")
 animation = &"fire"
 frame_progress = 0.913982
@@ -127,9 +126,8 @@ scale = Vector2(1.05753, 1)
 shape = SubResource("RectangleShape2D_tof6y")
 
 [node name="fire" type="AnimatedSprite2D" parent="stove_fire2"]
-visible = false
-position = Vector2(7.62939e-06, -40)
-scale = Vector2(0.949275, 1.27536)
+position = Vector2(-0.260409, -3)
+scale = Vector2(0.949275, 0.868819)
 sprite_frames = SubResource("SpriteFrames_apnbr")
 animation = &"fire"
 frame_progress = 0.245143

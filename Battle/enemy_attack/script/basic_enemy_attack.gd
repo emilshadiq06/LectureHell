@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		
 func hit_play():
 	if is_alive and get_parent():
-		if abs(attk_target.global_position - global_position).x + abs(attk_target.global_position - global_position).y < 100 and attk_target.dash_window <= 0.01:
+		if abs(attk_target.global_position - global_position).x + abs(attk_target.global_position - global_position).y < 100: #and attk_target.dash_window <= 0.01:
 			attk_target.take_damage(damage)
 		if get_tree()!= null:
 			var tween = get_tree().create_tween()#.set_trans(Tween.TRANS_ELASTIC)

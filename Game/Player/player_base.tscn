@@ -189,7 +189,7 @@ _data = {
 [node name="Player_base" type="CharacterBody2D"]
 collision_mask = 16
 script = ExtResource("1_q82r4")
-dash_window_duration = 0.3
+dash_window_duration = 0.25
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 15)

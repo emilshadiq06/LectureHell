@@ -2,6 +2,7 @@ extends AnimatableBody2D
 @export var appear:float = 0
 @export var follow:float = 1
 @export var damage : int
+@export var position_tween : bool
 #var rotation
 #var last_rotation
 var is_alive : bool = true
@@ -34,8 +35,9 @@ func _process(delta: float) -> void:
 		#await get_tree().create_timer(0.2).timeout
 		anim_player.play("kick")
 		await get_tree().create_timer(0.3).timeout
-		position += Vector2(cos(rotation),sin(rotation)) * sqrt((abs(position-attk_target.position).x)**2 +  (abs(position-attk_target.position).y)**2)
-		await get_tree().create_timer(0.05).timeout
+		#position += Vector2(cos(rotation),sin(rotation)) * sqrt((abs(position-attk_target.position).x)**2 +  (abs(position-attk_target.position).y)**2)
+		
+		#await get_tree().create_timer(0.05).timeout
 		
 		
 		
@@ -49,10 +51,14 @@ func hit_play():
 		var tween = get_tree().create_tween().bind_node(self)#.set_trans(Tween.TRANS_ELASTIC)
 		
 		#tween.tween_property($Sprite2D, "modulate", Color.RED, 0.2)
-		
-		tween.tween_property(self, "scale", Vector2(50.0, 1.0), 0.2)
+		var projected_pos = position + Vector2(cos(rotation),sin(rotation)) * sqrt((abs(position-attk_target.position).x)**2 +  (abs(position-attk_target.position).y)**2)
+		if !position_tween:
+			
+			tween.tween_property(self, "scale", Vector2(50.0, 1.0), 0.2)
+		else:
+			tween.tween_property(self, "position", position + Vector2(cos(rotation),sin(rotation)) * sqrt((abs(position-attk_target.position).x)**2 +  (abs(position-attk_target.position).y)**2)*3, 0.2)
 		#tween.tween_property(self, "global_position", (attk_target.global_position - global_position).normalized()*50, 0.2)
-		if abs(attk_target.global_position - global_position).x + abs(attk_target.global_position - global_position).y < 60 and attk_target.dash_window <= 0.01:
+		if abs(attk_target.position -projected_pos).x + abs(attk_target.position -projected_pos).y < 60:
 			attk_target.take_damage(damage)
 			
 			

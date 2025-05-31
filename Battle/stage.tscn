@@ -19,8 +19,10 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(835, 176, 837, 539, 858, 135, 463, 176)
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+position = Vector2(1300, 714)
+rotation = -3.14159
+polygon = PackedVector2Array(464, 538, 837, 539, 445, 568, 464, 175)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(464, 538, 837, 539, 445, 568, 464, 175)

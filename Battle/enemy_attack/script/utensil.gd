@@ -40,8 +40,8 @@ func hit_play():
 		var tween = get_tree().create_tween().bind_node(self)#.set_trans(Tween.TRANS_ELASTIC)
 		
 		
-		if attk_target.dash_window <= 0.01:
-			attk_target.take_damage(damage)
+		#if attk_target.dash_window <= 0.01:
+		attk_target.take_damage(damage)
 			
 			
 		#tween.tween_callback(self.queue_free)

@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwiygmnv501p8"]
+
+[ext_resource type="Script" uid="uid://defru35mxr1d6" path="res://Battle/enemy_attack/script/gravity.gd" id="1_uyfmm"]
+[ext_resource type="Script" uid="uid://5i7fxhdvdt5k" path="res://Battle/enemy_attack/script/skate_course.gd" id="2_d3jat"]
+[ext_resource type="Texture2D" uid="uid://dv3jqpqe1k87d" path="res://Battle/sprites/skate_course.png" id="3_7sjol"]
+
+[node name="skate_course" type="Node2D"]
+
+[node name="gravity" type="Node" parent="."]
+script = ExtResource("1_uyfmm")
+time = 7.0
+
+[node name="obstacle" type="Area2D" parent="."]
+position = Vector2(-1368, 384)
+scale = Vector2(1.71454, 0.819839)
+script = ExtResource("2_d3jat")
+damage = 3
+release_time = 9.9
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacle"]
+position = Vector2(633.589, 455.834)
+polygon = PackedVector2Array(-64, -80, -1233.39, -81.0372, -1241.83, -435.575, -976, -272, -888, -232, -728, -184, -728, -368, -688, -368, -688, -184, -528, -184, -526.272, -504.624, -479.612, -504.624, -480, -192, -304, -192, -232, -240, -184, -336, -64, -336)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="obstacle"]
+position = Vector2(397.049, -283.63)
+polygon = PackedVector2Array(120, 32, 112, 144, 152, 144, 160, -8, -520, -16, -832, 64, -552, 40, -496, 176, -496, 40, -200, 40, -104, 80, -80, 152, -40, 152, -40, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="obstacle"]
+position = Vector2(-6.10352e-05, -2.28882e-05)
+scale = Vector2(9.6506, 7.76633)
+texture = ExtResource("3_7sjol")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(648, 360)
+
+[connection signal="body_entered" from="obstacle" to="obstacle" method="_on_body_entered"]

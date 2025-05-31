@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	position += velocity
 	if velocity.y == 50:
 		self.queue_free()
-	if abs(attk_target.global_position - global_position).x + abs(attk_target.global_position - global_position).y < 30 and attk_target.dash_window <= 0.01:
+	if abs(attk_target.global_position - global_position).x + abs(attk_target.global_position - global_position).y < 30:
 			play_hit.emit()
 			#print("smi")
 			is_alive = false
