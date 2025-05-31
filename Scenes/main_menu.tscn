@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://hypoexha233e"]
 
 [ext_resource type="Texture2D" uid="uid://bloxp2shvndpx" path="res://Assets/Backgrounds/Skybox Castle outside.png" id="1_0u8od"]
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_cebj7"]
+[ext_resource type="Script" uid="uid://b6k34jn3dybbl" path="res://Scripts/main_menu.gd" id="1_cebj7"]
 [ext_resource type="FontFile" uid="uid://d370phyelf2v8" path="res://Assets/font/font.otf" id="2_3f0y1"]
 [ext_resource type="Texture2D" uid="uid://seuol3n7jldw" path="res://Assets/UIElements/Select.png" id="2_d2ds8"]
 [ext_resource type="Texture2D" uid="uid://dqfqcgvyrrr2s" path="res://Assets/UIElements/PlayerPortaits/Frankie.png" id="3_hpusj"]
@@ -16,11 +16,14 @@ script = ExtResource("1_cebj7")
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(1, 0.113725, 1, 0.666667)
 custom_minimum_size = Vector2(600, 0)
+anchors_preset = -1
+anchor_bottom = 0.0319444
 offset_right = 600.0
 offset_bottom = 240.0
 scale = Vector2(2.75, 2.75)
 texture = ExtResource("1_0u8od")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Pointer" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(24, 20)
@@ -59,7 +62,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_3f0y1")
 theme_override_font_sizes/font_size = 60
-text = "Halloween Shooter"
+text = "BULLET HELL"
 
 [node name="ChooseFighterLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
