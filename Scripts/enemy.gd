@@ -1,6 +1,6 @@
 extends Area2D
 
-class_name Enemy
+class_name EnemyE
 
 signal  killed
 
