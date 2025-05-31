@@ -60,7 +60,7 @@ func hit_play():
 		
 		tween.tween_property(self, "scale", Vector2(1.0, 50.0), 0.2)
 		#tween.tween_property(self, "global_position", (attk_target.global_position - global_position).normalized()*50, 0.2)
-		if attk_target.global_position.x <= global_position.x + 100 and attk_target.global_position.x >= global_position.x - 100 and attk_target.dash_window <= 0.01:
+		if attk_target.global_position.x <= global_position.x + 80 and attk_target.global_position.x >= global_position.x - 80 and attk_target.dash_window <= 0.01:
 			attk_target.take_damage(damage)
 			#print(rotation + 0.005)
 			#print(rotation - 0.005)

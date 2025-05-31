@@ -116,14 +116,10 @@ func take_damage(damage):
 			i.take_damage(damage*$"../../PlayerGroup".in_damage_multiplier)
 			if get_tree()!= null:
 				animation_player.play("dash")
-				await get_tree().create_timer(animation_player.current_animation_length-0.2).timeout
+				await get_tree().create_timer(animation_player.current_animation_length).timeout
 
 				animation_player.play("dash")
-				await get_tree().create_timer(animation_player.current_animation_length-0.2).timeout
-			
-				animation_player.play("dash")
-				await get_tree().create_timer(animation_player.current_animation_length-0.2).timeout
-				animation_player.play("dash")
+
 				animation_player.stop()
 			
 			#await get_tree().create_timer(animation_player.current_animation_length-0.2).timeout

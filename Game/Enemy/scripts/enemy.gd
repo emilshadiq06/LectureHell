@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 			$Panel.show()
 	if player != null and chase == true:
 		chase_dir = (player.position-position).normalized()
-	$ChaseArea.position = cardinal_direction*200
+	$ChaseArea.position = cardinal_direction*190
 	$ChaseArea.rotation =  (cardinal_direction).angle()
 	pass
 	
@@ -68,16 +68,16 @@ func choose_randomly(list_of_entries):
 	return list_of_entries[randi() % list_of_entries.size()]
 	
 
-		
+
+	
 
 func _on_chase_area_body_entered(body) -> void:
 	if body is Player   :
 		
 		player = body
 		#await get_tree().create_timer(0.5).timeout
-		#player = null
-
 
 func _on_chase_area_body_exited(body: Node2D) -> void:
 	if player == body and !chase:
 		player = null
+		
