@@ -13,10 +13,10 @@ var dash_cooldown : float
 var dash_window :float
 var grav :Vector2 
 var grav_from_outside:Vector2 =Vector2(0,0)
-var grav_affected : bool = true
+var grav_affected : bool = false
 var accumulate : float
 signal compare_position(last_position:Vector2)
-
+var signaled : bool = true
 @export var play_dash: bool = true
 @export var dash_window_duration : float
 @onready var animation_player : AnimationPlayer= $AnimationPlayer
@@ -43,7 +43,10 @@ func _process(delta):
 	
 	
 	if get_last_slide_collision() != null:
-		compare_position.emit(position)
+		if signaled:
+			var last_pos = position - velocity
+			compare_position.emit(last_pos)
+			signaled= false
 		#print(get_last_slide_collision().get_collider())
 
 	if grav_affected:
@@ -77,7 +80,7 @@ func _process(delta):
 	pass
 	
 func compare_pos(last_pos:Vector2):
-	await get_tree().create_timer(0.15).timeout
+	await get_tree().create_timer(0.1).timeout
 	var compare1 : float
 	var compare2 : float
 	if abs(grav_from_outside.y) > abs(grav_from_outside.x):
@@ -94,7 +97,8 @@ func compare_pos(last_pos:Vector2):
 	else:
 		
 		grav_affected =true
-		pass
+	signaled= true
+	pass
 
 		
 func _input(event: InputEvent):

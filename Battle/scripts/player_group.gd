@@ -71,17 +71,21 @@ func _on_enemy_group_bullet_hell() -> void:
 	await get_tree().create_timer(1).timeout
 	for i in enemies.enemies:
 		if i.hp>0:
-			var attack
-			if i.randomize:
+			for j in range(i.attk_loaded+1):
+				var attack
+				if i.randomize:
 				
-				attack = load(i.attk_str[randi() % i.attk_str.size()]).instantiate()
-			else:
-				attack = load(i.attk_str[ceil((i.hp/i.MAX_HP)*i.attk_str.size())-1]).instantiate()
-			attk_groups.append(attack)
+					attack = load(i.attk_str[randi() % i.attk_str.size()]).instantiate()
+				else:
+					var load_pos : int = ceil((i.hp/i.MAX_HP)*i.attk_str.size())-1+j 
+					if load_pos > i.attk_str.size()-1:
+						load_pos = 0 + j -1
+					attack = load(i.attk_str[load_pos]).instantiate()
+				attk_groups.append(attack)
 
 
-			stage.add_child(attack)
-			await get_tree().create_timer(0.2).timeout
+				stage.add_child(attack)
+				await get_tree().create_timer(0.3).timeout
 		duration += i.attk_duration
 	duration /= enemies.enemies.size()
 	

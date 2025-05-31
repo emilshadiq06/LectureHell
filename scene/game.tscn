@@ -117,7 +117,7 @@ stats = ExtResource("11_81276")
 group_str = "enemies"
 
 [node name="Enemy" parent="." instance=ExtResource("7_qpk70")]
-position = Vector2(446, -113)
+position = Vector2(15, 16)
 collision_mask = 19
 stats = ExtResource("12_ve786")
 

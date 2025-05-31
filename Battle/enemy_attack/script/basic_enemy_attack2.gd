@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		#anim_player.stop()
 		#await get_tree().create_timer(0.2).timeout
 		anim_player.play("kick")
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.4).timeout
 		#position += Vector2(cos(rotation),sin(rotation)) * sqrt((abs(position-attk_target.position).x)**2 +  (abs(position-attk_target.position).y)**2)
 		
 		#await get_tree().create_timer(0.05).timeout

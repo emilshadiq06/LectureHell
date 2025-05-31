@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var focus = $Focus
 var randomize:bool = false
 var MAX_HP : float = 20
-var damage : int
+
 var weapon_speed : float = 1:
 	set(value):
 		weapon_speed = value
@@ -27,6 +27,7 @@ var hp : float = 20:
 			_update_progress_bar()
 			_play_animation("hurt")
 var attk_str: Array[String]
+var attk_loaded: int
 var attk_duration: float
 func _ready() -> void:
 	start_battle = false
@@ -52,7 +53,7 @@ func set_stats(stats):
 	elif stats is enemy_stats:
 		attk_str = stats.attack
 		attk_duration = stats.attack_duration
-		#damage = stats.damage
+		attk_loaded = stats.attk_loaded
 		randomize = stats.randomize
 		
 func _update_progress_bar():
