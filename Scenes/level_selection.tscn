@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cxwe5j73ec432"]
 
-[ext_resource type="Script" path="res://Scripts/level_selection.gd" id="1_e25kv"]
+[ext_resource type="Script" uid="uid://b1yydtih53maj" path="res://Scripts/level_selection.gd" id="1_e25kv"]
 [ext_resource type="Texture2D" uid="uid://bloxp2shvndpx" path="res://Assets/Backgrounds/Skybox Castle outside.png" id="1_q8vtk"]
 [ext_resource type="FontFile" uid="uid://d370phyelf2v8" path="res://Assets/font/font.otf" id="2_p1p0q"]
 [ext_resource type="Material" uid="uid://cparmg3tmbp27" path="res://Materials/level_selection.material" id="3_pxqdd"]
@@ -16,7 +16,7 @@ script = ExtResource("1_e25kv")
 modulate = Color(1, 0.113725, 1, 0.666667)
 custom_minimum_size = Vector2(600, 0)
 offset_right = 600.0
-offset_bottom = 240.0
+offset_bottom = 264.0
 scale = Vector2(2.75, 2.75)
 texture = ExtResource("1_q8vtk")
 stretch_mode = 1
