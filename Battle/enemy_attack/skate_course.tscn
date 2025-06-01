@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwiygmnv501p8"]
+
+[ext_resource type="Script" uid="uid://defru35mxr1d6" path="res://Battle/enemy_attack/script/gravity.gd" id="1_uyfmm"]
+[ext_resource type="Script" uid="uid://5i7fxhdvdt5k" path="res://Battle/enemy_attack/script/skate_course.gd" id="2_d3jat"]
+[ext_resource type="Texture2D" uid="uid://dv3jqpqe1k87d" path="res://Battle/sprites/skate_course.png" id="3_7sjol"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uyfmm"]
+a = Vector2(41.1189, -51.2296)
+b = Vector2(-32.6619, -51.2296)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_d3jat"]
+a = Vector2(14.5812, -17.0765)
+b = Vector2(90.4033, -17.0765)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7sjol"]
+a = Vector2(65.9069, 1.21976)
+b = Vector2(0, 1.21976)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vymmy"]
+a = Vector2(127.731, 1.21979)
+b = Vector2(-2.33298, 1.21979)
+
+[node name="skate_course" type="Node2D"]
+
+[node name="gravity" type="Node" parent="."]
+script = ExtResource("1_uyfmm")
+time = 8.0
+
+[node name="obstacle" type="Area2D" parent="."]
+position = Vector2(-1368, 384)
+scale = Vector2(1.71454, 0.819839)
+collision_layer = 16
+script = ExtResource("2_d3jat")
+damage = 3
+release_time = 9.9
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacle"]
+position = Vector2(633.589, 455.834)
+polygon = PackedVector2Array(-64, -80, -830.726, -85.0295, -888, -232, -728, -184, -728, -368, -688, -368, -688, -184, -528, -184, -526.272, -504.624, -479.612, -504.624, -480, -192, -304, -192, -232, -240, -184, -336, -64, -336)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="obstacle"]
+position = Vector2(397.049, -283.63)
+polygon = PackedVector2Array(120, 32, 112, 144, 152, 144, 160, -8, -520, -16, -832, 64, -552, 40, -496, 176, -496, 40, -200, 40, -104, 80, -80, 152, -40, 152, -40, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="obstacle"]
+position = Vector2(-6.10352e-05, -2.28882e-05)
+scale = Vector2(9.6506, 7.76633)
+texture = ExtResource("3_7sjol")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(-1368, 384)
+scale = Vector2(1.71454, 0.819839)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(137.355, -19.516)
+shape = SubResource("SegmentShape2D_uyfmm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatableBody2D"]
+position = Vector2(-520.256, 75.6246)
+polygon = PackedVector2Array(60.0743, 14.637, 180.806, 117.096, -76.4053, -30.4938, 30.9121, -26.8345)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(-83.9876, 126.854)
+shape = SubResource("SegmentShape2D_uyfmm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(292.79, -101.239)
+shape = SubResource("SegmentShape2D_d3jat")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(-168.558, -101.239)
+shape = SubResource("SegmentShape2D_7sjol")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(453.766, 109.778)
+shape = SubResource("SegmentShape2D_vymmy")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(648, 360)
+
+[connection signal="body_entered" from="obstacle" to="obstacle" method="_on_body_entered"]

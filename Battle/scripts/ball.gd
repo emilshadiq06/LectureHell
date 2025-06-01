@@ -10,7 +10,6 @@ func choose_randomly(list_of_entries):
 	return list_of_entries[randi() % list_of_entries.size()]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	animated_sprite.play("default")
 	await get_tree().create_timer(0.2).timeout
 	start_move = true

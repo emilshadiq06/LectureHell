@@ -157,8 +157,16 @@ func _on_bullet_hell_timer_timeout() -> void:
 		DialogueManagerScript.text_box.queue_free()
 		DialogueManagerScript.is_dialog_active = false
 		DialogueManagerScript.current_line_index = 0
+	 
 	start_turn.emit()
 	_reset_focus()
+	for i in player_group.attk_groups:
+		get_parent().get_node(player_group.stage.get_path()).remove_child(i)
+		print(i)
+	print(player_group.attk_groups)
+	player_group.attk_groups.clear()
+	print(player_group.attk_groups)
+	get_parent().remove_child(player_group.stage)
 	#action_queue.clear()
 	is_battling = false
 	show_choice()

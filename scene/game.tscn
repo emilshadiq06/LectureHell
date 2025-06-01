@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=24 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -36,6 +36,10 @@ size = Vector2(44, 67)
 [sub_resource type="CircleShape2D" id="CircleShape2D_sng2h"]
 radius = 30.8058
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i6gbm"]
+a = Vector2(224, -51)
+b = Vector2(-19, -50)
+
 [node name="game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_33cqm")
@@ -60,7 +64,7 @@ connected_scene = "gameworld"
 enter_pos = Vector2(-8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-position = Vector2(29, 197)
+position = Vector2(26, 201)
 shape = SubResource("RectangleShape2D_yq8tf")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -86,7 +90,7 @@ shape = SubResource("RectangleShape2D_ww6yf")
 position = Vector2(0, -14)
 texture = ExtResource("3_p1ry8")
 offset = Vector2(-2.5, -2)
-hframes = 17
+hframes = 21
 
 [node name="ABU" type="CollisionShape2D" parent="CharacterBody2D"]
 y_sort_enabled = true
@@ -102,19 +106,19 @@ visible = false
 
 [node name="Enemy2" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
 position = Vector2(387, -215)
-collision_mask = 17
+collision_mask = 19
 stats = ExtResource("10_sng2h")
-group = "enemies"
+group_str = "enemies"
 
 [node name="Enemy3" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
-position = Vector2(443, -194)
-collision_mask = 17
+position = Vector2(329, -148)
+collision_mask = 19
 stats = ExtResource("11_81276")
-group = "enemies"
+group_str = "enemies"
 
 [node name="Enemy" parent="." instance=ExtResource("7_qpk70")]
-position = Vector2(446, -113)
-collision_mask = 17
+position = Vector2(15, 16)
+collision_mask = 19
 stats = ExtResource("12_ve786")
 
 [node name="AddPlayerGroup" type="Area2D" parent="."]
@@ -133,5 +137,13 @@ offset_bottom = 250.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "add bro
 "
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-83, 218)
+shape = SubResource("SegmentShape2D_i6gbm")
 
 [connection signal="body_entered" from="AddPlayerGroup" to="AddPlayerGroup" method="_on_body_entered"]

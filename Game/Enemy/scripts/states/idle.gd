@@ -10,7 +10,7 @@ func init() -> void:
 func Enter() ->void:
 	
 	timer.start(enemy.choose_randomly([0.5,1.5,2,5]))
-#	enemy.UpdateAnimation("idle")
+	enemy.UpdateAnimation("idle")
 	pass
 	
 #what happens when player enters state

@@ -4,7 +4,10 @@
 
 [resource]
 script = ExtResource("1_w0ee5")
-group_name = "enemies"
+randomize = false
+attack = Array[String](["res://Battle/enemy_attack/basic_enemy_attack.tscn", "res://Battle/enemy_attack/basic_attack_2.tscn"])
+attack_duration = 4.0
+attk_loaded = 0
 name = "Evil Abu"
 max_hp = 15
 hp = 15

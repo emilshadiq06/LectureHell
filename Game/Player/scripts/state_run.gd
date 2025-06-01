@@ -12,6 +12,7 @@ func Enter() ->void:
 	
 #what happens when player enters state
 func Exit() ->void:
+	#player.velocity = Vector2.ZERO
 	pass
 	
 #what happens during process in state
@@ -20,8 +21,12 @@ func Process(_delta:float)->State:
 		
 		return idle
 	
-	player.velocity = player.direction * move_speed
-	
+	player.velocity = (player.direction * move_speed) 
+	if player.grav_affected:
+		
+		#await  get_tree().create_timer(0.2).timeout
+		player.velocity += player.grav
+
 	if player.SetDirection():
 		player.UpdateAnimation("walk")
 	return null

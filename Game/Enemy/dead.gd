@@ -8,6 +8,7 @@ func init() -> void:
 
 #what happens when player enters state
 func Enter() ->void:
+	get_parent().get_parent().sprite.rotation_degrees += 90
 	set_process(false)
 	get_parent().set_process(false)
 	get_parent().set_physics_process(false)

@@ -1,15 +1,18 @@
 extends Node
-
+var in_damage_multiplier : float = 1
 var index : int = 0
 var players: Array = []
+var walk_speed : float
+var dash_window : float
 @onready var enemies = $"../EnemyGroup"
 @onready var choice = $"../CanvasLayer/choice"
 @onready var actChoice = $"../CanvasLayer/actChoice"
 @onready var inventory = $"../CanvasLayer/inventory"
-
+var stage = load("res://Battle/stage.tscn").instantiate()
 @onready var effect_machine = $"../effectMachine"
 @onready var bullet_hell_timer =  $"../BulletHellTimer"
-
+var attk_groups : Array
+signal got_duration(duration:float)
 @export var inv: Inv
 
 var skill_button
@@ -29,7 +32,8 @@ func _ready() -> void:
 	skill_button.pressed.connect(_skill_button_pressed)
 #print(effect_array)
 	players[0]._focus()
-
+	walk_speed = players[0].walk_speed
+	dash_window = players[0].dash_window
 
 func add_character():
 	
@@ -65,27 +69,34 @@ func switch_focus(x,y):
 
 
 func _on_enemy_group_bullet_hell() -> void:
-	
-	
-	bullet_hell_timer.start(4)
-	
-func start_hell():
-	
-	if bullet_hell_timer.get_time_left() > 0:
-		#inventory.hide()
-		enemies.choice.hide()
-		#DialogueManagerScript.start_dialog(Vector2(300,500), ["bullet hell goes here"])
-	#add_child(bullet_hell)
-	
-func _process(delta: float) -> void:
-	if bullet_hell_timer.get_time_left() > 3.99:
-		start_hell()
-	if bullet_hell_timer.get_time_left() < 0.01:
-		#remove_child(bullet_hell)
-		pass
-			
-		
+	enemies.choice.hide()
+	var duration: float
+	get_parent().add_child(stage)
+	 
+	await get_tree().create_timer(1).timeout
+	for i in enemies.enemies:
+		if i.hp>0:
+			for j in range(i.attk_loaded+1):
+				var attack
+				if i.randomize:
+				
+					attack = load(i.attk_str[randi() % i.attk_str.size()]).instantiate()
+				else:
+					var load_pos : int = ceil((i.hp/i.MAX_HP)*i.attk_str.size())-1+j 
+					if load_pos > i.attk_str.size()-1:
+						load_pos = 0 + j -1
+					attack = load(i.attk_str[load_pos]).instantiate()
+				attk_groups.append(attack)
 
+				await get_tree().create_timer(0.3).timeout
+				stage.add_child(attack)
+				
+		duration += i.attk_duration
+	duration /= enemies.enemies.size()
+	
+	
+	bullet_hell_timer.start(duration)
+	got_duration.emit(duration)
 
 
 func _on_act_pressed() -> void:
@@ -132,7 +143,7 @@ func _on_enemy_group_start_turn() -> void:
 	#print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
 	#print(enemies.action_queue)
 	for i in players:
-		i.take_damage(2)
+		#i.take_damage(2)
 		i.take_stamina(-2)
 		if i.pp > i.MAX_PP:
 			i.pp -= 4

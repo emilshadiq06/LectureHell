@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://b02fc71qehk3p"]
+
+[ext_resource type="Script" uid="uid://b6wqaul0vul6k" path="res://Battle/enemy_attack/script/basic_enemy_attack2.gd" id="1_unfm5"]
+[ext_resource type="Texture2D" uid="uid://hh7rmn05w5te" path="res://Battle/sprites/kick.png" id="2_0ak0a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0mec"]
+atlas = ExtResource("2_0ak0a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl0g8"]
+atlas = ExtResource("2_0ak0a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_telg3"]
+atlas = ExtResource("2_0ak0a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cey8"]
+atlas = ExtResource("2_0ak0a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16ekw"]
+atlas = ExtResource("2_0ak0a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wt05j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0mec")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl0g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_telg3")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_4cey8")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_16ekw")
+}],
+"loop": false,
+"name": &"kick",
+"speed": 12.0
+}]
+
+[node name="basic_attack2" type="Node2D"]
+
+[node name="kick" type="AnimatableBody2D" parent="."]
+visible = false
+position = Vector2(410, 185)
+scale = Vector2(1.8, 4.2)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_unfm5")
+damage = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick"]
+sprite_frames = SubResource("SpriteFrames_wt05j")
+animation = &"kick"
+
+[node name="kick2" type="AnimatableBody2D" parent="."]
+visible = false
+position = Vector2(794, 167)
+scale = Vector2(1.73527, 4.80603)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_unfm5")
+appear = 0.1
+follow = 1.1
+damage = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick2"]
+sprite_frames = SubResource("SpriteFrames_wt05j")
+animation = &"kick"
+
+[node name="kick3" type="AnimatableBody2D" parent="."]
+visible = false
+position = Vector2(632, 520)
+scale = Vector2(2.08, 4.6324)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_unfm5")
+appear = 0.2
+follow = 1.2
+damage = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick3"]
+sprite_frames = SubResource("SpriteFrames_wt05j")
+animation = &"kick"
