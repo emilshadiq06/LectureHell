@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3kif264efyk2"]
+[gd_scene load_steps=19 format=3 uid="uid://d3kif264efyk2"]
 
 [ext_resource type="Script" uid="uid://bnsggelbxxqw7" path="res://Game/Player/player.gd" id="1_q82r4"]
 [ext_resource type="Texture2D" uid="uid://d0t1gd2bax7jc" path="res://Game/Player/sprites/ExamplePlayerSprite2.png" id="2_b7ohy"]
+[ext_resource type="Texture2D" uid="uid://cspg1fx6ynbgq" path="res://Battle/sprites/skateboard.png" id="2_rlapy"]
 [ext_resource type="Script" uid="uid://65kt8tnau70s" path="res://Game/Player/scripts/player_state_machine.gd" id="3_b7ohy"]
 [ext_resource type="Script" uid="uid://ddj1b144gsp36" path="res://Game/Player/scripts/state_idle.gd" id="4_rlapy"]
 [ext_resource type="Script" uid="uid://ci86h3bm1350e" path="res://Game/Player/scripts/state_walk.gd" id="5_dhjvi"]
@@ -189,6 +190,12 @@ _data = {
 [node name="Player_base" type="CharacterBody2D"]
 collision_mask = 16
 script = ExtResource("1_q82r4")
+
+[node name="skateboard" type="Sprite2D" parent="."]
+position = Vector2(-1, 10)
+rotation = 1.5708
+scale = Vector2(1.60917, 1.21122)
+texture = ExtResource("2_rlapy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 15)

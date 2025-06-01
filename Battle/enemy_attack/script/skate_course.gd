@@ -7,7 +7,7 @@ var time :float = 10
 @onready var rotation_marker = $"../Marker2D"
 signal play_hit
 @onready var attk_target  = $"../../Player_base"
-var move : Vector2 = Vector2(3.2,0)
+var move : Vector2 = Vector2(3,0)
 func _ready() -> void:
 	var distance: float = abs(global_position - rotation_marker.global_position).x
 	#$Sprite2D.modulate = Color("red")

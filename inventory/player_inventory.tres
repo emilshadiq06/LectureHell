@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=7 format=3 uid="uid://c64jap0qamgb6"]
+[gd_resource type="Resource" script_class="Inv" load_steps=8 format=3 uid="uid://c64jap0qamgb6"]
 
 [ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="1_fi1x0"]
 [ext_resource type="Script" uid="uid://b8u10hb65xcvh" path="res://inventory.gd" id="1_tyxcc"]
-[ext_resource type="Resource" uid="uid://c7bol0of7sp0x" path="res://inventory/item/consumables/red_apple.tres" id="2_3ih0p"]
+[ext_resource type="Resource" path="res://inventory/item/consumables/red_apple.tres" id="2_3ih0p"]
 [ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="2_65xq6"]
 [ext_resource type="Resource" uid="uid://hpbpvsiloe1o" path="res://inventory/item/gear/willpower.tres" id="3_3ih0p"]
 [ext_resource type="Resource" uid="uid://c6we7kud385dl" path="res://inventory/item/gear/skateboard.tres" id="3_cwv8g"]

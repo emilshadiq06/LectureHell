@@ -30,6 +30,10 @@ func _ready() -> void:
 	update_progress()
 	dash_window_duration = $"../../PlayerGroup".dash_window #0.1 #
 	$StateMachine/walk. move_speed =  $"../../PlayerGroup".walk_speed# 250 #
+	if $"../../PlayerGroup".dash_window == 0.25:
+		$skateboard.show()
+	else:
+		$skateboard.hide()
 	pass # Replace with function body.
 
 
@@ -54,8 +58,9 @@ func _process(delta):
 		#print(get_last_slide_collision().get_collider())
 	elif !grav_affected:
 		
-		await get_tree().create_timer(0.05).timeout
+		
 		grav_affected = true
+		await get_tree().create_timer(0.05).timeout
 		accumulate = 0
 		grav *= 0
 	if grav_affected:
@@ -72,10 +77,10 @@ func _process(delta):
 		dash_cooldown = 1.5
 		update_progress()
 	doubletap_time -= delta
-	if dash_cooldown> 0:
-		dash_cooldown -= delta
-	if dash_window> 0:
-		dash_window -= delta
+	
+	dash_cooldown -= delta
+	
+	dash_window -= delta
 	direction = Vector2(Input.get_axis("left","right"),Input.get_axis("up","down")).normalized()
 	if dash_window > 0 and dashing:
 		direction*=2
@@ -91,9 +96,7 @@ func _process(delta):
 	
 func compare_pos(last_col_normal:Vector2,grav_dir:Vector2):
 	
-	print(grav_dir)
-	print(ceil(last_col_normal.x))
-	print(ceil(last_col_normal.y))
+	
 	if (abs(grav_dir.x) > 0 and ceil(last_col_normal.x)==grav_dir.x) or (abs(grav_dir.y) > 0 and ceil(last_col_normal.y)==grav_dir.y):
 		grav_affected =false
 	#if last_col_normal==grav_dir:
@@ -118,7 +121,7 @@ func _input(event: InputEvent):
 			
 			last_keycode = 0
 			run = 2
-			if dashes>0 and dash_window==0:
+			if dashes>0 and dash_window<=0:
 				dash_window= (dash_window_duration)
 				dash_cooldown=1.25
 				dashes -= 1
@@ -154,26 +157,29 @@ func UpdateAnimation(state : String) -> void:
 	
 func AnimDirect() -> String:
 	if cardinal_direction == Vector2.DOWN:
+		$skateboard.rotation_degrees =90
 		return "down"
 	elif cardinal_direction == Vector2.UP:
+		$skateboard.rotation_degrees =90
 		return "up"
 	else:
+		$skateboard.rotation_degrees =0
 		return "side"
 
 func take_damage(damage):
 	if dash_window <= 0:
-		for i in $"../../PlayerGroup".players:
+		#for i in $"../../PlayerGroup".players:
 		#await get_tree().create_timer(0.02).timeout
-			dash_window = 0.5
+		dash_window = 0.5
+		
+		$"../../PlayerGroup".players.pick_random().take_damage(damage*$"../../PlayerGroup".in_damage_multiplier)
+		if get_tree()!= null:
+			animation_player.play("dash")
+			await get_tree().create_timer(animation_player.current_animation_length).timeout
 
-			i.take_damage(damage*$"../../PlayerGroup".in_damage_multiplier)
-			if get_tree()!= null:
-				animation_player.play("dash")
-				await get_tree().create_timer(animation_player.current_animation_length).timeout
+			animation_player.play("dash")
 
-				animation_player.play("dash")
-
-				animation_player.stop()
+			animation_player.stop()
 			
 			#await get_tree().create_timer(animation_player.current_animation_length-0.2).timeout
 			#modulate.a = 1

@@ -9,6 +9,8 @@ extends Player
 @export var stats : playerStat
 
 func _ready() -> void:
+	dash_window_duration = stats.dash #0.1 #
+	#$StateMachine/walk. move_speed =  $"../../PlayerGroup".walk_speed# 250 #
 	run = 1
 	update_pos()
 	$RichTextLabel.text =  "$" + str(stats.money)
@@ -23,7 +25,10 @@ func _ready() -> void:
 		print("KKKKKKKKKKKKKK")
 		print(stats.money)
 		position = StatLoader.previous_position
-		
+	if stats.dash == 0.25:
+		$skateboard.show()
+	else:
+		$skateboard.hide()
 	pass # Replace with function body.
 
 
@@ -33,9 +38,29 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if dash_cooldown<= 0 and dashes < max_dashes:
+		#dash_cooldown.stop()
+		
+		dashes +=1
+		dash_cooldown = 1.5
+		#update_progress()
 	doubletap_time -= delta
+	#if dash_cooldown> 0:
+	dash_cooldown -= delta
+	#if dash_window> 0:
+	dash_window -= delta
+	
 	direction = Vector2(Input.get_axis("left","right"),Input.get_axis("up","down")).normalized()
-
+	if dash_window > 0 and dashing:
+		direction*=2
+		#current_anim = animation_player.current_animation
+		
+		animation_player.play("dash")
+	elif dash_window <= 0:
+		sprite.modulate.a = 1
+		direction.normalized() 
+		dashing =  false
+		dash_window=0
 	pass
 	
 func _input(event: InputEvent):
@@ -45,7 +70,12 @@ func _input(event: InputEvent):
 			
 			last_keycode = 0
 			run = 2
-	
+			if dashes>0 and dash_window<=0:
+				dash_window= (dash_window_duration)
+				dash_cooldown=1.25
+				dashes -= 1
+				#update_progress()
+				dashing = true
 
 		else:
 			last_keycode = event.keycode
@@ -82,10 +112,13 @@ func UpdateAnimation(state : String) -> void:
 
 func AnimDirect() -> String:
 	if cardinal_direction == Vector2.DOWN:
+		$skateboard.rotation_degrees =90
 		return "down"
 	elif cardinal_direction == Vector2.UP:
+		$skateboard.rotation_degrees =90
 		return "up"
 	else:
+		$skateboard.rotation_degrees =0
 		return "side"
 
 func collect_item(item:InvItem):
@@ -107,6 +140,11 @@ func addhealth(hp_regen,pp_regen):
 func change_stat(hp_changed,pp_changed,walk_changed,dash_window_changed):
 	stats.max_hp = hp_changed
 	stats.dash = dash_window_changed
+	dash_window_duration = stats.dash
+	if stats.dash == 0.25:
+		$skateboard.show()
+	else:
+		$skateboard.hide()
 	stats.walk = walk_changed
 	stats.max_pp = pp_changed
 	player_team.update_group(stats,0)
