@@ -77,6 +77,7 @@ func _on_chase_area_body_entered(body) -> void:
 		player = body
 		#await get_tree().create_timer(0.5).timeout
 
+
 func _on_chase_area_body_exited(body: Node2D) -> void:
 	if player == body and !chase:
 		player = null

@@ -1,11 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfjmgwk8nidia"]
+[gd_scene load_steps=13 format=3 uid="uid://dfjmgwk8nidia"]
 
 [ext_resource type="Script" uid="uid://dmckske6g6qm8" path="res://Battle/enemy_attack/script/stove_fire.gd" id="1_2ib17"]
 [ext_resource type="Texture2D" uid="uid://bmpp6s67sxhls" path="res://Battle/sprites/fire.png" id="2_mr5d0"]
 [ext_resource type="Texture2D" uid="uid://mk6e6teprdk7" path="res://Battle/sprites/warninh.png" id="3_ub8d6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tof6y"]
-size = Vector2(30.1349, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e27g"]
 atlas = ExtResource("2_mr5d0")
@@ -93,11 +90,6 @@ appear = 0.3
 follow = 2.3
 damage = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="stove_fire"]
-position = Vector2(-2.6226e-06, 0)
-scale = Vector2(1.05753, 1)
-shape = SubResource("RectangleShape2D_tof6y")
-
 [node name="fire" type="AnimatedSprite2D" parent="stove_fire"]
 position = Vector2(-0.520826, -2)
 scale = Vector2(0.949275, 0.917633)
@@ -119,11 +111,6 @@ index = 1
 appear = 0.6
 follow = 2.6
 damage = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="stove_fire2"]
-position = Vector2(-2.6226e-06, 0)
-scale = Vector2(1.05753, 1)
-shape = SubResource("RectangleShape2D_tof6y")
 
 [node name="fire" type="AnimatedSprite2D" parent="stove_fire2"]
 position = Vector2(-0.260409, -3)

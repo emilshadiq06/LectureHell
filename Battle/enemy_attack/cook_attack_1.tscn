@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmahcdptjk04p"]
+[gd_scene load_steps=20 format=3 uid="uid://cmahcdptjk04p"]
 
 [ext_resource type="Script" uid="uid://behrpjij30r01" path="res://Battle/enemy_attack/script/pan.gd" id="1_t5axc"]
 [ext_resource type="Texture2D" uid="uid://ddo4kagbdtthg" path="res://Battle/sprites/pan_flip.png" id="2_d1pu5"]
@@ -108,10 +108,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj1h7"]
-radius = 4.11096
-height = 43.4055
-
 [node name="CookAttack1" type="Node2D"]
 
 [node name="pan" type="AnimatableBody2D" parent="."]
@@ -137,8 +133,3 @@ damage = 3
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="food"]
 sprite_frames = SubResource("SpriteFrames_70un1")
 frame_progress = 0.816975
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="food"]
-position = Vector2(1, -1)
-scale = Vector2(2.43252, 1.33624)
-shape = SubResource("CapsuleShape2D_aj1h7")

@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b02fc71qehk3p"]
+[gd_scene load_steps=9 format=3 uid="uid://b02fc71qehk3p"]
 
 [ext_resource type="Script" uid="uid://b6wqaul0vul6k" path="res://Battle/enemy_attack/script/basic_enemy_attack2.gd" id="1_unfm5"]
 [ext_resource type="Texture2D" uid="uid://hh7rmn05w5te" path="res://Battle/sprites/kick.png" id="2_0ak0a"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1jmsw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0mec"]
 atlas = ExtResource("2_0ak0a")
@@ -64,9 +62,6 @@ collision_mask = 0
 script = ExtResource("1_unfm5")
 damage = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kick"]
-shape = SubResource("CircleShape2D_1jmsw")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick"]
 sprite_frames = SubResource("SpriteFrames_wt05j")
 animation = &"kick"
@@ -82,9 +77,6 @@ appear = 0.1
 follow = 1.1
 damage = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kick2"]
-shape = SubResource("CircleShape2D_1jmsw")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick2"]
 sprite_frames = SubResource("SpriteFrames_wt05j")
 animation = &"kick"
@@ -99,9 +91,6 @@ script = ExtResource("1_unfm5")
 appear = 0.2
 follow = 1.2
 damage = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kick3"]
-shape = SubResource("CircleShape2D_1jmsw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick3"]
 sprite_frames = SubResource("SpriteFrames_wt05j")

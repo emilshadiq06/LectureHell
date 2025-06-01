@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dadiwlv4aqmg1"]
+[gd_scene load_steps=6 format=3 uid="uid://dadiwlv4aqmg1"]
 
 [ext_resource type="Script" uid="uid://cljp73rsn32vm" path="res://Battle/enemy_attack/script/basic_enemy_attack.gd" id="1_31e7m"]
 [ext_resource type="Texture2D" uid="uid://1eful38mv3ol" path="res://Battle/sprites/fist.png" id="2_x2ela"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kdy7f"]
 
 [sub_resource type="Animation" id="Animation_fpwk8"]
 length = 0.001
@@ -56,9 +54,6 @@ damage = 3
 position = Vector2(175, -27)
 texture = ExtResource("2_x2ela")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fist"]
-shape = SubResource("CircleShape2D_kdy7f")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="fist"]
 libraries = {
 &"": SubResource("AnimationLibrary_xs4ig")
@@ -74,9 +69,6 @@ damage = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="fist2"]
 texture = ExtResource("2_x2ela")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fist2"]
-shape = SubResource("CircleShape2D_kdy7f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="fist2"]
 libraries = {
@@ -94,9 +86,6 @@ damage = 3
 [node name="Sprite2D" type="Sprite2D" parent="fist3"]
 texture = ExtResource("2_x2ela")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fist3"]
-shape = SubResource("CircleShape2D_kdy7f")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="fist3"]
 libraries = {
 &"": SubResource("AnimationLibrary_xs4ig")
@@ -113,9 +102,6 @@ damage = 2
 [node name="Sprite2D" type="Sprite2D" parent="fist4"]
 texture = ExtResource("2_x2ela")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fist4"]
-shape = SubResource("CircleShape2D_kdy7f")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="fist4"]
 libraries = {
 &"": SubResource("AnimationLibrary_xs4ig")
@@ -131,9 +117,6 @@ damage = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="fist5"]
 texture = ExtResource("2_x2ela")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fist5"]
-shape = SubResource("CircleShape2D_kdy7f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="fist5"]
 libraries = {

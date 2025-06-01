@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx6mv4aayxccr"]
+[gd_scene load_steps=5 format=3 uid="uid://dx6mv4aayxccr"]
 
 [ext_resource type="Script" uid="uid://defru35mxr1d6" path="res://Battle/enemy_attack/script/gravity.gd" id="1_2c3k7"]
 [ext_resource type="Script" uid="uid://b6wqaul0vul6k" path="res://Battle/enemy_attack/script/basic_enemy_attack2.gd" id="2_6x2ut"]
 [ext_resource type="Texture2D" uid="uid://cspg1fx6ynbgq" path="res://Battle/sprites/skateboard.png" id="3_gkjaj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lugxm"]
-size = Vector2(59, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_apnbr"]
 animations = [{
@@ -30,10 +27,6 @@ script = ExtResource("2_6x2ut")
 damage = 4
 position_tween = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="skateboard_projectile"]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_lugxm")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile"]
 scale = Vector2(2.16148, 2.25499)
 sprite_frames = SubResource("SpriteFrames_apnbr")
@@ -46,10 +39,6 @@ appear = 0.3
 follow = 1.3
 damage = 4
 position_tween = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="skateboard_projectile2"]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_lugxm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile2"]
 scale = Vector2(2.16148, 2.25499)
@@ -64,10 +53,6 @@ follow = 1.6
 damage = 4
 position_tween = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="skateboard_projectile3"]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_lugxm")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile3"]
 scale = Vector2(2.16148, 2.25499)
 sprite_frames = SubResource("SpriteFrames_apnbr")
@@ -80,10 +65,6 @@ appear = 0.9
 follow = 1.9
 damage = 4
 position_tween = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="skateboard_projectile4"]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_lugxm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile4"]
 scale = Vector2(2.16148, 2.25499)
