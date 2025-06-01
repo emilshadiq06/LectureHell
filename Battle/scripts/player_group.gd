@@ -2,6 +2,8 @@ extends Node
 var in_damage_multiplier : float = 1
 var index : int = 0
 var players: Array = []
+var walk_speed : float
+var dash_window : float
 @onready var enemies = $"../EnemyGroup"
 @onready var choice = $"../CanvasLayer/choice"
 @onready var actChoice = $"../CanvasLayer/actChoice"
@@ -10,6 +12,7 @@ var stage = load("res://Battle/stage.tscn").instantiate()
 @onready var effect_machine = $"../effectMachine"
 @onready var bullet_hell_timer =  $"../BulletHellTimer"
 var attk_groups : Array
+signal got_duration(duration:float)
 @export var inv: Inv
 
 var skill_button
@@ -29,7 +32,8 @@ func _ready() -> void:
 	skill_button.pressed.connect(_skill_button_pressed)
 #print(effect_array)
 	players[0]._focus()
-
+	walk_speed = players[0].walk_speed
+	dash_window = players[0].dash_window
 
 func add_character():
 	
@@ -67,7 +71,8 @@ func switch_focus(x,y):
 func _on_enemy_group_bullet_hell() -> void:
 	enemies.choice.hide()
 	var duration: float
-	get_parent().add_child(stage) 
+	get_parent().add_child(stage)
+	 
 	await get_tree().create_timer(1).timeout
 	for i in enemies.enemies:
 		if i.hp>0:
@@ -83,15 +88,15 @@ func _on_enemy_group_bullet_hell() -> void:
 					attack = load(i.attk_str[load_pos]).instantiate()
 				attk_groups.append(attack)
 
-
-				stage.add_child(attack)
 				await get_tree().create_timer(0.3).timeout
+				stage.add_child(attack)
+				
 		duration += i.attk_duration
 	duration /= enemies.enemies.size()
 	
 	
 	bullet_hell_timer.start(duration)
-
+	got_duration.emit(duration)
 
 
 func _on_act_pressed() -> void:

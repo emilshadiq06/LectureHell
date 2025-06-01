@@ -104,9 +104,10 @@ func addhealth(hp_regen,pp_regen):
 		player_team.update_group(StatLoader.player_group[player_team.index-1].stats,player_team.index)
 	
 	
-func change_stat(hp_changed,pp_changed):
+func change_stat(hp_changed,pp_changed,walk_changed,dash_window_changed):
 	stats.max_hp = hp_changed
-	
+	stats.dash = dash_window_changed
+	stats.walk = walk_changed
 	stats.max_pp = pp_changed
 	player_team.update_group(stats,0)
 	

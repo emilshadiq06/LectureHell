@@ -29,6 +29,8 @@ var hp : float = 20:
 var attk_str: Array[String]
 var attk_loaded: int
 var attk_duration: float
+var walk_speed : float 
+var dash_window : float
 func _ready() -> void:
 	start_battle = false
 	await get_tree().create_timer(0.1).timeout
@@ -50,6 +52,8 @@ func set_stats(stats):
 		weapon_speed = stats.weapon_speed
 		$ProgressBarPP.value  = (pp/MAX_PP)*100
 		$PP.text = "PP "+ str(int(pp)) +"/" +str(int(MAX_PP))
+		walk_speed = stats.walk
+		dash_window = stats.dash
 	elif stats is enemy_stats:
 		attk_str = stats.attack
 		attk_duration = stats.attack_duration

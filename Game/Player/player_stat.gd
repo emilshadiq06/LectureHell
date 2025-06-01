@@ -10,3 +10,5 @@ class_name playerStat
 @export var weapons = 1
 @export var weapon_speed: float = 1
 @export var money : float
+@export var walk: float = 250
+@export var dash: float = 0.1

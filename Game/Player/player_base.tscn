@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dcj03lvuf6pqy" path="res://Game/Player/scripts/state_run.gd" id="6_uxnql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_my1br"]
-radius = 9.05539
+radius = 13.0
 
 [sub_resource type="Animation" id="Animation_q0m6d"]
 length = 0.001
@@ -189,7 +189,6 @@ _data = {
 [node name="Player_base" type="CharacterBody2D"]
 collision_mask = 16
 script = ExtResource("1_q82r4")
-dash_window_duration = 0.25
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 15)
@@ -213,7 +212,7 @@ script = ExtResource("4_rlapy")
 
 [node name="walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_dhjvi")
-move_speed = 150.0
+move_speed = 180.0
 
 [node name="running" type="Node" parent="StateMachine"]
 script = ExtResource("6_uxnql")

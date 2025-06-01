@@ -106,7 +106,7 @@ func _on_deequip_pressed() -> void:
 	deequip.hide()
 	if selected_items < 15 and target.name == "Player":
 		if selected_items == 12:
-			target.change_stat(20,20)
+			target.change_stat(20,20,250,0.1)
 		elif selected_items == 13:
 			target.change_weapon(1,1)
 

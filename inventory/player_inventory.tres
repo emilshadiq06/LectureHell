@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=6 format=3 uid="uid://c64jap0qamgb6"]
+[gd_resource type="Resource" script_class="Inv" load_steps=7 format=3 uid="uid://c64jap0qamgb6"]
 
 [ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="1_fi1x0"]
 [ext_resource type="Script" uid="uid://b8u10hb65xcvh" path="res://inventory.gd" id="1_tyxcc"]
 [ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="2_65xq6"]
 [ext_resource type="Resource" uid="uid://hpbpvsiloe1o" path="res://inventory/item/gear/willpower.tres" id="3_3ih0p"]
+[ext_resource type="Resource" uid="uid://c6we7kud385dl" path="res://inventory/item/gear/skateboard.tres" id="3_cwv8g"]
 [ext_resource type="Resource" uid="uid://ddqehfrhqfbbt" path="res://inventory/item/weapon/pen_weapon.tres" id="4_65xq6"]
 
 [resource]
 script = ExtResource("1_tyxcc")
-items = Array[ExtResource("1_fi1x0")]([null, ExtResource("2_65xq6"), null, null, null, null, null, ExtResource("3_3ih0p"), ExtResource("4_65xq6"), null, null, null, null, null])
+items = Array[ExtResource("1_fi1x0")]([null, ExtResource("2_65xq6"), null, ExtResource("3_cwv8g"), null, null, null, ExtResource("3_3ih0p"), ExtResource("4_65xq6"), null, null, null, null, null])
 metadata/_custom_type_script = "uid://b8u10hb65xcvh"

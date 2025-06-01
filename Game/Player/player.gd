@@ -17,17 +17,19 @@ var grav_affected : bool = false
 var accumulate : float
 signal compare_position(last_position:Vector2)
 var signaled : bool = true
-@export var play_dash: bool = true
-@export var dash_window_duration : float
+
+var dash_window_duration : float
 @onready var animation_player : AnimationPlayer= $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
-
+#$"."
 func _ready() -> void:
 	
 	compare_position.connect(compare_pos)
 	state_machine.initialize(self)
 	update_progress()
+	dash_window_duration = $"../../PlayerGroup".dash_window #0.1 #
+	$StateMachine/walk. move_speed =  $"../../PlayerGroup".walk_speed# 250 #
 	pass # Replace with function body.
 
 
@@ -43,13 +45,21 @@ func _process(delta):
 	
 	
 	if get_last_slide_collision() != null:
+		#print(get_last_slide_collision().get_normal())
 		if signaled:
-			var last_pos = position - velocity
-			compare_position.emit(last_pos)
+			#var last_pos = position - velocity
 			signaled= false
+			compare_position.emit(get_last_slide_collision().get_normal(), -grav.normalized())#*delta)
+			
 		#print(get_last_slide_collision().get_collider())
-
+	elif !grav_affected:
+		
+		await get_tree().create_timer(0.05).timeout
+		grav_affected = true
+		accumulate = 0
+		grav *= 0
 	if grav_affected:
+		
 		accumulate += (delta)*30
 		grav = grav_from_outside * accumulate
 		#await get_tree().create_timer(1).timeout
@@ -70,35 +80,35 @@ func _process(delta):
 	if dash_window > 0 and dashing:
 		direction*=2
 		#current_anim = animation_player.current_animation
-		if play_dash:
-			animation_player.play("dash")
+		
+		animation_player.play("dash")
 	elif dash_window <= 0:
 		sprite.modulate.a = 1
-		direction.normalized()
+		direction.normalized() 
 		dashing =  false
 		dash_window=0
 	pass
 	
-func compare_pos(last_pos:Vector2):
-	await get_tree().create_timer(0.1).timeout
-	var compare1 : float
-	var compare2 : float
-	if abs(grav_from_outside.y) > abs(grav_from_outside.x):
-		compare1 = last_pos.y
-		compare2 = position.y
-	elif abs(grav_from_outside.x) > abs(grav_from_outside.y):
-		compare1 = last_pos.x
-		compare2 = position.x
-	if compare1 + 0.015 >= compare2 and compare1 - 0.015 <= compare2:
-		
+func compare_pos(last_col_normal:Vector2,grav_dir:Vector2):
+	
+	print(grav_dir)
+	print(ceil(last_col_normal.x))
+	print(ceil(last_col_normal.y))
+	if (abs(grav_dir.x) > 0 and ceil(last_col_normal.x)==grav_dir.x) or (abs(grav_dir.y) > 0 and ceil(last_col_normal.y)==grav_dir.y):
+		grav_affected =false
+	#if last_col_normal==grav_dir:
+		velocity -= grav
 		accumulate = 0
 		grav *= 0
-		grav_affected =false
-	else:
 		
+	#elif if abs(grav_dir.y) > 0 and ceil(last_col_normal.y)==grav_dir.y:
+	else:
+		await get_tree().create_timer(0.05).timeout
 		grav_affected =true
+		grav = grav_from_outside * accumulate
 	signaled= true
 	pass
+	
 
 		
 func _input(event: InputEvent):
