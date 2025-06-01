@@ -23,12 +23,14 @@ func Process(_delta:float)->State:
 		
 		return running
 	#print(accumulate)
-
+	
 	player.velocity = (player.direction * move_speed) 
 	if player.grav_affected:
 		#await  get_tree().create_timer(0.2).timeout
-		player.velocity += player.grav
-		
+		player.velocity += player.grav + (player.direction * move_speed)/7.5
+	else:
+		player.velocity += -player.grav  + (player.direction * move_speed)/5
+		print( (player.direction * move_speed))
 	
 	#print(player.velocity)
 

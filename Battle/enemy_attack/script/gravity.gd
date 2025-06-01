@@ -22,7 +22,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if time > 0:
 		time -= delta
-		print(time)
+		#print(time)
 	elif time<0 and time>-0.05 and grav_disabler:
 		
 		attk_target.sprite.self_modulate =  Color("white")

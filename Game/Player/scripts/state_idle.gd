@@ -23,6 +23,8 @@ func Process(_delta:float)->State:
 	if player.grav_affected:
 		#await  get_tree().create_timer(0.2).timeout
 		player.velocity += player.grav
+	else:
+		player.velocity -= player.grav 
 	player.run = 1
 	
 	return null

@@ -47,7 +47,7 @@ func update_progress():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	
+	print(direction)
 	if get_last_slide_collision() != null:
 		#print(get_last_slide_collision().get_normal())
 		if signaled:
@@ -60,7 +60,7 @@ func _process(delta):
 		
 		
 		grav_affected = true
-		await get_tree().create_timer(0.05).timeout
+		#await get_tree().create_timer(0.05).timeout
 		accumulate = 0
 		grav *= 0
 	if grav_affected:
@@ -89,7 +89,7 @@ func _process(delta):
 		animation_player.play("dash")
 	elif dash_window <= 0:
 		sprite.modulate.a = 1
-		direction.normalized() 
+		direction = direction.normalized() 
 		dashing =  false
 		dash_window=0
 	pass
@@ -100,7 +100,7 @@ func compare_pos(last_col_normal:Vector2,grav_dir:Vector2):
 	if (abs(grav_dir.x) > 0 and ceil(last_col_normal.x)==grav_dir.x) or (abs(grav_dir.y) > 0 and ceil(last_col_normal.y)==grav_dir.y):
 		grav_affected =false
 	#if last_col_normal==grav_dir:
-		velocity -= grav
+		#velocity -= grav
 		accumulate = 0
 		grav *= 0
 		
