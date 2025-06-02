@@ -38,7 +38,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_p1p0q")
 theme_override_font_sizes/font_size = 60
-text = "Halloween Shooter"
+text = "BULLET HELL"
 
 [node name="ChooseFighterLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
