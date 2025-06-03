@@ -16,3 +16,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var scene_tree = get_tree()
 		scene_tree.call_deferred("change_scene_to_file", full_path)
 	
+
+
+func _on_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.
