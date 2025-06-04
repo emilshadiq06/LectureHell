@@ -60,7 +60,7 @@ connected_scene = "gameworld"
 enter_pos = Vector2(-8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-position = Vector2(29, 197)
+position = Vector2(30, 270)
 shape = SubResource("RectangleShape2D_yq8tf")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
