@@ -104,5 +104,6 @@ func _on_body_exited(body: Node2D) -> void:
 			DialogueManagerScript.is_dialog_active = false
 			DialogueManagerScript.current_line_index = 0
 		dialogue.index = 0
+		
 		is_chatting = false
 		player = null

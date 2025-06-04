@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=62 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="1_4wg8t"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://mojc683gpjm6" path="res://dialogue/chat.tscn" id="15_xkbms"]
 [ext_resource type="Resource" uid="uid://dff75urq5yhii" path="res://dialogue/dialog_resource/Apple_manDialogue.tres" id="16_14slm"]
 [ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="16_xkbms"]
-[ext_resource type="Script" uid="uid://bimjlqjhu21br" path="res://scene/skatebro.gd" id="18_ka32h"]
 [ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://scene/menuscene/npc_sprite_02.png" id="19_4wg8t"]
 [ext_resource type="Resource" uid="uid://cs6ep512ydmg8" path="res://Game/skater_stat.tres" id="19_gcrio"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="20_qxrrp"]
@@ -6826,10 +6825,10 @@ shape = SubResource("CircleShape2D_lcp7f")
 
 [node name="skateman" type="StaticBody2D" parent="."]
 position = Vector2(420, 183)
-script = ExtResource("18_ka32h")
+script = ExtResource("28_fqq6e")
 stats = ExtResource("19_gcrio")
-next_dialogue = Array[ExtResource("16_xkbms")]([null, ExtResource("21_awr61")])
-alternate_dialogue = Array[ExtResource("16_xkbms")]([ExtResource("21_owyic"), ExtResource("21_awr61")])
+next_dialogue = Array[ExtResource("16_xkbms")]([null, ExtResource("21_owyic"), ExtResource("21_awr61")])
+alternate_outcome = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="skateman"]
 shape = SubResource("CircleShape2D_gcrio")
