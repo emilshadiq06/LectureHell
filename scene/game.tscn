@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=21 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -14,7 +14,6 @@
 [ext_resource type="Resource" uid="uid://dcafxmkpvtwqw" path="res://Game/enemy_stat2.tres" id="11_81276"]
 [ext_resource type="Script" uid="uid://diij37k1m8hxh" path="res://Game/Player/add_player_group.gd" id="11_ym5sv"]
 [ext_resource type="Resource" uid="uid://cugngsxc1vyxp" path="res://inventory/item/consumables/nasi_bujang.tres" id="12_sng2h"]
-[ext_resource type="FontFile" uid="uid://dkekkugm8xgmk" path="res://scene/menuscene/Mad Pixel Club.ttf" id="12_ux4dc"]
 [ext_resource type="Resource" uid="uid://cqdluynxv6peo" path="res://Game/enemy_stat3.tres" id="12_ve786"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
@@ -24,13 +23,6 @@ size = Vector2(253, 100.5)
 size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
-
-[sub_resource type="Gradient" id="Gradient_0lu6w"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jrd6n"]
-gradient = SubResource("Gradient_0lu6w")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sng2h"]
 radius = 30.8058
@@ -94,51 +86,9 @@ shape = SubResource("CircleShape2D_bk3v5")
 [node name="WorldEnvironment" parent="." instance=ExtResource("5_p1ry8")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("6_xlg7c")]
 visible = false
-
-[node name="Control2" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control2"]
-modulate = Color(1, 1, 1, 0.998912)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture1D_jrd6n")
-
-[node name="Label" type="Label" parent="CanvasLayer/Control2"]
-unique_name_in_owner = true
-modulate = Color(0.266575, 0.266575, 0.266575, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.5
-offset_top = -11.5
-offset_right = 36.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.74, 1, 0.865667, 1)
-theme_override_colors/font_shadow_color = Color(0.299547, 0.299547, 0.299547, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("12_ux4dc")
-theme_override_font_sizes/font_size = 48
-text = "LOADING..."
 
 [node name="Enemy2" parent="." groups=["enemies"] instance=ExtResource("7_qpk70")]
 position = Vector2(387, -215)

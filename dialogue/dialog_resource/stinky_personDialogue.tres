@@ -1,24 +1,20 @@
-[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://0dft1ncd5h80"]
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=2 format=3 uid="uid://0dft1ncd5h80"]
 
 [ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="1_g6c5i"]
-[ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="1_skqax"]
-[ext_resource type="Resource" uid="uid://bk4gi1m6smc7y" path="res://inventory/item/weapon/flail_weapon.tres" id="2_h5p8p"]
 
 [resource]
 script = ExtResource("1_g6c5i")
-quest_name = "Odd pet"
-item = ExtResource("1_skqax")
-item_count = 1
-lose_on_found = true
-prized_item = ExtResource("2_h5p8p")
+quest_name = ""
+item_count = 0
+lose_on_found = false
 add_to_group = 999
-money = 1.0
+money = 0.0
 event_index = 2
 lines1 = Array[String](["Hey you there", "Have you seen my pet fly?"])
 lines2 = Array[String](["Really?", "can I know where pls ); );"])
 lines3 = Array[String](["Thank you", "Have this weapon, as a gift"])
 lines4 = Array[String](["Aw darn..", "Really?", "Can you find it and gice to me?", "I have a reward..."])
-lines5 = Array[String](["GET OUT OF MY SIGHT", "!!!!!!!!!!!!"])
+lines5 = Array[String](["GET OUT OF MY SIGHT", "!!"])
 position = Array[int]([0, 1, 3, 2, 2])
 line1Options = Array[Array]([["\"Yeah\"", 1], ["Nah", 3], ["That's disgusting", 4]])
 line2Options = Array[Array]([[" i have it here", 2], ["Nah he's mine now!", 3]])

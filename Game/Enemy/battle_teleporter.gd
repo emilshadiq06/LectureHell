@@ -18,8 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 				
 		
 			get_whole_group(get_parent().group_str)
-			$"../../CanvasLayer".show()
-			$"../../CanvasLayer/Control2".show()
+
 			
 			var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
 			player_Battle.get_node("skill").set_script(body.get_node("skill").get_script())

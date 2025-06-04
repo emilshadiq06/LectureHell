@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://d2tacut446llp"]
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://dff75urq5yhii"]
 
 [ext_resource type="Resource" uid="uid://c7bol0of7sp0x" path="res://inventory/item/consumables/red_apple.tres" id="1_i00fc"]
 [ext_resource type="Resource" uid="uid://bkiu7rusrnnb2" path="res://inventory/item/consumables/golden_apple.tres" id="2_mb3pc"]

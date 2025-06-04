@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://tud5nhueawp1"]
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://bh705x2ao0xjj"]
 
 [ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="1_boaxl"]
-[ext_resource type="Resource" uid="uid://c6we7kud385dl" path="res://inventory/item/gear/skateboard.tres" id="2_w3kt2"]
+[ext_resource type="Resource" uid="uid://dr2j57v4es41i" path="res://inventory/item/gear/skateboard.tres" id="2_w3kt2"]
 [ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="3_f3jii"]
 
 [resource]
