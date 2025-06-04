@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=38 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
 [ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="2_x2hm1"]
@@ -19,6 +19,8 @@
 [ext_resource type="Resource" uid="uid://c7bol0of7sp0x" path="res://inventory/item/consumables/red_apple.tres" id="17_14slm"]
 [ext_resource type="Resource" uid="uid://bkiu7rusrnnb2" path="res://inventory/item/consumables/golden_apple.tres" id="18_xkbms"]
 [ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://scene/menuscene/npc_sprite_02.png" id="19_4wg8t"]
+[ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="20_qxrrp"]
+[ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="21_ka32h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka32h"]
 texture = ExtResource("1_cepea")
@@ -6688,5 +6690,11 @@ hframes = 17
 y_sort_enabled = true
 position = Vector2(-0.296997, -7.2795)
 shape = SubResource("CircleShape2D_lcp7f")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("20_qxrrp")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("21_ka32h")]
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

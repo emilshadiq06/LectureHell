@@ -6,6 +6,8 @@ extends Control
 func _ready():
 	anim_player.play("RESET")
 	hide()
+	$settings.hide() # hides the settings menu on start
+
 
 func pause_game():
 	get_tree().paused = true
@@ -31,6 +33,19 @@ func _process(_delta):
 		if get_tree().paused:
 			resume_game()
 
-func _on_button_pressed():
+
+func _on_button_2_pressed() -> void:
+	$settings.show()
+
+func _on_button_pressed() -> void:
 	if get_tree().paused:
 		resume_game()
+		
+
+func _on_backsetting_pressed() -> void:
+	$settings.hide()
+	show() # return to pause menu
+
+
+func _on_button_3_pressed() -> void:
+	get_tree().quit()
