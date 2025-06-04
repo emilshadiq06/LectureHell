@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d27x8m8eukk0r"]
+
+[ext_resource type="Texture2D" uid="uid://boiwkaipqv2q3" path="res://character/Sprite NPC Normal/sprite npc2/Generic Male NPCs.png" id="1_y3eeg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37c7j"]
+atlas = ExtResource("1_y3eeg")
+region = Rect2(800, 0, 80, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p676g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37c7j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="npc MotorMan" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p676g")
+animation = &"idle"
