@@ -21,3 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 			StatLoader.previous_scene = get_tree().current_scene.scene_file_path
 			scene_tree.call_deferred("change_scene_to_file", connected_scene)
 	
+
+
+func _on_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

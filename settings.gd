@@ -5,6 +5,7 @@ extends Control
 @onready var check_button: CheckButton = $ColorRect/TabContainer/GAMEPLAY/CheckButton
 
 
+
 var is_remapping = false
 var action_to_remap = null
 var remapping_button = null
@@ -15,11 +16,23 @@ var input_actions = {
 	"right": "Move Right",
 	"down": "Move Down",
 	"chat": "Dialogue",
+	"inventory": "Inventory",
+	"shoot": "Shoot",
+	"cast_spell": "Cast Spell",
+	"select_spell_1": "Spell 1",
+	"select_spell_2": "Spell 2",
+	"select_spell_3": "Spell 3",
+	
 	
 }
 
 
 func _ready() -> void:
+
+	# Load saved values into UI
+	$ColorRect/TabContainer/GAMEPLAY/brightness2.value = GlobalSettings.brightness
+	$ColorRect/TabContainer/GAMEPLAY/slider.value = GlobalSettings.master_volume
+	$ColorRect/TabContainer/GAMEPLAY/CheckButton.button_pressed = GlobalSettings.is_bloom_enabled
 	_create_action_list()
 
 	
@@ -84,7 +97,7 @@ func _on_brightness_2_value_changed(value: float) -> void:
 
 
 func _on_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(0,value)
+	GlobalSettings.set_volume(value)
 
 
 func _on_check_box_toggled(toggled_on: bool) -> void:

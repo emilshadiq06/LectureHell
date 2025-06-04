@@ -181,3 +181,7 @@ func update_pos():
 	if StatLoader.previous_position != Vector2.ZERO:
 		position = StatLoader.previous_position
 	#print(position)
+
+
+func _on_portal_3_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
