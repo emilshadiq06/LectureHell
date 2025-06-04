@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment" load_steps=3 format=3 uid="uid://dr2j57v4es41i"]
+
+[ext_resource type="Script" uid="uid://jiv0rpbirird" path="res://inventory/item/gear/equipment.gd" id="1_djyet"]
+[ext_resource type="Texture2D" uid="uid://cspg1fx6ynbgq" path="res://Battle/sprites/skateboard.png" id="2_r5sds"]
+
+[resource]
+script = ExtResource("1_djyet")
+hp_changed = 25
+pp_changed = 18
+walk_changed = 180.0
+dash_window_changed = 0.25
+name = "skateboard"
+texture = ExtResource("2_r5sds")
+metadata/_custom_type_script = "uid://jiv0rpbirird"

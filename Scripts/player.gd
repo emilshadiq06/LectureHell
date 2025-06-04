@@ -12,7 +12,7 @@ signal spell_casted(spell_index: int, timeout: float)
 @onready var shooting_system = $ShootingSystem
 @onready var health_system = $HealthSystem as HealthSystem
 @onready var spell_system = $SpellSystem
-
+@export var inv :Inv
 
 @export var speed = 400
 var direction = Vector2.ZERO
@@ -82,3 +82,6 @@ func _on_area_entered(area):
 func on_died():
 	player_died.emit()
 	queue_free()
+
+func addhealth(hp_regen,pp_regen):
+	pass

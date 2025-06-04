@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://boxkl18or5x3u"]
+[gd_scene load_steps=22 format=3 uid="uid://boxkl18or5x3u"]
 
 [ext_resource type="Script" uid="uid://b4kxx3btqho8m" path="res://Game/Enemy/scripts/enemy.gd" id="1_a8tps"]
-[ext_resource type="Texture2D" uid="uid://c53o36880a6r4" path="res://Battle/sprites/NakedBushMan.png" id="2_wdnsp"]
+[ext_resource type="Texture2D" uid="uid://d3y3bvs8p4rut" path="res://Game/Enemy/scripts/ExampleEnemySprite.png" id="2_4qpj5"]
+[ext_resource type="Script" uid="uid://kk2dodqhghwc" path="res://Game/Enemy/battle_teleporter.gd" id="3_4qpj5"]
 [ext_resource type="Script" uid="uid://bvry54feommew" path="res://Game/Enemy/scripts/states/enemy_state_machine.gd" id="3_xhwg1"]
 [ext_resource type="Script" uid="uid://cbgcr466bbopr" path="res://Game/Enemy/scripts/states/idle.gd" id="4_o0bfm"]
 [ext_resource type="Script" uid="uid://chudb7lwcd015" path="res://Game/Enemy/scripts/states/roam.gd" id="5_wdnsp"]
@@ -14,8 +15,154 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8tps"]
 size = Vector2(46, 50)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2ghbj"]
-radius = 317.191
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4qpj5"]
+points = PackedVector2Array(0, -100, 86.6, 50, -86.6, 50)
+
+[sub_resource type="Animation" id="Animation_q0m6d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_db2hk"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_nfw5o"]
+resource_name = "idle_down"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_wlpas"]
+resource_name = "idle_side"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_qwver"]
+resource_name = "idle_up"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.199514, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_akrrf"]
+resource_name = "walk_down"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_6v7ly"]
+resource_name = "walk_side"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [17, 18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_tqhgd"]
+resource_name = "walk_up"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n4lia"]
+_data = {
+&"RESET": SubResource("Animation_q0m6d"),
+&"idle": SubResource("Animation_db2hk"),
+&"idle_down": SubResource("Animation_nfw5o"),
+&"idle_side": SubResource("Animation_wlpas"),
+&"idle_up": SubResource("Animation_qwver"),
+&"walk_down": SubResource("Animation_akrrf"),
+&"walk_side": SubResource("Animation_6v7ly"),
+&"walk_up": SubResource("Animation_tqhgd")
+}
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_a8tps")
@@ -24,12 +171,15 @@ script = ExtResource("1_a8tps")
 shape = SubResource("CircleShape2D_8nrlj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wdnsp")
+texture = ExtResource("2_4qpj5")
 hframes = 21
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="BattleTeleporter" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+script = ExtResource("3_4qpj5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BattleTeleporter"]
 position = Vector2(-4, 3)
 shape = SubResource("RectangleShape2D_a8tps")
 
@@ -57,7 +207,31 @@ script = ExtResource("8_8nrlj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
 position = Vector2(-2, 4)
-shape = SubResource("CircleShape2D_2ghbj")
+rotation = -1.5708
+scale = Vector2(2, 2)
+shape = SubResource("ConvexPolygonShape2D_4qpj5")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n4lia")
+}
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -69.0
+offset_right = 18.0
+offset_bottom = -29.0
+scale = Vector2(1.03624, 1.03779)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 11.0
+offset_right = 41.0
+offset_bottom = 34.0
+text = "   !!!"
+
+[connection signal="body_entered" from="BattleTeleporter" to="BattleTeleporter" method="_on_body_entered"]
 [connection signal="body_entered" from="ChaseArea" to="." method="_on_chase_area_body_entered"]
+[connection signal="body_exited" from="ChaseArea" to="." method="_on_chase_area_body_exited"]

@@ -41,7 +41,7 @@ const CHANCE_TO_BLOCK = 0.3
 const CHANCE_TO_TELEPORT = 0.4
 
 var is_blocking = false
-
+var start_check : bool = true
 var speed = 300
 var movement_points 
 var current_movement_point
@@ -51,9 +51,18 @@ var bat_speed = 350
 var bat_homing_time = 2
 
 var min_projectile_degree = -15
-
+func _ready() -> void:
+	if get_tree().current_scene.scene_file_path == "res://Scenes/level_1.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_2.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_3.tscn":
+		pass
+	else:
+		self.queue_free()
 func init():
+
 	var random_point = movement_points.pick_random()
+	if  random_point.position == null and start_check:
+		self.queue_free()
+
+		#start_check = false
 	current_movement_point = random_point.position
 	health_system.damaged.connect(on_damaged)
 	health_system.died.connect(on_died)
@@ -96,7 +105,7 @@ func get_health():
 func _process(delta):
 	global_position = global_position.move_toward(current_movement_point, delta * speed)
 	
-	if global_position.distance_squared_to(current_movement_point) < .1:
+	if global_position.distance_squared_to(current_movement_point) < .1 and movement_points.pick_random() != null:
 		current_movement_point = movement_points.pick_random().global_position
 		
 		if phase == Phase.TWO:
@@ -110,7 +119,10 @@ func _process(delta):
 			if random < CHANCE_TO_TELEPORT && !is_blocking:
 				is_blocking = true
 				teleport()
-				
+		if  movement_points.pick_random() == null and start_check:
+			self.queue_free()
+		else:
+			start_check = false
 func start_blocking():
 	animated_sprite_2d.play("blocking")
 	is_blocking = true

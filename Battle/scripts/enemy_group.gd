@@ -9,7 +9,7 @@ var crit_list : Array = []
 var crit : bool = false
 var players : Array = []
 var weapons : Array = []
-var weapons_speed : Array = []
+#var weapons_speed : Array = []
 var action_queue : Array
 var attack 
 var ball_index : int = 0
@@ -57,9 +57,9 @@ func _process(delta: float) -> void:
 				switch_focus(index,index-1)
 		if Input.is_action_just_pressed("chat"):
 			weapons.push_back(players[player_group.index].weapons)
-			weapons_speed.push_back(players[player_group.index].weapon_speed)
-			print("weapons_speed")
-			print(weapons_speed)
+			#weapons_speed.push_back(players[player_group.index].weapon_speed)
+			#print("weapons_speed")
+			#print(weapons_speed)
 			emit_signal("next_player")
 			action_queue.push_back(index)
 			if crit == true:
@@ -84,32 +84,41 @@ func _action(stack):
 	var j : int = 0
 	for i in stack:
 		if i is int:
+			var crit: bool = false
 			attack = attack_scene.instantiate()
-			attack.position = Vector2(0,-150)
+			attack.position = Vector2(0,0)
 			if i in crit_list:
-				print("crit here")
+				crit = true
 			var balls = attack.get_node("Balls")
 		#balls.send_result.connect(_on_balls_send_result) 
 		#print("here1")
 		#print("here2")
 		#print(players[player_group.index].weapon)
 		#print("here3")
-			attack.get_node("Balls").add_ball(weapons[j])
-			attack.get_node("Balls").ball_speed(weapons_speed[j])
+			
+			attack.get_node("Balls").add_ball(weapons[j],crit)
+			
+			attack.get_node("Balls").ball_speed(weapons[j])
 			await get_tree().create_timer(0.1).timeout
 			add_sibling(attack)
 			
-			await get_tree().create_timer(2).timeout
+			await get_tree().create_timer(3).timeout
 			ball_index = attack.get_ball_index()
 			hits =  attack.get_ball_hit()
 		
-		
+			
 			get_parent().remove_child(attack)
-			enemies[i].take_damage(4*damage_multiplier* (weapons_speed[j]**3) *hits/(weapons[j] +1) )
+			var avg:float
+			for speed in weapons[j]:
+				avg += ceil(speed[1])
+				print(avg)
+			avg /= weapons[j].size()
+			print(avg)
+			enemies[i].take_damage(hits*2*avg*damage_multiplier*(4/weapons[j].size()))
 			j+=1
 		
 			ball_index = 0
-	weapons_speed.clear()
+	#weapons_speed.clear()
 	weapons.clear()
 	crit_list.clear()
 	action_queue.clear()
@@ -157,8 +166,16 @@ func _on_bullet_hell_timer_timeout() -> void:
 		DialogueManagerScript.text_box.queue_free()
 		DialogueManagerScript.is_dialog_active = false
 		DialogueManagerScript.current_line_index = 0
+	 
 	start_turn.emit()
 	_reset_focus()
+	for i in player_group.attk_groups:
+		get_parent().get_node(player_group.stage.get_path()).remove_child(i)
+		print(i)
+	print(player_group.attk_groups)
+	player_group.attk_groups.clear()
+	print(player_group.attk_groups)
+	get_parent().remove_child(player_group.stage)
 	#action_queue.clear()
 	is_battling = false
 	show_choice()

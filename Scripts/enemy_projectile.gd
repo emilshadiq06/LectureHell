@@ -26,12 +26,20 @@ func set_projectile_texture(projectile_texture):
 	
 func set_vlad_pattern():
 	pattern = ProjectilePattern.VLAD
-	
+func _ready() -> void:
+	if get_tree().current_scene.scene_file_path == "res://Scenes/level_1.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_2.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_3.tscn":
+		pass
+	else:
+		self.queue_free()
 func _process(delta):
 	var x = global_position.x - delta * horizontal_speed	
 	var y = global_position.y + get_vertical_position(x, delta)
 	
 	position = Vector2(x, y)
+	if get_tree().current_scene != null and (get_tree().current_scene.scene_file_path == "res://Scenes/level_1.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_2.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_3.tscn"):
+		pass
+	else:
+		self.queue_free()
 
 func get_vertical_position(x_position: float, delta: float):
 	match pattern:
@@ -58,3 +66,6 @@ func _on_area_entered(area):
 	
 	if area is Projectile:
 		area.queue_free()
+
+
+	

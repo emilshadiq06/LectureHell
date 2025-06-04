@@ -9,7 +9,7 @@ func _ready() -> void:
 	\nvelocity X \n
 	Garamramaram Madududung"
 	skill_desc = "taunt enemies to raise attack damage dealt but also raise incoming damage too"
-	dmg_multiplier_attack = 20
+	dmg_multiplier_attack = 1.5
 	
 	dmg_multiplier_received= 1.5
 	turns_duration = 3
@@ -22,6 +22,7 @@ func Enter() ->void:
 	
 	enemies = $"../../EnemyGroup"
 	players = $"../../PlayerGroup"
+	players.in_damage_multiplier *= dmg_multiplier_received
 	enemies.damage_multiplier *= dmg_multiplier_attack
 	players.play_dance()
 	dancer = players.index
@@ -38,6 +39,7 @@ func Enter() ->void:
 #what happens when player enters state
 func Exit() ->void:
 	enemies.damage_multiplier /= dmg_multiplier_attack
+	players.in_damage_multiplier /= dmg_multiplier_received
 	#print("i cant stop")
 	
 	players.stop_anim(dancer)

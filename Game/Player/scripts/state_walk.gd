@@ -5,7 +5,6 @@ class_name State_Walk extends State
 @onready var idle : State = $"../idle"
 @onready var running: State = $"../running"
 
-
 #what happens when player enters state
 func Enter() ->void:
 	player.UpdateAnimation("walk")
@@ -23,9 +22,17 @@ func Process(_delta:float)->State:
 	if player.run == 2:
 		
 		return running
-		
-	player.velocity = player.direction * move_speed
+	#print(accumulate)s
 	
+	player.velocity = (player.direction * move_speed) 
+	if player.grav_affected:
+	
+		player.velocity += player.grav #+ (player.direction * move_speed)/10
+	#else:
+	#	player.velocity += -player.grav  + (player.direction * move_speed)/7.5
+		
+	
+
 
 	if player.SetDirection():
 		player.UpdateAnimation("walk")

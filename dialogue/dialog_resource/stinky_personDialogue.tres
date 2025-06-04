@@ -4,12 +4,17 @@
 
 [resource]
 script = ExtResource("1_g6c5i")
+quest_name = ""
+item_count = 0
+lose_on_found = false
+add_to_group = 999
+money = 0.0
 event_index = 2
 lines1 = Array[String](["Hey you there", "Have you seen my pet fly?"])
 lines2 = Array[String](["Really?", "can I know where pls ); );"])
 lines3 = Array[String](["Thank you", "Have this weapon, as a gift"])
 lines4 = Array[String](["Aw darn..", "Really?", "Can you find it and gice to me?", "I have a reward..."])
-lines5 = Array[String](["GET OU OF MY SIGHT", "!!!!!!!!!!!!"])
+lines5 = Array[String](["GET OUT OF MY SIGHT", "!!"])
 position = Array[int]([0, 1, 3, 2, 2])
 line1Options = Array[Array]([["\"Yeah\"", 1], ["Nah", 3], ["That's disgusting", 4]])
 line2Options = Array[Array]([[" i have it here", 2], ["Nah he's mine now!", 3]])

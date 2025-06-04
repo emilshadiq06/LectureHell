@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="enemy_stats" load_steps=2 format=3 uid="uid://cs6ep512ydmg8"]
+
+[ext_resource type="Script" uid="uid://bxu1nri0o51p" path="res://Game/Enemy/scripts/enemy_stat.gd" id="1_wvuv6"]
+
+[resource]
+script = ExtResource("1_wvuv6")
+randomize = false
+attack = Array[String](["res://Battle/enemy_attack/skate_attack_2.tscn", "res://Battle/enemy_attack/basic_attack_2.tscn", "res://Battle/enemy_attack/skate_attack_2.tscn", "res://Battle/enemy_attack/skate_course.tscn", "res://Battle/enemy_attack/skate_attack.tscn"])
+attack_duration = 5.0
+attk_loaded = 2
+name = "Sleepy Skateman"
+max_hp = 45
+hp = 45
+metadata/_custom_type_script = "uid://bxu1nri0o51p"

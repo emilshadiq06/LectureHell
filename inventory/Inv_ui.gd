@@ -46,7 +46,7 @@ func item_interact(item_index:int):
 			choices.hide()
 		if item_index > 11 and item_index< 15 and inv.items[item_index]!=null:
 			deequip.show()
-			print("penile dysfunction")
+			#print("penile dysfunction")
 		else:
 			deequip.hide()
 		
@@ -84,18 +84,20 @@ func _on_use_pressed() -> void:
 	if selected_items < 12:
 		var item_picked:int = selected_items
 		print(selected_items)
-		if target.name != "Player":
+		if target.name != "Player" and target.name != "UI" :
 			var player_group = $"../../PlayerGroup"
 			
 			if inv.items[item_picked] is consumable:
 				target = player_group.players[player_group.index]
-				player_group._on_brace_pressed()
+			#	player_group._on_brace_pressed()
 				player_group._on_back_pressed()
 			elif inv.items[item_picked] is expendable:
 				if  inv.items[item_picked].use_onEnemy:
 					target = $"../../EnemyGroup".enemies[randi() % $"../../EnemyGroup".enemies.size()]
 				player_group._on_brace_pressed()
 				player_group._on_back_pressed()
+		elif target.name == "UI":
+			target = $"../../Player"
 		inv.use(item_picked,inv.items[item_picked],target)
 		selected_items = 999
  
@@ -106,9 +108,10 @@ func _on_deequip_pressed() -> void:
 	deequip.hide()
 	if selected_items < 15 and target.name == "Player":
 		if selected_items == 12:
-			target.change_stat(20,20)
+			target.change_stat(20,20,250,0.1)
 		elif selected_items == 13:
-			target.change_weapon(1,1)
+			var bare_handed : Array[Array] = [[2,1.0],[2,1.0],[2,1.0]]
+			target.change_weapon(bare_handed)
 
 		inv.insert(inv.items[selected_items])
 		inv.throw(selected_items,inv.items[selected_items])

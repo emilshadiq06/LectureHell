@@ -1,6 +1,14 @@
 extends Resource
 class_name dialogue_lines
 var index : int
+@export var quest_name : String
+
+@export var item: InvItem 
+@export var item_count: int
+@export var lose_on_found :bool
+@export var prized_item: InvItem
+@export var add_to_group: int =999
+@export var money: float
 
 @export var event_index: int
 @export var lines1: Array[String]
@@ -14,6 +22,13 @@ var index : int
 @export var line3Options : Array [Array]
 @export var line4Options : Array [Array]
 
+func get_stuff(target):
+	target.item = item
+	target.item_count = item_count
+	target.lose_on_found  = lose_on_found
+	target.prized_item = prized_item
+	target.add_to_group = add_to_group
+	target.money = money
 func get_lines():
 	var lines_array : Array = [lines1,lines2,lines3,lines4,lines5]
 	var lines_array_new : Array

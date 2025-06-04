@@ -1,20 +1,20 @@
 
-class_name Player extends CharacterBody2D
+extends Player
 
-const DOUBLETAP_DELAY = .30
-var doubletap_time = DOUBLETAP_DELAY
-var last_keycode = 0
+#const DOUBLETAP_DELAY = .30
+#var doubletap_time = DOUBLETAP_DELAY
+#var last_keycode = 0
 
-var direction : Vector2 = Vector2.ZERO
-var cardinal_direction : Vector2 = Vector2.DOWN
+#var direction : Vector2 = Vector2.ZERO
+#var cardinal_direction : Vector2 = Vector2.DOWN
 @onready var player_team = $inventory/player_team_ui
-var run: int = 1
+#var run: int = 1
 @export var inv :Inv
 @onready var skill = $skill
 #@onready var stats = $stats
-@onready var animation_player : AnimationPlayer= $AnimationPlayer
-@onready var sprite : Sprite2D = $Sprite2D
-@onready var state_machine: PlayerStateMachine = $StateMachine
+#@onready var animation_player : AnimationPlayer= $AnimationPlayer
+#@onready var sprite : Sprite2D = $Sprite2D
+#@onready var state_machine: PlayerStateMachine = $StateMachine
 @export var stats : playerStat
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,11 +42,53 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	#print(direction)
+	#if get_last_slide_collision() != null:
+		#print(get_last_slide_collision().get_normal())
+		#if signaled:
+			#var last_pos = position - velocity
+		#	signaled= false
+		#	compare_position.emit(get_last_slide_collision().get_normal(), -grav.normalized())#*delta)
+		#	await get_tree().create_timer(0.05).timeout
+		#print(get_last_slide_collision().get_collider())
+	#elif !grav_affected:
+		
+		
+		#grav_affected = true
+		#await get_tree().create_timer(0.05).timeout
+		#accumulate = 0
+		#grav *= 0
+	#if grav_affected:
+		
+		#accumulate += (delta)*30
+		#grav = grav_from_outside * accumulate
+		#await get_tree().create_timer(1).timeout
+		
+		
+	if dash_cooldown<= 0 and dashes < max_dashes:
+		#dash_cooldown.stop()
+		
+		dashes +=1
+		dash_cooldown = 1.5
+		#update_progress()
 	doubletap_time -= delta
-	#direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	#direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	
+	dash_cooldown -= delta
+	
+	dash_window -= delta
 	direction = Vector2(Input.get_axis("left","right"),Input.get_axis("up","down")).normalized()
-
+	if dash_window > 0 and dashing:
+		direction*=2
+		#current_anim = animation_player.current_animation
+		
+		animation_player.play("dash")
+	elif dash_window <= 0:
+		#sprite.modulate.a = 1
+		direction = direction.normalized() 
+		dashing =  false
+		dash_window=0
+	
 	pass
 	
 func _input(event: InputEvent):
@@ -56,7 +98,12 @@ func _input(event: InputEvent):
 			
 			last_keycode = 0
 			run = 2
-	
+			if dashes>0 and dash_window<=0:
+				dash_window= (dash_window_duration)
+				dash_cooldown=1.25
+				dashes -= 1
+				#update_progress()
+				dashing = true
 
 		else:
 			last_keycode = event.keycode

@@ -28,6 +28,7 @@ func _process(_delta):
 		loaded = true
 		%Label.text = "wait pls"
 		var new_scene: PackedScene = ResourceLoader.load_threaded_get(next_scene_path)
+		
 		var new_node = new_scene.instantiate()
 		new_node.parameters = parameters
 		var current_scene = get_tree().current_scene

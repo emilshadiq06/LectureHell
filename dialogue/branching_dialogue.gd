@@ -1,14 +1,16 @@
 extends Area2D
 class_name DialogueBranch
-@export var quest_name : String
+#@export var quest_name : String
 #var quest_completed:bool = false
 @export var dialogue: dialogue_lines  
-@export var item: InvItem 
-@export var item_count: int
-@export var lose_on_found :bool
-@export var prized_item: InvItem
-@export var add_to_group: int =999
-@export var money: float
+
+var item: InvItem
+var item_count: int  
+var lose_on_found :bool 
+var prized_item: InvItem 
+var add_to_group: int
+var money: float 
+
 var player
 
 var dialog_branch : Array
@@ -20,17 +22,21 @@ var lines_array:Array
 # Node paths
 
 func _ready():
-	
 	lines_array = dialogue.get_lines() 
 	dialog_branch = dialogue.get_lines_option()
-	#print("i scrape my left nut in each odd numbered seat corner in the CNMX3 lecture hall and my right one on the even ones")
+	
 	DialogueManagerScript.finish_lines.connect(next_line)
+	await DialogueManagerScript.finish_lines.connect(next_line)
+	dialogue.get_stuff(self)
+
 
 
 func next_line():
-	if  dialogue.index < dialog_branch.size():
+	# dialogue.index < dialog_branch.size() and
+	if dialogue.index < dialog_branch.size() and player != null and dialogue.position[dialogue.index] < dialog_branch.size():
 		print(dialogue.index)
 		print(dialog_branch.size())
+		
 		$DialogueOptions.show()
 		$DialogueOptions/Option1.text = dialog_branch[dialogue.position[dialogue.index]][0][0]
 		$DialogueOptions/Option1.item_index = 0
@@ -46,12 +52,17 @@ func next_line():
 func item_pressed(item_index:int):
 	#print(item_index)
 	#if dialog_branch[index][item_index][1] and index<1:
-		
+		print("item count")
+		print(item_count)
 		for i in range(dialog_branch[dialogue.position[dialogue.index]].size()-1):
 			$DialogueOptions.remove_child($DialogueOptions.get_child($DialogueOptions.get_children().size()-1))
 			
 		dialogue.index = dialog_branch[dialogue.position[dialogue.index]][item_index][1]
-		if dialogue.index == dialogue.event_index and player.find_item(item).size()>=item_count:
+		if item != null and dialogue.index == dialogue.event_index and player.find_item(item).size()>=item_count:
+			print("item count")
+			print(item_count)
+			print(player.find_item(item).size())
+			print("item count")
 			if prized_item != null:
 				player.collect_item(prized_item.duplicate())
 			if lose_on_found:
@@ -62,22 +73,26 @@ func item_pressed(item_index:int):
 				StatLoader.addplayer_to_group(team.get_child(add_to_group).duplicate())
 				team = null
 				
-			StatLoader.quest_array.append(quest_name)
+			StatLoader.quest_array.append(dialogue.quest_name)
 			player.buy(-money) 
-		elif dialogue.index == dialogue.event_index and player.find_item(item) == null and quest_name not in StatLoader.quest_array:
+			#print(StatLoader.quest_array)
+		elif item != null and dialogue.index == dialogue.event_index and player.find_item(item).size()<item_count and dialogue.quest_name not in StatLoader.quest_array:
 			dialogue.index = lines_array.size()-1
-
-		DialogueManagerScript.start_dialog(global_position, lines_array[dialogue.index])
+			print("item count")
+			print(item_count)
+			print(player.find_item(item).size())
+			print("item count")
+		DialogueManagerScript.start_dialog(get_parent().global_position, lines_array[dialogue.index])
 		$DialogueOptions.hide()
 	
-		
+	
 		
 		
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player :
-		if quest_name in StatLoader.quest_array:
+		if dialogue.quest_name in StatLoader.quest_array:
 			dialogue.index = dialogue.event_index
-		DialogueManagerScript.start_dialog(global_position, lines_array[dialogue.index])
+		DialogueManagerScript.start_dialog(get_parent().global_position, lines_array[dialogue.index])
 		is_chatting = true
 		player = body
 
@@ -88,5 +103,6 @@ func _on_body_exited(body: Node2D) -> void:
 			DialogueManagerScript.text_box.queue_free()
 			DialogueManagerScript.is_dialog_active = false
 			DialogueManagerScript.current_line_index = 0
+		dialogue.index = 0
 		is_chatting = false
 		player = null

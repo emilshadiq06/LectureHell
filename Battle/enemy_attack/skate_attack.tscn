@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx6mv4aayxccr"]
+
+[ext_resource type="Script" uid="uid://defru35mxr1d6" path="res://Battle/enemy_attack/script/gravity.gd" id="1_2c3k7"]
+[ext_resource type="Script" uid="uid://b6wqaul0vul6k" path="res://Battle/enemy_attack/script/basic_enemy_attack2.gd" id="2_6x2ut"]
+[ext_resource type="Texture2D" uid="uid://cspg1fx6ynbgq" path="res://Battle/sprites/skateboard.png" id="3_gkjaj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_apnbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gkjaj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Skate_attack" type="Node2D"]
+
+[node name="gravity" type="Node" parent="."]
+script = ExtResource("1_2c3k7")
+
+[node name="skateboard_projectile" type="AnimatableBody2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(358, 355)
+scale = Vector2(2.08, 3.32)
+script = ExtResource("2_6x2ut")
+damage = 4
+position_tween = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile"]
+scale = Vector2(2.16148, 2.25499)
+sprite_frames = SubResource("SpriteFrames_apnbr")
+
+[node name="skateboard_projectile2" type="AnimatableBody2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(654, 89)
+scale = Vector2(2.08, 3.32)
+script = ExtResource("2_6x2ut")
+appear = 0.3
+follow = 1.3
+damage = 4
+position_tween = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile2"]
+scale = Vector2(2.16148, 2.25499)
+sprite_frames = SubResource("SpriteFrames_apnbr")
+
+[node name="skateboard_projectile3" type="AnimatableBody2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(655, 647)
+scale = Vector2(2.08, 3.32)
+script = ExtResource("2_6x2ut")
+appear = 0.6
+follow = 1.6
+damage = 4
+position_tween = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile3"]
+scale = Vector2(2.16148, 2.25499)
+sprite_frames = SubResource("SpriteFrames_apnbr")
+
+[node name="skateboard_projectile4" type="AnimatableBody2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(953, 359)
+scale = Vector2(2.08, 3.32)
+script = ExtResource("2_6x2ut")
+appear = 0.9
+follow = 1.9
+damage = 4
+position_tween = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile4"]
+scale = Vector2(2.16148, 2.25499)
+sprite_frames = SubResource("SpriteFrames_apnbr")

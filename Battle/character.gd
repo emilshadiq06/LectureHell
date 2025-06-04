@@ -4,13 +4,12 @@ extends CharacterBody2D
 @onready var progress_bar = $ProgressBar
 @onready var hp_label = $HP
 @onready var focus = $Focus
-@export var MAX_HP : float = 20
-var weapon_speed : float = 1:
-	set(value):
-		weapon_speed = value
-var weapons : int = 0:
-	set(value):
-		weapons = value
+var randomize:bool = false
+var MAX_HP : float = 20
+
+
+var weapons : Array[Array]
+
 var start_battle = true
 var MAX_PP : float = 0
 var pp : float = 0:
@@ -24,16 +23,21 @@ var hp : float = 20:
 			
 			_update_progress_bar()
 			_play_animation("hurt")
-			
-
+var attk_str: Array[String]
+var attk_loaded: int
+var attk_duration: float
+var walk_speed : float 
+var dash_window : float
 func _ready() -> void:
 	start_battle = false
 	await get_tree().create_timer(0.1).timeout
 	
 	_update_progress_bar()
 
-
+func change_sprite(new_sprite):
+	$Sprite2D.texture = new_sprite.texture
 func set_stats(stats):
+	#$Sprite2D 
 	hp = stats.hp
 	MAX_HP = stats.max_hp
 	$Name.text = stats.name
@@ -42,9 +46,17 @@ func set_stats(stats):
 		weapons = stats.weapons
 		pp = stats.pp
 		MAX_PP = stats.max_pp
-		weapon_speed = stats.weapon_speed
+		#weapon_speed = stats.weapon_speed
 		$ProgressBarPP.value  = (pp/MAX_PP)*100
 		$PP.text = "PP "+ str(int(pp)) +"/" +str(int(MAX_PP))
+		walk_speed = stats.walk
+		dash_window = stats.dash
+	elif stats is enemy_stats:
+		attk_str = stats.attack
+		attk_duration = stats.attack_duration
+		attk_loaded = stats.attk_loaded
+		randomize = stats.randomize
+		
 func _update_progress_bar():
 	hp_label.text = "HP "+  str(int(hp)) +"/" +str(int(MAX_HP))
 	progress_bar.value = (hp/MAX_HP)*100

@@ -5515,6 +5515,9 @@ size = Vector2(97, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yna0l"]
 size = Vector2(60, 78)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckwbh"]
+size = Vector2(113, 31)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5558,3 +5561,4 @@ shape = SubResource("RectangleShape2D_yna0l")
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/Portal" to="Node2D/Portal" method="_on_body_entered"]

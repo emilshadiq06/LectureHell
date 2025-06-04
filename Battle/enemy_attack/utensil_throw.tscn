@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://uuwxlj4eyya0"]
+
+[ext_resource type="Script" uid="uid://cedku4vws01sf" path="res://Battle/enemy_attack/script/utensil.gd" id="1_3dklx"]
+[ext_resource type="Texture2D" uid="uid://c4fx1s1kmarfw" path="res://Battle/sprites/ladle.png" id="2_moc0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tof6y"]
+size = Vector2(43, 20)
+
+[node name="utensil_throw" type="Node2D"]
+
+[node name="utensil" type="Area2D" parent="."]
+position = Vector2(-592, 345)
+rotation = 0.232129
+scale = Vector2(1, 18.28)
+script = ExtResource("1_3dklx")
+damage = 5
+release_time = 2.4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="utensil"]
+position = Vector2(11.5, 0)
+shape = SubResource("RectangleShape2D_tof6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="utensil"]
+position = Vector2(-0.920195, -0.212949)
+rotation = -0.0129309
+scale = Vector2(5.71076, 2.81811)
+skew = -1.33045
+texture = ExtResource("2_moc0r")
+
+[node name="utensil2" type="Area2D" parent="."]
+position = Vector2(-547, 355)
+rotation = 1.86052
+scale = Vector2(1, 18.28)
+script = ExtResource("1_3dklx")
+damage = 5
+release_time = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="utensil2"]
+position = Vector2(11.5, 0)
+shape = SubResource("RectangleShape2D_tof6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="utensil2"]
+position = Vector2(-0.202528, 0.345805)
+rotation = -0.0129309
+scale = Vector2(5.71076, 2.81811)
+skew = -1.33045
+texture = ExtResource("2_moc0r")
+
+[connection signal="body_entered" from="utensil" to="utensil" method="_on_body_entered"]
+[connection signal="body_entered" from="utensil2" to="utensil2" method="_on_body_entered"]

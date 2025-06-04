@@ -4,12 +4,12 @@
 [ext_resource type="FontFile" uid="uid://dkekkugm8xgmk" path="res://scene/menuscene/Mad Pixel Club.ttf" id="2_bov73"]
 [ext_resource type="FontFile" uid="uid://p2o84j8t62iq" path="res://scene/menuscene/Pixel Digivolve.otf" id="3_kml53"]
 
-[sub_resource type="Gradient" id="Gradient_hjm0a"]
+[sub_resource type="Gradient" id="Gradient_kml53"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1leco"]
-gradient = SubResource("Gradient_hjm0a")
+gradient = SubResource("Gradient_kml53")
 
 [sub_resource type="Animation" id="Animation_kml53"]
 loop_mode = 1

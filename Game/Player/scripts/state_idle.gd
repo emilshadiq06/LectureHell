@@ -17,8 +17,14 @@ func Exit() ->void:
 func Process(_delta:float)->State:
 
 	if player.direction != Vector2.ZERO:
+		#walk.move_speed = 300
 		return walk
-	player.velocity = Vector2.ZERO
+	player.velocity = Vector2.ZERO 
+	if player.grav_affected:
+		#await  get_tree().create_timer(0.2).timeout
+		player.velocity += player.grav
+	else:
+		player.velocity -= player.grav 
 	player.run = 1
 	
 	return null
