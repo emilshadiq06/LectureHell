@@ -9,16 +9,12 @@ var grav_disabler:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$"../../../PlayerGroup".got_duration.connect(got_duration)
-	if attk_target.grav_from_outside == Vector2(0,0) or ($"../gravity" != null and $"../gravity".priority <= priority):# add priority to attacks #or  (($"../gravity"\ != null)):
+	if attk_target.grav_from_outside == Vector2(0,0) or (attk_target.grav_priority <= priority):# add priority to attacks #or  (($"../gravity"\ != null)):
 		grav_disabler = true
 		attk_target.grav_from_outside = gravity
-		#print('time')
-		#print($"../gravity".time)
+		attk_target.grav_priority = priority
 		attk_target.grav_affected = true
-	if ($"../gravity" != null and $"../gravity".priority>priority):
-		priority = $"../gravity".priority
-	print("priority")
-	print(priority)
+
 	attk_target.sprite.self_modulate =  Color("cyan")
 	pass # Replace with function body.
 
@@ -29,7 +25,7 @@ func _process(delta: float) -> void:
 		time -= delta
 		#print(time)
 	elif time<0 and time>-0.05 and grav_disabler:
-		
+		attk_target.grav_priority = 0
 		attk_target.sprite.self_modulate =  Color("white")
 		attk_target.grav_from_outside = Vector2(0,0)
 		attk_target.grav_affected = false

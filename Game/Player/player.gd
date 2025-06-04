@@ -17,7 +17,7 @@ var grav_affected : bool = false
 var accumulate : float
 signal compare_position(last_position:Vector2)
 var signaled : bool = true
-
+var grav_priority : int = 0
 var dash_window_duration : float
 @onready var animation_player : AnimationPlayer= $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
