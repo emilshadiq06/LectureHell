@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=64 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="1_4wg8t"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cl6a55evp4eaa" path="res://character/motorcycle.png" id="28_lcp7f"]
 [ext_resource type="Resource" uid="uid://bnvvcja800qer" path="res://inventory/item/expendable/pipe_bomb.tres" id="29_bjn06"]
 [ext_resource type="Texture2D" uid="uid://b7834ce0m5c3v" path="res://Game/Player/sprites/explode.png" id="29_vmah2"]
+[ext_resource type="PackedScene" uid="uid://d27x8m8eukk0r" path="res://scene/npc_motor_man.tscn" id="31_bjn06"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka32h"]
 texture = ExtResource("1_cepea")
@@ -6890,6 +6891,10 @@ frame_progress = 1.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Motor Man"]
 polygon = PackedVector2Array(-12, -11, -1, -11, -3, -25, 28, -24, 28, -5, 12, -5, 2, 0, 2, 7, -12, 7)
+
+[node name="npc MotorMan" parent="." instance=ExtResource("31_bjn06")]
+position = Vector2(981, 145)
+scale = Vector2(0.573753, 0.467114)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="skateman/battle_teleport" to="skateman/battle_teleport" method="_on_body_entered"]
