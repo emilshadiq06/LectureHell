@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dpwabfncr34l6"]
+[gd_scene load_steps=26 format=3 uid="uid://dpwabfncr34l6"]
 
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="1_hx0jg"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_bjxfv"]
@@ -17,6 +17,8 @@
 [ext_resource type="Resource" uid="uid://c5g7jek2vuj3s" path="res://inventory/item/consumables/water.tres" id="14_qflkg"]
 [ext_resource type="Script" uid="uid://btq0f56iqlbgg" path="res://script/portal.gd" id="16_ou7om"]
 [ext_resource type="PackedScene" uid="uid://dhos1w5fvtsgg" path="res://scene/npc_4.tscn" id="17_jfy1l"]
+[ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="18_45ef4"]
+[ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="19_0740c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8buu"]
 size = Vector2(58, 82.5)
@@ -138,6 +140,12 @@ shape = SubResource("RectangleShape2D_mhtqh")
 
 [node name="npc_4" parent="." instance=ExtResource("17_jfy1l")]
 position = Vector2(371, 224)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("18_45ef4")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("19_0740c")]
 
 [connection signal="body_entered" from="change_skill" to="change_skill" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]
