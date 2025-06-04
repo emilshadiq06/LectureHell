@@ -25,9 +25,9 @@ func Process(_delta:float)->State:
 	if player.grav_affected:
 		
 		
-		player.velocity += player.grav + (player.direction * move_speed)/7.5
-	else:
-		player.velocity += -player.grav  + (player.direction * move_speed)/5
+		player.velocity += player.grav*0.8# + (player.direction * move_speed)/10
+#	else:
+	#	player.velocity += -player.grav  + (player.direction * move_speed)/7.5
 	if player.SetDirection():
 		player.UpdateAnimation("walk")
 	return null

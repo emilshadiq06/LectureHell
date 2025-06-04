@@ -31,4 +31,5 @@ func Process(_delta:float)->Enemy_State:
 	enemy.SetDirection()
 	if move_list.size() < 2:
 		move_list = [left,right,up,down]
+	
 	return idle

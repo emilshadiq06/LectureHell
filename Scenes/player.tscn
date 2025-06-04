@@ -1,11 +1,11 @@
 [gd_scene load_steps=21 format=3 uid="uid://b0ad3krapvtex"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_d5mb1"]
+[ext_resource type="Script" uid="uid://42bs1gq75rq0" path="res://Scripts/player.gd" id="1_d5mb1"]
 [ext_resource type="Texture2D" uid="uid://beheqyio3208x" path="res://Assets/Player/Horror game player animations.png" id="1_jefhm"]
-[ext_resource type="Script" path="res://Scripts/shooting_system.gd" id="3_h5sdk"]
-[ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_smvmg"]
+[ext_resource type="Script" uid="uid://vxc2r3m6mk2o" path="res://Scripts/shooting_system.gd" id="3_h5sdk"]
+[ext_resource type="Script" uid="uid://ck8bvsqmjqqyi" path="res://Scripts/health_system.gd" id="4_smvmg"]
 [ext_resource type="AudioStream" uid="uid://dv7x2eb2jsebs" path="res://Assets/sounds/shot_sound.wav" id="5_hllpl"]
-[ext_resource type="Script" path="res://Scripts/spell_system.gd" id="6_u5cgf"]
+[ext_resource type="Script" uid="uid://dytko5wl4il6x" path="res://Scripts/spell_system.gd" id="6_u5cgf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cwf4q"]
 atlas = ExtResource("1_jefhm")

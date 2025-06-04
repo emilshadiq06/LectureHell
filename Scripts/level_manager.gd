@@ -18,15 +18,16 @@ func _ready():
 	player.player_died.connect(ui.on_player_died)
 	
 func on_waves_finished():
-	var vlad_boss = VLAD_BOSS.instantiate()
-	get_tree().root.add_child(vlad_boss)
+	if get_tree().current_scene.scene_file_path == "res://Scenes/level_1.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_2.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_3.tscn":
+		var vlad_boss = VLAD_BOSS.instantiate()
+		get_tree().root.add_child(vlad_boss)
 	
-	vlad_boss.global_position = Vector2(1116, 310)
-	vlad_boss.movement_points = enemy_movement_points.get_children()
-	vlad_boss.init()
-	vlad_boss.vlad_damaged.connect(ui.change_boss_health_bar_value)
-	vlad_boss.vlad_died.connect(ui.on_vlad_died)
-	ui.init_boss_health_bar(vlad_boss.get_health())
+		vlad_boss.global_position = Vector2(1116, 310)
+		vlad_boss.movement_points = enemy_movement_points.get_children()
+		vlad_boss.init()
+		vlad_boss.vlad_damaged.connect(ui.change_boss_health_bar_value)
+		vlad_boss.vlad_died.connect(ui.on_vlad_died)
+		ui.init_boss_health_bar(vlad_boss.get_health())
 
 
 func on_player_damaged(current_health: int):

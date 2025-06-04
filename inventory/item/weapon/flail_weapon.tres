@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("1_0fqd7")
-weapon_arrow = 0
-weapon_speed = 1.2
+weapon_arrow = Array[Array]([[8, 0.8], [4, 1.0]])
 hp_changed = 0
 pp_changed = 0
+walk_changed = 250.0
+dash_window_changed = 0.1
 name = "charger flail"
 texture = ExtResource("2_d1dmb")
 metadata/_custom_type_script = "uid://cvrib4clgrh1i"

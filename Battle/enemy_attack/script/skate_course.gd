@@ -9,6 +9,7 @@ signal play_hit
 @onready var attk_target  = $"../../Player_base"
 var move : Vector2 = Vector2(3,0)
 func _ready() -> void:
+	
 	var distance: float = abs(global_position - rotation_marker.global_position).x
 	#$Sprite2D.modulate = Color("red")
 	if $"../gravity".attk_target.grav_from_outside.y<0:

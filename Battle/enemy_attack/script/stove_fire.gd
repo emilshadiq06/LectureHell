@@ -15,6 +15,7 @@ signal play_hit#$BasicEnemyAttack/Node
 @onready var warning = $warning
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	#print(markers.get_children())
 	warning.play("default")
 	var marker_posx =  markers.get_children().pick_random()

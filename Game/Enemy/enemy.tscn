@@ -175,6 +175,8 @@ texture = ExtResource("2_4qpj5")
 hframes = 21
 
 [node name="BattleTeleporter" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
 script = ExtResource("3_4qpj5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BattleTeleporter"]

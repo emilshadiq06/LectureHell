@@ -9,6 +9,7 @@ extends Player
 @export var stats : playerStat
 
 func _ready() -> void:
+	#$Sprite2D.texture =  GlobalSettings.characters[GlobalSettings.selected_character]
 	dash_window_duration = stats.dash #0.1 #
 	#$StateMachine/walk. move_speed =  $"../../PlayerGroup".walk_speed# 250 #
 	run = 1
@@ -153,9 +154,10 @@ func buy(price:float):
 	stats.money -= price
 	$RichTextLabel.text =  "$" + str(stats.money)
 	
-func change_weapon(weapon_arrow,weapon_speed):
+func change_weapon(weapon_arrow:Array[Array]):
+	
 	stats.weapons = weapon_arrow
-	stats.weapon_speed = weapon_speed
+
 
 func removehealth(hp_loss):
 	var sfx = load("res://sounds/explosion.mp3")

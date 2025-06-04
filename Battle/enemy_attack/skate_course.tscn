@@ -25,6 +25,7 @@ b = Vector2(-2.33298, 1.21979)
 [node name="gravity" type="Node" parent="."]
 script = ExtResource("1_uyfmm")
 time = 8.0
+priority = 2
 
 [node name="obstacle" type="Area2D" parent="."]
 position = Vector2(-1368, 384)

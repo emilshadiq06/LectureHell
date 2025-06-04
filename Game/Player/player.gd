@@ -47,14 +47,14 @@ func update_progress():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	print(direction)
+	#print(direction)
 	if get_last_slide_collision() != null:
 		#print(get_last_slide_collision().get_normal())
 		if signaled:
 			#var last_pos = position - velocity
 			signaled= false
 			compare_position.emit(get_last_slide_collision().get_normal(), -grav.normalized())#*delta)
-			
+			await get_tree().create_timer(0.05).timeout
 		#print(get_last_slide_collision().get_collider())
 	elif !grav_affected:
 		
@@ -95,15 +95,22 @@ func _process(delta):
 	pass
 	
 func compare_pos(last_col_normal:Vector2,grav_dir:Vector2):
+	var on_floor: bool=  false
+	#print(last_col_normal)
 	
+	if (grav_dir.x > 0 and ceil(last_col_normal.x-0.05) == grav_dir.x) or (grav_dir.x < 0 and floor(last_col_normal.x+0.05) ==  grav_dir.x):
+		on_floor = true
+	elif(grav_dir.y > 0 and ceil(last_col_normal.y-0.05) == grav_dir.y) or  (grav_dir.y < 0 and floor(last_col_normal.y+0.05) ==  grav_dir.y):
+		on_floor = true
+		#up_direction
 	
-	if (abs(grav_dir.x) > 0 and ceil(last_col_normal.x)==grav_dir.x) or (abs(grav_dir.y) > 0 and ceil(last_col_normal.y)==grav_dir.y):
+	if on_floor:
 		grav_affected =false
 	#if last_col_normal==grav_dir:
 		#velocity -= grav
 		accumulate = 0
 		grav *= 0
-		
+		#print("buttass")
 	#elif if abs(grav_dir.y) > 0 and ceil(last_col_normal.y)==grav_dir.y:
 	else:
 		await get_tree().create_timer(0.05).timeout

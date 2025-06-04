@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("1_k86tl")
-weapon_arrow = 2
-weapon_speed = 1.5
+weapon_arrow = Array[Array]([[1, 1.0], [2, 1.0], [3, 1.2], [4, 1.2]])
 hp_changed = 0
 pp_changed = 0
+walk_changed = 250.0
+dash_window_changed = 0.1
 name = "pen"
 texture = ExtResource("2_k1bf4")
 metadata/_custom_type_script = "uid://cvrib4clgrh1i"

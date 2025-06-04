@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("1_3y68t")
-weapon_arrow = 1
-weapon_speed = 1.2
+weapon_arrow = Array[Array]([[2, 1.2], [4, 1.2], [6, 0.0]])
 hp_changed = 0
 pp_changed = 0
+walk_changed = 250.0
+dash_window_changed = 0.1
 name = "metal ruler"
 texture = ExtResource("2_a3v5m")
 metadata/_custom_type_script = "uid://cvrib4clgrh1i"

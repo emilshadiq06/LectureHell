@@ -70,7 +70,7 @@ func switch_focus(x,y):
 
 func _on_enemy_group_bullet_hell() -> void:
 	enemies.choice.hide()
-	var duration: float
+	var duration: float = 0
 	get_parent().add_child(stage)
 	 
 	await get_tree().create_timer(1).timeout
@@ -88,7 +88,7 @@ func _on_enemy_group_bullet_hell() -> void:
 					attack = load(i.attk_str[load_pos]).instantiate()
 				attk_groups.append(attack)
 
-				await get_tree().create_timer(0.3).timeout
+				await get_tree().create_timer(i.attk_duration/((i.attk_loaded+1))).timeout
 				stage.add_child(attack)
 				
 		duration += i.attk_duration

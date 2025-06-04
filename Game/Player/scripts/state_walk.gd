@@ -22,17 +22,17 @@ func Process(_delta:float)->State:
 	if player.run == 2:
 		
 		return running
-	#print(accumulate)
+	#print(accumulate)s
 	
 	player.velocity = (player.direction * move_speed) 
 	if player.grav_affected:
-		#await  get_tree().create_timer(0.2).timeout
-		player.velocity += player.grav + (player.direction * move_speed)/7.5
-	else:
-		player.velocity += -player.grav  + (player.direction * move_speed)/5
-		print( (player.direction * move_speed))
 	
-	#print(player.velocity)
+		player.velocity += player.grav #+ (player.direction * move_speed)/10
+	#else:
+	#	player.velocity += -player.grav  + (player.direction * move_speed)/7.5
+		
+	
+
 
 	if player.SetDirection():
 		player.UpdateAnimation("walk")

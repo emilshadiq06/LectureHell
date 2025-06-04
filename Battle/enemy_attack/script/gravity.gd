@@ -5,15 +5,20 @@ var velocity : Vector2 = Vector2(0,0)
 @export var time: float = 5
 var grav_disabler:bool = false
 @onready var attk_target  = $"../../Player_base"
+@export var priority : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
 	$"../../../PlayerGroup".got_duration.connect(got_duration)
-	if attk_target.grav_from_outside == Vector2(0,0):
+	if attk_target.grav_from_outside == Vector2(0,0) or ($"../gravity" != null and $"../gravity".priority <= priority):# add priority to attacks #or  (($"../gravity"\ != null)):
 		grav_disabler = true
 		attk_target.grav_from_outside = gravity
-		#attk_target.velocity += -gravity*0.02
+		#print('time')
+		#print($"../gravity".time)
 		attk_target.grav_affected = true
+	if ($"../gravity" != null and $"../gravity".priority>priority):
+		priority = $"../gravity".priority
+	print("priority")
+	print(priority)
 	attk_target.sprite.self_modulate =  Color("cyan")
 	pass # Replace with function body.
 
@@ -35,4 +40,5 @@ func got_duration(duration:float):
 		$"../../../PlayerGroup".bullet_hell_timer.start(time+3)
 
 			#print("mogus22")
-			#time = $"../gravity".time
+
+				

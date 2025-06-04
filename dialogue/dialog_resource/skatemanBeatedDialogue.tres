@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://tud5nhueawp1"]
+
+[ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="1_boaxl"]
+[ext_resource type="Resource" uid="uid://c6we7kud385dl" path="res://inventory/item/gear/skateboard.tres" id="2_w3kt2"]
+[ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="3_f3jii"]
+
+[resource]
+script = ExtResource("3_f3jii")
+quest_name = "Beated"
+item = ExtResource("1_boaxl")
+item_count = 0
+lose_on_found = false
+prized_item = ExtResource("2_w3kt2")
+add_to_group = 999
+money = 20.0
+event_index = 4
+lines1 = Array[String](["Ow darn you beat me", "Now that you beated poor old me you have to buy me something", "Since Im injured and all"])
+lines2 = Array[String](["Yippee", "5 burgers plss"])
+lines3 = Array[String](["Darn", "Plss", ":<"])
+lines4 = Array[String](["Thanks bro"])
+lines5 = Array[String]([])
+position = Array[int]([0, 1, 0])
+line1Options = Array[Array]([["Fine", 1], ["No", 2]])
+line2Options = Array[Array]([["*grumble* *grumble* lard a- *grumble*", 3]])
+line3Options = Array[Array]([["*grumble* *grumble* lard ass- *grumble*", 3]])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"

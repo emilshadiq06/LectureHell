@@ -21,7 +21,7 @@ var sounds = [
 @onready var progress_bar = $ProgressBar
 @onready var spell_effector = $SpellEffector as SpellEffector
 
-
+var start_check : bool = true
 @export var speed = 250
 
 var movement_points
@@ -29,8 +29,13 @@ var movement_points
 var default_animation_name
 var shooting_animation_name
 var current_movement_point
-
+func _ready() -> void:
+	if get_tree().current_scene.scene_file_path == "res://Scenes/level_1.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_2.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_3.tscn":
+		pass
+	else:
+		self.queue_free()
 func init(config, enemy_movement_points):
+	
 	default_animation_name = "%s_default" % config.enemy_name
 	shooting_animation_name = "%s_shoot" % config.enemy_name
 	speed = config.speed
@@ -42,10 +47,14 @@ func init(config, enemy_movement_points):
 	health_system.died.connect(on_died)
 	progress_bar.max_value = config.health
 	progress_bar.value = config.health
+
 	
 	var random_point = movement_points.pick_random()
+	if  random_point.position == null and start_check:
+		self.queue_free()
+
 	current_movement_point = random_point.position
-	
+
 	shooting_system.shot.connect(on_shot)
 	shooting_system.projectile_texture = config.projectile_texture
 	shooting_system.projectile_collision_shape = config.projectile_collision_shape
@@ -55,9 +64,13 @@ func init(config, enemy_movement_points):
 func _process(delta):
 	global_position = global_position.move_toward(current_movement_point, delta * speed)
 	
-	if global_position.distance_squared_to(current_movement_point) < .1:
+	if global_position.distance_squared_to(current_movement_point) < .1 and movement_points.pick_random() != null:
 		current_movement_point = movement_points.pick_random().global_position
-	
+	if  movement_points.pick_random() == null and start_check:
+		self.queue_free()
+	else:
+		start_check = false
+		
 func on_shot():
 	animated_sprite_2d.play(shooting_animation_name)
 

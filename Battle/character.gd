@@ -7,12 +7,9 @@ extends CharacterBody2D
 var randomize:bool = false
 var MAX_HP : float = 20
 
-var weapon_speed : float = 1:
-	set(value):
-		weapon_speed = value
-var weapons : int = 0:
-	set(value):
-		weapons = value
+
+var weapons : Array[Array]
+
 var start_battle = true
 var MAX_PP : float = 0
 var pp : float = 0:
@@ -49,7 +46,7 @@ func set_stats(stats):
 		weapons = stats.weapons
 		pp = stats.pp
 		MAX_PP = stats.max_pp
-		weapon_speed = stats.weapon_speed
+		#weapon_speed = stats.weapon_speed
 		$ProgressBarPP.value  = (pp/MAX_PP)*100
 		$PP.text = "PP "+ str(int(pp)) +"/" +str(int(MAX_PP))
 		walk_speed = stats.walk

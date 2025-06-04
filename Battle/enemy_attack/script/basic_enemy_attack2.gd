@@ -11,6 +11,7 @@ signal play_hit#$BasicEnemyAttack/Node
 @onready var anim_player = $AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	anim_player.play("default")
 	anim_player.rotation_degrees += 180
 	play_hit.connect(hit_play)
@@ -33,8 +34,9 @@ func _process(delta: float) -> void:
 		
 		#anim_player.stop()
 		#await get_tree().create_timer(0.2).timeout
+		modulate.a = 1
 		anim_player.play("kick")
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(0.55).timeout
 		#position += Vector2(cos(rotation),sin(rotation)) * sqrt((abs(position-attk_target.position).x)**2 +  (abs(position-attk_target.position).y)**2)
 		
 		#await get_tree().create_timer(0.05).timeout

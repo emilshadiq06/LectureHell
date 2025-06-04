@@ -77,6 +77,7 @@ animations = [{
 
 [node name="gravity" type="Node" parent="."]
 script = ExtResource("4_ocraf")
+priority = 1
 
 [node name="Markers2" type="Node" parent="."]
 

@@ -72,7 +72,29 @@ func on_player_died():
 	game_over_container.show()
 	
 func _on_button_pressed():
-	get_tree().quit()
+	StatLoader.money = 50.33
+	for i in get_tree().current_scene.get_children():
+	#print(get_tree().current_scene.get_children())
+		i.queue_free()
+	get_tree().change_scene_to_file(StatLoader.previous_scene)
+	
+	#var scene_tree = 
+	
+	#ar new_scene = load(StatLoader.previous_scene).instantiate()
+#get_tree().current_scene = new_scene
+#last_scene.queue_free()
+	#et_tree().get_root().add_child(new_scene)
+	
+	
+	
+	#
+	#last_scene.queue_free()
+	#var current_scene = get_tree().current_scene
+	#current_scene
+
+	#get_tree().current_scene = new_scene
+	
+	
 	
 func on_spell_selected(spell_number: int):
 	for i in spell_containers.size():

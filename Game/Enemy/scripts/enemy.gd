@@ -75,6 +75,8 @@ func _on_chase_area_body_entered(body) -> void:
 	if body is Player   :
 		
 		player = body
+		$BattleTeleporter.monitoring =  true
+		$BattleTeleporter.monitorable =  true
 		#await get_tree().create_timer(0.5).timeout
 
 

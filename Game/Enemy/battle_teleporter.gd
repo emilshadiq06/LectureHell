@@ -1,31 +1,42 @@
 extends Area2D
 class_name battle_teleport
-
-@onready var fight = preload("res://Battle/battle.tscn").instantiate()
+#var scene : String = "res://Battle/battle.tscn"
+var fight_path = preload("res://Battle/battle.tscn")
+var fight 
 func _on_body_entered(body: Node2D) -> void:
-
-	if body == get_parent().player and get_parent().name not in StatLoader.dead_array and get_parent().chase:
-		DialogueManagerScript.is_dialog_active = false
-		DialogueManagerScript.current_line_index = 0
-		var current_scene = get_tree().current_scene
+	if fight_path.resource_path== "res://Battle/battle.tscn" and body is Player:
+		fight = fight_path.instantiate()
+		var current_scene = get_tree().current_scene 
+		print("smthsmth")
+		print(body)
+		print(get_parent().player)
+		if body == get_parent().player and get_parent().name not in StatLoader.dead_array and get_parent().chase and current_scene.scene_file_path != "res://Battle/battle.tscn":
+			if DialogueManagerScript.text_box:
+				DialogueManagerScript.text_box.queue_free()
+				DialogueManagerScript.is_dialog_active = false
+				DialogueManagerScript.current_line_index = 0
+				
 		
-		get_whole_group(get_parent().group_str)
-		
-		var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
-		player_Battle.get_node("skill").set_script(body.get_node("skill").get_script())
-		#print("herre")
-		#print(body.get_stats())
-		get_whole_group_player()
-		#StatLoader.get_stats_player(body.get_stats())
-		player_Battle.set_stats(body.stats)
-		player_Battle.change_sprite(body.sprite)
-		StatLoader.get_skill(body.get_node("skill"))
-		StatLoader.previous_scene = get_parent().get_parent().scene_file_path 
-		StatLoader.previous_position =body.global_position
-
-		get_tree().get_root().add_child(fight)
-		get_tree().current_scene = fight
-		current_scene.queue_free()
+			get_whole_group(get_parent().group_str)
+			$"../../CanvasLayer".show()
+			$"../../CanvasLayer/Control2".show()
+			
+			var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
+			player_Battle.get_node("skill").set_script(body.get_node("skill").get_script())
+			get_whole_group_player()
+			player_Battle.set_stats(body.stats)
+			player_Battle.change_sprite(body.sprite)
+			StatLoader.get_skill(body.get_node("skill"))
+			StatLoader.previous_scene = get_parent().get_parent().scene_file_path 
+			StatLoader.previous_position =body.global_position
+			#Function.load_screen_to_scene("res://Battle/battle.tscn", {"test": "test"})
+			
+			get_tree().get_root().add_child(fight)
+			
+			get_tree().current_scene = fight
+			
+			await get_tree().create_timer(1).timeout
+			current_scene.queue_free()
 
 func get_whole_group(group):
 	var enemy_Battle = fight.get_node("EnemyGroup")

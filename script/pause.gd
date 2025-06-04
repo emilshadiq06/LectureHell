@@ -14,9 +14,11 @@ func pause():
 func testEsc():
 	if Input.is_action_just_pressed("pause") and get_tree().paused == false:
 		canvas.show()
+		show()
 		pause()
 	elif Input.is_action_just_pressed("pause") and get_tree().paused == true:
 		canvas.hide()
+		hide()
 		resume()
 
 

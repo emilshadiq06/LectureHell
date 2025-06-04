@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bagxqtev2wrrm"]
+[gd_scene load_steps=13 format=3 uid="uid://bagxqtev2wrrm"]
 
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_sb1hd"]
 [ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="2_rjx13"]
@@ -5513,6 +5513,9 @@ size = Vector2(97, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yna0l"]
 size = Vector2(60, 78)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckwbh"]
+size = Vector2(113, 31)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5548,5 +5551,17 @@ metadata/_custom_type_script = "uid://btq0f56iqlbgg"
 position = Vector2(4, 1)
 shape = SubResource("RectangleShape2D_yna0l")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Portal" type="Area2D" parent="Node2D"]
+script = ExtResource("5_yna0l")
+connected_scene = "res://Scenes/level_1.tscn"
+metadata/_custom_type_script = "uid://btq0f56iqlbgg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Portal"]
+position = Vector2(240.5, 593.5)
+shape = SubResource("RectangleShape2D_ckwbh")
+
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/Portal" to="Node2D/Portal" method="_on_body_entered"]
