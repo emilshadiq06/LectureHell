@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=63 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="1_4wg8t"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
