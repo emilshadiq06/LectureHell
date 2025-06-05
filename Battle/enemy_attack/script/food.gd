@@ -6,7 +6,8 @@ var attk_target
 var is_alive : bool= true
 signal play_hit
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready() -> void: 
+	$AudioStreamPlayer.play()
 	play_hit.connect(hit_play)
 	attk_target = $"../../Player_base"
 	$AnimatedSprite2D.play("default")
@@ -29,3 +30,8 @@ func hit_play():
 		
 		attk_target.take_damage(damage)
 		self.queue_free()
+
+
+func _on_audio_stream_player_finished() -> void:
+	$AudioStreamPlayer.play()
+	pass # Replace with function body.

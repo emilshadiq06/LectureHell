@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://uuwxlj4eyya0"]
+[gd_scene load_steps=5 format=3 uid="uid://uuwxlj4eyya0"]
 
 [ext_resource type="Script" uid="uid://cedku4vws01sf" path="res://Battle/enemy_attack/script/utensil.gd" id="1_3dklx"]
 [ext_resource type="Texture2D" uid="uid://c4fx1s1kmarfw" path="res://Battle/sprites/ladle.png" id="2_moc0r"]
+[ext_resource type="AudioStream" uid="uid://ba0c4c0aqps13" path="res://sounds/zoom.wav" id="3_moc0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tof6y"]
 size = Vector2(43, 20)
@@ -9,7 +10,7 @@ size = Vector2(43, 20)
 [node name="utensil_throw" type="Node2D"]
 
 [node name="utensil" type="Area2D" parent="."]
-position = Vector2(-592, 345)
+position = Vector2(-576, 337)
 rotation = 0.232129
 scale = Vector2(1, 18.28)
 script = ExtResource("1_3dklx")
@@ -26,6 +27,10 @@ rotation = -0.0129309
 scale = Vector2(5.71076, 2.81811)
 skew = -1.33045
 texture = ExtResource("2_moc0r")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="utensil"]
+stream = ExtResource("3_moc0r")
+pitch_scale = 1.1
 
 [node name="utensil2" type="Area2D" parent="."]
 position = Vector2(-547, 355)
@@ -46,5 +51,11 @@ scale = Vector2(5.71076, 2.81811)
 skew = -1.33045
 texture = ExtResource("2_moc0r")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="utensil2"]
+stream = ExtResource("3_moc0r")
+pitch_scale = 1.1
+
 [connection signal="body_entered" from="utensil" to="utensil" method="_on_body_entered"]
+[connection signal="finished" from="utensil/AudioStreamPlayer" to="utensil" method="_on_audio_stream_player_finished"]
 [connection signal="body_entered" from="utensil2" to="utensil2" method="_on_body_entered"]
+[connection signal="finished" from="utensil2/AudioStreamPlayer" to="utensil2" method="_on_audio_stream_player_finished"]

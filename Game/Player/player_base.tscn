@@ -224,3 +224,5 @@ move_speed = 180.0
 [node name="running" type="Node" parent="StateMachine"]
 script = ExtResource("6_uxnql")
 move_speed = 400.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dadiwlv4aqmg1"]
+[gd_scene load_steps=7 format=3 uid="uid://dadiwlv4aqmg1"]
 
 [ext_resource type="Script" uid="uid://cljp73rsn32vm" path="res://Battle/enemy_attack/script/basic_enemy_attack.gd" id="1_31e7m"]
 [ext_resource type="Texture2D" uid="uid://1eful38mv3ol" path="res://Battle/sprites/fist.png" id="2_x2ela"]
+[ext_resource type="AudioStream" uid="uid://bvry2yyarq2eg" path="res://sounds/hard_kick.mp3" id="3_x2ela"]
 
 [sub_resource type="Animation" id="Animation_fpwk8"]
 length = 0.001
@@ -44,14 +45,14 @@ _data = {
 [node name="BasicEnemyAttack" type="Node2D"]
 
 [node name="fist" type="AnimatableBody2D" parent="."]
-position = Vector2(132, 199)
-collision_layer = 0
-collision_mask = 16
+position = Vector2(276, 202)
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_31e7m")
 damage = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="fist"]
-position = Vector2(175, -27)
+position = Vector2(-5, -3)
 texture = ExtResource("2_x2ela")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="fist"]
@@ -59,10 +60,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_xs4ig")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="fist"]
+stream = ExtResource("3_x2ela")
+pitch_scale = 2.0
+
 [node name="fist2" type="AnimatableBody2D" parent="."]
 position = Vector2(586, 41)
-collision_layer = 0
-collision_mask = 16
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_31e7m")
 follow = 1.5
 damage = 2
@@ -75,10 +80,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_xs4ig")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="fist2"]
+stream = ExtResource("3_x2ela")
+pitch_scale = 2.0
+
 [node name="fist3" type="AnimatableBody2D" parent="."]
 position = Vector2(825, 176)
-collision_layer = 0
-collision_mask = 16
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_31e7m")
 follow = 2.0
 damage = 3
@@ -91,10 +100,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_xs4ig")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="fist3"]
+stream = ExtResource("3_x2ela")
+pitch_scale = 2.0
+
 [node name="fist4" type="AnimatableBody2D" parent="."]
 position = Vector2(797, 593)
-collision_layer = 0
-collision_mask = 16
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_31e7m")
 follow = 2.0
 damage = 2
@@ -107,10 +120,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_xs4ig")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="fist4"]
+stream = ExtResource("3_x2ela")
+pitch_scale = 2.0
+
 [node name="fist5" type="AnimatableBody2D" parent="."]
 position = Vector2(358, 581)
-collision_layer = 0
-collision_mask = 16
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_31e7m")
 follow = 2.5
 damage = 3
@@ -122,3 +139,7 @@ texture = ExtResource("2_x2ela")
 libraries = {
 &"": SubResource("AnimationLibrary_xs4ig")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="fist5"]
+stream = ExtResource("3_x2ela")
+pitch_scale = 2.0

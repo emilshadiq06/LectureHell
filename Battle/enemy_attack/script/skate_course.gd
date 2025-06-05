@@ -12,6 +12,8 @@ func _ready() -> void:
 	
 	var distance: float = abs(global_position - rotation_marker.global_position).x
 	#$Sprite2D.modulate = Color("red")
+	$"../AudioStreamPlayer".stream = load("res://sounds/hard_kick.mp3")
+	
 	if $"../gravity".attk_target.grav_from_outside.y<0:
 		move *= -1
 		
@@ -36,7 +38,8 @@ func _ready() -> void:
 	platforms.global_position = global_position
 	platforms.global_rotation = global_rotation
 	play_hit.connect(hit_play)
-	print(platforms.rotation_degrees)
+	$"../AudioStreamPlayer".play()
+	#print(platforms.rotation_degrees)
 	pass 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,8 +50,8 @@ func _process(delta: float) -> void:
 	if time < release_time and time > 0:
 		position += move
 		platforms.global_position = global_position
-	
-	if time < -5:
+		#$"../AudioStreamPlayer".play()
+	if time < -1:
 		self.queue_free()
 		
 		
@@ -71,4 +74,12 @@ func hit_play():
 func _on_body_entered(body: Node2D) -> void:
 	play_hit.emit()
 	#is_alive = false
+	pass # Replace with function body.
+
+
+func _on_audio_stream_player_finished() -> void:
+	
+	$"../AudioStreamPlayer".play()
+	var abu = $"../AudioStreamPlayer"
+	
 	pass # Replace with function body.

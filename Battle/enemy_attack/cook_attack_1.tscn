@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmahcdptjk04p"]
+[gd_scene load_steps=22 format=3 uid="uid://cmahcdptjk04p"]
 
 [ext_resource type="Script" uid="uid://behrpjij30r01" path="res://Battle/enemy_attack/script/pan.gd" id="1_t5axc"]
 [ext_resource type="Texture2D" uid="uid://ddo4kagbdtthg" path="res://Battle/sprites/pan_flip.png" id="2_d1pu5"]
+[ext_resource type="AudioStream" uid="uid://ba0c4c0aqps13" path="res://sounds/zoom.wav" id="3_6cmkd"]
 [ext_resource type="Script" uid="uid://egf8g8wi4plx" path="res://Battle/enemy_attack/script/food.gd" id="3_y7wl8"]
 [ext_resource type="Texture2D" uid="uid://bmpp6s67sxhls" path="res://Battle/sprites/fire.png" id="4_6cmkd"]
+[ext_resource type="AudioStream" uid="uid://dwmrh2x6wuqfp" path="res://sounds/fire.mp3" id="6_t718h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tof6y"]
 size = Vector2(83, 19)
@@ -124,6 +126,10 @@ scale = Vector2(3.4375, 1.71739)
 sprite_frames = SubResource("SpriteFrames_d21r6")
 frame_progress = 0.421947
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="pan"]
+stream = ExtResource("3_6cmkd")
+pitch_scale = 2.5
+
 [node name="food" type="AnimatableBody2D" parent="."]
 position = Vector2(585, 774)
 scale = Vector2(1.7, 0.906667)
@@ -133,3 +139,9 @@ damage = 3
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="food"]
 sprite_frames = SubResource("SpriteFrames_70un1")
 frame_progress = 0.816975
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="food"]
+stream = ExtResource("6_t718h")
+
+[connection signal="finished" from="pan/AudioStreamPlayer" to="pan" method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="food/AudioStreamPlayer" to="food" method="_on_audio_stream_player_finished"]

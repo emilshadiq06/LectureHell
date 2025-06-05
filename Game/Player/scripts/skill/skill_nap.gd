@@ -27,8 +27,8 @@ func Enter() ->void:
 	#if enemies.action_queue.size() < players.players.size():
 	#	enemies.show_choice()
 	var sfx = load("res://sounds/sleeping.mp3")
-	$"../../AudioStreamPlayer2D".stream = sfx
-	$"../../AudioStreamPlayer2D".play()
+	$"../../AudioStreamPlayer".stream = sfx
+	$"../../AudioStreamPlayer".play()
 	pass
 	
 #what happens when player enters state
@@ -39,9 +39,9 @@ func Exit() ->void:
 #what happens during process in state
 func Process():
 	var sfx = load("res://sounds/sleeping.mp3")
-	$"../../AudioStreamPlayer2D".stream = sfx
-	$"../../AudioStreamPlayer2D".play()
-	$"../../AudioStreamPlayer2D".play()
+	$"../../AudioStreamPlayer".stream = sfx
+	$"../../AudioStreamPlayer".play()
+	$"../../AudioStreamPlayer".play()
 	if players.index == sleeping_player: # and enemies.action_queue.size() < players.index + 1:
 		players.players[sleeping_player].hp += hp_regen
 		players._on_brace_pressed()

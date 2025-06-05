@@ -5,13 +5,17 @@ extends AnimatableBody2D
 @export var position_tween : bool
 #var rotation
 #var last_rotation
+
 var is_alive : bool = true
 signal play_hit#$BasicEnemyAttack/Node
 @onready var attk_target  = $"../../Player_base"
 @onready var anim_player = $AnimatedSprite2D
+#var sfx = load("res://Assets/sounds/shot_sound.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	$AudioStreamPlayer.stream = load("res://sounds/hard_kick.mp3")
+	$"../../../PlayerGroup".got_duration.connect(got_duration)
+	#$"../AudioStreamPlayer".stream =  load("res://Assets/sounds/shot_sound.wav")
 	anim_player.play("default")
 	anim_player.rotation_degrees += 180
 	play_hit.connect(hit_play)
@@ -25,6 +29,8 @@ func _process(delta: float) -> void:
 		appear -= delta
 	else:
 		self.show()
+		
+		#$AudioStreamPlayer.stop()
 	if follow > 0:
 		follow -= delta
 		look_at(attk_target.position)# + attk_target.velocity/50# *delta
@@ -34,9 +40,14 @@ func _process(delta: float) -> void:
 		
 		#anim_player.stop()
 		#await get_tree().create_timer(0.2).timeout
+		
+		
 		modulate.a = 1
 		anim_player.play("kick")
+		
+		
 		await get_tree().create_timer(0.55).timeout
+		
 		#position += Vector2(cos(rotation),sin(rotation)) * sqrt((abs(position-attk_target.position).x)**2 +  (abs(position-attk_target.position).y)**2)
 		
 		#await get_tree().create_timer(0.05).timeout
@@ -50,6 +61,8 @@ func hit_play():
 	
 	if is_alive:
 		
+		$AudioStreamPlayer.play()
+
 		var tween = get_tree().create_tween().bind_node(self)#.set_trans(Tween.TRANS_ELASTIC)
 		
 		#tween.tween_property($Sprite2D, "modulate", Color.RED, 0.2)
@@ -65,3 +78,19 @@ func hit_play():
 			
 			
 		tween.tween_callback(self.queue_free)
+
+
+func _on_draw() -> void:
+	if $AudioStreamPlayer:
+		$AudioStreamPlayer.play()
+		await get_tree().create_timer(0.55).timeout
+		$AudioStreamPlayer.stop()
+#	pass # Replace with function body.
+
+func got_duration(duration:float):
+	if duration < follow and self and $"../../../PlayerGroup".bullet_hell_timer:
+
+		$"../../../PlayerGroup".bullet_hell_timer.start(follow+1)
+#func _on_visibility_changed() -> void:
+	#_on_draw()
+	#pass # Replace with function body.

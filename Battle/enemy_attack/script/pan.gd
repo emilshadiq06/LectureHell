@@ -1,11 +1,14 @@
 extends AnimatableBody2D
 var negative : bool = false
 var move_denominator :float = 1
+var time :float = 4
 var velocity
 signal spawner
 var spawn_timer : float =0.2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$"../../../PlayerGroup".got_duration.connect(got_duration)
+	$AudioStreamPlayer.play()
 	$AnimatedSprite2D.play("default")
 	spawner.connect(spawn)
 	pass # Replace with function body.
@@ -50,3 +53,13 @@ func flux(value):
 	else:
 		move_denominator -= value
 	return move_denominator
+
+
+func _on_audio_stream_player_finished() -> void:
+	$AudioStreamPlayer.play()
+	pass # Replace with function body.
+
+func got_duration(duration:float):
+	if duration < time and self and $"../../../PlayerGroup" != null:
+
+		$"../../../PlayerGroup".bullet_hell_timer.start(time+1)

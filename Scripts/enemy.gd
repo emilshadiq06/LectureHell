@@ -30,9 +30,7 @@ var default_animation_name
 var shooting_animation_name
 var current_movement_point
 func _ready() -> void:
-	if get_tree().current_scene.scene_file_path == "res://Scenes/level_1.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_2.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_3.tscn":
-		pass
-	else:
+	if get_tree().current_scene.scene_file_path =="res://scene/hallway.tscn":
 		self.queue_free()
 func init(config, enemy_movement_points):
 	

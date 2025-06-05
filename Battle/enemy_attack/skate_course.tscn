@@ -81,4 +81,10 @@ shape = SubResource("SegmentShape2D_vymmy")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(648, 360)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -3.0
+pitch_scale = 0.7
+autoplay = true
+
 [connection signal="body_entered" from="obstacle" to="obstacle" method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="obstacle" method="_on_audio_stream_player_finished"]

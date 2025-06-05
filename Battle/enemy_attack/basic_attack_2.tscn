@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b02fc71qehk3p"]
+[gd_scene load_steps=10 format=3 uid="uid://b02fc71qehk3p"]
 
 [ext_resource type="Script" uid="uid://b6wqaul0vul6k" path="res://Battle/enemy_attack/script/basic_enemy_attack2.gd" id="1_unfm5"]
 [ext_resource type="Texture2D" uid="uid://hh7rmn05w5te" path="res://Battle/sprites/kick.png" id="2_0ak0a"]
+[ext_resource type="AudioStream" uid="uid://bvry2yyarq2eg" path="res://sounds/hard_kick.mp3" id="3_0ak0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0mec"]
 atlas = ExtResource("2_0ak0a")
@@ -66,6 +67,10 @@ damage = 4
 sprite_frames = SubResource("SpriteFrames_wt05j")
 animation = &"kick"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="kick"]
+stream = ExtResource("3_0ak0a")
+pitch_scale = 2.0
+
 [node name="kick2" type="AnimatableBody2D" parent="."]
 visible = false
 position = Vector2(794, 167)
@@ -81,6 +86,10 @@ damage = 4
 sprite_frames = SubResource("SpriteFrames_wt05j")
 animation = &"kick"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="kick2"]
+stream = ExtResource("3_0ak0a")
+pitch_scale = 2.0
+
 [node name="kick3" type="AnimatableBody2D" parent="."]
 visible = false
 position = Vector2(632, 520)
@@ -95,3 +104,7 @@ damage = 4
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick3"]
 sprite_frames = SubResource("SpriteFrames_wt05j")
 animation = &"kick"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="kick3"]
+stream = ExtResource("3_0ak0a")
+pitch_scale = 2.0

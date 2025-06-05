@@ -9,6 +9,8 @@ signal play_hit#$BasicEnemyAttack/Node
 #@onready var anim_player = $AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$"../../../PlayerGroup".got_duration.connect(got_duration)
+	$AudioStreamPlayer.play()
 	var tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property(self,"rotation",18,8)
 	play_hit.connect(hit_play)
@@ -50,3 +52,13 @@ func _on_body_entered(body: Node2D) -> void:
 	play_hit.emit()
 	is_alive = false
 	pass # Replace with function body.
+
+
+func _on_audio_stream_player_finished() -> void:
+	$AudioStreamPlayer.play()
+	pass # Replace with function body.
+
+func got_duration(duration:float):
+	if duration < time + 2.5 and self and $"../../../PlayerGroup".bullet_hell_timer:
+
+		$"../../../PlayerGroup".bullet_hell_timer.start(time+2.5)

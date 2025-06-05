@@ -122,6 +122,7 @@ func compare_pos(last_col_normal:Vector2,grav_dir:Vector2):
 
 		
 func _input(event: InputEvent):
+	var sfx = load("res://Assets/sounds/shot_sound.wav")
 	if Input.is_action_just_pressed("left")||Input.is_action_just_pressed("right")||Input.is_action_just_pressed("up")||Input.is_action_just_pressed("down") :
 		
 		if last_keycode == event.keycode and  doubletap_time >= 0 and doubletap_time < 0.2: 
@@ -129,11 +130,13 @@ func _input(event: InputEvent):
 			last_keycode = 0
 			run = 2
 			if dashes>0 and dash_window<=0:
+				$AudioStreamPlayer.stream = sfx
 				dash_window= (dash_window_duration)
 				dash_cooldown=1.25
 				dashes -= 1
 				update_progress()
 				dashing = true
+				$AudioStreamPlayer.play()
 		else:
 			last_keycode = event.keycode
 		
