@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drvq2pdi1kf0"]
+[gd_scene load_steps=13 format=3 uid="uid://drvq2pdi1kf0"]
 
 [ext_resource type="PackedScene" uid="uid://b6ov3fp6vytef" path="res://Scenes/scrolling_background.tscn" id="1_chwpn"]
 [ext_resource type="PackedScene" uid="uid://b0ad3krapvtex" path="res://Scenes/player.tscn" id="2_af3po"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cqfhwpgo2qw4g" path="res://Scenes/ui.tscn" id="3_uy8f0"]
 [ext_resource type="Script" uid="uid://bdx2nhid4nnrs" path="res://Scripts/level_manager.gd" id="4_6r07y"]
 [ext_resource type="PackedScene" uid="uid://5hoim7b1t443" path="res://Scenes/wave_spawner.tscn" id="5_6ioyp"]
+[ext_resource type="PackedScene" uid="uid://cgthgj1yqy0rl" path="res://inventory/inventory.tscn" id="5_a2j0k"]
 [ext_resource type="Script" uid="uid://cx2r2wcwe30n0" path="res://Scripts/wave.gd" id="6_oovug"]
 [ext_resource type="Resource" uid="uid://cufc4cr88s7k6" path="res://Resources/devil_enemy_config.tres" id="7_8i23i"]
 [ext_resource type="Resource" uid="uid://foju4405gl87" path="res://Resources/mummy_enemy_config.tres" id="8_8yhm2"]
@@ -21,6 +22,17 @@ position = Vector2(83, 313)
 inv = ExtResource("3_af3po")
 
 [node name="UI" parent="." instance=ExtResource("3_uy8f0")]
+
+[node name="inventory" parent="UI" instance=ExtResource("5_a2j0k")]
+anchors_preset = -1
+anchor_left = -0.512
+anchor_top = -0.471
+anchor_right = 0.488
+anchor_bottom = 0.5
+offset_left = 455.36
+offset_top = 395.12
+offset_right = 455.36
+offset_bottom = 416.0
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("4_6r07y")
