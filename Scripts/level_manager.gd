@@ -18,7 +18,7 @@ func _ready():
 	player.player_died.connect(ui.on_player_died)
 	
 func on_waves_finished():
-	if get_tree().current_scene.scene_file_path == "res://Scenes/level_1.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_2.tscn" or get_tree().current_scene.scene_file_path == "res://Scenes/level_3.tscn":
+	if get_tree().current_scene.scene_file_path !="res://scene/hallway.tscn":
 		var vlad_boss = VLAD_BOSS.instantiate()
 		get_tree().root.add_child(vlad_boss)
 	

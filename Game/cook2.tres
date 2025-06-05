@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="enemy_stats" load_steps=2 format=3 uid="uid://v1lnj55by2ah"]
+
+[ext_resource type="Script" uid="uid://bxu1nri0o51p" path="res://Game/Enemy/scripts/enemy_stat.gd" id="1_omswf"]
+
+[resource]
+script = ExtResource("1_omswf")
+randomize = false
+attack = Array[String](["res://Battle/enemy_attack/basic_attack_2.tscn", "res://Battle/enemy_attack/cook_attack_1.tscn"])
+attack_duration = 3.0
+attk_loaded = 1
+name = "Mischievious Cook"
+max_hp = 25
+hp = 25
+metadata/_custom_type_script = "uid://bxu1nri0o51p"

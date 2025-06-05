@@ -82,7 +82,9 @@ func _unfocus():
 
 func take_damage(value):
 	hp -= value
-
+	$"../../AudioStreamPlayer".stream = load("res://sounds/hurt.mp3")
+	$"../../AudioStreamPlayer".play()
+	
 func _stop_animation():
 	animation_player.stop()
 
@@ -94,12 +96,16 @@ func addhealth(hp_regen,pp_regen):
 	pp += pp_regen
 
 func removehealth(hp_loss):
-	var sfx = load("res://sounds/explosion.mp3")
-	$"../../AudioStreamPlayer2D".stream = sfx
-	$"../../AudioStreamPlayer2D".play()
+	var sfx =  load("res://sounds/explosion.mp3")
+
 	take_damage(hp_loss)
 	$AnimatedSprite2D.show()
 	$AnimatedSprite2D.play("explode")
+	await get_tree().create_timer(0.05).timeout
+	
+	$"../../AudioStreamPlayer".stream =sfx
+	$"../../AudioStreamPlayer".play()
 	await get_tree().create_timer(0.5).timeout
+
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.hide()

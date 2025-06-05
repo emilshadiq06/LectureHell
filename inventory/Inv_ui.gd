@@ -110,7 +110,7 @@ func _on_deequip_pressed() -> void:
 		if selected_items == 12:
 			target.change_stat(20,20,250,0.1)
 		elif selected_items == 13:
-			var bare_handed : Array[Array] = [[2,1.0],[2,1.0],[2,1.0]]
+			var bare_handed : Array[Array] = [[2,1.0],[1,1.0],[2,1.0]]
 			target.change_weapon(bare_handed)
 
 		inv.insert(inv.items[selected_items])

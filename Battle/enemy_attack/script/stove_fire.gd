@@ -15,7 +15,8 @@ signal play_hit#$BasicEnemyAttack/Node
 @onready var warning = $warning
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	if skate:
+		$AudioStreamPlayer.stream = load("res://sounds/hard_kick.mp3")
 	#print(markers.get_children())
 	warning.play("default")
 	var marker_posx =  markers.get_children().pick_random()
@@ -23,6 +24,7 @@ func _ready() -> void:
 	markers.remove_child(marker_posx)
 	
 	if check_grav:
+		
 		if abs($"../gravity".attk_target.grav_from_outside.y) > 0:
 			var marker_pos =  $"../Markers2".get_children().pick_random()
 			global_position = marker_pos.global_position
@@ -69,13 +71,13 @@ func _process(delta: float) -> void:
 func hit_play():
 	
 	if is_alive:
-		
+		$AudioStreamPlayer.play()
 		var tween = get_tree().create_tween().bind_node(self)#.set_trans(Tween.TRANS_ELASTIC)
 		
 		#tween.tween_property($Sprite2D, "modulate", Color.RED, 0.2)
 		if !skate:
 			tween.tween_property(self, "position",(position + Vector2(cos(rotation-deg_to_rad(90)),sin(rotation-deg_to_rad(90))) * 150), 0.1)
-			tween.tween_property(self, "scale", Vector2(1.0, 50.0), 0.2)
+			tween.tween_property(self, "scale", Vector2(scale.x, 50.0), 0.2)
 		else:
 			tween.tween_property(self, "position",(position + Vector2(cos(rotation-deg_to_rad(90)),sin(rotation-deg_to_rad(90))) * 1500), 0.2)
 		#tween.tween_property(self, "global_position", (attk_target.global_position - global_position).normalized()*50, 0.2)
@@ -87,3 +89,7 @@ func hit_play():
 			#print(global_position.direction_to(attk_target.global_position).angle())
 			
 		tween.tween_callback(self.queue_free)
+func got_duration(duration:float):
+	if duration < follow and self and $"../../../PlayerGroup".bullet_hell_timer:
+
+		$"../../../PlayerGroup".bullet_hell_timer.start(follow+1)

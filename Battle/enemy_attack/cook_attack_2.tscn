@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfjmgwk8nidia"]
+[gd_scene load_steps=14 format=3 uid="uid://dfjmgwk8nidia"]
 
 [ext_resource type="Script" uid="uid://dmckske6g6qm8" path="res://Battle/enemy_attack/script/stove_fire.gd" id="1_2ib17"]
 [ext_resource type="Texture2D" uid="uid://bmpp6s67sxhls" path="res://Battle/sprites/fire.png" id="2_mr5d0"]
 [ext_resource type="Texture2D" uid="uid://mk6e6teprdk7" path="res://Battle/sprites/warninh.png" id="3_ub8d6"]
+[ext_resource type="AudioStream" uid="uid://cb13rj05yirrd" path="res://sounds/explosion.mp3" id="4_mr5d0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e27g"]
 atlas = ExtResource("2_mr5d0")
@@ -103,6 +104,9 @@ scale = Vector2(1.06818, 5.36957)
 sprite_frames = SubResource("SpriteFrames_dbkmt")
 frame_progress = 0.757872
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="stove_fire"]
+stream = ExtResource("4_mr5d0")
+
 [node name="stove_fire2" type="AnimatableBody2D" parent="."]
 position = Vector2(776, 560)
 scale = Vector2(3.84, 1)
@@ -124,3 +128,6 @@ position = Vector2(2.6226e-06, -200)
 scale = Vector2(1.06818, 5.36957)
 sprite_frames = SubResource("SpriteFrames_dbkmt")
 frame_progress = 0.643812
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="stove_fire2"]
+stream = ExtResource("4_mr5d0")

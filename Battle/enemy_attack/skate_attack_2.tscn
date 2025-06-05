@@ -113,7 +113,11 @@ scale = Vector2(9.208, 2.66)
 sprite_frames = SubResource("SpriteFrames_hq0sj")
 animation = &"skate"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="stove_fire"]
+pitch_scale = 2.0
+
 [node name="stove_fire2" type="AnimatableBody2D" parent="."]
+visible = false
 position = Vector2(448, 472)
 scale = Vector2(3.84, 1)
 script = ExtResource("1_m3cr3")
@@ -136,6 +140,9 @@ animation = &"skate"
 position = Vector2(2.6226e-06, -200)
 scale = Vector2(1.06818, 5.36957)
 sprite_frames = SubResource("SpriteFrames_8ioui")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="stove_fire2"]
+pitch_scale = 2.0
 
 [node name="Markers" type="Node" parent="."]
 

@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 		attk_target.grav_affected = false
 	pass
 func got_duration(duration:float):
-	if duration < time:
+	if duration < time and self and $"../../../PlayerGroup" != null:
 
 		$"../../../PlayerGroup".bullet_hell_timer.start(time+3)
 

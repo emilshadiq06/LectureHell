@@ -33,6 +33,9 @@ position_tween = true
 scale = Vector2(2.16148, 2.25499)
 sprite_frames = SubResource("SpriteFrames_apnbr")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="skateboard_projectile"]
+pitch_scale = 2.0
+
 [node name="skateboard_projectile2" type="AnimatableBody2D" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
 position = Vector2(654, 89)
@@ -46,6 +49,9 @@ position_tween = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile2"]
 scale = Vector2(2.16148, 2.25499)
 sprite_frames = SubResource("SpriteFrames_apnbr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="skateboard_projectile2"]
+pitch_scale = 2.0
 
 [node name="skateboard_projectile3" type="AnimatableBody2D" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
@@ -61,6 +67,9 @@ position_tween = true
 scale = Vector2(2.16148, 2.25499)
 sprite_frames = SubResource("SpriteFrames_apnbr")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="skateboard_projectile3"]
+pitch_scale = 2.0
+
 [node name="skateboard_projectile4" type="AnimatableBody2D" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
 position = Vector2(953, 359)
@@ -74,3 +83,11 @@ position_tween = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skateboard_projectile4"]
 scale = Vector2(2.16148, 2.25499)
 sprite_frames = SubResource("SpriteFrames_apnbr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="skateboard_projectile4"]
+pitch_scale = 2.0
+
+[connection signal="draw" from="skateboard_projectile" to="skateboard_projectile" method="_on_draw"]
+[connection signal="draw" from="skateboard_projectile2" to="skateboard_projectile2" method="_on_draw"]
+[connection signal="draw" from="skateboard_projectile3" to="skateboard_projectile3" method="_on_draw"]
+[connection signal="draw" from="skateboard_projectile4" to="skateboard_projectile4" method="_on_draw"]

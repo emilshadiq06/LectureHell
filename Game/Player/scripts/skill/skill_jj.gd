@@ -32,8 +32,8 @@ func Enter() ->void:
 #	if enemies.action_queue.size() < players.players.size():
 		#enemies.show_choice()
 	var sfx = load("res://sounds/Maimunah.mp3")
-	$"../../AudioStreamPlayer2D".stream = sfx
-	$"../../AudioStreamPlayer2D".play()
+	$"../../AudioStreamPlayer".stream = sfx
+	$"../../AudioStreamPlayer".play()
 	pass
 	
 #what happens when player enters state

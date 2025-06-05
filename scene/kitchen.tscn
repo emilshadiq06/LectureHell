@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bddy3e30s4elw"]
+[gd_scene load_steps=23 format=3 uid="uid://bddy3e30s4elw"]
 
 [ext_resource type="Texture2D" uid="uid://cltbd884k27l7" path="res://map/32x32/walls_floor.png" id="1_kiegy"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="2_ig7eq"]
@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="10_p8jqm"]
 [ext_resource type="PackedScene" uid="uid://dmr348bxfldom" path="res://scene/gas_collectable.tscn" id="11_p8jqm"]
 [ext_resource type="PackedScene" uid="uid://chpysh7h0032l" path="res://scene/coconut_oil_collectable.tscn" id="12_y1e7p"]
+[ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="11_y1e7p"]
+[ext_resource type="Resource" uid="uid://cwc4hxhp424ye" path="res://Game/cook1.tres" id="12_s1nu3"]
+[ext_resource type="Resource" uid="uid://v1lnj55by2ah" path="res://Game/cook2.tres" id="13_s1nu3"]
+[ext_resource type="Resource" uid="uid://c30lax4qvrfob" path="res://Game/cook3.tres" id="14_s1nu3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1e7p"]
 texture = ExtResource("1_kiegy")
@@ -6110,6 +6114,15 @@ metadata/_custom_type_script = "uid://btq0f56iqlbgg"
 position = Vector2(-1.5, 1)
 shape = SubResource("RectangleShape2D_cn2no")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Portal"]
+position = Vector2(40, -5)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/StaticBody2D"]
+position = Vector2(-58, 6)
+shape = SubResource("RectangleShape2D_cn2no")
+
 [node name="WorldEnvironment" parent="." instance=ExtResource("9_70nra")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -6123,5 +6136,23 @@ scale = Vector2(0.434738, 0.47929)
 [node name="CoconutOil_collectable" parent="." instance=ExtResource("12_y1e7p")]
 position = Vector2(602, 675)
 scale = Vector2(1.2932, 1.49461)
+
+[node name="Enemy" parent="." groups=["cooks"] instance=ExtResource("11_y1e7p")]
+position = Vector2(641, 460)
+collision_mask = 19
+stats = ExtResource("12_s1nu3")
+group_str = "cooks"
+
+[node name="Enemy2" parent="." groups=["cooks"] instance=ExtResource("11_y1e7p")]
+position = Vector2(647, 641)
+collision_mask = 19
+stats = ExtResource("13_s1nu3")
+group_str = "cooks"
+
+[node name="Enemy3" parent="." groups=["cooks"] instance=ExtResource("11_y1e7p")]
+position = Vector2(642, 544)
+collision_mask = 19
+stats = ExtResource("14_s1nu3")
+group_str = "cooks"
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

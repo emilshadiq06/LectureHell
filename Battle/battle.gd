@@ -8,6 +8,7 @@ var group_player_array= []
 var group_enemy_array= []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$battlesong.play()
 	StatLoader.was_just_inBattle = true
 	var players = $PlayerGroup
 	var enemies = $EnemyGroup
@@ -45,3 +46,8 @@ func count_hp(group) -> bool:
 		
 		return true
 	return false
+
+
+func _on_battlesong_finished() -> void:
+	await get_tree().create_timer(2).timeout
+	$battlesong.play()

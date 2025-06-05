@@ -72,6 +72,7 @@ func _on_enemy_group_bullet_hell() -> void:
 	enemies.choice.hide()
 	var duration: float = 0
 	get_parent().add_child(stage)
+	get_parent().move_child(stage,7)
 	 
 	await get_tree().create_timer(1).timeout
 	for i in enemies.enemies:
