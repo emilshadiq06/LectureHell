@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://fbyafu2xkq4l"]
+
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="1_sh382"]
+[ext_resource type="Texture2D" uid="uid://cseocwinjaj87" path="res://inventory/img/FairyBottle.png" id="2_mjuc1"]
+
+[resource]
+script = ExtResource("1_sh382")
+name = "CoconutOil"
+texture = ExtResource("2_mjuc1")
+metadata/_custom_type_script = "uid://3tvxh44mg67g"
