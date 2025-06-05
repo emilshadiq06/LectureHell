@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=64 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="1_4wg8t"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
@@ -6677,6 +6677,26 @@ line3Options = Array[Array]([])
 line4Options = Array[Array]([])
 metadata/_custom_type_script = "uid://2canopkw4hie"
 
+[sub_resource type="Resource" id="Resource_bjn06"]
+script = ExtResource("16_xkbms")
+quest_name = "Motorman"
+item_count = 0
+lose_on_found = false
+add_to_group = 999
+money = 0.0
+event_index = 0
+lines1 = Array[String](["ya got the oil?", "pls"])
+lines2 = Array[String](["Then get to it foo"])
+lines3 = Array[String](["Thx"])
+lines4 = Array[String](["i dont see any oil", "u wanna use coconut oil or smtg?", "yes, go to cafeteria and bring it to me "])
+lines5 = Array[String]([])
+position = Array[int]([0])
+line1Options = Array[Array]([["yeah", 2], ["nah", 1], ["can i use coconut oil instead?", 3]])
+line2Options = Array[Array]([])
+line3Options = Array[Array]([])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqq6e"]
 atlas = ExtResource("29_vmah2")
 region = Rect2(2, 0, 39, 64)
@@ -6866,6 +6886,7 @@ script = ExtResource("28_fqq6e")
 next_dialogue = Array[ExtResource("16_xkbms")]([null, SubResource("Resource_53amm"), SubResource("Resource_fqq6e")])
 
 [node name="Chat" parent="Motor Man" instance=ExtResource("15_xkbms")]
+dialogue = SubResource("Resource_bjn06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Motor Man/Chat"]
 position = Vector2(-8.5, -15)
