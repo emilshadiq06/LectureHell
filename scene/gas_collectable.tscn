@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmr348bxfldom"]
+
+[ext_resource type="Script" uid="uid://bh44ia818n4g4" path="res://gas_collectable.gd" id="1_0oxmh"]
+[ext_resource type="Texture2D" uid="uid://cocwtd3l7tjdo" path="res://inventory/img/gascan.png" id="2_d7xuh"]
+[ext_resource type="Resource" uid="uid://dq1k07n17kplw" path="res://inventory/item/GasCan.tres" id="2_eiqh0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eiqh0"]
+radius = 53.6004
+
+[node name="gas_collectable" type="StaticBody2D"]
+script = ExtResource("1_0oxmh")
+item = ExtResource("2_eiqh0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_d7xuh")
+
+[node name="interactable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable_area"]
+shape = SubResource("CircleShape2D_eiqh0")
+
+[connection signal="body_entered" from="interactable_area" to="." method="_on_interactable_area_body_entered"]

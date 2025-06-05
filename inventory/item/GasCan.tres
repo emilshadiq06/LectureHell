@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dq1k07n17kplw"]
+
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="1_hkpux"]
+[ext_resource type="Texture2D" uid="uid://cocwtd3l7tjdo" path="res://inventory/img/gascan.png" id="2_pjadh"]
+
+[resource]
+script = ExtResource("1_hkpux")
+name = "GasCan"
+texture = ExtResource("2_pjadh")
+metadata/_custom_type_script = "uid://3tvxh44mg67g"

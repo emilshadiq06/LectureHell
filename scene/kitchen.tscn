@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bddy3e30s4elw"]
+[gd_scene load_steps=20 format=3 uid="uid://bddy3e30s4elw"]
 
 [ext_resource type="Texture2D" uid="uid://cltbd884k27l7" path="res://map/32x32/walls_floor.png" id="1_kiegy"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="2_ig7eq"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="8_mibyj"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="9_70nra"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="10_p8jqm"]
+[ext_resource type="PackedScene" uid="uid://dmr348bxfldom" path="res://scene/gas_collectable.tscn" id="11_p8jqm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1e7p"]
 texture = ExtResource("1_kiegy")
@@ -6113,5 +6114,9 @@ shape = SubResource("RectangleShape2D_cn2no")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("10_p8jqm")]
+
+[node name="gas_collectable" parent="." instance=ExtResource("11_p8jqm")]
+position = Vector2(670, 459)
+scale = Vector2(0.434738, 0.47929)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
