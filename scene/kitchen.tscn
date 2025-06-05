@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bddy3e30s4elw"]
+[gd_scene load_steps=25 format=3 uid="uid://bddy3e30s4elw"]
 
 [ext_resource type="Texture2D" uid="uid://cltbd884k27l7" path="res://map/32x32/walls_floor.png" id="1_kiegy"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="2_ig7eq"]
@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="8_mibyj"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="9_70nra"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="10_p8jqm"]
-[ext_resource type="PackedScene" uid="uid://dmr348bxfldom" path="res://scene/gas_collectable.tscn" id="11_p8jqm"]
-[ext_resource type="PackedScene" uid="uid://chpysh7h0032l" path="res://scene/coconut_oil_collectable.tscn" id="12_y1e7p"]
+[ext_resource type="PackedScene" path="res://scene/gas_collectable.tscn" id="11_p8jqm"]
 [ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="11_y1e7p"]
 [ext_resource type="Resource" uid="uid://cwc4hxhp424ye" path="res://Game/cook1.tres" id="12_s1nu3"]
+[ext_resource type="PackedScene" path="res://scene/coconut_oil_collectable.tscn" id="12_y1e7p"]
 [ext_resource type="Resource" uid="uid://v1lnj55by2ah" path="res://Game/cook2.tres" id="13_s1nu3"]
 [ext_resource type="Resource" uid="uid://c30lax4qvrfob" path="res://Game/cook3.tres" id="14_s1nu3"]
 
