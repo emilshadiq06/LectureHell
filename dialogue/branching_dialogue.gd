@@ -66,8 +66,9 @@ func item_pressed(item_index:int):
 			if prized_item != null:
 				player.collect_item(prized_item.duplicate())
 			if lose_on_found:
-				for i in player.find_item(item):
-					player.inv.throw(i,player.inv.items[i])
+				player.find_item(item)
+				for i in range(item_count):
+					player.inv.throw(player.find_item(item)[i],player.inv.items[player.find_item(item)[i]])
 			if add_to_group < 2 and StatLoader.player_group.size()<3:
 				var team = load("res://Game/Player/player_team.tscn").instantiate()
 				StatLoader.addplayer_to_group(team.get_child(add_to_group).duplicate())
