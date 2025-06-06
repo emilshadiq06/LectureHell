@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=74 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="1_4wg8t"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
@@ -25,11 +25,13 @@
 [ext_resource type="Resource" uid="uid://dr7cjnx5yuocp" path="res://dialogue/dialog_resource/skateman2Dialogue.tres" id="21_awr61"]
 [ext_resource type="Resource" uid="uid://bh705x2ao0xjj" path="res://dialogue/dialog_resource/skatemanBeatedDialogue.tres" id="21_owyic"]
 [ext_resource type="Script" uid="uid://kk2dodqhghwc" path="res://Game/Enemy/battle_teleporter.gd" id="22_gcrio"]
+[ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="28_bjn06"]
 [ext_resource type="Script" uid="uid://bnjp2fhxv3o1y" path="res://scene/motor_man.gd" id="28_fqq6e"]
 [ext_resource type="Texture2D" uid="uid://cl6a55evp4eaa" path="res://character/motorcycle.png" id="28_lcp7f"]
 [ext_resource type="Resource" uid="uid://bnvvcja800qer" path="res://inventory/item/expendable/pipe_bomb.tres" id="29_bjn06"]
 [ext_resource type="Texture2D" uid="uid://b7834ce0m5c3v" path="res://Game/Player/sprites/explode.png" id="29_vmah2"]
-[ext_resource type="PackedScene" uid="uid://d27x8m8eukk0r" path="res://scene/npc_motor_man.tscn" id="31_bjn06"]
+[ext_resource type="Texture2D" uid="uid://bmpp6s67sxhls" path="res://Battle/sprites/fire.png" id="31_53amm"]
+[ext_resource type="Texture2D" uid="uid://boiwkaipqv2q3" path="res://character/Sprite NPC Normal/sprite npc2/Generic Male NPCs.png" id="32_o5v4g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka32h"]
 texture = ExtResource("1_cepea")
@@ -6636,22 +6638,64 @@ size = Vector2(37, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrrp"]
 size = Vector2(34, 50)
 
+[sub_resource type="Resource" id="Resource_o5v4g"]
+script = ExtResource("16_xkbms")
+quest_name = "Burnt"
+item = ExtResource("28_bjn06")
+item_count = 0
+lose_on_found = false
+add_to_group = 999
+money = 0.0
+event_index = 0
+lines1 = Array[String](["AAAAAAAAAAAAA", "AAAAAA", "ok im overeacting"])
+lines2 = Array[String]([])
+lines3 = Array[String]([])
+lines4 = Array[String]([])
+lines5 = Array[String]([])
+position = Array[int]([0])
+line1Options = Array[Array]([["ok", 0]])
+line2Options = Array[Array]([])
+line3Options = Array[Array]([])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"
+
+[sub_resource type="Resource" id="Resource_4qx2e"]
+script = ExtResource("16_xkbms")
+quest_name = "Best Dad"
+item = ExtResource("28_bjn06")
+item_count = 0
+lose_on_found = false
+add_to_group = 999
+money = 0.0
+event_index = 0
+lines1 = Array[String](["....Yet again i cannot return home.", "Seems my children will starve tonight", "again.", "for the third time.", "this week.", "..", "...", "....", "Let me follow you to walk this off."])
+lines2 = Array[String]([])
+lines3 = Array[String]([])
+lines4 = Array[String]([])
+lines5 = Array[String]([])
+position = Array[int]([0])
+line1Options = Array[Array]([])
+line2Options = Array[Array]([["ok", 0]])
+line3Options = Array[Array]([])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"
+
 [sub_resource type="Resource" id="Resource_53amm"]
 script = ExtResource("16_xkbms")
-quest_name = "Motorman Asks  for coconut oil"
+quest_name = "Motorman Asks  for oil"
 item = ExtResource("29_bjn06")
 item_count = 1
 lose_on_found = true
 add_to_group = 999
 money = 0.0
 event_index = 2
-lines1 = Array[String](["Ya got the  oil", "pls"])
-lines2 = Array[String](["Then get to it foo"])
-lines3 = Array[String](["Thx", "now i can burn this shi*** ride"])
-lines4 = Array[String](["I dont see any oil", "You wanna use oil or smth", "fine then"])
+lines1 = Array[String](["Ya got any oil", "pls I can give some money for it", "It's in the kitchen at the cafeteria"])
+lines2 = Array[String](["Then get to it fool"])
+lines3 = Array[String](["Thx", "Now i can get back to my loving family of 16"])
+lines4 = Array[String](["I dont see any oil", "You wanna use cooking oil or smth"])
 lines5 = Array[String]([])
 position = Array[int]([0])
-line1Options = Array[Array]([["Yeah", 2], ["nah", 1], ["Can I use coconut oil instead", 3]])
+line1Options = Array[Array]([["Yeah", 2], ["nah", 1], ["Ye I got \"oil\" alright hehehe...", 3]])
 line2Options = Array[Array]([])
 line3Options = Array[Array]([])
 line4Options = Array[Array]([])
@@ -6660,15 +6704,16 @@ metadata/_custom_type_script = "uid://2canopkw4hie"
 [sub_resource type="Resource" id="Resource_fqq6e"]
 script = ExtResource("16_xkbms")
 quest_name = "coconutOil"
-item_count = 0
-lose_on_found = false
-add_to_group = 999
+item = ExtResource("28_bjn06")
+item_count = 1
+lose_on_found = true
+add_to_group = 1
 money = 0.0
-event_index = 0
-lines1 = Array[String](["Ya got the  coconut oil?"])
+event_index = 2
+lines1 = Array[String](["Ya got the \"oil\" or whatever it is", "It better not be cooking oil or coconut oil"])
 lines2 = Array[String](["Then get to it foo"])
-lines3 = Array[String](["Thx", "now i can burn this shi*** ride"])
-lines4 = Array[String](["I dont see any coconut oil"])
+lines3 = Array[String](["Thx", "now I can get home to my loving family of 16"])
+lines4 = Array[String](["I dont see any oil", "You better not mess with me"])
 lines5 = Array[String]([])
 position = Array[int]([0])
 line1Options = Array[Array]([["Yeah", 2], ["nah", 1]])
@@ -6680,18 +6725,19 @@ metadata/_custom_type_script = "uid://2canopkw4hie"
 [sub_resource type="Resource" id="Resource_bjn06"]
 script = ExtResource("16_xkbms")
 quest_name = "Motorman"
+item = ExtResource("28_bjn06")
 item_count = 0
 lose_on_found = false
 add_to_group = 999
-money = 0.0
-event_index = 0
-lines1 = Array[String](["Hey bro, can u help me?", "I nedd some oil or gas to do something"])
-lines2 = Array[String](["Pls help, its very important..."])
-lines3 = Array[String](["Thx"])
-lines4 = Array[String](["i dont see any oil", "watchu tryna do with it?", "Burn this crappy bike or somthing?"])
+money = -10.0
+event_index = 2
+lines1 = Array[String](["Hey bro, can u help me?", "I need some money for oil"])
+lines2 = Array[String](["Pls help, its very important...", "My bike broke down and its out of gas"])
+lines3 = Array[String](["Thx", "hehe", "dumbass"])
+lines4 = Array[String](["Then get some oil for me", "its probably in the kitchen at the cafeteria", "The place you came from before i think"])
 lines5 = Array[String]([])
 position = Array[int]([0])
-line1Options = Array[Array]([["yeah", 2], ["nah", 1], ["for what?", 3]])
+line1Options = Array[Array]([["yeah", 2], ["nah", 1], ["nah im broke", 3]])
 line2Options = Array[Array]([])
 line3Options = Array[Array]([])
 line4Options = Array[Array]([])
@@ -6782,9 +6828,57 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3qn6h")
 }],
-"loop": false,
+"loop": true,
 "name": &"explode",
 "speed": 16.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb8n2"]
+atlas = ExtResource("31_53amm")
+region = Rect2(0, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0kb5"]
+atlas = ExtResource("31_53amm")
+region = Rect2(32, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fho4v"]
+atlas = ExtResource("31_53amm")
+region = Rect2(64, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mdu0"]
+atlas = ExtResource("31_53amm")
+region = Rect2(96, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37c7j"]
+atlas = ExtResource("32_o5v4g")
+region = Rect2(800, 0, 80, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mm3bb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb8n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0kb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fho4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mdu0")
+}],
+"loop": true,
+"name": &"burning",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37c7j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -6883,6 +6977,7 @@ position = Vector2(989, 174)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("28_fqq6e")
+last_lines = Array[ExtResource("16_xkbms")]([SubResource("Resource_o5v4g"), SubResource("Resource_4qx2e")])
 next_dialogue = Array[ExtResource("16_xkbms")]([null, SubResource("Resource_53amm"), SubResource("Resource_fqq6e")])
 
 [node name="Chat" parent="Motor Man" instance=ExtResource("15_xkbms")]
@@ -6896,14 +6991,7 @@ shape = SubResource("RectangleShape2D_lcp7f")
 position = Vector2(13, -19)
 texture = ExtResource("28_lcp7f")
 
-[node name="Sprite2D" type="Sprite2D" parent="Motor Man"]
-visible = false
-position = Vector2(-5, -14)
-scale = Vector2(1, 3)
-hframes = 5
-vframes = 4
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Motor Man"]
+[node name="explode" type="AnimatedSprite2D" parent="Motor Man"]
 position = Vector2(15, -31)
 sprite_frames = SubResource("SpriteFrames_lb8n2")
 animation = &"explode"
@@ -6913,9 +7001,11 @@ frame_progress = 1.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Motor Man"]
 polygon = PackedVector2Array(-12, -11, -1, -11, -3, -25, 28, -24, 28, -5, 12, -5, 2, 0, 2, 7, -12, 7)
 
-[node name="npc MotorMan" parent="." instance=ExtResource("31_bjn06")]
-position = Vector2(981, 145)
-scale = Vector2(0.573753, 0.467114)
+[node name="man" type="AnimatedSprite2D" parent="Motor Man"]
+position = Vector2(-17.75, -17)
+scale = Vector2(0.54375, 0.541667)
+sprite_frames = SubResource("SpriteFrames_mm3bb")
+animation = &"idle"
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="skateman/battle_teleport" to="skateman/battle_teleport" method="_on_body_entered"]
