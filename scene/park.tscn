@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=75 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="1_4wg8t"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
@@ -6630,6 +6630,26 @@ size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcp7f"]
 
+[sub_resource type="Resource" id="Resource_jor1d"]
+script = ExtResource("16_xkbms")
+quest_name = ""
+item_count = 0
+lose_on_found = false
+add_to_group = 999
+money = 0.0
+event_index = 0
+lines1 = Array[String](["Hehe"])
+lines2 = Array[String]([])
+lines3 = Array[String]([])
+lines4 = Array[String]([])
+lines5 = Array[String]([])
+position = Array[int]([])
+line1Options = Array[Array]([])
+line2Options = Array[Array]([])
+line3Options = Array[Array]([])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gcrio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcp7f"]
@@ -6668,7 +6688,7 @@ lose_on_found = false
 add_to_group = 999
 money = 0.0
 event_index = 0
-lines1 = Array[String](["....Yet again i cannot return home.", "Seems my children will starve tonight", "again.", "for the third time.", "this week.", "..", "...", "....", "Let me follow you to walk this off."])
+lines1 = Array[String](["......", ".......Yet again i cannot return home.", "It seems my children will starve tonight", "again.", "for the third time.", "this week.", "...", "....", "Let me follow you to walk this off."])
 lines2 = Array[String]([])
 lines3 = Array[String]([])
 lines4 = Array[String]([])
@@ -6942,6 +6962,7 @@ shape = SubResource("CircleShape2D_lcp7f")
 position = Vector2(420, 183)
 script = ExtResource("28_fqq6e")
 stats = ExtResource("19_gcrio")
+last_lines = Array[ExtResource("16_xkbms")]([null, SubResource("Resource_jor1d")])
 next_dialogue = Array[ExtResource("16_xkbms")]([null, ExtResource("21_owyic"), ExtResource("21_awr61")])
 alternate_outcome = true
 
@@ -6955,11 +6976,6 @@ dialogue = ExtResource("20_xkbms")
 position = Vector2(-8.5, -15)
 shape = SubResource("RectangleShape2D_lcp7f")
 
-[node name="Sprite2D" type="Sprite2D" parent="skateman"]
-rotation = 1.5708
-hframes = 5
-vframes = 4
-
 [node name="battle_teleport" type="Area2D" parent="skateman"]
 monitoring = false
 monitorable = false
@@ -6968,6 +6984,13 @@ script = ExtResource("22_gcrio")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="skateman/battle_teleport"]
 position = Vector2(-7, -15)
 shape = SubResource("RectangleShape2D_qxrrp")
+
+[node name="Sprite2D" type="Sprite2D" parent="skateman"]
+position = Vector2(-5, -3)
+rotation = 1.5708
+scale = Vector2(0.850001, 0.84375)
+texture = ExtResource("19_4wg8t")
+hframes = 21
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 visible = false

@@ -26,6 +26,7 @@ func _ready() -> void:
 	while dialogue_player.dialogue.quest_name in StatLoader.quest_array: 
 		if next_dialogue[Dialogue.size() - dialoges -1].quest_name in StatLoader.quest_array:
 			change_to_last= last_lines[Dialogue.size() - dialoges -1-1]
+
 			break
 		if dialoges + 1 < Dialogue.size():
 			dialoges += 1
@@ -34,7 +35,11 @@ func _ready() -> void:
 		dialogue_player.dialogue = next_dialogue[dialoges]
 	if change_to_last:
 		dialogue_player.dialogue =  change_to_last
+		
 		next_line()
+		hider()
+		
+		
 
 	dialogue_player.dialog_branch.clear()
 	dialogue_player.lines_array.clear()
@@ -50,7 +55,7 @@ func next_line():
 		#dialogue_player.monitorable= false
 	
 	player = dialogue_player.player
-	
+	hider()
 	match dialoges:
 		Dialogue.First:
 			if  dialogue_player.dialogue.index == dialogue_player.lines_array.size()-1 and change_to_last == null:
@@ -72,7 +77,7 @@ func next_line():
 				change_to_last = last_lines[0]
 				#dialogue_player.dialogue = next_dialogue[Dialogue.Sec]
 		Dialogue.Third:
-			if !alternate_outcome and dialogue_player.dialogue.index == dialogue_player.dialogue.event_index and change_to_last == null :
+			if dialogue_player.dialogue.index == dialogue_player.dialogue.event_index and change_to_last == null :
 				
 				change_to_last  = last_lines[1]
 
@@ -101,24 +106,44 @@ func next_line():
 		dialogue_player.dialogue.index = 0
 		dialogue_player._ready()
 		dialogue_player.dialogue.get_stuff(dialogue_player)
+		await get_tree().create_timer(1).timeout
+		dialogue_player._on_body_entered(player)
 	if (change_to_last and !finish):
 		if  change_to_last == last_lines[0]:
-			$man.play("burning")
-			$man.scale *= 3
-			$man.modulate =Color("orange")
-			$explode.play("explode")
-			AudioPlayer.play_audio("res://sounds/explosion.mp3")
+			if $man and $explode:
+				$man.play("burning")
+				$man.scale *= 3
+				$man.modulate =Color("orange")
+				$explode.play("explode")
+				AudioPlayer.play_audio("res://sounds/explosion.mp3")
 		else:
-			print("s")
-			$explode.play("explode")
-			AudioPlayer.play_audio("res://sounds/explosion.mp3")
+			if $man and $explode:
+				print("s")
+				$explode.play("explode")
+				AudioPlayer.play_audio("res://sounds/explosion.mp3")
+				dialogue_player.monitoring = false
+				dialogue_player.monitorable= false
+			
 		dialogue_player.dialogue =  change_to_last
 		dialogue_player.dialog_branch.clear()
 		dialogue_player.lines_array.clear()
 		dialogue_player.dialogue.index = 0
 		dialogue_player._ready()
 		dialogue_player.dialogue.get_stuff(dialogue_player)
+		
 		finish = true
+		await get_tree().create_timer(3).timeout
+		dialogue_player._on_body_entered(player)
+		
+			
+		
 
+		
+func hider():
+	if finish and change_to_last == last_lines[1]:
+		if $man:
+			$man.hide()
+		elif $Sprite2D:
+			$Sprite2D.hide()
 
 		
