@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://jemkg1xs1aw4"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_okpwi"]
+[ext_resource type="Script" uid="uid://b5kb5iltxo0be" path="res://Scripts/enemy.gd" id="1_okpwi"]
 [ext_resource type="Texture2D" uid="uid://bctpeupeq763a" path="res://Assets/Enemies/Devil/DevilIdle.png" id="1_s1oya"]
 [ext_resource type="Texture2D" uid="uid://b2uelg3fanb7" path="res://Assets/Enemies/Devil/DevilShoot.png" id="2_d583c"]
 [ext_resource type="Texture2D" uid="uid://dlc65t857t88g" path="res://Assets/Enemies/SmokeFX/FX001_01.png" id="3_3202n"]
@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bor84gso6c3ed" path="res://Assets/Enemies/Mummy/MummyShooting.png" id="9_33q6g"]
 [ext_resource type="Texture2D" uid="uid://cximiq1agap3w" path="res://Assets/Enemies/Skeleton/SkeletonIdle.png" id="10_oeaop"]
 [ext_resource type="Texture2D" uid="uid://cu2wocwlgwecx" path="res://Assets/Enemies/Skeleton/SkeletonShooting.png" id="11_5nhmq"]
-[ext_resource type="Script" path="res://Scripts/random_timer.gd" id="12_mgx1q"]
-[ext_resource type="Script" path="res://Scripts/enemy_shooting_system.gd" id="13_13len"]
-[ext_resource type="Script" path="res://Scripts/health_system.gd" id="15_h1wny"]
+[ext_resource type="Script" uid="uid://bptxxnytwsx4u" path="res://Scripts/random_timer.gd" id="12_mgx1q"]
+[ext_resource type="Script" uid="uid://brft7gjno2ons" path="res://Scripts/enemy_shooting_system.gd" id="13_13len"]
+[ext_resource type="Script" uid="uid://ck8bvsqmjqqyi" path="res://Scripts/health_system.gd" id="15_h1wny"]
 [ext_resource type="PackedScene" uid="uid://idblyfgklvrm" path="res://Scenes/spell_effector.tscn" id="16_ijdqa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqt36"]
@@ -137,5 +137,7 @@ script = ExtResource("15_h1wny")
 [node name="SpellEffector" parent="." instance=ExtResource("16_ijdqa")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="ShootingSystem/Timer" to="ShootingSystem" method="_on_timer_timeout"]

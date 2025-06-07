@@ -54,13 +54,15 @@ var min_projectile_degree = -15
 func _ready() -> void:
 	if get_tree().current_scene.scene_file_path =="res://scene/hallway.tscn":
 		self.queue_free()
+	elif  get_tree().current_scene == null:
+		self.queue_free()
 func init():
 
 	var random_point = movement_points.pick_random()
-	#if  random_point.position == null and start_check:
-		#self.queue_free()
-		
-		#start_check = false
+	if get_tree().current_scene.scene_file_path =="res://scene/hallway.tscn":
+		self.queue_free()
+	elif  get_tree().current_scene == null:
+		self.queue_free()
 	current_movement_point = random_point.position
 	health_system.damaged.connect(on_damaged)
 	health_system.died.connect(on_died)
@@ -101,7 +103,10 @@ func get_health():
 	return health_system.health
 
 func _process(delta):
-	print("where")
+	#if get_tree().current_scene and get_tree().current_scene.scene_file_path =="res://scene/hallway.tscn":
+	#	self.queue_free()
+	if  get_tree().current_scene == null:
+		self.queue_free()
 	global_position = global_position.move_toward(current_movement_point, delta * speed)
 	
 	if global_position.distance_squared_to(current_movement_point) < .1 and movement_points.pick_random() != null:
@@ -118,10 +123,7 @@ func _process(delta):
 			if random < CHANCE_TO_TELEPORT && !is_blocking:
 				is_blocking = true
 				teleport()
-	#	if  movement_points.pick_random() == null and start_check:
-			#self.queue_free()
-		#else:
-			#start_check = false
+	
 func start_blocking():
 	animated_sprite_2d.play("blocking")
 	is_blocking = true
@@ -204,3 +206,23 @@ func _on_animated_sprite_2d_animation_finished():
 		var random_teleport_point = movement_points.pick_random().global_position
 		global_position = random_teleport_point
 		current_movement_point = movement_points.pick_random().global_position
+
+
+func _on_tree_exited() -> void:
+	if self != null:
+		self.queue_free()
+
+	pass # Replace with function body.
+
+
+func _on_tree_entered() -> void:
+	var scene
+	if  get_tree().current_scene:
+		scene = get_tree().current_scene.scene_file_path 
+	else:
+		self.queue_free()
+	if scene =="res://scene/hallway.tscn":
+		self.queue_free()
+	elif scene == null:
+		self.queue_free()
+	pass # Replace with function body.

@@ -3,6 +3,7 @@ extends Area2D
 
 @export var connected_scene : String
 @export var enter_pos : Vector2
+@export var one_shot : bool
 
 var scene_folder = "res://scene/"
 
@@ -15,11 +16,14 @@ func _on_body_entered(body: Node2D) -> void:
 		#print(body.global_position)
 		var full_path = scene_folder + connected_scene + ".tscn"
 		var scene_tree = get_tree()
-		scene_tree.call_deferred("change_scene_to_file", full_path)
-		if connected_scene not in StatLoader.dead_array:
-			StatLoader.dead_array.append(connected_scene)
-			StatLoader.previous_scene = get_tree().current_scene.scene_file_path
-			scene_tree.call_deferred("change_scene_to_file", connected_scene)
+		
+
+		if full_path not in StatLoader.dead_array:
+			if one_shot:
+				StatLoader.dead_array.append(full_path)
+				StatLoader.previous_scene = get_tree().current_scene.scene_file_path
+				StatLoader.previous_position = body.global_position
+			scene_tree.call_deferred("change_scene_to_file", full_path)
 	
 
 

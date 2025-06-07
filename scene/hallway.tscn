@@ -5556,5 +5556,17 @@ shape = SubResource("RectangleShape2D_yna0l")
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("7_o4uqb")]
 
+[node name="Portal3" type="Area2D" parent="."]
+position = Vector2(213, 593)
+script = ExtResource("5_yna0l")
+connected_scene = "level_1"
+one_shot = true
+metadata/_custom_type_script = "uid://btq0f56iqlbgg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal3"]
+position = Vector2(-26, -286)
+shape = SubResource("RectangleShape2D_yna0l")
+
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal3" to="Portal3" method="_on_body_entered"]

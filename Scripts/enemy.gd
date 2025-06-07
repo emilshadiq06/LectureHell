@@ -30,7 +30,9 @@ var default_animation_name
 var shooting_animation_name
 var current_movement_point
 func _ready() -> void:
-	if get_tree().current_scene.scene_file_path =="res://scene/hallway.tscn":
+	if get_tree().current_scene and get_tree().current_scene.scene_file_path =="res://scene/hallway.tscn":
+		self.queue_free()
+	elif  get_tree().current_scene == null:
 		self.queue_free()
 func init(config, enemy_movement_points):
 	
@@ -48,7 +50,9 @@ func init(config, enemy_movement_points):
 
 	
 	var random_point = movement_points.pick_random()
-	if  random_point.position == null and start_check:
+	if get_tree().current_scene and get_tree().current_scene.scene_file_path =="res://scene/hallway.tscn":
+		self.queue_free()
+	elif  get_tree().current_scene == null:
 		self.queue_free()
 
 	current_movement_point = random_point.position
@@ -60,14 +64,15 @@ func init(config, enemy_movement_points):
 	audio_stream_player.finished.connect(on_sound_finished)
 
 func _process(delta):
+	#if get_tree().current_scene and  get_tree().current_scene.scene_file_path =="res://scene/hallway.tscn":
+	#	self.queue_free()
+	if  get_tree().current_scene == null:
+		self.queue_free()
 	global_position = global_position.move_toward(current_movement_point, delta * speed)
 	
 	if global_position.distance_squared_to(current_movement_point) < .1 and movement_points.pick_random() != null:
 		current_movement_point = movement_points.pick_random().global_position
-	if  movement_points.pick_random() == null and start_check:
-		self.queue_free()
-	else:
-		start_check = false
+	
 		
 func on_shot():
 	animated_sprite_2d.play(shooting_animation_name)
@@ -116,3 +121,24 @@ func on_died():
 	animated_sprite_2d.play("die")
 	killed.emit()
 	audio_stream_player.play()
+
+
+func _on_tree_exited() -> void:
+	if self != null:
+		self.queue_free()
+
+
+	pass # Replace with function body.
+
+
+func _on_tree_entered() -> void:
+	var scene
+	if  get_tree().current_scene:
+		scene = get_tree().current_scene.scene_file_path 
+	else:
+		self.queue_free()
+	if scene =="res://scene/hallway.tscn":
+		self.queue_free()
+	elif scene == null:
+		self.queue_free()
+	pass # Replace with function body.

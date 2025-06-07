@@ -73,9 +73,9 @@ func on_player_died():
 	
 func _on_button_pressed():
 	StatLoader.money = 50.33
-	for i in get_tree().current_scene.get_children():
+	#for i in get_tree().get_root().get_children():
 	#print(get_tree().current_scene.get_children())
-		i.queue_free()
+		#i.queue_free()
 	get_tree().change_scene_to_file(StatLoader.previous_scene)
 	
 	#var scene_tree = 
