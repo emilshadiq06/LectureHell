@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=97 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="1_4wg8t"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://dr7cjnx5yuocp" path="res://dialogue/dialog_resource/skateman2Dialogue.tres" id="21_awr61"]
 [ext_resource type="Resource" uid="uid://bh705x2ao0xjj" path="res://dialogue/dialog_resource/skatemanBeatedDialogue.tres" id="21_owyic"]
 [ext_resource type="Script" uid="uid://kk2dodqhghwc" path="res://Game/Enemy/battle_teleporter.gd" id="22_gcrio"]
+[ext_resource type="Texture2D" uid="uid://ca564y8cod7ph" path="res://Game/Player/sprites/npc_sprite_skater.png" id="27_tn24y"]
 [ext_resource type="Resource" uid="uid://dq1k07n17kplw" path="res://inventory/item/GasCan.tres" id="28_3qn6h"]
 [ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="28_bjn06"]
 [ext_resource type="Script" uid="uid://bnjp2fhxv3o1y" path="res://scene/motor_man.gd" id="28_fqq6e"]
@@ -41,6 +42,12 @@
 [ext_resource type="Resource" uid="uid://dq33uxvdaq68t" path="res://inventory/item/consumables/burger.tres" id="37_0bmih"]
 [ext_resource type="Texture2D" uid="uid://c1ppvil0pf2iy" path="res://map/32x32/sink.png" id="39_lb8n2"]
 [ext_resource type="Resource" uid="uid://df1e23eifob4" path="res://dialogue/dialog_resource/scrub.tres" id="40_3qn6h"]
+[ext_resource type="Script" uid="uid://si1muliu3kbk" path="res://scene/idle_monologer.gd" id="42_fho4v"]
+[ext_resource type="Script" uid="uid://ddj1b144gsp36" path="res://Game/Player/scripts/state_idle.gd" id="43_0mdu0"]
+[ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="44_mm3bb"]
+[ext_resource type="Resource" uid="uid://tk7nynr4pn6i" path="res://Game/thug3.tres" id="45_0dlxi"]
+[ext_resource type="Resource" uid="uid://dug3c3k62dfnp" path="res://Game/thug2.tres" id="46_0dlxi"]
+[ext_resource type="Resource" uid="uid://blpw6uqbxjtph" path="res://Game/thug1.tres" id="47_0dlxi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka32h"]
 texture = ExtResource("1_cepea")
@@ -6936,6 +6943,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mm3bb"]
+size = Vector2(255, 20)
+
 [node name="Node" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -7024,7 +7034,7 @@ shape = SubResource("RectangleShape2D_qxrrp")
 position = Vector2(-5, -3)
 rotation = 1.5708
 scale = Vector2(0.850001, 0.84375)
-texture = ExtResource("19_4wg8t")
+texture = ExtResource("27_tn24y")
 hframes = 21
 
 [node name="Motor Man" type="StaticBody2D" parent="."]
@@ -7108,5 +7118,35 @@ dialogue = ExtResource("40_3qn6h")
 position = Vector2(21, 19)
 shape = SubResource("RectangleShape2D_fho4v")
 
+[node name="Idler" type="Area2D" parent="."]
+script = ExtResource("42_fho4v")
+lines = Array[String](["I should walk around to take my mind off things", "I better watch out theres a lot of thugs tho"])
+idler_name = "park"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Idler"]
+position = Vector2(257, 244)
+shape = SubResource("RectangleShape2D_mm3bb")
+
+[node name="State_Idle" type="Node" parent="Idler"]
+script = ExtResource("43_0mdu0")
+metadata/_custom_type_script = "uid://ddj1b144gsp36"
+
+[node name="Thug3" parent="." instance=ExtResource("44_mm3bb")]
+position = Vector2(517, 320)
+collision_mask = 19
+stats = ExtResource("45_0dlxi")
+
+[node name="Thug2" parent="." instance=ExtResource("44_mm3bb")]
+position = Vector2(815, 345)
+collision_mask = 19
+stats = ExtResource("46_0dlxi")
+
+[node name="Thug1" parent="." instance=ExtResource("44_mm3bb")]
+position = Vector2(1053, 454)
+collision_mask = 19
+stats = ExtResource("47_0dlxi")
+
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Sleepy Skateman/battle_teleport" to="Sleepy Skateman/battle_teleport" method="_on_body_entered"]
+[connection signal="body_entered" from="Idler" to="Idler" method="_on_body_entered"]
+[connection signal="body_exited" from="Idler" to="Idler" method="_on_body_exited"]

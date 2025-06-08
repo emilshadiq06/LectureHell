@@ -54,9 +54,6 @@ func _ready() -> void:
 
 func next_line():
 	
-	#if change_to_last and finish and change_to_last == last_lines[1]:
-		#dialogue_player.monitoring = false
-		#dialogue_player.monitorable= false
 	
 	player = dialogue_player.player
 	hider()

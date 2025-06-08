@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=24 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://diij37k1m8hxh" path="res://Game/Player/add_player_group.gd" id="11_ym5sv"]
 [ext_resource type="Resource" uid="uid://cugngsxc1vyxp" path="res://inventory/item/consumables/nasi_bujang.tres" id="12_sng2h"]
 [ext_resource type="Resource" uid="uid://cqdluynxv6peo" path="res://Game/enemy_stat3.tres" id="12_ve786"]
+[ext_resource type="Script" uid="uid://si1muliu3kbk" path="res://scene/idle_monologer.gd" id="16_i6gbm"]
+[ext_resource type="Script" uid="uid://ddj1b144gsp36" path="res://Game/Player/scripts/state_idle.gd" id="17_ux4dc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
 size = Vector2(253, 100.5)
@@ -30,6 +32,9 @@ radius = 30.8058
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i6gbm"]
 a = Vector2(224, -51)
 b = Vector2(-19, -50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrd6n"]
+size = Vector2(33, 20)
 
 [node name="game" type="Node"]
 script = ExtResource("1_33cqm")
@@ -131,4 +136,22 @@ collision_mask = 2
 position = Vector2(-83, 218)
 shape = SubResource("SegmentShape2D_i6gbm")
 
+[node name="Idler" type="Area2D" parent="."]
+position = Vector2(-233, -127)
+monitoring = false
+monitorable = false
+script = ExtResource("16_i6gbm")
+lines = Array[String](["Damn I got to go to the lecture room quickly", "but im not feeling it rn"])
+idler_name = "game1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Idler"]
+position = Vector2(255.5, 244)
+shape = SubResource("RectangleShape2D_jrd6n")
+
+[node name="State_Idle" type="Node" parent="Idler"]
+script = ExtResource("17_ux4dc")
+metadata/_custom_type_script = "uid://ddj1b144gsp36"
+
 [connection signal="body_entered" from="AddPlayerGroup" to="AddPlayerGroup" method="_on_body_entered"]
+[connection signal="body_entered" from="Idler" to="Idler" method="_on_body_entered"]
+[connection signal="body_exited" from="Idler" to="Idler" method="_on_body_exited"]

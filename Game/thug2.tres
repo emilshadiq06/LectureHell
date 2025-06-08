@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="enemy_stats" load_steps=2 format=3 uid="uid://dug3c3k62dfnp"]
+
+[ext_resource type="Script" uid="uid://bxu1nri0o51p" path="res://Game/Enemy/scripts/enemy_stat.gd" id="1_elg7s"]
+
+[resource]
+script = ExtResource("1_elg7s")
+randomize = true
+attack = Array[String](["res://Battle/enemy_attack/basic_enemy_attack.tscn", "res://Battle/enemy_attack/basic_enemy_attack.tscn", "res://Battle/enemy_attack/basic_enemy_attack.tscn", "res://Battle/enemy_attack/basic_enemy_attack.tscn"])
+attack_duration = 3.0
+attk_loaded = 3
+name = "Thug2"
+max_hp = 25
+hp = 25
+metadata/_custom_type_script = "uid://bxu1nri0o51p"

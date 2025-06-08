@@ -89,7 +89,7 @@ func _on_use_pressed() -> void:
 	if selected_items < 12:
 		var item_picked:int = selected_items
 		print(selected_items)
-		if target.name != "Player" and target.name != "UI" :
+		if target.name != "Player":
 			var player_group = $"../../PlayerGroup"
 			
 			if inv.items[item_picked] is consumable:
@@ -101,8 +101,7 @@ func _on_use_pressed() -> void:
 					target = $"../../EnemyGroup".enemies[randi() % $"../../EnemyGroup".enemies.size()]
 				player_group._on_brace_pressed()
 				player_group._on_back_pressed()
-		elif target.name == "UI":
-			target = $"../../Player"
+
 		inv.use(item_picked,inv.items[item_picked],target)
 		selected_items = 999
  

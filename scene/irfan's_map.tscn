@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bup06ltpdovb0"]
+[gd_scene load_steps=36 format=3 uid="uid://bup06ltpdovb0"]
 
 [ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="1_vcd8o"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="2_n8qtl"]
@@ -17,6 +17,9 @@
 [ext_resource type="Resource" uid="uid://d0ru0lj1b2w5k" path="res://dialogue/dialog_resource/cookDialogue.tres" id="15_7e0e2"]
 [ext_resource type="Script" uid="uid://kk2dodqhghwc" path="res://Game/Enemy/battle_teleporter.gd" id="16_lmh80"]
 [ext_resource type="Texture2D" uid="uid://d202avewbtqdl" path="res://scene/menuscene/npc_sprite_02.png" id="17_k24f2"]
+[ext_resource type="Script" uid="uid://si1muliu3kbk" path="res://scene/idle_monologer.gd" id="18_7nsik"]
+[ext_resource type="Script" uid="uid://ddj1b144gsp36" path="res://Game/Player/scripts/state_idle.gd" id="19_nt1ml"]
+[ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="20_nt1ml"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pltrj"]
 texture = ExtResource("1_vcd8o")
@@ -5315,6 +5318,42 @@ size = Vector2(38, 51)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5iit"]
 size = Vector2(34, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdyfs"]
+size = Vector2(136, 91)
+
+[sub_resource type="Resource" id="Resource_fdyfs"]
+script = ExtResource("10_7e0e2")
+randomize = false
+attack = Array[String](["res://Battle/enemy_attack/cook_attack_1.tscn"])
+attack_duration = 3.0
+attk_loaded = 0
+name = "NoviceCook2"
+max_hp = 20
+hp = 20
+metadata/_custom_type_script = "uid://bxu1nri0o51p"
+
+[sub_resource type="Resource" id="Resource_tjax3"]
+script = ExtResource("10_7e0e2")
+randomize = false
+attack = Array[String](["res://Battle/enemy_attack/utensil_throw.tscn"])
+attack_duration = 4.0
+attk_loaded = 0
+name = "NoviceCook"
+max_hp = 20
+hp = 20
+metadata/_custom_type_script = "uid://bxu1nri0o51p"
+
+[sub_resource type="Resource" id="Resource_nt1ml"]
+script = ExtResource("10_7e0e2")
+randomize = false
+attack = Array[String](["res://Battle/enemy_attack/cook_attack_2.tscn", "res://Battle/enemy_attack/basic_enemy_attack.tscn"])
+attack_duration = 4.0
+attk_loaded = 1
+name = "NoviceCook3"
+max_hp = 22
+hp = 22
+metadata/_custom_type_script = "uid://bxu1nri0o51p"
+
 [node name="Node" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5409,7 +5448,41 @@ scale = Vector2(0.850001, 0.84375)
 texture = ExtResource("17_k24f2")
 hframes = 21
 
+[node name="Idler" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+script = ExtResource("18_7nsik")
+lines = Array[String](["damn i'm hungry", "I should check the cafeteria area downstairs if its open", "or go straight to lecture room to the right", "I have a terrible feeling about this for no particular reason"])
+idler_name = "cafe1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Idler"]
+position = Vector2(280, 135.5)
+shape = SubResource("RectangleShape2D_fdyfs")
+
+[node name="State_Idle" type="Node" parent="Idler"]
+script = ExtResource("19_nt1ml")
+metadata/_custom_type_script = "uid://ddj1b144gsp36"
+
+[node name="NoviceCook2" parent="." instance=ExtResource("20_nt1ml")]
+position = Vector2(168, 320)
+collision_mask = 19
+stats = SubResource("Resource_fdyfs")
+
+[node name="NoviceCook" parent="." groups=["noobcooks"] instance=ExtResource("20_nt1ml")]
+position = Vector2(815, 345)
+collision_mask = 19
+stats = SubResource("Resource_tjax3")
+group_str = "noobcooks"
+
+[node name="NoviceCook3" parent="." groups=["noobcooks"] instance=ExtResource("20_nt1ml")]
+position = Vector2(840, 524)
+collision_mask = 19
+stats = SubResource("Resource_nt1ml")
+group_str = "noobcooks"
+
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal3" to="Portal3" method="_on_body_entered"]
 [connection signal="body_entered" from="Cook Didi/battle_teleport" to="Cook Didi/battle_teleport" method="_on_body_entered"]
+[connection signal="body_entered" from="Idler" to="Idler" method="_on_body_entered"]
+[connection signal="body_exited" from="Idler" to="Idler" method="_on_body_exited"]

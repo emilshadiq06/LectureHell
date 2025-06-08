@@ -52,7 +52,7 @@ func _skill_button_pressed():
 	
 func _on_enemy_group_next_player() -> void:
 	
-	if index < players.size()-1:
+	if index < players.size()-1 and players.size()>1:
 		index += 1
 		switch_focus(index,index-1)
 
@@ -67,7 +67,8 @@ func _on_enemy_group_next_player() -> void:
 func switch_focus(x,y):
 	
 	players[x]._focus()
-	players[y]._unfocus()
+	if x != y:
+		players[y]._unfocus()
 
 
 func _on_enemy_group_bullet_hell() -> void:

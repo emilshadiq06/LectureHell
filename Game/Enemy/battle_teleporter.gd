@@ -15,7 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 				DialogueManagerScript.text_box.queue_free()
 				DialogueManagerScript.is_dialog_active = false
 				DialogueManagerScript.current_line_index = 0
-				
+			print('dadadamn')
 		
 			get_whole_group(get_parent().group_str)
 
@@ -29,7 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 			StatLoader.previous_scene = get_parent().get_parent().scene_file_path 
 			StatLoader.previous_position =body.global_position
 			#Function.load_screen_to_scene("res://Battle/battle.tscn", {"test": "test"})
-			
+			AudioPlayer.play_audio("res://sounds/woosh.wav")
 			get_tree().get_root().add_child(fight)
 			
 			get_tree().current_scene = fight
