@@ -42,7 +42,7 @@ _data = {
 &"default": SubResource("Animation_4ta5o")
 }
 
-[node name="BasicEnemyAttack" type="Node2D"]
+[node name="BasicEnemyAttack" type="Node"]
 
 [node name="fist" type="AnimatableBody2D" parent="."]
 position = Vector2(276, 202)

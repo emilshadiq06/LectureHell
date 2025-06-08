@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=3 format=3 uid="uid://driqjccti8w1f"]
+
+[ext_resource type="Resource" uid="uid://c0pwj14bn2lir" path="res://inventory/item/gear/pan.tres" id="1_iuggd"]
+[ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="2_c2s1c"]
+
+[resource]
+script = ExtResource("2_c2s1c")
+quest_name = "Burger Man Gives his promotion"
+item = ExtResource("1_iuggd")
+item_count = 1
+lose_on_found = false
+add_to_group = 999
+money = 5.0
+event_index = 1
+lines1 = Array[String](["You cleaned the pan at the sink?", "hm", "its back there at that buiding"])
+lines2 = Array[String](["Well i already bought a new one sooo..", "keep it i guess ", "here 5 bucks too"])
+lines3 = Array[String](["Just buy my Burgers", "Buy em"])
+lines4 = Array[String]([])
+lines5 = Array[String]([])
+position = Array[int]([0])
+line1Options = Array[Array]([["Yeah", 1], ["No", 2]])
+line2Options = Array[Array]([])
+line3Options = Array[Array]([])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"

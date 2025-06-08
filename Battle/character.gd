@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var focus = $Focus
 var randomize:bool = false
 var MAX_HP : float = 20
-
+@onready var battle_name = $Name
 
 var weapons : Array[Array]
 

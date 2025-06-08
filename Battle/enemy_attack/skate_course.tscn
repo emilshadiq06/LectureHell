@@ -20,7 +20,7 @@ b = Vector2(0, 1.21976)
 a = Vector2(127.731, 1.21979)
 b = Vector2(-2.33298, 1.21979)
 
-[node name="skate_course" type="Node2D"]
+[node name="skate_course" type="Node"]
 
 [node name="gravity" type="Node" parent="."]
 script = ExtResource("1_uyfmm")

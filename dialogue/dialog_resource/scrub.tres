@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://df1e23eifob4"]
+
+[ext_resource type="Resource" uid="uid://y3s66hui7how" path="res://inventory/item/dirty_pan.tres" id="1_1hvrw"]
+[ext_resource type="Resource" uid="uid://c0pwj14bn2lir" path="res://inventory/item/gear/pan.tres" id="2_b6dl8"]
+[ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="3_wa0cp"]
+
+[resource]
+script = ExtResource("3_wa0cp")
+quest_name = "scrub"
+item = ExtResource("1_1hvrw")
+item_count = 1
+lose_on_found = true
+prized_item = ExtResource("2_b6dl8")
+add_to_group = 999
+money = 0.0
+event_index = 3
+lines1 = Array[String](["scrub", "scrub", "scrub", "scrub"])
+lines2 = Array[String](["scrub", "scrub", "scrub", "scrub"])
+lines3 = Array[String](["scrub", "scrub", "scrub", "scrub"])
+lines4 = Array[String](["scrub", "scrub", "scrub", "scrub"])
+lines5 = Array[String](["scrub", "scrub", "scrub", "scrub"])
+position = Array[int]([0, 1, 2, 3])
+line1Options = Array[Array]([["scrub?", 1]])
+line2Options = Array[Array]([["scrub?", 2]])
+line3Options = Array[Array]([["scrub?", 3]])
+line4Options = Array[Array]([["scrub?", 4]])
+metadata/_custom_type_script = "uid://2canopkw4hie"

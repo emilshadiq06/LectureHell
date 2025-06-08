@@ -55,7 +55,8 @@ func _display_letter():
 			timer.start(space_time)
 		_:
 			timer.start(letter_time)
-				
+		
+	AudioPlayer.play_audio("res://sounds/click.wav")
 
 
 func _on_timer_timeout() -> void:

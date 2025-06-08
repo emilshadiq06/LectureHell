@@ -2,8 +2,9 @@ extends Area2D
 class_name DialogueBranch
 #@export var quest_name : String
 #var quest_completed:bool = false
-@export var dialogue: dialogue_lines  
 
+@export var dialogue: dialogue_lines  
+@export var move_if_true: bool = false
 var item: InvItem
 var item_count: int  
 var lose_on_found :bool 
@@ -22,6 +23,7 @@ var lines_array:Array
 # Node paths
 
 func _ready():
+	
 	lines_array = dialogue.get_lines() 
 	dialog_branch = dialogue.get_lines_option()
 	
@@ -32,6 +34,7 @@ func _ready():
 
 
 func next_line():
+	
 	# dialogue.index < dialog_branch.size() and
 	if dialogue.index < dialog_branch.size() and player != null and dialogue.position[dialogue.index] < dialog_branch.size():
 		print(dialogue.index)
@@ -45,8 +48,9 @@ func next_line():
 			var new_button = $DialogueOptions/Option1.duplicate()
 			new_button.text = dialog_branch[dialogue.position[dialogue.index]][i+1][0]
 			new_button.item_index  = i+1
-			$DialogueOptions.add_child(new_button)
-			$DialogueOptions.get_child(i+1).item_pos.connect(item_pressed)
+			if $DialogueOptions.get_child(i+1) == null:
+				$DialogueOptions.add_child(new_button)
+				$DialogueOptions.get_child(i+1).item_pos.connect(item_pressed)
 	pass
 	
 func item_pressed(item_index:int):
@@ -64,11 +68,18 @@ func item_pressed(item_index:int):
 			print(player.find_item(item).size())
 			print("item count")
 			if prized_item != null:
+				print("empties")
+				print(player.find_item(null).size())
+				if player.find_item(null).size() == 0:
+					player.player_invUI.selected_items = 0 
+					player.player_invUI._on_throw_pressed()
+					#player.inv.throw(0,player.inv.items[0])
 				player.collect_item(prized_item.duplicate())
 			if lose_on_found:
-				player.find_item(item)
+				#player.find_item(item)
 				for i in range(item_count):
-					player.inv.throw(player.find_item(item)[i],player.inv.items[player.find_item(item)[i]])
+					
+					player.inv.throw(player.find_item(item)[0],player.inv.items[player.find_item(item)[0]])
 			if add_to_group < 2 and StatLoader.player_group.size()<3:
 				var team = load("res://Game/Player/player_team.tscn").instantiate()
 				StatLoader.addplayer_to_group(team.get_child(add_to_group).duplicate())
@@ -90,7 +101,7 @@ func item_pressed(item_index:int):
 		
 		
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player :
+	if body is Player  and !is_chatting:
 		if dialogue.quest_name in StatLoader.quest_array:
 			dialogue.index = dialogue.event_index
 		DialogueManagerScript.start_dialog(get_parent().global_position, lines_array[dialogue.index])
@@ -98,7 +109,7 @@ func _on_body_entered(body: Node2D) -> void:
 		player = body
 
 func _on_body_exited(body: Node2D) -> void:
-	if body is Player and is_chatting:
+	if body == player:
 		$DialogueOptions.hide()
 		if is_chatting and DialogueManagerScript.is_dialog_active == true:
 			DialogueManagerScript.text_box.queue_free()

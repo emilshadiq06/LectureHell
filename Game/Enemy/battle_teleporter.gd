@@ -49,7 +49,7 @@ func get_whole_group(group):
 			fight.get_node("EnemyGroup").get_child(i +1).set_stats(get_tree().get_nodes_in_group(group)[i].stats)
 			fight.get_node("EnemyGroup").get_child(i +1).change_sprite(get_tree().get_nodes_in_group(group)[i].sprite)
 	else:
-		StatLoader.dead_array.push_back(get_parent().name)
+		#StatLoader.dead_array.push_back(get_parent().name)
 		enemy_Battle.add_character()
 		fight.get_node("EnemyGroup").get_child(1).set_stats(get_parent().stats)
 		fight.get_node("EnemyGroup").get_child(1).change_sprite(get_parent().sprite)

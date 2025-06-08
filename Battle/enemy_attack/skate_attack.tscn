@@ -15,7 +15,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Skate_attack" type="Node2D"]
+[node name="Skate_attack" type="Node"]
 
 [node name="gravity" type="Node" parent="."]
 script = ExtResource("1_2c3k7")

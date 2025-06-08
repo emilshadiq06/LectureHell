@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://kdnquviljym3"]
+
+[ext_resource type="Resource" uid="uid://dq33uxvdaq68t" path="res://inventory/item/consumables/burger.tres" id="1_ar27j"]
+[ext_resource type="Resource" uid="uid://y3s66hui7how" path="res://inventory/item/dirty_pan.tres" id="2_0bnt8"]
+[ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="3_evad6"]
+
+[resource]
+script = ExtResource("3_evad6")
+quest_name = "Burger man"
+item = ExtResource("1_ar27j")
+item_count = 5
+lose_on_found = false
+prized_item = ExtResource("2_0bnt8")
+add_to_group = 999
+money = 0.0
+event_index = 1
+lines1 = Array[String](["Buy my burgers", "You better buy my burgers ", "You better", "Buy 5 of em", "Ill give you a special promotion"])
+lines2 = Array[String](["Oh you bought 5", "damn ok", "Wash this pan then ill give you the promotion."])
+lines3 = Array[String](["Damn you better buy it fool", "I'm going bankrupt here..."])
+lines4 = Array[String]([])
+lines5 = Array[String]([])
+position = Array[int]([0])
+line1Options = Array[Array]([["I already did", 1], ["No I'm broke", 2]])
+line2Options = Array[Array]([])
+line3Options = Array[Array]([])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"

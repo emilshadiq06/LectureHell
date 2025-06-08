@@ -17,22 +17,26 @@ var change_to_last
 
 enum Dialogue{First,Sec,Third}
 func _ready() -> void:
+	
 	print(StatLoader.quest_array)
 	next_dialogue[0] = dialogue_player.dialogue  
-
+	if self.name in StatLoader.dead_array:
+		StatLoader.quest_array.append( dialogue_player.dialogue.quest_name)
+		$CollisionShape2D.disabled = true
 	DialogueManagerScript.finish_lines.connect(next_line)
 
 	
 	while dialogue_player.dialogue.quest_name in StatLoader.quest_array: 
-		if next_dialogue[Dialogue.size() - dialoges -1].quest_name in StatLoader.quest_array:
+		if next_dialogue[next_dialogue.size() - dialoges -1].quest_name in StatLoader.quest_array and last_lines.size()>0:
 			change_to_last= last_lines[Dialogue.size() - dialoges -1-1]
 
 			break
-		if dialoges + 1 < Dialogue.size():
+		if dialoges + 1 < next_dialogue.size():
 			dialoges += 1
-		
 
-		dialogue_player.dialogue = next_dialogue[dialoges]
+			dialogue_player.dialogue = next_dialogue[dialoges]
+		else:
+			break
 	if change_to_last:
 		dialogue_player.dialogue =  change_to_last
 		
@@ -58,14 +62,15 @@ func next_line():
 	hider()
 	match dialoges:
 		Dialogue.First:
-			if  dialogue_player.dialogue.index == dialogue_player.lines_array.size()-1 and change_to_last == null:
+			if  dialogue_player.dialogue.index == dialogue_player.lines_array.size()-1 and change_to_last == null  and !dialogue_player.move_if_true:
 				chase = true
 				if $battle_teleport != null:
 					$battle_teleport.monitorable = true
 					$battle_teleport.monitoring = true
-				StatLoader.quest_array.append( dialogue_player.dialogue.quest_name)
-			elif alternate_outcome and dialogue_player.dialogue.index == dialogue_player.dialogue.event_index and change_to_last == null:
+			#StatLoader.quest_array.append( dialogue_player.dialogue.quest_name)
+			elif alternate_outcome and dialogue_player.dialogue.index == dialogue_player.dialogue.event_index and change_to_last == null and !dialogue_player.move_if_true:
 				dialoges = Dialogue.Third
+				
 				StatLoader.quest_array.append(next_dialogue[Dialogue.Sec].quest_name)
 			
 	#if (!alternate_outcome and dialogue_player.dialogue.index == dialogue_player.dialogue.event_index):
@@ -75,16 +80,16 @@ func next_line():
 
 				
 				change_to_last = last_lines[0]
-				#dialogue_player.dialogue = next_dialogue[Dialogue.Sec]
+				
 		Dialogue.Third:
 			if dialogue_player.dialogue.index == dialogue_player.dialogue.event_index and change_to_last == null :
-				
-				change_to_last  = last_lines[1]
+				if last_lines.size()>1:
+					change_to_last  = last_lines[1]
 
 	
 		
 
-	if ( dialogue_player.dialogue.index == dialogue_player.lines_array.size()-1)  and change_to_last == null or (alternate_outcome and dialogue_player.dialogue.index == dialogue_player.dialogue.event_index) and change_to_last == null:
+	if ( dialogue_player.dialogue.index == dialogue_player.lines_array.size()-1 and !dialogue_player.move_if_true )  and change_to_last == null or (alternate_outcome and dialogue_player.dialogue.index == dialogue_player.dialogue.event_index) and change_to_last == null:
 		if  dialoges + 1 < next_dialogue.size():
 			
 			dialoges += 1
@@ -106,8 +111,12 @@ func next_line():
 		dialogue_player.dialogue.index = 0
 		dialogue_player._ready()
 		dialogue_player.dialogue.get_stuff(dialogue_player)
-		await get_tree().create_timer(1).timeout
-		dialogue_player._on_body_entered(player)
+		
+		if dialogue_player.player != null:
+			dialogue_player.is_chatting = false
+			await get_tree().create_timer(1).timeout
+			
+			dialogue_player._on_body_entered(dialogue_player.player)
 	if (change_to_last and !finish):
 		if  change_to_last == last_lines[0]:
 			if $man and $explode:
@@ -121,8 +130,7 @@ func next_line():
 				print("s")
 				$explode.play("explode")
 				AudioPlayer.play_audio("res://sounds/explosion.mp3")
-				dialogue_player.monitoring = false
-				dialogue_player.monitorable= false
+
 			
 		dialogue_player.dialogue =  change_to_last
 		dialogue_player.dialog_branch.clear()
@@ -132,8 +140,14 @@ func next_line():
 		dialogue_player.dialogue.get_stuff(dialogue_player)
 		
 		finish = true
-		await get_tree().create_timer(3).timeout
-		dialogue_player._on_body_entered(player)
+		
+		if dialogue_player.player!= null:
+			dialogue_player.is_chatting = false
+			await get_tree().create_timer(1).timeout
+			
+			dialogue_player._on_body_entered(dialogue_player.player)
+			#if change_to_last and finish and change_to_last == last_lines[1]:
+
 		
 			
 		
@@ -145,5 +159,7 @@ func hider():
 			$man.hide()
 		elif $Sprite2D:
 			$Sprite2D.hide()
+		dialogue_player.monitoring = false
+		dialogue_player.monitorable= false
 
 		

@@ -52,7 +52,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="basic_attack2" type="Node2D"]
+[node name="basic_attack2" type="Node"]
 
 [node name="kick" type="AnimatableBody2D" parent="."]
 visible = false

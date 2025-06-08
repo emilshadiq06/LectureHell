@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="consumable" load_steps=3 format=3 uid="uid://dq33uxvdaq68t"]
+
+[ext_resource type="Script" uid="uid://c5mufo0u4vd54" path="res://inventory/item/consumables/consumable.gd" id="1_qw45s"]
+[ext_resource type="Texture2D" uid="uid://bwqj24j7uq5np" path="res://inventory/img/burger.png" id="2_li63n"]
+
+[resource]
+script = ExtResource("1_qw45s")
+lose_on_use = false
+hp_regen = 5
+pp_regen = 5
+bites = 3
+name = "Burger"
+texture = ExtResource("2_li63n")
+metadata/_custom_type_script = "uid://c5mufo0u4vd54"

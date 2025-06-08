@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment" load_steps=3 format=3 uid="uid://c0pwj14bn2lir"]
+
+[ext_resource type="Script" uid="uid://jiv0rpbirird" path="res://inventory/item/gear/equipment.gd" id="1_2owcg"]
+[ext_resource type="Texture2D" uid="uid://djsxe0vvja425" path="res://inventory/img/clean pan.png" id="2_ipodm"]
+
+[resource]
+script = ExtResource("1_2owcg")
+hp_changed = 35
+pp_changed = 22
+walk_changed = 250.0
+dash_window_changed = 0.1
+name = "Cool Pan"
+texture = ExtResource("2_ipodm")
+metadata/_custom_type_script = "uid://jiv0rpbirird"

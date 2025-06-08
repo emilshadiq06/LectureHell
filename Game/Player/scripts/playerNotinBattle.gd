@@ -2,7 +2,7 @@
 extends Player
 
 @onready var player_team = $inventory/player_team_ui
-
+@onready var player_invUI = $inventory
 @export var inv :Inv
 @onready var skill = $skill
 

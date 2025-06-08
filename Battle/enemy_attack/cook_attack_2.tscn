@@ -70,7 +70,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Cook_Attack2" type="Node2D"]
+[node name="Cook_Attack2" type="Node"]
 
 [node name="Markers" type="Node" parent="."]
 

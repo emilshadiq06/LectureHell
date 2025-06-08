@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var parameters: Dictionary # This needs to be here so the scene can receive parameters
 

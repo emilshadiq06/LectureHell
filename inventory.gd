@@ -24,10 +24,13 @@ func find(item:InvItem):
 	var full_list : Array[int]
 	
 	for i in range(items.size()-2):
-		if items[i] != null and items[i].name == (item.name):
+		
+		if item != null and items[i] != null and items[i].name == (item.name):
 			#print(items[i].name)
 			#print(item_name)
 			
+			full_list.append(i)
+		elif item == null and  items[i] == null:
 			full_list.append(i)
 				#print(full_index)
 				#print(item_name)
@@ -40,6 +43,8 @@ func throw(index:int,item:InvItem):
 		items[index] = null
 		print(items)
 		print(items.size())
+		
+		
 	update.emit()
 	
 func use(index:int,item:InvItem,target:Node):

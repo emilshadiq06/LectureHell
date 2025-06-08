@@ -32,8 +32,13 @@ func _on_body_entered(body: Node2D) -> void:
 func item_pressed(item_index:int):
 	print(item_index)
 	if player.stats.money >= shop_prices[item_index]:
+		if player.find_item(null).size() == 0:
+				player.player_invUI.selected_items = 0 
+				player.player_invUI._on_throw_pressed()
+				#player.inv.throw(0,player.inv.items[0])
 		player.collect_item(shop_items[item_index].duplicate())
 		#player.stats.money -= shop_prices[item_index]
+
 		player.buy(shop_prices[item_index])
 		AudioPlayer.play_audio("res://sounds/moneysfx.mp3")
 	else:

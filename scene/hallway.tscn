@@ -5515,7 +5515,7 @@ size = Vector2(97, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yna0l"]
 size = Vector2(60, 78)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1jyvj")

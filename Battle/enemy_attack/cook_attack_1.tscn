@@ -110,7 +110,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="CookAttack1" type="Node2D"]
+[node name="CookAttack1" type="Node"]
 
 [node name="pan" type="AnimatableBody2D" parent="."]
 position = Vector2(699, 596)

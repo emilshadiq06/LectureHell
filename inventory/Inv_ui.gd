@@ -28,7 +28,7 @@ func update_slots():
 		equip_slots[i].update(inv.items[i+12])
 
 func _process(delta: float) -> void:
-	#print(selected_items)
+	
 	if Input.is_action_just_pressed("inventory") and get_parent().name != "CanvasLayer":
 		if is_open:
 			close()
@@ -69,8 +69,13 @@ func _on_throw_pressed() -> void:
 	var target = get_parent()
 	if selected_items < 12 and target.name=="Player":
 		choices.hide()
+		var throws = load("res://scene/gas_collectable.tscn").instantiate()
+		throws.item = inv.items[selected_items]
+		throws.global_position = target.global_position +target.cardinal_direction*40
+		get_tree().get_root().add_child(throws)
 		inv.throw(selected_items,inv.items[selected_items])
 		selected_items = 999
+
 	
 
 

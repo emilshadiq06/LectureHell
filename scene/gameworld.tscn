@@ -38,9 +38,7 @@ radius = 30.8058
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhtqh"]
 size = Vector2(107, 49)
 
-[node name="Gameworld" type="Node2D"]
-z_index = -1
-y_sort_enabled = true
+[node name="Gameworld" type="Node"]
 metadata/_edit_vertical_guides_ = [-411.0]
 
 [node name="vending_machine" type="StaticBody2D" parent="."]
@@ -52,11 +50,12 @@ position = Vector2(561, -33.75)
 shape = SubResource("RectangleShape2D_y8buu")
 
 [node name="shop" parent="vending_machine" instance=ExtResource("8_63w8i")]
+position = Vector2(561, 0)
 shop_items = Array[ExtResource("9_y8buu")]([ExtResource("10_3ys1n"), ExtResource("11_0qo4l"), ExtResource("12_ou7om"), ExtResource("13_jfy1l"), ExtResource("14_qflkg")])
 shop_prices = Array[float]([59.9, 4.0, 5.2, 3.5, 2.0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vending_machine/shop"]
-position = Vector2(559.5, 3.125)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_rapul")
 
 [node name="Sprite2D" type="Sprite2D" parent="vending_machine"]

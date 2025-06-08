@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=89 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="1_4wg8t"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
@@ -25,13 +25,22 @@
 [ext_resource type="Resource" uid="uid://dr7cjnx5yuocp" path="res://dialogue/dialog_resource/skateman2Dialogue.tres" id="21_awr61"]
 [ext_resource type="Resource" uid="uid://bh705x2ao0xjj" path="res://dialogue/dialog_resource/skatemanBeatedDialogue.tres" id="21_owyic"]
 [ext_resource type="Script" uid="uid://kk2dodqhghwc" path="res://Game/Enemy/battle_teleporter.gd" id="22_gcrio"]
+[ext_resource type="Resource" uid="uid://dq1k07n17kplw" path="res://inventory/item/GasCan.tres" id="28_3qn6h"]
 [ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="28_bjn06"]
 [ext_resource type="Script" uid="uid://bnjp2fhxv3o1y" path="res://scene/motor_man.gd" id="28_fqq6e"]
 [ext_resource type="Texture2D" uid="uid://cl6a55evp4eaa" path="res://character/motorcycle.png" id="28_lcp7f"]
-[ext_resource type="Resource" uid="uid://bnvvcja800qer" path="res://inventory/item/expendable/pipe_bomb.tres" id="29_bjn06"]
+[ext_resource type="Resource" uid="uid://coi3dddtxjte7" path="res://inventory/item/coconutoil.tres" id="29_lb8n2"]
 [ext_resource type="Texture2D" uid="uid://b7834ce0m5c3v" path="res://Game/Player/sprites/explode.png" id="29_vmah2"]
 [ext_resource type="Texture2D" uid="uid://bmpp6s67sxhls" path="res://Battle/sprites/fire.png" id="31_53amm"]
 [ext_resource type="Texture2D" uid="uid://boiwkaipqv2q3" path="res://character/Sprite NPC Normal/sprite npc2/Generic Male NPCs.png" id="32_o5v4g"]
+[ext_resource type="PackedScene" uid="uid://cp4efdxwwk5q0" path="res://shop.tscn" id="33_4qx2e"]
+[ext_resource type="Resource" uid="uid://driqjccti8w1f" path="res://dialogue/dialog_resource/Burgerman2.tres" id="33_jlhkm"]
+[ext_resource type="Resource" uid="uid://kdnquviljym3" path="res://dialogue/dialog_resource/Burger_man1.tres" id="33_jor1d"]
+[ext_resource type="Texture2D" uid="uid://d3y3bvs8p4rut" path="res://Game/Enemy/scripts/ExampleEnemySprite.png" id="34_jor1d"]
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="36_xslr7"]
+[ext_resource type="Resource" uid="uid://dq33uxvdaq68t" path="res://inventory/item/consumables/burger.tres" id="37_0bmih"]
+[ext_resource type="Texture2D" uid="uid://c1ppvil0pf2iy" path="res://map/32x32/sink.png" id="39_lb8n2"]
+[ext_resource type="Resource" uid="uid://df1e23eifob4" path="res://dialogue/dialog_resource/scrub.tres" id="40_3qn6h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka32h"]
 texture = ExtResource("1_cepea")
@@ -2714,7 +2723,6 @@ texture = ExtResource("2_x2hm1")
 20:90/0 = 0
 21:90/0 = 0
 22:90/0 = 0
-23:90/0 = 0
 24:90/0 = 0
 25:90/0 = 0
 27:90/0 = 0
@@ -4523,6 +4531,7 @@ texture = ExtResource("2_x2hm1")
 29:176/0 = 0
 30:176/0 = 0
 31:176/0 = 0
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wg8t"]
 texture = ExtResource("3_ecln5")
@@ -6638,7 +6647,7 @@ lose_on_found = false
 add_to_group = 999
 money = 0.0
 event_index = 0
-lines1 = Array[String](["Hehe"])
+lines1 = Array[String](["Ill go now"])
 lines2 = Array[String]([])
 lines3 = Array[String]([])
 lines4 = Array[String]([])
@@ -6688,7 +6697,7 @@ lose_on_found = false
 add_to_group = 999
 money = 0.0
 event_index = 0
-lines1 = Array[String](["......", ".......Yet again i cannot return home.", "It seems my children will starve tonight", "again.", "for the third time.", "this week.", "...", "....", "Let me follow you to walk this off."])
+lines1 = Array[String]([".......", "......", "......", ".......Yet again i cannot return home.", "It seems my children will starve tonight", "again.", "for the third time.", "this week.", "...", "....", "Let me follow you to walk this off."])
 lines2 = Array[String]([])
 lines3 = Array[String]([])
 lines4 = Array[String]([])
@@ -6703,11 +6712,11 @@ metadata/_custom_type_script = "uid://2canopkw4hie"
 [sub_resource type="Resource" id="Resource_53amm"]
 script = ExtResource("16_xkbms")
 quest_name = "Motorman Asks  for oil"
-item = ExtResource("29_bjn06")
+item = ExtResource("28_3qn6h")
 item_count = 1
 lose_on_found = true
 add_to_group = 999
-money = 0.0
+money = 50.0
 event_index = 2
 lines1 = Array[String](["Ya got any oil", "pls I can give some money for it", "It's in the kitchen at the cafeteria"])
 lines2 = Array[String](["Then get to it fool"])
@@ -6724,7 +6733,7 @@ metadata/_custom_type_script = "uid://2canopkw4hie"
 [sub_resource type="Resource" id="Resource_fqq6e"]
 script = ExtResource("16_xkbms")
 quest_name = "coconutOil"
-item = ExtResource("28_bjn06")
+item = ExtResource("29_lb8n2")
 item_count = 1
 lose_on_found = true
 add_to_group = 1
@@ -6901,7 +6910,33 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlhkm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fho4v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm3bb"]
+atlas = ExtResource("39_lb8n2")
+region = Rect2(0, 0, 34, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k05ss"]
+atlas = ExtResource("39_lb8n2")
+region = Rect2(34, 0, 34, 71)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dlxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm3bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k05ss")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_o5v4g")
@@ -6958,7 +6993,7 @@ shape = SubResource("CircleShape2D_lcp7f")
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("1_4wg8t")]
 
-[node name="skateman" type="StaticBody2D" parent="."]
+[node name="Sleepy Skateman" type="StaticBody2D" parent="."]
 position = Vector2(420, 183)
 script = ExtResource("28_fqq6e")
 stats = ExtResource("19_gcrio")
@@ -6966,34 +7001,31 @@ last_lines = Array[ExtResource("16_xkbms")]([null, SubResource("Resource_jor1d")
 next_dialogue = Array[ExtResource("16_xkbms")]([null, ExtResource("21_owyic"), ExtResource("21_awr61")])
 alternate_outcome = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="skateman"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sleepy Skateman"]
 shape = SubResource("CircleShape2D_gcrio")
 
-[node name="Chat" parent="skateman" instance=ExtResource("15_xkbms")]
+[node name="Chat" parent="Sleepy Skateman" instance=ExtResource("15_xkbms")]
 dialogue = ExtResource("20_xkbms")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="skateman/Chat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sleepy Skateman/Chat"]
 position = Vector2(-8.5, -15)
 shape = SubResource("RectangleShape2D_lcp7f")
 
-[node name="battle_teleport" type="Area2D" parent="skateman"]
+[node name="battle_teleport" type="Area2D" parent="Sleepy Skateman"]
 monitoring = false
 monitorable = false
 script = ExtResource("22_gcrio")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="skateman/battle_teleport"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sleepy Skateman/battle_teleport"]
 position = Vector2(-7, -15)
 shape = SubResource("RectangleShape2D_qxrrp")
 
-[node name="Sprite2D" type="Sprite2D" parent="skateman"]
+[node name="Sprite2D" type="Sprite2D" parent="Sleepy Skateman"]
 position = Vector2(-5, -3)
 rotation = 1.5708
 scale = Vector2(0.850001, 0.84375)
 texture = ExtResource("19_4wg8t")
 hframes = 21
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Motor Man" type="StaticBody2D" parent="."]
 position = Vector2(989, 174)
@@ -7030,5 +7062,51 @@ scale = Vector2(0.54375, 0.541667)
 sprite_frames = SubResource("SpriteFrames_mm3bb")
 animation = &"idle"
 
+[node name="Burger Shop" type="StaticBody2D" parent="."]
+position = Vector2(1144, 360)
+script = ExtResource("28_fqq6e")
+next_dialogue = Array[ExtResource("16_xkbms")]([null, ExtResource("33_jlhkm")])
+alternate_outcome = true
+
+[node name="Chat" parent="Burger Shop" instance=ExtResource("15_xkbms")]
+position = Vector2(-21, 0)
+dialogue = ExtResource("33_jor1d")
+move_if_true = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Burger Shop/Chat"]
+position = Vector2(6, 10)
+shape = SubResource("CircleShape2D_jlhkm")
+
+[node name="shop" parent="Burger Shop" instance=ExtResource("33_4qx2e")]
+position = Vector2(-2, 9)
+shop_items = Array[ExtResource("36_xslr7")]([ExtResource("37_0bmih")])
+shop_prices = Array[float]([6.0])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Burger Shop/shop"]
+shape = SubResource("CircleShape2D_jlhkm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Burger Shop"]
+position = Vector2(-6, -20)
+scale = Vector2(0.825, 0.828125)
+texture = ExtResource("34_jor1d")
+hframes = 21
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1188, 121)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_fho4v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+sprite_frames = SubResource("SpriteFrames_0dlxi")
+
+[node name="Chat" parent="StaticBody2D" instance=ExtResource("15_xkbms")]
+position = Vector2(-21, 0)
+dialogue = ExtResource("40_3qn6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Chat"]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_fho4v")
+
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
-[connection signal="body_entered" from="skateman/battle_teleport" to="skateman/battle_teleport" method="_on_body_entered"]
+[connection signal="body_entered" from="Sleepy Skateman/battle_teleport" to="Sleepy Skateman/battle_teleport" method="_on_body_entered"]

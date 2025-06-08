@@ -51,7 +51,7 @@ func _skill_button_pressed():
 		#print(effect_machine.origin)
 	
 func _on_enemy_group_next_player() -> void:
-
+	
 	if index < players.size()-1:
 		index += 1
 		switch_focus(index,index-1)
@@ -60,6 +60,8 @@ func _on_enemy_group_next_player() -> void:
 		index = 0
 		
 		switch_focus(index,players.size()-1)
+	if players[index].hp <= 0:
+		_on_brace_pressed()
 
 	
 func switch_focus(x,y):

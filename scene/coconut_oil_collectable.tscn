@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://chpysh7h0032l"]
 
-[ext_resource type="Script" uid="uid://borqjniredbof" path="res://coconut_oil_collectable.gd" id="1_s282k"]
+[ext_resource type="Script" path="res://coconut_oil_collectable.gd" id="1_s282k"]
 [ext_resource type="Texture2D" uid="uid://cseocwinjaj87" path="res://inventory/img/FairyBottle.png" id="2_j1nmw"]
-[ext_resource type="Resource" uid="uid://fbyafu2xkq4l" path="res://inventory/item/new_resource.tres" id="2_qmik7"]
+[ext_resource type="Resource" uid="uid://coi3dddtxjte7" path="res://inventory/item/coconutoil.tres" id="2_qmik7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qmik7"]
 radius = 14.0357

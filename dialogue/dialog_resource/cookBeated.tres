@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=3 format=3 uid="uid://u32s350k2tr1"]
+
+[ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="1_j3uko"]
+[ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="3_bfc5n"]
+
+[resource]
+script = ExtResource("3_bfc5n")
+quest_name = "Beated Cook"
+item = ExtResource("1_j3uko")
+item_count = 0
+lose_on_found = false
+add_to_group = 999
+money = 0.0
+event_index = 3
+lines1 = Array[String](["Ow darn you beat me", "Can you at least buy my oil", "My moother is kinda homeless"])
+lines2 = Array[String](["Yippee"])
+lines3 = Array[String](["Darn", "Plss", ":<"])
+lines4 = Array[String](["Thanks bro", "Lemme take it out"])
+lines5 = Array[String]([])
+position = Array[int]([0, 1, 0])
+line1Options = Array[Array]([["Fine", 1], ["No", 2]])
+line2Options = Array[Array]([["*grumble* *grumble* lard a- *grumble*", 3]])
+line3Options = Array[Array]([["*grumble* *grumble* lard ass- *grumble*", 3]])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"

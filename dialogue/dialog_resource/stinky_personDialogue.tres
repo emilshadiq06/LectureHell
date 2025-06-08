@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="dialogue_lines" load_steps=2 format=3 uid="uid://0dft1ncd5h80"]
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://0dft1ncd5h80"]
 
 [ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="1_g6c5i"]
+[ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="1_skqax"]
+[ext_resource type="Resource" uid="uid://bk4gi1m6smc7y" path="res://inventory/item/weapon/flail_weapon.tres" id="2_h5p8p"]
 
 [resource]
 script = ExtResource("1_g6c5i")
-quest_name = ""
+quest_name = "Odd pet"
+item = ExtResource("1_skqax")
 item_count = 0
-lose_on_found = false
+lose_on_found = true
+prized_item = ExtResource("2_h5p8p")
 add_to_group = 999
 money = 0.0
 event_index = 2
