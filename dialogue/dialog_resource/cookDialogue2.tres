@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_inoui")
-quest_name = "Skateman2"
+quest_name = "CookSelling"
 item = ExtResource("1_inoui")
 item_count = 0
 lose_on_found = false
