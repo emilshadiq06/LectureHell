@@ -84,10 +84,11 @@ func next_line():
 					chase = true
 					battlefr.monitorable = true
 					battlefr.monitoring = true
+					StatLoader.quest_array.append(dialogue_player.dialogue.quest_name)
 					#pass
 			
 			Dialogue.Third:
 				
-				if  dialogue_player.dialogue.index == dialogue_player.dialogue.event_index:
-					$end.monitorable = true
-					$end.monitoring = true
+
+				$end.monitorable = true
+				$end.monitoring = true

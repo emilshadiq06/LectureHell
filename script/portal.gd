@@ -8,10 +8,6 @@ extends Area2D
 var scene_folder = "res://scene/"
 
 func _on_body_entered(body: Node2D) -> void:
-	if connected_scene == "main_menu" and  body is Player:
-		body.inv = new_inv
-		StatLoader.player_group.clear()
-		body.stats = stats 
 	if body is Player and get_tree().current_scene.scene_file_path != "res://Battle/battle.tscn":
 		
 		StatLoader.previous_position = enter_pos

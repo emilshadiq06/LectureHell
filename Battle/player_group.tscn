@@ -11,15 +11,15 @@ script = ExtResource("1_c2m8u")
 
 [node name="Character" parent="." instance=ExtResource("2_hrqnr")]
 
+[node name="Sprite2D" parent="Character" index="1"]
+position = Vector2(-2, -21)
+texture = ExtResource("3_hrqnr")
+
 [node name="skateboard" type="Sprite2D" parent="Character"]
 visible = false
 position = Vector2(-2, 4.00001)
 scale = Vector2(1.09712, 1.44345)
 texture = ExtResource("3_do67r")
-
-[node name="Sprite2D" parent="Character" index="2"]
-position = Vector2(-2, -21)
-texture = ExtResource("3_hrqnr")
 
 [node name="skill" type="Node" parent="Character"]
 

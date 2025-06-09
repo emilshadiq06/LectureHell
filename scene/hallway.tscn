@@ -5684,7 +5684,7 @@ scale = Vector2(1.64302, 1.153)
 dialogue = ExtResource("12_yhclm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vamp/Chat"]
-position = Vector2(-2.73886, 18.2134)
+position = Vector2(-1.19209e-06, -26.8864)
 shape = SubResource("RectangleShape2D_pwhuy")
 
 [node name="battle_teleport" type="Area2D" parent="Vamp"]
@@ -5695,7 +5695,7 @@ monitorable = false
 script = ExtResource("15_6p47p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vamp/battle_teleport"]
-position = Vector2(-5.35947, -20.3366)
+position = Vector2(-6.55046, 38.6395)
 shape = SubResource("RectangleShape2D_s186y")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="Vamp"]
@@ -5715,7 +5715,7 @@ one_shot = true
 metadata/_custom_type_script = "uid://btq0f56iqlbgg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vamp/Portal3"]
-position = Vector2(-26, -319)
+position = Vector2(-25, -370)
 shape = SubResource("RectangleShape2D_yna0l")
 
 [node name="Sprite2D" type="Sprite2D" parent="Vamp"]
@@ -5725,11 +5725,9 @@ hframes = 21
 
 [node name="end" type="Area2D" parent="Vamp"]
 position = Vector2(-21, 150)
-monitoring = false
-monitorable = false
 script = ExtResource("5_yna0l")
 new_inv = SubResource("Resource_4fk3v")
-connected_scene = "main_menu"
+connected_scene = "menuscene/main_menu"
 stats = SubResource("Resource_pwhuy")
 metadata/_custom_type_script = "uid://btq0f56iqlbgg"
 
@@ -5771,6 +5769,7 @@ shape = SubResource("RectangleShape2D_6p47p")
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]
 [connection signal="body_entered" from="Vamp/battle_teleport" to="Vamp/battle_teleport" method="_on_body_entered"]
 [connection signal="body_entered" from="Vamp/Portal3" to="Vamp/Portal3" method="_on_body_entered"]
+[connection signal="body_entered" from="Vamp/end" to="Vamp/end" method="_on_body_entered"]
 [connection signal="body_entered" from="Idler" to="Idler" method="_on_body_entered"]
 [connection signal="body_exited" from="Idler" to="Idler" method="_on_body_exited"]
 [connection signal="body_entered" from="Idler2" to="Idler2" method="_on_body_entered"]
