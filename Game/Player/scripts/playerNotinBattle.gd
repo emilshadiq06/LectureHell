@@ -137,7 +137,17 @@ func addhealth(hp_regen,pp_regen):
 		StatLoader.player_group[player_team.index-1].stats.pp += pp_regen
 		player_team.update_group(StatLoader.player_group[player_team.index-1].stats,player_team.index)
 	
-	
+func addskill(skill:String):
+	if player_team.index == 0 and stats.skill.size()<2:
+		stats.skill.append(skill)
+		
+		
+		player_team.update_group(stats,player_team.index)
+	elif StatLoader.player_group[player_team.index-1].stats.skill.size()<2:
+		StatLoader.player_group[player_team.index-1].stats.skill.append(skill)
+
+		player_team.update_group(StatLoader.player_group[player_team.index-1].stats,player_team.index)
+
 func change_stat(hp_changed,pp_changed,walk_changed,dash_window_changed):
 	stats.max_hp = hp_changed
 	stats.dash = dash_window_changed
@@ -181,7 +191,3 @@ func update_pos():
 	if StatLoader.previous_position != Vector2.ZERO:
 		position = StatLoader.previous_position
 	#print(position)
-
-
-func _on_portal_3_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.

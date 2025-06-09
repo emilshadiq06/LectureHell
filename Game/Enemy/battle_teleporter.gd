@@ -21,7 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 			
 			var player_Battle = fight.get_node("PlayerGroup").get_node("Character")
-			player_Battle.get_node("skill").set_script(body.get_node("skill").get_script())
+			#player_Battle.get_node("skill").set_script(body.get_node("skill").get_script())
 			get_whole_group_player()
 			player_Battle.set_stats(body.stats)
 			player_Battle.change_sprite(body.sprite)
@@ -59,4 +59,4 @@ func get_whole_group_player():
 		player_inBattle.add_character()
 		player_inBattle.get_child(i+1).set_stats(StatLoader.player_group[i].stats)
 		player_inBattle.get_child(i+1).change_sprite(StatLoader.player_group[i].sprite) 
-		player_inBattle.get_child(i+1).get_node("skill").set_script(StatLoader.player_group[i].get_node("skill").get_script())
+		#player_inBattle.get_child(i+1).get_node("skill").set_script(StatLoader.player_group[i].get_node("skill").get_script())

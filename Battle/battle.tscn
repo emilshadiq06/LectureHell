@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://w7uslflb1vs5"]
+[gd_scene load_steps=10 format=3 uid="uid://w7uslflb1vs5"]
 
 [ext_resource type="Script" uid="uid://s64at01rj22r" path="res://Battle/battle.gd" id="1_5pv0p"]
 [ext_resource type="PackedScene" uid="uid://been0jwwxflop" path="res://Battle/player_group.tscn" id="1_ksnli"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgthgj1yqy0rl" path="res://inventory/inventory.tscn" id="3_do635"]
 [ext_resource type="Script" uid="uid://c3xxqlttsdeef" path="res://Battle/effect_machine.gd" id="3_o5tja"]
 [ext_resource type="Resource" uid="uid://c64jap0qamgb6" path="res://inventory/player_inventory.tres" id="3_ploow"]
+[ext_resource type="Script" uid="uid://c0gxfjuv2prb7" path="res://scene/shop/buy_item.gd" id="7_ihngk"]
 [ext_resource type="AudioStream" uid="uid://byk7i577q64cc" path="res://sounds/bgmusic.wav" id="8_bjo3u"]
 
 [node name="Battle" type="Node2D"]
@@ -126,6 +127,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 alignment = 1
 
+[node name="buy_item" type="Button" parent="CanvasLayer/actChoice/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_ihngk")
+
+[node name="buy_item2" type="Button" parent="CanvasLayer/actChoice/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_ihngk")
+item_index = 1
+
 [node name="brace" type="Button" parent="CanvasLayer/actChoice/VBoxContainer"]
 layout_mode = 2
 text = "brace (skip round)"
@@ -160,6 +170,8 @@ volume_db = -20.0
 [connection signal="pressed" from="CanvasLayer/attackChoice/normalAttack" to="EnemyGroup" method="_on_normal_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/attackChoice/criticalAttack" to="EnemyGroup" method="_on_critical_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/attackChoice/back" to="EnemyGroup" method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/actChoice/VBoxContainer/buy_item" to="CanvasLayer/actChoice/VBoxContainer/buy_item" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/actChoice/VBoxContainer/buy_item2" to="CanvasLayer/actChoice/VBoxContainer/buy_item2" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/actChoice/VBoxContainer/brace" to="PlayerGroup" method="_on_brace_pressed"]
 [connection signal="pressed" from="CanvasLayer/actChoice/VBoxContainer/back" to="PlayerGroup" method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/actChoice/VBoxContainer/back" to="EnemyGroup" method="_on_back_pressed"]

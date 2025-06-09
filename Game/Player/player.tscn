@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://daprrjii34ki7"]
+[gd_scene load_steps=35 format=3 uid="uid://daprrjii34ki7"]
 
 [ext_resource type="Texture2D" uid="uid://c3bvsa0hx26wx" path="res://Game/Player/sprites/ExamplePlayerSprite.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cu6x2eqp8lrjq" path="res://Game/Player/scripts/playerNotinBattle.gd" id="1_s3asc"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b62kbje0son8x" path="res://Game/Player/player_team_ui.tscn" id="5_q0m6d"]
 [ext_resource type="Script" uid="uid://ci86h3bm1350e" path="res://Game/Player/scripts/state_walk.gd" id="5_vh1aq"]
 [ext_resource type="Script" uid="uid://dcj03lvuf6pqy" path="res://Game/Player/scripts/state_run.gd" id="6_4ddeg"]
-[ext_resource type="Script" uid="uid://dusl07hlwigir" path="res://Game/Player/scripts/skill/skill_nap.gd" id="8_vh1aq"]
 [ext_resource type="PackedScene" uid="uid://cgthgj1yqy0rl" path="res://inventory/inventory.tscn" id="9_4ddeg"]
 [ext_resource type="Texture2D" uid="uid://b7834ce0m5c3v" path="res://Game/Player/sprites/explode.png" id="12_qwver"]
 
@@ -329,9 +328,6 @@ script = ExtResource("6_4ddeg")
 move_speed = 300.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="skill" type="Node" parent="."]
-script = ExtResource("8_vh1aq")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

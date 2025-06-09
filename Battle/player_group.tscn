@@ -21,7 +21,11 @@ position = Vector2(-2, 4.00001)
 scale = Vector2(1.09712, 1.44345)
 texture = ExtResource("3_do67r")
 
-[node name="skill" type="Node" parent="Character"]
+[node name="skills" type="Node" parent="Character"]
+
+[node name="skill1" type="Node" parent="Character/skills"]
+
+[node name="skill2" type="Node" parent="Character/skills"]
 
 [node name="ProgressBarPP" type="ProgressBar" parent="Character"]
 z_index = 3

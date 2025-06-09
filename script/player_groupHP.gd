@@ -1,10 +1,13 @@
 extends Control
 var index : int = 0
-
+var skill_index : int = 999
 @export var player_stat : stat
 @onready var player_team = $group/Player
 @onready var team = $group.get_children()
+@onready var skill1 = $skillnstuff/skill/buy_item
+@onready var skill2 = $skillnstuff/skill/buy_item2
 # Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	
 	update_group(player_stat,index)
@@ -13,7 +16,8 @@ func _ready() -> void:
 	for i in range(StatLoader.player_group.size()):
 		update_group(StatLoader.player_group[i].stats,i+1)
 		team[i+1].show()
-
+	skill1.item_pos.connect(_skill_button_pressed)
+	skill2.item_pos.connect(_skill_button_pressed)
 
 
 func update_group(member_stats:stat,member_index:int):
@@ -29,16 +33,31 @@ func update_group(member_stats:stat,member_index:int):
 
 func _on_button_pressed() -> void:
 	index = 0
+	for i in range(player_stat.skill.size()):
+		$skillnstuff/skills.get_child(i).set_script(load(player_stat.skill[i]))
+		$skillnstuff/skills.get_child(i)._ready()
+		$skillnstuff/skill.get_child(i+1).text = $skillnstuff/skills.get_child(i).skill_name
+	$skillnstuff.position.x = team[index].position.x*250*index
 	pass # Replace with function body.
 
 
 func _on_button_2_pressed() -> void:
-	index = 1
+	index = 1 #StatLoader.player_group[i].stats,i+1)
+	for i in range(StatLoader.player_group[index-1].stats.skill.size()):
+		$skillnstuff/skills.get_child(i).set_script(load(StatLoader.player_group[index-1].stats.skill[i]))
+		$skillnstuff/skills.get_child(i)._ready()
+		$skillnstuff/skill.get_child(i+1).text = $skillnstuff/skills.get_child(i).skill_name
+	$skillnstuff.position.x = team[0].position.x*250*index
 	pass # Replace with function body.
 
 
 func _on_button_3_pressed() -> void:
 	index = 2
+	for i in range(StatLoader.player_group[index-1].stats.skill.size()):
+		$skillnstuff/skills.get_child(i).set_script(load(StatLoader.player_group[index-1].stats.skill[i]))
+		$skillnstuff/skills.get_child(i)._ready()
+		$skillnstuff/skill.get_child(i+1).text = $skillnstuff/skills.get_child(i).skill_name
+	$skillnstuff.position.x = team[0].position.x*250*index
 	pass # Replace with function body.
 
 
@@ -71,3 +90,20 @@ func _on_hidden() -> void:
 		if j is Button:
 			j.release_focus()
 				
+func _skill_button_pressed(item_pos:int):
+	if skill_index == 999:
+		skill_index = item_pos
+		$skillnstuff/SkillInteract.show()
+	else:
+		
+		skill_index = 999
+		$skillnstuff/SkillInteract.hide()
+	pass
+
+
+func _on_description_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_remove_pressed() -> void:
+	pass # Replace with function body.

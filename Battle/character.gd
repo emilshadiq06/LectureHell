@@ -51,6 +51,11 @@ func set_stats(stats):
 		$PP.text = "PP "+ str(int(pp)) +"/" +str(int(MAX_PP))
 		walk_speed = stats.walk
 		dash_window = stats.dash
+		$skills.get_child(0).set_script(load("res://Game/Player/scripts/skill/skill.gd"))
+		$skills.get_child(1).set_script(load("res://Game/Player/scripts/skill/skill.gd"))
+		for i in range(stats.skill.size()):
+			$skills.get_child(i).set_script(load(stats.skill[i]))
+			#print($skill.get_script())
 	elif stats is enemy_stats:
 		attk_str = stats.attack
 		attk_duration = stats.attack_duration

@@ -14,9 +14,10 @@ var stage = load("res://Battle/stage.tscn").instantiate()
 var attk_groups : Array
 signal got_duration(duration:float)
 @export var inv: Inv
+@onready var skill1 = $"../CanvasLayer/actChoice/VBoxContainer/buy_item"
+@onready var skill2= $"../CanvasLayer/actChoice/VBoxContainer/buy_item2"
 
-var skill_button
-var effect_array = []
+var effect_array : Array
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
@@ -25,11 +26,17 @@ func _ready() -> void:
 		players[i].position =  Vector2(0,130*i)
 		players[i].sprite.set_frame(15)
 		players[i].sprite.scale.x = -1
-		effect_array.push_back(players[i].get_node("skill"))
-		#print(players[i].get_node("skill").skill_name)
 		
-	skill_button = Button.new()
-	skill_button.pressed.connect(_skill_button_pressed)
+
+		#effect_array.push_back(players[i].get_node("skill2"))
+		#print(players[i].get_node("skill").skill_name)
+	for i in range(players.size()): 
+		effect_array.push_back(players[i].get_node("skills"))
+	#print(effect_dict)
+	
+	
+	skill1.item_pos.connect(_skill_button_pressed)
+	skill2.item_pos.connect(_skill_button_pressed)
 #print(effect_array)
 	players[0]._focus()
 	walk_speed = players[0].walk_speed
@@ -39,11 +46,13 @@ func add_character():
 	
 	var new_char = get_node("Character").duplicate()
 	add_child(new_char)
-func _skill_button_pressed():
-	if effect_array[index].get_skill_effects() not in effect_machine.origin:
+
+func _skill_button_pressed(item_index:int):
+	
+	if effect_array[index].get_child(item_index).get_skill_effects() not in effect_machine.origin:
 		
 		
-		effect_machine.add_child(effect_array[index].duplicate())
+		effect_machine.add_child(effect_array[index].get_child(item_index).duplicate())
 		actChoice.hide()
 		effect_machine.initialize()
 	else:
@@ -109,8 +118,10 @@ func _on_act_pressed() -> void:
 	#print(battle)
 	choice.hide()
 
-	skill_button.text = effect_array[index].get_skill_effects()[0]
-	actChoice.get_child(0).add_child(skill_button)
+	skill1.text = effect_array[index].get_child(skill1.item_index).get_skill_effects()[0]
+#	actChoice.get_child(0).add_child(skill1)
+	skill2.text = effect_array[index].get_child(skill2.item_index).get_skill_effects()[0]
+	#actChoice.get_child(0).add_child(skill2)
 	actChoice.show()
 
 

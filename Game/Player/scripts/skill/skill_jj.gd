@@ -37,7 +37,7 @@ func Enter() ->void:
 func Exit() ->void:
 	enemies.damage_multiplier /= dmg_multiplier_attack
 	players.in_damage_multiplier /= dmg_multiplier_received
-	#print("i cant stop")
+	print("i cant stop")
 	
 	players.stop_anim(dancer)
 	players.players[dancer].sprite.set_frame(15)

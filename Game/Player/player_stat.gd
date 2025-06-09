@@ -12,3 +12,4 @@ class_name playerStat
 @export var money : float
 @export var walk: float = 250
 @export var dash: float = 0.1
+@export var skill : Array[String]

@@ -11,6 +11,7 @@ weapons = Array[Array]([[6, 0.9]])
 money = 0.0
 walk = 250.0
 dash = 0.1
+skill = Array[String](["res://Game/Player/scripts/skill/skill_hitnrun.gd"])
 name = "Ali"
 max_hp = 20
 hp = 20

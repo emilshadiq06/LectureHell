@@ -11,6 +11,7 @@ weapons = Array[Array]([[2, 1.0], [1, 1.0], [2, 1.0]])
 money = 60.0
 walk = 250.0
 dash = 0.1
+skill = Array[String](["res://Game/Player/scripts/skill/skill_nap.gd"])
 name = "You"
 max_hp = 20
 hp = 20

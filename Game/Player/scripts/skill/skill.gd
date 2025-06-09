@@ -21,6 +21,8 @@ func _ready() -> void:
 
 #what happens when player enters state
 func Enter() ->void:
+	var enemies = $"../../EnemyGroup"
+	enemies.show_choice()
 	pass
 	
 #what happens when player enters state

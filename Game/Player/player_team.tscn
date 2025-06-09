@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5efgetg7rv68"]
+[gd_scene load_steps=6 format=3 uid="uid://c5efgetg7rv68"]
 
 [ext_resource type="Script" uid="uid://dvbwx8atfdql0" path="res://Game/Player/friend.gd" id="1_oo7rm"]
 [ext_resource type="Resource" uid="uid://bdsa25ep1nu6f" path="res://Game/Player/friend1_stats.tres" id="2_oo7rm"]
-[ext_resource type="Script" uid="uid://dj6siuoocyysf" path="res://Game/Player/scripts/skill/skill_hitnrun.gd" id="3_2ft11"]
 [ext_resource type="Texture2D" uid="uid://ca564y8cod7ph" path="res://Game/Player/sprites/npc_sprite_skater.png" id="4_2ft11"]
 [ext_resource type="Resource" uid="uid://b84vv0hveag7k" path="res://Game/Player/friend2_stats.tres" id="4_s5rng"]
-[ext_resource type="Script" uid="uid://c6axeu050b3rm" path="res://Game/Player/scripts/skill/skill_ramp.gd" id="6_2ft11"]
 [ext_resource type="Texture2D" uid="uid://d3vvuxymxrtsy" path="res://Game/Player/sprites/ExampleAbuSprite.png" id="7_2ft11"]
 
 [node name="player_team" type="Node2D"]
@@ -15,9 +13,6 @@ script = ExtResource("1_oo7rm")
 stats = ExtResource("2_oo7rm")
 sprite = NodePath("Sprite2D")
 
-[node name="skill" type="Node" parent="friend1"]
-script = ExtResource("3_2ft11")
-
 [node name="Sprite2D" type="Sprite2D" parent="friend1"]
 texture = ExtResource("4_2ft11")
 hframes = 21
@@ -26,9 +21,6 @@ hframes = 21
 script = ExtResource("1_oo7rm")
 stats = ExtResource("4_s5rng")
 sprite = NodePath("Sprite2D")
-
-[node name="skill" type="Node" parent="friend2"]
-script = ExtResource("6_2ft11")
 
 [node name="Sprite2D" type="Sprite2D" parent="friend2"]
 position = Vector2(-1, -1)
