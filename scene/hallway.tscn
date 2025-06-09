@@ -5725,6 +5725,8 @@ hframes = 21
 
 [node name="end" type="Area2D" parent="Vamp"]
 position = Vector2(-21, 150)
+monitoring = false
+monitorable = false
 script = ExtResource("5_yna0l")
 new_inv = SubResource("Resource_4fk3v")
 connected_scene = "menuscene/main_menu"
