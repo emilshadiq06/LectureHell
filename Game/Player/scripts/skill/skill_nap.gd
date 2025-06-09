@@ -42,7 +42,7 @@ func Process():
 	$"../../AudioStreamPlayer".stream = sfx
 	$"../../AudioStreamPlayer".play()
 	$"../../AudioStreamPlayer".play()
-	if players.index == sleeping_player and players.index.hp >0: # and enemies.action_queue.size() < players.index + 1:
+	if players.index == sleeping_player and players.players[sleeping_player].hp >0: # and enemies.action_queue.size() < players.index + 1:
 		players.players[sleeping_player].hp += hp_regen
 		players._on_brace_pressed()
 

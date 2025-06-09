@@ -1,14 +1,15 @@
-[gd_scene load_steps=35 format=3 uid="uid://bagxqtev2wrrm"]
+[gd_scene load_steps=42 format=3 uid="uid://bagxqtev2wrrm"]
 
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_sb1hd"]
 [ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="2_rjx13"]
 [ext_resource type="Texture2D" uid="uid://bigdrdqoqmmk1" path="res://map/32x32/HKU tileset.png" id="3_yna0l"]
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="4_rjx13"]
 [ext_resource type="Script" uid="uid://btq0f56iqlbgg" path="res://script/portal.gd" id="5_yna0l"]
+[ext_resource type="Script" uid="uid://c18hy6u1wlti2" path="res://Game/Player/player_stat.gd" id="6_4fk3v"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="6_ckwbh"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="7_o4uqb"]
 [ext_resource type="Script" uid="uid://ccl27ut6kmchw" path="res://scene/vamp.gd" id="8_dcd4q"]
-[ext_resource type="Resource" uid="uid://cqdluynxv6peo" path="res://Game/enemy_stat3.tres" id="10_pt36a"]
+[ext_resource type="Script" uid="uid://bxu1nri0o51p" path="res://Game/Enemy/scripts/enemy_stat.gd" id="10_6p47p"]
 [ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="10_rej13"]
 [ext_resource type="Resource" uid="uid://bdhh81lay6aar" path="res://dialogue/dialog_resource/vamp2.tres" id="12_ikog4"]
 [ext_resource type="Texture2D" uid="uid://qsci3i5jna1u" path="res://Assets/Enemies/Vlad/VladIdle2.png" id="12_w2v58"]
@@ -22,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://duqukvqa3wtvb" path="res://Battle/sprites/box.png" id="18_rej13"]
 [ext_resource type="Texture2D" uid="uid://dtf04klqo6egs" path="res://Assets/Enemies/Vlad/VladBattler.png" id="21_afrax"]
 [ext_resource type="Script" uid="uid://si1muliu3kbk" path="res://scene/idle_monologer.gd" id="22_6p47p"]
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="22_demcf"]
+[ext_resource type="Script" uid="uid://b8u10hb65xcvh" path="res://inventory.gd" id="23_4fk3v"]
 [ext_resource type="Script" uid="uid://ddj1b144gsp36" path="res://Game/Player/scripts/state_idle.gd" id="23_w357m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fe337"]
@@ -5531,6 +5534,17 @@ size = Vector2(97, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yna0l"]
 size = Vector2(60, 144)
 
+[sub_resource type="Resource" id="Resource_w357m"]
+script = ExtResource("10_6p47p")
+randomize = true
+attack = Array[String](["res://Battle/enemy_attack/basic_enemy_attack.tscn", "res://Battle/enemy_attack/cook_attack_1.tscn", "res://Battle/enemy_attack/cook_attack_2.tscn", "res://Battle/enemy_attack/skate_course.tscn", "res://Battle/enemy_attack/skate_attack.tscn", "res://Battle/enemy_attack/skate_attack_2.tscn", "res://Battle/enemy_attack/utensil_throw.tscn", "res://Battle/enemy_attack/basic_attack_2.tscn"])
+attack_duration = 6.0
+attk_loaded = 2
+name = "Vamp"
+max_hp = 200
+hp = 200
+metadata/_custom_type_script = "uid://bxu1nri0o51p"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwhuy"]
 size = Vector2(39.5612, 123.157)
 
@@ -5561,6 +5575,28 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Resource" id="Resource_4fk3v"]
+script = ExtResource("23_4fk3v")
+items = Array[ExtResource("22_demcf")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://b8u10hb65xcvh"
+
+[sub_resource type="Resource" id="Resource_pwhuy"]
+script = ExtResource("6_4fk3v")
+take_damage = 0
+max_pp = 20
+pp = 20
+weapons = Array[Array]([])
+money = 0.0
+walk = 250.0
+dash = 0.1
+name = ""
+max_hp = 20
+hp = 20
+metadata/_custom_type_script = "uid://c18hy6u1wlti2"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fk3v"]
+size = Vector2(109, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afrax"]
 size = Vector2(255, 20)
@@ -5639,7 +5675,7 @@ offset_bottom = -3.0
 position = Vector2(729, 418)
 collision_layer = 16
 script = ExtResource("8_dcd4q")
-stats = ExtResource("10_pt36a")
+stats = SubResource("Resource_w357m")
 next_dialogue = Array[ExtResource("10_rej13")]([null, ExtResource("12_ikog4"), ExtResource("13_iu5n3")])
 
 [node name="Chat" parent="Vamp" instance=ExtResource("13_afrax")]
@@ -5686,6 +5722,20 @@ shape = SubResource("RectangleShape2D_yna0l")
 visible = false
 texture = ExtResource("21_afrax")
 hframes = 21
+
+[node name="end" type="Area2D" parent="Vamp"]
+position = Vector2(-21, 150)
+monitoring = false
+monitorable = false
+script = ExtResource("5_yna0l")
+new_inv = SubResource("Resource_4fk3v")
+connected_scene = "main_menu"
+stats = SubResource("Resource_pwhuy")
+metadata/_custom_type_script = "uid://btq0f56iqlbgg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vamp/end"]
+position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_4fk3v")
 
 [node name="Idler" type="Area2D" parent="."]
 monitoring = false

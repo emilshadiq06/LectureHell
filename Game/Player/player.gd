@@ -177,7 +177,7 @@ func AnimDirect() -> String:
 		return "side"
 
 func take_damage(damage):
-	if dash_window <= 0:
+	if dash_window <= 0 and $"../../PlayerGroup"!= null:
 		#for i in $"../../PlayerGroup".players:
 		#await get_tree().create_timer(0.02).timeout
 		dash_window = 0.5

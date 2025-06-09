@@ -7,7 +7,7 @@ extends CharacterBody2D
 var randomize:bool = false
 var MAX_HP : float = 20
 @onready var battle_name = $Name
-
+@onready var skateboard = $skateboard
 var weapons : Array[Array]
 
 var start_battle = true

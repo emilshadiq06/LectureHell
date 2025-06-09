@@ -89,12 +89,5 @@ func next_line():
 			Dialogue.Third:
 				
 				if  dialogue_player.dialogue.index == dialogue_player.dialogue.event_index:
-					pass
-					
-					
-				
-				
-			
-		
-	
-	
+					$end.monitorable = true
+					$end.monitoring = true

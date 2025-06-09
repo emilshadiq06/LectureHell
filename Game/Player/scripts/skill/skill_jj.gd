@@ -27,10 +27,7 @@ func Enter() ->void:
 	players.play_dance()
 	dancer = players.index
 	players._on_brace_pressed()
-	#enemies.emit_signal("next_player")
-	#enemies.action_queue.push_back("null")
-#	if enemies.action_queue.size() < players.players.size():
-		#enemies.show_choice()
+	
 	var sfx = load("res://sounds/Maimunah.mp3")
 	$"../../AudioStreamPlayer".stream = sfx
 	$"../../AudioStreamPlayer".play()
