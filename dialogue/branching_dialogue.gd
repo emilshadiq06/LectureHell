@@ -4,7 +4,7 @@ class_name DialogueBranch
 #var quest_completed:bool = false
 
 @export var dialogue: dialogue_lines  
-@export var move_if_true: bool = false
+#@export var move_if_true: bool = false
 var item: InvItem
 var item_count: int  
 var lose_on_found :bool 
@@ -67,6 +67,11 @@ func item_pressed(item_index:int):
 			print(item_count)
 			print(player.find_item(item).size())
 			print("item count")
+			if lose_on_found:
+				
+				for i in range(item_count):
+					
+					player.inv.throw(player.find_item(item)[0],player.inv.items[player.find_item(item)[0]])
 			if prized_item != null:
 				print("empties")
 				print(player.find_item(null).size())
@@ -75,17 +80,13 @@ func item_pressed(item_index:int):
 					player.player_invUI._on_throw_pressed()
 					#player.inv.throw(0,player.inv.items[0])
 				player.collect_item(prized_item.duplicate())
-			if lose_on_found:
-				#player.find_item(item)
-				for i in range(item_count):
-					
-					player.inv.throw(player.find_item(item)[0],player.inv.items[player.find_item(item)[0]])
+			
 			if add_to_group < 2 and StatLoader.player_group.size()<3:
 				var team = load("res://Game/Player/player_team.tscn").instantiate()
 				StatLoader.addplayer_to_group(team.get_child(add_to_group).duplicate())
 				team = null
-				
-			StatLoader.quest_array.append(dialogue.quest_name)
+			if dialogue.quest_name not in StatLoader.quest_array:
+				StatLoader.quest_array.append(dialogue.quest_name)
 			player.buy(-money) 
 			#print(StatLoader.quest_array)
 		elif item != null and dialogue.index == dialogue.event_index and player.find_item(item).size()<item_count and dialogue.quest_name not in StatLoader.quest_array:

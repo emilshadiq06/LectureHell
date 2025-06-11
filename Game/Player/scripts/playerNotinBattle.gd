@@ -139,7 +139,7 @@ func addhealth(hp_regen,pp_regen):
 	
 func addskill(skill:String,item:skill_item):
 	if player_team.index == 0 and stats.skill.size()<2:
-		stats.skill.push_back(skill)
+		stats.skill.push_back(item)
 		
 		
 		player_team.update_group(stats,player_team.index)
@@ -147,7 +147,7 @@ func addskill(skill:String,item:skill_item):
 		inv.throw(find_item(item)[0],item)#throw(index:int,item:InvItem)
 		
 	elif player_team.index != 0 and StatLoader.player_group[player_team.index-1].stats.skill.size()<2:
-		StatLoader.player_group[player_team.index-1].stats.skill.push_back(skill)
+		StatLoader.player_group[player_team.index-1].stats.skill.push_back(item)
 		print(StatLoader.player_group[player_team.index-1].stats.skill)
 		player_team.update_group(StatLoader.player_group[player_team.index-1].stats,player_team.index)
 		if player_team.index == 1:

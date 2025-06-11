@@ -58,7 +58,7 @@ func _skill_button_pressed(item_index:int):
 		effect_machine.initialize()
 	else:
 		DialogueManagerScript.start_dialog(Vector2(300,500), ["effect is on cooldown"])
-		#print(effect_machine.origin)
+		actChoice.show()#print(effect_machine.origin)
 	
 func _on_enemy_group_next_player() -> void:
 	

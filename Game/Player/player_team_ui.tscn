@@ -213,38 +213,44 @@ offset_top = -43.0
 offset_right = 38.0
 offset_bottom = -3.0
 
-[node name="skill" type="VBoxContainer" parent="skillnstuff"]
+[node name="ScrollContainer" type="ScrollContainer" parent="skillnstuff"]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 366.0
-offset_right = 171.0
-offset_bottom = 462.0
-scale = Vector2(0.8, 1)
+offset_left = 43.0
+offset_top = 303.0
+offset_right = 218.0
+offset_bottom = 496.0
 
-[node name="Label" type="Label" parent="skillnstuff/skill"]
+[node name="skill" type="VBoxContainer" parent="skillnstuff/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="skillnstuff/ScrollContainer/skill"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "skills"
 
-[node name="buy_item" type="Button" parent="skillnstuff/skill"]
+[node name="buy_item" type="Button" parent="skillnstuff/ScrollContainer/skill"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 script = ExtResource("3_sdkqf")
 
-[node name="buy_item2" type="Button" parent="skillnstuff/skill"]
+[node name="buy_item2" type="Button" parent="skillnstuff/ScrollContainer/skill"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 script = ExtResource("3_sdkqf")
 item_index = 1
 
 [node name="SkillInteract" type="VBoxContainer" parent="skillnstuff"]
-visible = false
 layout_mode = 0
-offset_left = 207.0
-offset_top = 394.0
-offset_right = 367.0
-offset_bottom = 490.0
+offset_left = 219.0
+offset_top = 318.0
+offset_right = 379.0
+offset_bottom = 414.0
 scale = Vector2(0.8, 1)
+
+[node name="remove" type="Button" parent="skillnstuff/SkillInteract"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "remove skill"
 
 [node name="description" type="Button" parent="skillnstuff/SkillInteract"]
 layout_mode = 2
@@ -252,12 +258,11 @@ theme_override_font_sizes/font_size = 20
 text = "skill description"
 
 [node name="MarginContainer" type="MarginContainer" parent="skillnstuff/SkillInteract/description"]
-visible = false
 layout_mode = 0
-offset_left = 170.0
-offset_top = -4.0
-offset_right = 400.0
-offset_bottom = 36.0
+offset_left = -30.0
+offset_top = 37.0
+offset_right = 200.0
+offset_bottom = 77.0
 
 [node name="Panel" type="Panel" parent="skillnstuff/SkillInteract/description/MarginContainer"]
 layout_mode = 2
@@ -265,11 +270,6 @@ layout_mode = 2
 [node name="Label" type="Label" parent="skillnstuff/SkillInteract/description/MarginContainer"]
 layout_mode = 2
 autowrap_mode = 2
-
-[node name="remove" type="Button" parent="skillnstuff/SkillInteract"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "remove skill"
 
 [node name="skills" type="Node" parent="skillnstuff"]
 
@@ -281,7 +281,7 @@ text = "remove skill"
 [connection signal="pressed" from="group/Player/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="group/Player2/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="group/Player3/Button3" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="skillnstuff/skill/buy_item" to="skillnstuff/skill/buy_item" method="_on_pressed"]
-[connection signal="pressed" from="skillnstuff/skill/buy_item2" to="skillnstuff/skill/buy_item2" method="_on_pressed"]
-[connection signal="pressed" from="skillnstuff/SkillInteract/description" to="." method="_on_description_pressed"]
+[connection signal="pressed" from="skillnstuff/ScrollContainer/skill/buy_item" to="skillnstuff/ScrollContainer/skill/buy_item" method="_on_pressed"]
+[connection signal="pressed" from="skillnstuff/ScrollContainer/skill/buy_item2" to="skillnstuff/ScrollContainer/skill/buy_item2" method="_on_pressed"]
 [connection signal="pressed" from="skillnstuff/SkillInteract/remove" to="." method="_on_remove_pressed"]
+[connection signal="pressed" from="skillnstuff/SkillInteract/description" to="." method="_on_description_pressed"]

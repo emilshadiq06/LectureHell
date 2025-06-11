@@ -35,7 +35,7 @@ func Enter() ->void:
 		
 	
 		
-	tween.tween_property(bomber, "global_position",hitted.global_position-bomber.global_position,0.3)
+	tween.tween_property(bomber, "global_position",hitted.global_position-bomber.global_position,0.35)
 	
 	bomber.hp -= 15
 	hitted.removehealth(25)

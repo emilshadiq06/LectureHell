@@ -65,8 +65,11 @@ func hit_play():
 		
 		
 		#if attk_target.dash_window <= 0.01:
+		if attk_target.parry < 999:
+			attk_target.parry = 0
+		
 		attk_target.dash_window = 0
-		attk_target.take_damage(damage)
+		attk_target.take_damage(damage,self)
 			
 			
 		#tween.tween_callback(self.queue_free)

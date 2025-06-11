@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="playerStat" load_steps=2 format=3 uid="uid://bdsa25ep1nu6f"]
+[gd_resource type="Resource" script_class="playerStat" load_steps=4 format=3 uid="uid://bdsa25ep1nu6f"]
 
 [ext_resource type="Script" uid="uid://c18hy6u1wlti2" path="res://Game/Player/player_stat.gd" id="1_gsvte"]
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="2_2pxma"]
+[ext_resource type="Resource" uid="uid://c8k3mhv0s66y2" path="res://inventory/item/skill_items/hit_n_run.tres" id="3_u5vii"]
 
 [resource]
 script = ExtResource("1_gsvte")
@@ -11,7 +13,7 @@ weapons = Array[Array]([[6, 0.9]])
 money = 0.0
 walk = 250.0
 dash = 0.1
-skill = Array[String](["res://Game/Player/scripts/skill/skill_hitnrun.gd"])
+skill = Array[ExtResource("2_2pxma")]([ExtResource("3_u5vii")])
 name = "Ali"
 max_hp = 20
 hp = 20

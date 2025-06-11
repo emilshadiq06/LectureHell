@@ -7,8 +7,8 @@ func _ready() -> void:
 	skill_name = "Parry"
 	skill_desc = "deflect enemy attacks within a 0.25 window. 1s cooldown (RED ATTACKS CANT BE PARRIED)"
 
-	turns_duration = 3
-	cooldown = 4
+	turns_duration = 4
+	cooldown = 5
 	
 	pass
 

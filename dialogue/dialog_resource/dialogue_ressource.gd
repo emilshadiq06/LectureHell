@@ -10,6 +10,11 @@ var index : int
 @export var add_to_group: int =999
 @export var money: float
 
+@export var move_on_event_index : int =999
+@export var move_on_last_index : int = 999
+@export var ending : int = 999
+@export var fight : bool
+
 @export var event_index: int
 @export var lines1: Array[String]
 @export var lines2: Array[String]

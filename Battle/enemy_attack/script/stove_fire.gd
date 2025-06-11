@@ -82,9 +82,9 @@ func hit_play():
 			tween.tween_property(self, "position",(position + Vector2(cos(rotation-deg_to_rad(90)),sin(rotation-deg_to_rad(90))) * 1500), 0.2)
 		#tween.tween_property(self, "global_position", (attk_target.global_position - global_position).normalized()*50, 0.2)
 		if attk_target.global_position.x <= global_position.x + 80 and attk_target.global_position.x >= global_position.x - 80 and ! horizontal:
-			attk_target.take_damage(damage)
+			attk_target.take_damage(damage,self)
 		elif attk_target.global_position.y <= global_position.y + 80 and attk_target.global_position.y >= global_position.y - 80  and horizontal:
-			attk_target.take_damage(damage)
+			attk_target.take_damage(damage,self)
 			#print(rotation - 0.005)
 			#print(global_position.direction_to(attk_target.global_position).angle())
 			

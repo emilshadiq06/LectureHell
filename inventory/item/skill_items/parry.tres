@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="skill_item" load_steps=3 format=3 uid="uid://d10px7x6us7ii"]
+
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="1_ha3bm"]
+[ext_resource type="Texture2D" uid="uid://jmq4flhpfi5y" path="res://Game/Player/scripts/skill/parry_icon.png" id="2_0c2p7"]
+
+[resource]
+script = ExtResource("1_ha3bm")
+skill = "res://Game/Player/scripts/skill/skill_parry.gd"
+name = "Parry"
+texture = ExtResource("2_0c2p7")
+metadata/_custom_type_script = "uid://c6dtkvbthu2lh"

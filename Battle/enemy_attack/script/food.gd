@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 func hit_play():
 	if is_alive and get_parent():
 		
-		attk_target.take_damage(damage)
+		attk_target.take_damage(damage,self)
 		self.queue_free()
 
 

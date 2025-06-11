@@ -1,6 +1,9 @@
-[gd_resource type="Resource" script_class="playerStat" load_steps=2 format=3 uid="uid://iaxtbs02j25k"]
+[gd_resource type="Resource" script_class="playerStat" load_steps=5 format=3 uid="uid://iaxtbs02j25k"]
 
 [ext_resource type="Script" uid="uid://c18hy6u1wlti2" path="res://Game/Player/player_stat.gd" id="1_81t4h"]
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="2_bpfkl"]
+[ext_resource type="Resource" uid="uid://ddimpiui1xbvb" path="res://inventory/item/skill_items/jj_item.tres" id="3_gs7bl"]
+[ext_resource type="Resource" uid="uid://bjfqskhfnpn6d" path="res://inventory/item/skill_items/nap_item.tres" id="4_ptyqb"]
 
 [resource]
 script = ExtResource("1_81t4h")
@@ -11,7 +14,7 @@ weapons = Array[Array]([[2, 1.0], [1, 1.0], [2, 1.0]])
 money = 20.0
 walk = 250.0
 dash = 0.1
-skill = Array[String](["res://Game/Player/scripts/skill/skill_gambling.gd", "res://Game/Player/scripts/skill/skill_parry.gd"])
+skill = Array[ExtResource("2_bpfkl")]([ExtResource("3_gs7bl"), ExtResource("4_ptyqb")])
 name = "You"
 max_hp = 20
 hp = 20

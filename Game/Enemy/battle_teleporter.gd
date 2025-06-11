@@ -25,7 +25,7 @@ func _on_body_entered(body: Node2D) -> void:
 			get_whole_group_player()
 			player_Battle.set_stats(body.stats)
 			player_Battle.change_sprite(body.sprite)
-			StatLoader.get_skill(body.get_node("skill"))
+			#StatLoader.get_skill(body.get_node("skill"))
 			StatLoader.previous_scene = get_parent().get_parent().scene_file_path 
 			StatLoader.previous_position =body.global_position
 			#Function.load_screen_to_scene("res://Battle/battle.tscn", {"test": "test"})

@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 		anim_player.play("kick")
 		
 		
-		await get_tree().create_timer(0.55).timeout
+		await get_tree().create_timer(0.35).timeout
 		
 		#position += Vector2(cos(rotation),sin(rotation)) * sqrt((abs(position-attk_target.position).x)**2 +  (abs(position-attk_target.position).y)**2)
 		
@@ -60,8 +60,8 @@ func _process(delta: float) -> void:
 func hit_play():
 	
 	if is_alive:
-		
 		$AudioStreamPlayer.play()
+		await get_tree().create_timer(0.2).timeout
 
 		var tween = get_tree().create_tween().bind_node(self)#.set_trans(Tween.TRANS_ELASTIC)
 		
@@ -74,7 +74,7 @@ func hit_play():
 			tween.tween_property(self, "position", position + Vector2(cos(rotation),sin(rotation)) * sqrt((abs(position-attk_target.position).x)**2 +  (abs(position-attk_target.position).y)**2)*3, 0.2)
 		#tween.tween_property(self, "global_position", (attk_target.global_position - global_position).normalized()*50, 0.2)
 		if abs(attk_target.position -projected_pos).x + abs(attk_target.position -projected_pos).y < 60:
-			attk_target.take_damage(damage)
+			attk_target.take_damage(damage,self)
 			
 			
 		tween.tween_callback(self.queue_free)

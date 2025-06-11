@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="skill_item" load_steps=3 format=3 uid="uid://v85hscol86bc"]
+
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="1_knvhd"]
+[ext_resource type="Texture2D" uid="uid://cl6a55evp4eaa" path="res://character/motorcycle.png" id="2_he55s"]
+
+[resource]
+script = ExtResource("1_knvhd")
+skill = "res://Game/Player/scripts/skill/skill_ramp.gd"
+name = "Revv Up"
+texture = ExtResource("2_he55s")
+metadata/_custom_type_script = "uid://c6dtkvbthu2lh"

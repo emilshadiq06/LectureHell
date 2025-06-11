@@ -6,8 +6,8 @@ var players
 func _ready() -> void:
 	skill_name = "JJ aisyah \n
 	maimunah X \n
-	\nvelocity X \n
-	Garamramaram Madududung"
+	velocity X \n
+	Garamramaram\n Madududung"
 	skill_desc = "taunt enemies to raise attack damage dealt but also raise incoming damage too"
 	dmg_multiplier_attack = 1.5
 	
@@ -30,6 +30,7 @@ func Enter() ->void:
 	
 	var sfx = load("res://sounds/Maimunah.mp3")
 	$"../../AudioStreamPlayer".stream = sfx
+	$"../../AudioStreamPlayer".volume_db = -15
 	$"../../AudioStreamPlayer".play()
 	pass
 	
@@ -38,7 +39,7 @@ func Exit() ->void:
 	enemies.damage_multiplier /= dmg_multiplier_attack
 	players.in_damage_multiplier /= dmg_multiplier_received
 	print("i cant stop")
-	
+	$"../../AudioStreamPlayer".volume_db = 0
 	players.stop_anim(dancer)
 	players.players[dancer].sprite.set_frame(15)
 	

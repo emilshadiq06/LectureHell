@@ -5432,7 +5432,6 @@ collision_layer = 16
 script = ExtResource("9_7e0e2")
 stats = SubResource("Resource_jodii")
 next_dialogue = Array[ExtResource("11_7nsik")]([null, ExtResource("12_7e0e2"), ExtResource("13_7e0e2")])
-alternate_outcome = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cook Didi"]
 position = Vector2(0, -4)

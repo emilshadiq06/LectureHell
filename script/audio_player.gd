@@ -5,6 +5,7 @@ func play_audio(audio:String):
 	var new_audio_player = AudioStreamPlayer2D.new()
 	add_sibling(new_audio_player)
 	new_audio_player.stream = sfx
+	new_audio_player.volume_db = -15
 	new_audio_player.play()
 	if new_audio_player.finished:
 		await get_tree().create_timer(new_audio_player.stream.get_length()).timeout

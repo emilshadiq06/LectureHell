@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="skill_item" load_steps=3 format=3 uid="uid://c8k3mhv0s66y2"]
+
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="1_tqe86"]
+[ext_resource type="Texture2D" uid="uid://cspg1fx6ynbgq" path="res://Battle/sprites/skateboard.png" id="2_k2j1n"]
+
+[resource]
+script = ExtResource("1_tqe86")
+skill = "res://Game/Player/scripts/skill/skill_hitnrun.gd"
+name = "Hit n Run"
+texture = ExtResource("2_k2j1n")
+metadata/_custom_type_script = "uid://c6dtkvbthu2lh"

@@ -43,7 +43,7 @@ func hit_play():
 		
 		
 		#if attk_target.dash_window <= 0.01:
-		attk_target.take_damage(damage)
+		attk_target.take_damage(damage,self)
 			
 			
 		#tween.tween_callback(self.queue_free)

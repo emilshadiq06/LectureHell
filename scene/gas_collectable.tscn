@@ -17,6 +17,7 @@ texture = ExtResource("2_d7xuh")
 [node name="interactable_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactable_area"]
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_eiqh0")
 
 [connection signal="body_entered" from="interactable_area" to="." method="_on_interactable_area_body_entered"]

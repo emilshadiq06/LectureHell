@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="skill_item" load_steps=3 format=3 uid="uid://5mp1s1d78x54"]
+
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="1_tnmau"]
+[ext_resource type="Texture2D" uid="uid://707nb621fn7b" path="res://Game/Player/scripts/skill/gambling_icon.png" id="2_tnmau"]
+
+[resource]
+script = ExtResource("1_tnmau")
+skill = "res://Game/Player/scripts/skill/skill_gambling.gd"
+name = "Gamble"
+texture = ExtResource("2_tnmau")
+metadata/_custom_type_script = "uid://c6dtkvbthu2lh"

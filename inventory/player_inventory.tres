@@ -4,14 +4,14 @@
 [ext_resource type="Script" uid="uid://b8u10hb65xcvh" path="res://inventory.gd" id="1_tyxcc"]
 [ext_resource type="Resource" uid="uid://c7bol0of7sp0x" path="res://inventory/item/consumables/red_apple.tres" id="2_3ih0p"]
 [ext_resource type="Resource" uid="uid://bfbv7dmwu2ahs" path="res://inventory/item/stinkyFly_item.tres" id="2_65xq6"]
-[ext_resource type="Resource" uid="uid://hpbpvsiloe1o" path="res://inventory/item/gear/willpower.tres" id="3_3ih0p"]
 [ext_resource type="Resource" uid="uid://ddqehfrhqfbbt" path="res://inventory/item/weapon/pen_weapon.tres" id="4_65xq6"]
 [ext_resource type="Resource" uid="uid://bnvvcja800qer" path="res://inventory/item/expendable/pipe_bomb.tres" id="4_cwv8g"]
 [ext_resource type="Resource" uid="uid://dq1k07n17kplw" path="res://inventory/item/GasCan.tres" id="5_pu72b"]
 [ext_resource type="Resource" uid="uid://coi3dddtxjte7" path="res://inventory/item/coconutoil.tres" id="6_cajua"]
-[ext_resource type="Resource" uid="uid://bjfqskhfnpn6d" path="res://inventory/item/skill_items/nap_item.tres" id="7_rfny4"]
+[ext_resource type="Resource" uid="uid://d10px7x6us7ii" path="res://inventory/item/skill_items/parry.tres" id="7_rfny4"]
+[ext_resource type="Resource" uid="uid://5mp1s1d78x54" path="res://inventory/item/skill_items/gamble.tres" id="8_rdqbr"]
 
 [resource]
 script = ExtResource("1_tyxcc")
-items = Array[ExtResource("1_fi1x0")]([ExtResource("2_3ih0p"), ExtResource("2_65xq6"), ExtResource("4_cwv8g"), ExtResource("5_pu72b"), ExtResource("6_cajua"), ExtResource("7_rfny4"), null, ExtResource("3_3ih0p"), ExtResource("4_65xq6"), null, null, null, null, null])
+items = Array[ExtResource("1_fi1x0")]([ExtResource("2_3ih0p"), ExtResource("2_65xq6"), ExtResource("4_cwv8g"), ExtResource("5_pu72b"), ExtResource("6_cajua"), null, ExtResource("7_rfny4"), ExtResource("8_rdqbr"), ExtResource("4_65xq6"), null, null, null, null, null])
 metadata/_custom_type_script = "uid://b8u10hb65xcvh"

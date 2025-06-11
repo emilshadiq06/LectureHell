@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bagxqtev2wrrm"]
+[gd_scene load_steps=43 format=3 uid="uid://bagxqtev2wrrm"]
 
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_sb1hd"]
 [ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="2_rjx13"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="22_demcf"]
 [ext_resource type="Script" uid="uid://b8u10hb65xcvh" path="res://inventory.gd" id="23_4fk3v"]
 [ext_resource type="Script" uid="uid://ddj1b144gsp36" path="res://Game/Player/scripts/state_idle.gd" id="23_w357m"]
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="25_pwhuy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fe337"]
 texture = ExtResource("1_sb1hd")
@@ -5590,6 +5591,7 @@ weapons = Array[Array]([])
 money = 0.0
 walk = 250.0
 dash = 0.1
+skill = Array[ExtResource("25_pwhuy")]([])
 name = ""
 max_hp = 20
 hp = 20

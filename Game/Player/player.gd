@@ -185,7 +185,7 @@ func AnimDirect() -> String:
 		$skateboard.rotation_degrees =0
 		return "side"
 
-func take_damage(damage):
+func take_damage(damage,object):
 	var sfxprry = load("res://sounds/prry.mp3")
 	if dash_window <= 0 and $"../../PlayerGroup"!= null and (parry < 0.52 or parry>=0.75):
 		#for i in $"../../PlayerGroup".players:
@@ -201,7 +201,11 @@ func take_damage(damage):
 
 			animation_player.stop()
 	elif parry >= 0.52 and parry<0.75:
-		dash_window = 0.5
+		if object:
+			
+			var tween = get_tree().create_tween().bind_node(object)
+			tween.tween_property(object, "position",(object.position-position)*30, 0.2).set_delay(0.05)
+		dash_window = 0.4
 		$"../../EnemyGroup".enemies.pick_random().take_damage(damage*$"../../EnemyGroup".damage_multiplier)
 		$AnimatedSprite2D.play("parry")	#await get_tree().create_timer(animation_player.current_animation_length-0.2).timeout
 		$AudioStreamPlayer.stream = sfxprry

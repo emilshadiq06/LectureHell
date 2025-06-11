@@ -6653,6 +6653,10 @@ item_count = 0
 lose_on_found = false
 add_to_group = 999
 money = 0.0
+move_on_event_index = 999
+move_on_last_index = 999
+ending = 999
+fight = false
 event_index = 0
 lines1 = Array[String](["Ill go now"])
 lines2 = Array[String]([])
@@ -6682,6 +6686,10 @@ item_count = 0
 lose_on_found = false
 add_to_group = 999
 money = 0.0
+move_on_event_index = 999
+move_on_last_index = 999
+ending = 999
+fight = false
 event_index = 0
 lines1 = Array[String](["AAAAAAAAAAAAA", "AAAAAA", "ok im overeacting"])
 lines2 = Array[String]([])
@@ -6703,6 +6711,10 @@ item_count = 0
 lose_on_found = false
 add_to_group = 999
 money = 0.0
+move_on_event_index = 999
+move_on_last_index = 999
+ending = 999
+fight = false
 event_index = 0
 lines1 = Array[String]([".......", "......", "......", ".......Yet again i cannot return home.", "It seems my children will starve tonight", "again.", "for the third time.", "this week.", "...", "....", "Let me follow you to walk this off."])
 lines2 = Array[String]([])
@@ -6724,6 +6736,10 @@ item_count = 1
 lose_on_found = true
 add_to_group = 999
 money = 50.0
+move_on_event_index = 999
+move_on_last_index = 2
+ending = 0
+fight = false
 event_index = 2
 lines1 = Array[String](["Ya got any oil", "pls I can give some money for it", "It's in the kitchen at the cafeteria"])
 lines2 = Array[String](["Then get to it fool"])
@@ -6745,6 +6761,10 @@ item_count = 1
 lose_on_found = true
 add_to_group = 1
 money = 0.0
+move_on_event_index = 999
+move_on_last_index = 999
+ending = 1
+fight = false
 event_index = 2
 lines1 = Array[String](["Ya got the \"oil\" or whatever it is", "It better not be cooking oil or coconut oil"])
 lines2 = Array[String](["Then get to it foo"])
@@ -6760,12 +6780,16 @@ metadata/_custom_type_script = "uid://2canopkw4hie"
 
 [sub_resource type="Resource" id="Resource_bjn06"]
 script = ExtResource("16_xkbms")
-quest_name = "Motorman"
+quest_name = "Motorman scams you"
 item = ExtResource("28_bjn06")
 item_count = 0
 lose_on_found = false
 add_to_group = 999
 money = -10.0
+move_on_event_index = 1
+move_on_last_index = 1
+ending = 999
+fight = false
 event_index = 2
 lines1 = Array[String](["Hey bro, can u help me?", "I need some money for oil"])
 lines2 = Array[String](["Pls help, its very important...", "My bike broke down and its out of gas"])
@@ -6944,7 +6968,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mm3bb"]
-size = Vector2(255, 20)
+size = Vector2(65.5, 20)
 
 [node name="Node" type="Node"]
 
@@ -7009,7 +7033,6 @@ script = ExtResource("28_fqq6e")
 stats = ExtResource("19_gcrio")
 last_lines = Array[ExtResource("16_xkbms")]([null, SubResource("Resource_jor1d")])
 next_dialogue = Array[ExtResource("16_xkbms")]([null, ExtResource("21_owyic"), ExtResource("21_awr61")])
-alternate_outcome = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sleepy Skateman"]
 shape = SubResource("CircleShape2D_gcrio")
@@ -7076,23 +7099,22 @@ animation = &"idle"
 position = Vector2(1144, 360)
 script = ExtResource("28_fqq6e")
 next_dialogue = Array[ExtResource("16_xkbms")]([null, ExtResource("33_jlhkm")])
-alternate_outcome = true
 
 [node name="Chat" parent="Burger Shop" instance=ExtResource("15_xkbms")]
-position = Vector2(-21, 0)
+position = Vector2(-12, -4)
 dialogue = ExtResource("33_jor1d")
-move_if_true = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Burger Shop/Chat"]
-position = Vector2(6, 10)
+position = Vector2(5, 30)
 shape = SubResource("CircleShape2D_jlhkm")
 
 [node name="shop" parent="Burger Shop" instance=ExtResource("33_4qx2e")]
-position = Vector2(-2, 9)
+position = Vector2(-5, -38)
 shop_items = Array[ExtResource("36_xslr7")]([ExtResource("37_0bmih")])
 shop_prices = Array[float]([6.0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Burger Shop/shop"]
+position = Vector2(-2, 63)
 shape = SubResource("CircleShape2D_jlhkm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Burger Shop"]
@@ -7119,12 +7141,13 @@ position = Vector2(21, 19)
 shape = SubResource("RectangleShape2D_fho4v")
 
 [node name="Idler" type="Area2D" parent="."]
+position = Vector2(-42, 361)
 script = ExtResource("42_fho4v")
 lines = Array[String](["I should walk around to take my mind off things", "I better watch out theres a lot of thugs tho"])
 idler_name = "park"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Idler"]
-position = Vector2(257, 244)
+position = Vector2(162.25, 244)
 shape = SubResource("RectangleShape2D_mm3bb")
 
 [node name="State_Idle" type="Node" parent="Idler"]
