@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="skill_item" load_steps=3 format=3 uid="uid://ddimpiui1xbvb"]
+
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="1_n8ba8"]
+[ext_resource type="Texture2D" uid="uid://djcu7ktwku7cl" path="res://Game/Player/scripts/skill/jj_icon.png" id="2_7f4wy"]
+
+[resource]
+script = ExtResource("1_n8ba8")
+skill = "res://Game/Player/scripts/skill/skill_jj.gd"
+name = "skill : JJ"
+texture = ExtResource("2_7f4wy")
+metadata/_custom_type_script = "uid://c6dtkvbthu2lh"

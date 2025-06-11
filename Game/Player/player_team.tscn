@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://b84vv0hveag7k" path="res://Game/Player/friend2_stats.tres" id="4_s5rng"]
 [ext_resource type="Texture2D" uid="uid://d3vvuxymxrtsy" path="res://Game/Player/sprites/ExampleAbuSprite.png" id="7_2ft11"]
 
-[node name="player_team" type="Node2D"]
+[node name="player_team" type="Node"]
 
 [node name="friend1" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_oo7rm")

@@ -51,7 +51,7 @@ func DoEffect():
 
 func _on_enemy_group_start_turn() -> void:
 	await get_tree().create_timer(0.1).timeout
-	if skill.size()>0 and started:
+	if skill.size()>0 and started and players.index == 0:
 		DoEffect()
 	pass
 

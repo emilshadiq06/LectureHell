@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 				crit = false
 			if action_queue.size() < players.size():
 				show_choice()
-
+				pass
 
 			
 	if action_queue.size() >= players.size() and not is_battling:
@@ -122,6 +122,7 @@ func _action(stack):
 	weapons.clear()
 	crit_list.clear()
 	action_queue.clear()
+	
 	if $"..".count_hp(enemies) == false:
 		bullet_hell.emit()
 	else:
@@ -170,12 +171,12 @@ func _on_bullet_hell_timer_timeout() -> void:
 	start_turn.emit()
 	_reset_focus()
 	for i in player_group.attk_groups:
-		get_parent().get_node(player_group.stage.get_path()).remove_child(i)
+		get_parent().get_node(player_group.stage_instance.get_path()).remove_child(i)
 		print(i)
 	print(player_group.attk_groups)
 	player_group.attk_groups.clear()
 	print(player_group.attk_groups)
-	get_parent().remove_child(player_group.stage)
+	get_parent().remove_child(player_group.stage_instance)
 	#action_queue.clear()
 	is_battling = false
 	show_choice()

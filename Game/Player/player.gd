@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 var dashes : int = 4
-#var last_position:Vector2
+var parry : float
 const DOUBLETAP_DELAY = .30
 var doubletap_time = DOUBLETAP_DELAY
 var last_keycode = 0
@@ -28,6 +28,7 @@ func _ready() -> void:
 	compare_position.connect(compare_pos)
 	state_machine.initialize(self)
 	update_progress()
+	parry = $"../../PlayerGroup".parry
 	dash_window_duration = $"../../PlayerGroup".dash_window #0.1 #
 	$StateMachine/walk. move_speed =  $"../../PlayerGroup".walk_speed# 250 #
 	if $"../../PlayerGroup".dash_window == 0.25:
@@ -77,11 +78,13 @@ func _process(delta):
 		dash_cooldown = 1.5
 		update_progress()
 	doubletap_time -= delta
-	
+	parry -= delta
 	dash_cooldown -= delta
 	
 	dash_window -= delta
 	direction = Vector2(Input.get_axis("left","right"),Input.get_axis("up","down")).normalized()
+	if parry >= 0.45 and parry<0.75:
+		pass
 	if dash_window > 0 and dashing:
 		direction*=2
 		#current_anim = animation_player.current_animation
@@ -123,6 +126,12 @@ func compare_pos(last_col_normal:Vector2,grav_dir:Vector2):
 		
 func _input(event: InputEvent):
 	var sfx = load("res://Assets/sounds/shot_sound.wav")
+	var sfx2 = load("res://sounds/block.mp3")
+	if Input.is_action_just_pressed("shoot") and parry <= 0:
+		$AnimatedSprite2D.play("block")
+		$AudioStreamPlayer.stream = sfx2
+		$AudioStreamPlayer.play()
+		parry = 0.75
 	if Input.is_action_just_pressed("left")||Input.is_action_just_pressed("right")||Input.is_action_just_pressed("up")||Input.is_action_just_pressed("down") :
 		
 		if last_keycode == event.keycode and  doubletap_time >= 0 and doubletap_time < 0.2: 
@@ -177,7 +186,8 @@ func AnimDirect() -> String:
 		return "side"
 
 func take_damage(damage):
-	if dash_window <= 0 and $"../../PlayerGroup"!= null:
+	var sfxprry = load("res://sounds/prry.mp3")
+	if dash_window <= 0 and $"../../PlayerGroup"!= null and (parry < 0.52 or parry>=0.75):
 		#for i in $"../../PlayerGroup".players:
 		#await get_tree().create_timer(0.02).timeout
 		dash_window = 0.5
@@ -190,8 +200,11 @@ func take_damage(damage):
 			animation_player.play("dash")
 
 			animation_player.stop()
-			
-			#await get_tree().create_timer(animation_player.current_animation_length-0.2).timeout
-			#modulate.a = 1
+	elif parry >= 0.52 and parry<0.75:
+		dash_window = 0.5
+		$"../../EnemyGroup".enemies.pick_random().take_damage(damage*$"../../EnemyGroup".damage_multiplier)
+		$AnimatedSprite2D.play("parry")	#await get_tree().create_timer(animation_player.current_animation_length-0.2).timeout
+		$AudioStreamPlayer.stream = sfxprry
+		$AudioStreamPlayer.play()	#modulate.a = 1
 			
 			#await get_tree().create_timer(animation_player.current_animation_length-0.2).timeout

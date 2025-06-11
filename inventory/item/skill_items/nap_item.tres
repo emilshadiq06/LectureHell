@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="skill_item" load_steps=3 format=3 uid="uid://bjfqskhfnpn6d"]
+
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="1_jw86k"]
+[ext_resource type="Texture2D" uid="uid://dcqpcpnljhtbj" path="res://Game/Player/scripts/skill/nap_icon.png" id="2_o8rps"]
+
+[resource]
+script = ExtResource("1_jw86k")
+skill = "res://Game/Player/scripts/skill/skill_nap.gd"
+name = "Skill : nap"
+texture = ExtResource("2_o8rps")
+metadata/_custom_type_script = "uid://c6dtkvbthu2lh"

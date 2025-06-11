@@ -28,9 +28,15 @@ func _on_enemy_group_start_turn() -> void:
 		$CanvasLayer.hide()
 		StatLoader.money = 50.33
 		var player_stat = preload("res://Game/Player/player_stats.tres")
-		player_stat.hp = group_player_array[0].hp
+		if  player_stat.hp >0:
+			player_stat.hp = group_player_array[0].hp
+		else:
+			player_stat.hp = 1
 		for i in range(group_player_array.size()-1):
-			StatLoader.player_group[i].stats.hp = group_player_array[i+1].hp
+			if  group_player_array[i+1].hp >0:
+				StatLoader.player_group[i].stats.hp = group_player_array[i+1].hp
+			else:
+				StatLoader.player_group[i].stats.hp = 1
 		await get_tree().create_timer(2).timeout
 		scene_tree.call_deferred("change_scene_to_file", StatLoader.previous_scene)
 	elif lose == true:

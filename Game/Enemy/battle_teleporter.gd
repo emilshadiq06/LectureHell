@@ -42,7 +42,7 @@ func get_whole_group(group):
 	
 	if get_parent().is_in_group(group):
 		for i in range(get_tree().get_nodes_in_group(group).size()):
-			StatLoader.dead_array.push_back((get_tree().get_nodes_in_group(group)[i]).name)
+			#StatLoader.dead_array.push_back((get_tree().get_nodes_in_group(group)[i]).name)
 			enemy_Battle.add_character()
 			#if get_tree().get_nodes_in_group(group)[i].find_child("stats"):
 				

@@ -235,12 +235,15 @@ script = ExtResource("3_sdkqf")
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 script = ExtResource("3_sdkqf")
+item_index = 1
 
 [node name="SkillInteract" type="VBoxContainer" parent="skillnstuff"]
-offset_left = 228.0
-offset_top = 364.0
-offset_right = 358.0
-offset_bottom = 460.0
+visible = false
+layout_mode = 0
+offset_left = 207.0
+offset_top = 394.0
+offset_right = 367.0
+offset_bottom = 490.0
 scale = Vector2(0.8, 1)
 
 [node name="description" type="Button" parent="skillnstuff/SkillInteract"]
@@ -253,7 +256,7 @@ visible = false
 layout_mode = 0
 offset_left = 170.0
 offset_top = -4.0
-offset_right = 210.0
+offset_right = 400.0
 offset_bottom = 36.0
 
 [node name="Panel" type="Panel" parent="skillnstuff/SkillInteract/description/MarginContainer"]
@@ -261,6 +264,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="skillnstuff/SkillInteract/description/MarginContainer"]
 layout_mode = 2
+autowrap_mode = 2
 
 [node name="remove" type="Button" parent="skillnstuff/SkillInteract"]
 layout_mode = 2

@@ -1,5 +1,6 @@
 extends Node
 var in_damage_multiplier : float = 1
+var parry : float = 9999
 var index : int = 0
 var players: Array = []
 var walk_speed : float
@@ -8,7 +9,7 @@ var dash_window : float
 @onready var choice = $"../CanvasLayer/choice"
 @onready var actChoice = $"../CanvasLayer/actChoice"
 @onready var inventory = $"../CanvasLayer/inventory"
-var stage = load("res://Battle/stage.tscn").instantiate()
+var stage = load("res://Battle/stage.tscn")#.instantiate()
 @onready var effect_machine = $"../effectMachine"
 @onready var bullet_hell_timer =  $"../BulletHellTimer"
 var attk_groups : Array
@@ -16,7 +17,7 @@ signal got_duration(duration:float)
 @export var inv: Inv
 @onready var skill1 = $"../CanvasLayer/actChoice/VBoxContainer/buy_item"
 @onready var skill2= $"../CanvasLayer/actChoice/VBoxContainer/buy_item2"
-
+var stage_instance
 var effect_array : Array
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -69,7 +70,7 @@ func _on_enemy_group_next_player() -> void:
 		index = 0
 		
 		switch_focus(index,players.size()-1)
-	if players[index].hp <= 0:
+	if players[index].hp <= 0 and players.size()>1:
 		_on_brace_pressed()
 
 	
@@ -82,9 +83,10 @@ func switch_focus(x,y):
 
 func _on_enemy_group_bullet_hell() -> void:
 	enemies.choice.hide()
+	stage_instance = stage.instantiate()
 	var duration: float = 0
-	get_parent().add_child(stage)
-	get_parent().move_child(stage,7)
+	get_parent().add_child(stage_instance)
+	get_parent().move_child(stage_instance,7)
 	 
 	await get_tree().create_timer(1).timeout
 	for i in enemies.enemies:
@@ -102,7 +104,7 @@ func _on_enemy_group_bullet_hell() -> void:
 				attk_groups.append(attack)
 
 				await get_tree().create_timer(i.attk_duration/((i.attk_loaded+1))).timeout
-				stage.add_child(attack)
+				stage_instance.add_child(attack)
 				
 		duration += i.attk_duration
 	duration /= enemies.enemies.size()
@@ -117,10 +119,11 @@ func _on_act_pressed() -> void:
 	
 	#print(battle)
 	choice.hide()
-
-	skill1.text = effect_array[index].get_child(skill1.item_index).get_skill_effects()[0]
+	if effect_array[index].get_child(skill1.item_index).get_script() != null:
+		skill1.text = effect_array[index].get_child(skill1.item_index).get_skill_effects()[0]
 #	actChoice.get_child(0).add_child(skill1)
-	skill2.text = effect_array[index].get_child(skill2.item_index).get_skill_effects()[0]
+	if effect_array[index].get_child(skill2.item_index).get_script() != null:
+		skill2.text = effect_array[index].get_child(skill2.item_index).get_skill_effects()[0]
 	#actChoice.get_child(0).add_child(skill2)
 	actChoice.show()
 

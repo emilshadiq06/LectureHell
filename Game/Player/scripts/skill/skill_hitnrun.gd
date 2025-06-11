@@ -25,19 +25,21 @@ func Enter() ->void:
 	origin = bomber.global_position
 	bomber.skateboard.show()
 	AudioPlayer.play_audio("res://Assets/sounds/shot_sound.wav")
+	players._on_brace_pressed()
 	await get_tree().create_timer(1).timeout
+	
 	var tween = get_tree().create_tween().bind_node(bomber)#.set_trans(Tween.TRANS_ELASTIC)
 	var hitted = enemies.enemies.pick_random()
 		
-		
+	
 		
 	
 		
 	tween.tween_property(bomber, "global_position",hitted.global_position-bomber.global_position,0.3)
 	
-	players.players[players.index].hp -= 15
+	bomber.hp -= 15
 	hitted.removehealth(25)
-	players._on_brace_pressed()
+	
 
 	var sfx = load("res://sounds/zoom.wav")
 	$"../../AudioStreamPlayer".stream = sfx
@@ -47,6 +49,7 @@ func Enter() ->void:
 #what happens when player enters state
 func Exit() ->void:
 	#enemies.damage_multiplier /= dmg_multiplier_attack
+	
 	bomber.global_position = origin
 	await get_tree().create_timer(0.2).timeout
 	bomber.skateboard.hide()

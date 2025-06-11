@@ -137,17 +137,25 @@ func addhealth(hp_regen,pp_regen):
 		StatLoader.player_group[player_team.index-1].stats.pp += pp_regen
 		player_team.update_group(StatLoader.player_group[player_team.index-1].stats,player_team.index)
 	
-func addskill(skill:String):
+func addskill(skill:String,item:skill_item):
 	if player_team.index == 0 and stats.skill.size()<2:
-		stats.skill.append(skill)
+		stats.skill.push_back(skill)
 		
 		
 		player_team.update_group(stats,player_team.index)
-	elif StatLoader.player_group[player_team.index-1].stats.skill.size()<2:
-		StatLoader.player_group[player_team.index-1].stats.skill.append(skill)
-
+		player_team._on_button_pressed()
+		inv.throw(find_item(item)[0],item)#throw(index:int,item:InvItem)
+		
+	elif player_team.index != 0 and StatLoader.player_group[player_team.index-1].stats.skill.size()<2:
+		StatLoader.player_group[player_team.index-1].stats.skill.push_back(skill)
+		print(StatLoader.player_group[player_team.index-1].stats.skill)
 		player_team.update_group(StatLoader.player_group[player_team.index-1].stats,player_team.index)
-
+		if player_team.index == 1:
+			player_team._on_button_2_pressed()
+		else:
+			player_team._on_button_3_pressed()
+		inv.throw(find_item(item)[0],item)
+	
 func change_stat(hp_changed,pp_changed,walk_changed,dash_window_changed):
 	stats.max_hp = hp_changed
 	stats.dash = dash_window_changed
