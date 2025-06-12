@@ -10,7 +10,7 @@ func _ready() -> void:
 	hp_regen = 5
 	pp_regen = 5
 	turns_duration = 3
-	cooldown += 2
+	cooldown = 5
 	
 	pass
 
