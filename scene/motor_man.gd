@@ -24,17 +24,18 @@ func _ready() -> void:
 		if next_dialogue[dialoges].quest_name not in StatLoader.quest_array:
 			StatLoader.quest_array.append(next_dialogue[dialoges].quest_name)
 		$CollisionShape2D.disabled = true
+		print(" lnl"+str(dialoges))
 	DialogueManagerScript.finish_lines.connect(next_line)
 
 	
-	while dialogue_player.dialogue.quest_name in StatLoader.quest_array: 
+	while next_dialogue[dialoges].quest_name in StatLoader.quest_array: 
 		if next_dialogue[next_dialogue.size() - dialoges -1].quest_name in StatLoader.quest_array and last_lines.size()>0 and last_lines[Dialogue.size() - dialoges -1-1] != null:
 			change_to_last= last_lines[Dialogue.size() - dialoges -1-1] 
 			
-				
+			print(" lnl"+str(dialoges))
 			break
 		if dialoges + 1 < next_dialogue.size():
-			
+			print(" lll"+str(dialoges))
 			dialoges += 1
 			dialogue_player.dialogue = next_dialogue[dialoges]
 
@@ -80,19 +81,20 @@ func next_line():
 			$battle_teleport.monitoring = true
 			#StatLoader.quest_array.append( dialogue_player.dialogue.quest_name)
 	elif change_to_last == null and player != null:# and  dialogue_player.dialogue.move_on_event_index<4:
-		if next_dialogue[dialoges].quest_name not in StatLoader.quest_array:
-			StatLoader.quest_array.append(next_dialogue[dialoges].quest_name)
+		
 		if dialogue_player.dialogue.move_on_last_index<3 and dialogue_player.dialogue.index == dialogue_player.lines_array.size()-1:
 			
 			dialoges =   dialogue_player.dialogue.move_on_last_index
 			print(" lll"+str(dialoges))
-			
+			if next_dialogue[dialoges].quest_name not in StatLoader.quest_array:
+				StatLoader.quest_array.append(next_dialogue[dialoges].quest_name)
 	
 		elif dialogue_player.dialogue.move_on_event_index<3  and dialogue_player.dialogue.index == dialogue_player.dialogue.event_index:
 			
 			dialoges =   dialogue_player.dialogue.move_on_event_index
 			print(" lll"+str(dialoges))
-		
+			if next_dialogue[dialoges].quest_name not in StatLoader.quest_array:
+				StatLoader.quest_array.append(next_dialogue[dialoges].quest_name)
 	
 	
 			

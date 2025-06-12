@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://xy006ordrbsg"]
+[gd_scene load_steps=11 format=3 uid="uid://xy006ordrbsg"]
 
 [ext_resource type="Script" uid="uid://c1nhrhaa1ppug" path="res://Battle/scripts/area_2d.gd" id="1_01ko7"]
 [ext_resource type="Script" uid="uid://clrehpya663d7" path="res://Battle/attack.gd" id="1_8h2au"]
 [ext_resource type="Texture2D" uid="uid://bp1y2fnhwf55d" path="res://Battle/sprites/attacks.png" id="3_8h2au"]
 [ext_resource type="PackedScene" uid="uid://djp6cqkek10sw" path="res://Battle/balls.tscn" id="4_8h2au"]
 [ext_resource type="Texture2D" uid="uid://bdm1ch7nbm5o1" path="res://Battle/sprites/pick.png" id="5_nsdix"]
+[ext_resource type="AudioStream" uid="uid://bvry2yyarq2eg" path="res://sounds/hard_kick.mp3" id="6_32k74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8h2au"]
 size = Vector2(69, 608.75)
@@ -65,5 +66,9 @@ texture = ExtResource("5_nsdix")
 [node name="right" type="Sprite2D" parent="."]
 position = Vector2(985, 29)
 texture = ExtResource("5_nsdix")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_32k74")
+pitch_scale = 4.0
 
 [connection signal="send_result" from="Balls" to="." method="_on_balls_send_result"]

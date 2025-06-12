@@ -41,7 +41,8 @@ func DoEffect():
 			#print(skill)
 			i.turn = 0
 			skill.erase(i)
-			origin.pop_at(skill_increment)
+			origin.remove_at(skill_increment)
+			skill_increment -= 1
 			remove_child(i)
 		i.turn += 1
 		skill_increment += 1

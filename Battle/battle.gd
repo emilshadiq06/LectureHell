@@ -20,6 +20,7 @@ func _ready() -> void:
 
 
 func _on_enemy_group_start_turn() -> void:
+	
 	lose = count_hp(group_player_array)
 	win = count_hp(group_enemy_array)
 	print(win)
@@ -40,6 +41,7 @@ func _on_enemy_group_start_turn() -> void:
 		await get_tree().create_timer(2).timeout
 		scene_tree.call_deferred("change_scene_to_file", StatLoader.previous_scene)
 	elif lose == true:
+		print("aaa"+str(StatLoader.dead_array))
 		$CanvasLayer.hide()
 		StatLoader.money = -20.1
 		var player_stat = preload("res://Game/Player/player_stats.tres")
@@ -55,9 +57,11 @@ func count_hp(group) -> bool:
 	for i in group:
 		if i.hp<0:
 			array_hp += 0
+			print(i.battle_name.text)
 			StatLoader.dead_array.append(i.battle_name.text)
 		else:
 			if i.hp == 0:
+				print(i.battle_name.text)
 				StatLoader.dead_array.append(i.battle_name.text)
 			array_hp += i.hp
 	if array_hp <= 0:

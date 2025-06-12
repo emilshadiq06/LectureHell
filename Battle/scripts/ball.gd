@@ -57,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("right") and left == false :
 		
 		if inside:
-			
+			$"../../AudioStreamPlayer".play()
 			animated_sprite.play("hit")
 			balls.hitted += 1
 			is_hitted = true
@@ -67,6 +67,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 	elif Input.is_action_just_pressed("left") and left == true :
 		if inside:
+			$"../../AudioStreamPlayer".play()
 			animated_sprite.play("hit")
 			balls.hitted += 1
 			is_hitted = true
@@ -86,11 +87,15 @@ func _process(delta: float) -> void:
 
 			is_hitted = false
 			animated_sprite.play("miss")
+		elif left == false:
+			$"../../AudioStreamPlayer".play()
 			
 		if (!Input.is_action_pressed("left") and left == true):
 
 			is_hitted = false
 			animated_sprite.play("miss")
+		elif left == true:
+			$"../../AudioStreamPlayer".play()
 			
 		
 
