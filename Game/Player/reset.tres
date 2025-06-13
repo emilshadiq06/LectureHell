@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="playerStat" load_steps=4 format=3 uid="uid://bkdaoqt873hxg"]
+
+[ext_resource type="Script" uid="uid://c18hy6u1wlti2" path="res://Game/Player/player_stat.gd" id="1_6xy6l"]
+[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="2_3hsup"]
+[ext_resource type="Resource" uid="uid://bjfqskhfnpn6d" path="res://inventory/item/skill_items/nap_item.tres" id="3_ww6lt"]
+
+[resource]
+script = ExtResource("1_6xy6l")
+take_damage = 0
+max_pp = 20
+pp = 20
+weapons = Array[Array]([[0, null], [], []])
+money = 0.0
+walk = 250.0
+dash = 0.1
+skill = Array[ExtResource("2_3hsup")]([ExtResource("3_ww6lt")])
+name = "You"
+max_hp = 20
+hp = 20
+metadata/_custom_type_script = "uid://c18hy6u1wlti2"

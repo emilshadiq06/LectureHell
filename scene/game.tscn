@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=32 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -12,11 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://nf1bwn3t0xmo" path="res://scene/menuscene/portal.tscn" id="9_17rxn"]
 [ext_resource type="Resource" uid="uid://cgcohqreyjngq" path="res://Game/enemy_stat1.tres" id="10_sng2h"]
 [ext_resource type="Resource" uid="uid://dcafxmkpvtwqw" path="res://Game/enemy_stat2.tres" id="11_81276"]
-[ext_resource type="Script" uid="uid://diij37k1m8hxh" path="res://Game/Player/add_player_group.gd" id="11_ym5sv"]
-[ext_resource type="Resource" uid="uid://cugngsxc1vyxp" path="res://inventory/item/consumables/nasi_bujang.tres" id="12_sng2h"]
 [ext_resource type="Resource" uid="uid://cqdluynxv6peo" path="res://Game/enemy_stat3.tres" id="12_ve786"]
 [ext_resource type="Script" uid="uid://si1muliu3kbk" path="res://scene/idle_monologer.gd" id="16_i6gbm"]
 [ext_resource type="Script" uid="uid://ddj1b144gsp36" path="res://Game/Player/scripts/state_idle.gd" id="17_ux4dc"]
+[ext_resource type="Resource" uid="uid://ddimpiui1xbvb" path="res://inventory/item/skill_items/jj_item.tres" id="18_jhlss"]
+[ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="19_ww6yf"]
+[ext_resource type="Texture2D" uid="uid://d3y3bvs8p4rut" path="res://Game/Enemy/scripts/ExampleEnemySprite.png" id="20_ww6yf"]
+[ext_resource type="AudioStream" uid="uid://bomsj7hm0thgs" path="res://sounds/Maimunah.mp3" id="21_ww6yf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8tf"]
 size = Vector2(253, 100.5)
@@ -26,15 +28,98 @@ size = Vector2(44, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk3v5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sng2h"]
-radius = 30.8058
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i6gbm"]
 a = Vector2(224, -51)
 b = Vector2(-19, -50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrd6n"]
 size = Vector2(33, 20)
+
+[sub_resource type="Resource" id="Resource_1it6f"]
+script = ExtResource("19_ww6yf")
+quest_name = "JJ"
+item = ExtResource("18_jhlss")
+item_count = 0
+lose_on_found = false
+prized_item = ExtResource("18_jhlss")
+add_to_group = 999
+money = 0.0
+move_on_event_index = 999
+move_on_last_index = 999
+ending = 999
+fight = false
+event_index = 2
+lines1 = Array[String](["*Blast music*"])
+lines2 = Array[String](["I CANT HEAR YOU SPEAK LOUDER", "*keeps dancing*"])
+lines3 = Array[String](["woah neat ", "let me teach you something", "\"You received JJ skill\""])
+lines4 = Array[String](["Damn ", "not cool dude"])
+lines5 = Array[String]([])
+position = Array[int]([0, 1])
+line1Options = Array[Array]([["Hey", 1], ["Ignore him", 0]])
+line2Options = Array[Array]([["Play Along", 2], ["You have bad taste man", 3]])
+line3Options = Array[Array]([])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1it6f"]
+size = Vector2(44, 67)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pp3pk"]
+
+[sub_resource type="Animation" id="Animation_fssi7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ghpu6"]
+resource_name = "dance"
+length = 0.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 7, 14, 10, 20]
+}
+
+[sub_resource type="Animation" id="Animation_xuk3e"]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.140568, 0.209217),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(100, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghpu6"]
+_data = {
+&"RESET": SubResource("Animation_fssi7"),
+&"dance": SubResource("Animation_ghpu6"),
+&"hurt": SubResource("Animation_xuk3e")
+}
 
 [node name="game" type="Node"]
 script = ExtResource("1_33cqm")
@@ -111,23 +196,6 @@ position = Vector2(15, 16)
 collision_mask = 19
 stats = ExtResource("12_ve786")
 
-[node name="AddPlayerGroup" type="Area2D" parent="."]
-script = ExtResource("11_ym5sv")
-item = ExtResource("12_sng2h")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AddPlayerGroup"]
-position = Vector2(-165, 241)
-shape = SubResource("CircleShape2D_sng2h")
-
-[node name="Label" type="Label" parent="AddPlayerGroup"]
-offset_left = -240.0
-offset_top = 227.0
-offset_right = -96.0
-offset_bottom = 250.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "add bro
-"
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 2
@@ -152,6 +220,42 @@ shape = SubResource("RectangleShape2D_jrd6n")
 script = ExtResource("17_ux4dc")
 metadata/_custom_type_script = "uid://ddj1b144gsp36"
 
-[connection signal="body_entered" from="AddPlayerGroup" to="AddPlayerGroup" method="_on_body_entered"]
+[node name="jjer" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-419, -208)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_xwcet")
+
+[node name="Chat" parent="jjer" instance=ExtResource("6_i6gbm")]
+position = Vector2(0, -14)
+dialogue = SubResource("Resource_1it6f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jjer/Chat"]
+position = Vector2(-1.29675, -7.77946)
+shape = SubResource("RectangleShape2D_1it6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="jjer"]
+position = Vector2(-1, -18)
+scale = Vector2(-1, 1.2)
+texture = ExtResource("20_ww6yf")
+offset = Vector2(-2.5, -2)
+hframes = 21
+
+[node name="ABU" type="CollisionShape2D" parent="jjer"]
+y_sort_enabled = true
+position = Vector2(-0.296997, -7.2795)
+shape = SubResource("CircleShape2D_pp3pk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="jjer"]
+stream = ExtResource("21_ww6yf")
+volume_db = -20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="jjer"]
+libraries = {
+&"": SubResource("AnimationLibrary_ghpu6")
+}
+
 [connection signal="body_entered" from="Idler" to="Idler" method="_on_body_entered"]
 [connection signal="body_exited" from="Idler" to="Idler" method="_on_body_exited"]
+[connection signal="finished" from="jjer/AudioStreamPlayer" to="jjer" method="_on_audio_stream_player_finished"]

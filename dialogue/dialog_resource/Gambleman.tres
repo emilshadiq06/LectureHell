@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="dialogue_lines" load_steps=4 format=3 uid="uid://b1pqcwtvqedhd"]
+
+[ext_resource type="Resource" uid="uid://csvwocgt4o2ob" path="res://inventory/item/lose_ticket.tres" id="1_fipwv"]
+[ext_resource type="Resource" uid="uid://5mp1s1d78x54" path="res://inventory/item/skill_items/gamble.tres" id="2_06ua3"]
+[ext_resource type="Script" uid="uid://2canopkw4hie" path="res://dialogue/dialog_resource/dialogue_ressource.gd" id="3_23p5w"]
+
+[resource]
+script = ExtResource("3_23p5w")
+quest_name = "Gambler"
+item = ExtResource("1_fipwv")
+item_count = 5
+lose_on_found = true
+prized_item = ExtResource("2_06ua3")
+add_to_group = 999
+money = 0.0
+move_on_event_index = 999
+move_on_last_index = 999
+ending = 999
+fight = false
+event_index = 1
+lines1 = Array[String](["You seem lucky to day", "You should gamble your money today", "Come back to me when youre done."])
+lines2 = Array[String](["Wow you lost 5 times", "how bout a skill so you dont feel so bad you loser", "\"You received the \"gamble skill\""])
+lines3 = Array[String](["You dont seem to be using your luck", "atleast try and gamble til you lose 5 times before crying back to me.", "now scram.", "Remember, You only lose when you stop"])
+lines4 = Array[String]([])
+lines5 = Array[String]([])
+position = Array[int]([0])
+line1Options = Array[Array]([["Yeah, you're right", 1], ["No im broke", 2]])
+line2Options = Array[Array]([])
+line3Options = Array[Array]([])
+line4Options = Array[Array]([])
+metadata/_custom_type_script = "uid://2canopkw4hie"

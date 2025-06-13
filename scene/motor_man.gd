@@ -83,18 +83,18 @@ func next_line():
 	elif change_to_last == null and player != null:# and  dialogue_player.dialogue.move_on_event_index<4:
 		
 		if dialogue_player.dialogue.move_on_last_index<3 and dialogue_player.dialogue.index == dialogue_player.lines_array.size()-1:
-			
+			if next_dialogue[dialoges].quest_name not in StatLoader.quest_array:
+				StatLoader.quest_array.append(next_dialogue[dialoges].quest_name)
 			dialoges =   dialogue_player.dialogue.move_on_last_index
 			print(" lll"+str(dialoges))
-			if next_dialogue[dialoges].quest_name not in StatLoader.quest_array:
-				StatLoader.quest_array.append(next_dialogue[dialoges].quest_name)
+			
 	
 		elif dialogue_player.dialogue.move_on_event_index<3  and dialogue_player.dialogue.index == dialogue_player.dialogue.event_index:
-			
-			dialoges =   dialogue_player.dialogue.move_on_event_index
-			print(" lll"+str(dialoges))
 			if next_dialogue[dialoges].quest_name not in StatLoader.quest_array:
 				StatLoader.quest_array.append(next_dialogue[dialoges].quest_name)
+			dialoges =   dialogue_player.dialogue.move_on_event_index
+			print(" lll"+str(dialoges))
+			
 	
 	
 			

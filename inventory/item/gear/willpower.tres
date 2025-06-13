@@ -6,7 +6,9 @@
 [resource]
 script = ExtResource("1_7fky0")
 hp_changed = 10
-pp_changed = 30
+pp_changed = 50
+walk_changed = 250.0
+dash_window_changed = 0.1
 name = "willpower"
 texture = ExtResource("2_7fky0")
 metadata/_custom_type_script = "uid://jiv0rpbirird"

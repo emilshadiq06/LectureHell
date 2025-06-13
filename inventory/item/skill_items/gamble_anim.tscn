@@ -280,4 +280,3 @@ animations = [{
 position = Vector2(649, 608)
 scale = Vector2(5.29365, 4.60145)
 sprite_frames = SubResource("SpriteFrames_d4kq6")
-animation = &"gamble-dmg"

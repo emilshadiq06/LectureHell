@@ -1,11 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://bagxqtev2wrrm"]
+[gd_scene load_steps=56 format=3 uid="uid://bagxqtev2wrrm"]
 
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_sb1hd"]
 [ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="2_rjx13"]
 [ext_resource type="Texture2D" uid="uid://bigdrdqoqmmk1" path="res://map/32x32/HKU tileset.png" id="3_yna0l"]
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="4_rjx13"]
 [ext_resource type="Script" uid="uid://btq0f56iqlbgg" path="res://script/portal.gd" id="5_yna0l"]
-[ext_resource type="Script" uid="uid://c18hy6u1wlti2" path="res://Game/Player/player_stat.gd" id="6_4fk3v"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="6_ckwbh"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="7_o4uqb"]
 [ext_resource type="Script" uid="uid://ccl27ut6kmchw" path="res://scene/vamp.gd" id="8_dcd4q"]
@@ -24,9 +23,18 @@
 [ext_resource type="Texture2D" uid="uid://dtf04klqo6egs" path="res://Assets/Enemies/Vlad/VladBattler.png" id="21_afrax"]
 [ext_resource type="Script" uid="uid://si1muliu3kbk" path="res://scene/idle_monologer.gd" id="22_6p47p"]
 [ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="22_demcf"]
-[ext_resource type="Script" uid="uid://b8u10hb65xcvh" path="res://inventory.gd" id="23_4fk3v"]
+[ext_resource type="Script" uid="uid://bqfbwunv8sofu" path="res://scene/end.gd" id="22_s186y"]
+[ext_resource type="Resource" uid="uid://bkdaoqt873hxg" path="res://Game/Player/reset.tres" id="23_demcf"]
 [ext_resource type="Script" uid="uid://ddj1b144gsp36" path="res://Game/Player/scripts/state_idle.gd" id="23_w357m"]
-[ext_resource type="Script" uid="uid://c6dtkvbthu2lh" path="res://skill_item.gd" id="25_pwhuy"]
+[ext_resource type="PackedScene" uid="uid://cp4efdxwwk5q0" path="res://shop.tscn" id="24_dk178"]
+[ext_resource type="Resource" uid="uid://ddqehfrhqfbbt" path="res://inventory/item/weapon/pen_weapon.tres" id="26_dk178"]
+[ext_resource type="Resource" uid="uid://bm1l18r5rp8rl" path="res://inventory/item/weapon/metal_ruler.tres" id="27_1t1sb"]
+[ext_resource type="Resource" uid="uid://bkus01ryyldxa" path="res://inventory/item/gear/10kg_armor.tres" id="28_rnrss"]
+[ext_resource type="Resource" uid="uid://d0xm7l7mxg00e" path="res://inventory/item/gear/card_board.tres" id="29_6yqyc"]
+[ext_resource type="Resource" uid="uid://c3j0vpm8beyyq" path="res://inventory/item/weapon/chair_weapon.tres" id="30_unjdo"]
+[ext_resource type="Resource" uid="uid://hpbpvsiloe1o" path="res://inventory/item/gear/willpower.tres" id="31_rnrss"]
+[ext_resource type="Resource" uid="uid://bnvvcja800qer" path="res://inventory/item/expendable/pipe_bomb.tres" id="32_6yqyc"]
+[ext_resource type="Texture2D" uid="uid://bkkq2s1d6d26x" path="res://Game/Player/sprites/shopman.png" id="33_rnrss"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fe337"]
 texture = ExtResource("1_sb1hd")
@@ -5577,28 +5585,55 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_4fk3v"]
-script = ExtResource("23_4fk3v")
-items = Array[ExtResource("22_demcf")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null])
-metadata/_custom_type_script = "uid://b8u10hb65xcvh"
-
-[sub_resource type="Resource" id="Resource_pwhuy"]
-script = ExtResource("6_4fk3v")
-take_damage = 0
-max_pp = 20
-pp = 20
-weapons = Array[Array]([])
-money = 0.0
-walk = 250.0
-dash = 0.1
-skill = Array[ExtResource("25_pwhuy")]([])
-name = ""
-max_hp = 20
-hp = 20
-metadata/_custom_type_script = "uid://c18hy6u1wlti2"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fk3v"]
 size = Vector2(109, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yqyc"]
+size = Vector2(58, 82.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unjdo"]
+size = Vector2(74.9998, 43.75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yqyc"]
+atlas = ExtResource("33_rnrss")
+region = Rect2(0, 0, 40, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnrss"]
+atlas = ExtResource("33_rnrss")
+region = Rect2(0, 0, 40, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unjdo"]
+atlas = ExtResource("33_rnrss")
+region = Rect2(40, 0, 40, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0dsb"]
+atlas = ExtResource("33_rnrss")
+region = Rect2(80, 0, 40, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unjdo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yqyc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnrss")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_unjdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0dsb")
+}],
+"loop": false,
+"name": &"selling",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afrax"]
 size = Vector2(255, 20)
@@ -5729,15 +5764,36 @@ hframes = 21
 position = Vector2(-21, 150)
 monitoring = false
 monitorable = false
-script = ExtResource("5_yna0l")
-new_inv = SubResource("Resource_4fk3v")
+script = ExtResource("22_s186y")
+stats = ExtResource("23_demcf")
 connected_scene = "menuscene/main_menu"
-stats = SubResource("Resource_pwhuy")
 metadata/_custom_type_script = "uid://btq0f56iqlbgg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vamp/end"]
 position = Vector2(4.5, 0)
 shape = SubResource("RectangleShape2D_4fk3v")
+
+[node name="slot_machine" type="StaticBody2D" parent="Vamp"]
+position = Vector2(-830, 213)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vamp/slot_machine"]
+position = Vector2(561, -33.75)
+shape = SubResource("RectangleShape2D_6yqyc")
+
+[node name="shop" parent="Vamp/slot_machine" instance=ExtResource("24_dk178")]
+position = Vector2(561, 0)
+shop_items = Array[ExtResource("22_demcf")]([ExtResource("26_dk178"), ExtResource("27_1t1sb"), ExtResource("28_rnrss"), ExtResource("29_6yqyc"), ExtResource("30_unjdo"), ExtResource("31_rnrss"), ExtResource("32_6yqyc")])
+shop_prices = Array[float]([10.0, 10.0, 10.0, 10.0, 20.0, 20.0, 70.0])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vamp/slot_machine/shop"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_unjdo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Vamp/slot_machine/shop"]
+position = Vector2(1, -22)
+sprite_frames = SubResource("SpriteFrames_unjdo")
 
 [node name="Idler" type="Area2D" parent="."]
 monitoring = false

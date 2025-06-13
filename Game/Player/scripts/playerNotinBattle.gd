@@ -4,7 +4,7 @@ extends Player
 @onready var player_team = $inventory/player_team_ui
 @onready var player_invUI = $inventory
 @export var inv :Inv
-@onready var skill = $skill
+#@onready var skill = $skill
 
 @export var stats : playerStat
 
@@ -15,8 +15,8 @@ func _ready() -> void:
 	run = 1
 	update_pos()
 	$RichTextLabel.text =  "$" + str(stats.money)
-	if StatLoader.skill_node != null:
-		skill.set_script(StatLoader.return_skill().get_script())
+	#if StatLoader.skill_node != null:
+		#skill.set_script(StatLoader.return_skill().get_script())
 		#StatLoader.skill_node = null
 	state_machine.initialize(self)
 	if StatLoader.was_just_inBattle == true:
@@ -144,7 +144,8 @@ func addskill(skill:String,item:skill_item):
 		
 		player_team.update_group(stats,player_team.index)
 		player_team._on_button_pressed()
-		inv.throw(find_item(item)[0],item)#throw(index:int,item:InvItem)
+		if find_item(item).size()>0:
+			inv.throw(find_item(item)[0],item)#throw(index:int,item:InvItem)
 		
 	elif player_team.index != 0 and StatLoader.player_group[player_team.index-1].stats.skill.size()<2:
 		StatLoader.player_group[player_team.index-1].stats.skill.push_back(item)
@@ -154,7 +155,8 @@ func addskill(skill:String,item:skill_item):
 			player_team._on_button_2_pressed()
 		else:
 			player_team._on_button_3_pressed()
-		inv.throw(find_item(item)[0],item)
+		if find_item(item).size()>0:
+			inv.throw(find_item(item)[0],item)
 	
 func change_stat(hp_changed,pp_changed,walk_changed,dash_window_changed):
 	stats.max_hp = hp_changed

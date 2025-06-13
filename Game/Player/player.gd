@@ -86,7 +86,7 @@ func _process(delta):
 	if parry >= 0.45 and parry<0.75:
 		pass
 	if dash_window > 0 and dashing:
-		direction*=2
+		direction*=2.4
 		#current_anim = animation_player.current_animation
 		
 		animation_player.play("dash")
@@ -200,7 +200,8 @@ func take_damage(damage,object):
 			animation_player.play("dash")
 
 			animation_player.stop()
-	elif parry >= 0.52 and parry<0.75:
+	elif parry >= 0.45 and parry<0.75:
+		parry= 0.1
 		if object:
 			
 			var tween = get_tree().create_tween().bind_node(object)

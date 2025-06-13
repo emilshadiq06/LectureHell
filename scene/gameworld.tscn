@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dpwabfncr34l6"]
+[gd_scene load_steps=35 format=3 uid="uid://dpwabfncr34l6"]
 
 [ext_resource type="PackedScene" uid="uid://daprrjii34ki7" path="res://Game/Player/player.tscn" id="1_hx0jg"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_bjxfv"]
@@ -19,6 +19,13 @@
 [ext_resource type="PackedScene" uid="uid://dhos1w5fvtsgg" path="res://scene/npc_4.tscn" id="17_jfy1l"]
 [ext_resource type="PackedScene" uid="uid://pm4hxl6i5dty" path="res://scene/world_environment.tscn" id="18_45ef4"]
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="19_0740c"]
+[ext_resource type="Script" uid="uid://d0f4mkhjupc3c" path="res://scene/character_body_2d.gd" id="20_wn1b2"]
+[ext_resource type="PackedScene" uid="uid://mojc683gpjm6" path="res://dialogue/chat.tscn" id="21_0vuft"]
+[ext_resource type="Resource" uid="uid://b1pqcwtvqedhd" path="res://dialogue/dialog_resource/Gambleman.tres" id="22_wn1b2"]
+[ext_resource type="Texture2D" uid="uid://d2c1sr2dy1i2c" path="res://scene/menuscene/gambler.png" id="23_sd4sq"]
+[ext_resource type="PackedScene" uid="uid://bj55q1ryv7g" path="res://inventory/item/skill_items/gamble_anim.tscn" id="24_0vuft"]
+[ext_resource type="Resource" uid="uid://csvwocgt4o2ob" path="res://inventory/item/lose_ticket.tres" id="24_sd4sq"]
+[ext_resource type="Resource" uid="uid://dwytxvpohw23x" path="res://inventory/item/win_ticket.tres" id="25_rp1j2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8buu"]
 size = Vector2(58, 82.5)
@@ -38,27 +45,32 @@ radius = 30.8058
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhtqh"]
 size = Vector2(107, 49)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmcfq"]
+size = Vector2(44, 67)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jsi5"]
+
 [node name="Gameworld" type="Node"]
 metadata/_edit_vertical_guides_ = [-411.0]
 
-[node name="vending_machine" type="StaticBody2D" parent="."]
+[node name="vending_machine1" type="StaticBody2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vending_machine"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vending_machine1"]
 position = Vector2(561, -33.75)
 shape = SubResource("RectangleShape2D_y8buu")
 
-[node name="shop" parent="vending_machine" instance=ExtResource("8_63w8i")]
+[node name="shop" parent="vending_machine1" instance=ExtResource("8_63w8i")]
 position = Vector2(561, 0)
 shop_items = Array[ExtResource("9_y8buu")]([ExtResource("10_3ys1n"), ExtResource("11_0qo4l"), ExtResource("12_ou7om"), ExtResource("13_jfy1l"), ExtResource("14_qflkg")])
 shop_prices = Array[float]([59.9, 4.0, 5.2, 3.5, 2.0])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vending_machine/shop"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vending_machine1/shop"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_rapul")
 
-[node name="Sprite2D" type="Sprite2D" parent="vending_machine"]
+[node name="Sprite2D" type="Sprite2D" parent="vending_machine1"]
 position = Vector2(562, -36)
 texture = ExtResource("9_mhtqh")
 
@@ -145,6 +157,63 @@ position = Vector2(371, 224)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("19_0740c")]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-103, 20)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("20_wn1b2")
+
+[node name="Chat" parent="CharacterBody2D" instance=ExtResource("21_0vuft")]
+position = Vector2(0, -14)
+dialogue = ExtResource("22_wn1b2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Chat"]
+position = Vector2(-1.29675, -7.77946)
+shape = SubResource("RectangleShape2D_kmcfq")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-1, -18)
+scale = Vector2(-1, 1.2)
+texture = ExtResource("23_sd4sq")
+offset = Vector2(-2.5, -2)
+hframes = 21
+
+[node name="ABU" type="CollisionShape2D" parent="CharacterBody2D"]
+y_sort_enabled = true
+position = Vector2(-0.296997, -7.2795)
+shape = SubResource("CircleShape2D_1jsi5")
+
+[node name="slot_machine" type="StaticBody2D" parent="."]
+position = Vector2(-437, 10)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slot_machine"]
+position = Vector2(561, -33.75)
+shape = SubResource("RectangleShape2D_y8buu")
+
+[node name="shop" parent="slot_machine" instance=ExtResource("8_63w8i")]
+position = Vector2(561, 0)
+shop_items = Array[ExtResource("9_y8buu")]([ExtResource("24_sd4sq"), ExtResource("24_sd4sq"), ExtResource("24_sd4sq"), ExtResource("25_rp1j2"), ExtResource("24_sd4sq")])
+shop_items_names = Array[String](["Ticket", "Ticket", "Ticket", "Ticket", "Ticket"])
+randomizer = true
+shop_prices = Array[float]([10.0, 10.0, 10.0, -10.0, 20.0])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slot_machine/shop"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_rapul")
+
+[node name="AnimatedSprite2D" parent="slot_machine/shop" instance=ExtResource("24_0vuft")]
+z_index = 1
+position = Vector2(3.00006, -40)
+scale = Vector2(0.857145, 1.01449)
+animation = &"gamble+dmg"
+
+[node name="Sprite2D" type="Sprite2D" parent="slot_machine"]
+position = Vector2(562, -36)
+texture = ExtResource("9_mhtqh")
 
 [connection signal="body_entered" from="change_skill" to="change_skill" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]

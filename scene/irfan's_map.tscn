@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bup06ltpdovb0"]
+[gd_scene load_steps=40 format=3 uid="uid://bup06ltpdovb0"]
 
 [ext_resource type="Texture2D" uid="uid://b6k53kxf034og" path="res://map/32x32/Interiors_free_32x32.png" id="1_vcd8o"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="2_n8qtl"]
@@ -20,6 +20,9 @@
 [ext_resource type="Script" uid="uid://si1muliu3kbk" path="res://scene/idle_monologer.gd" id="18_7nsik"]
 [ext_resource type="Script" uid="uid://ddj1b144gsp36" path="res://Game/Player/scripts/state_idle.gd" id="19_nt1ml"]
 [ext_resource type="PackedScene" uid="uid://boxkl18or5x3u" path="res://Game/Enemy/enemy.tscn" id="20_nt1ml"]
+[ext_resource type="PackedScene" uid="uid://dmr348bxfldom" path="res://scene/gas_collectable.tscn" id="21_tjax3"]
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="22_obrb3"]
+[ext_resource type="Texture2D" uid="uid://bsn14mq55f2my" path="res://inventory/img/stinky_fly.png" id="23_lmh80"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pltrj"]
 texture = ExtResource("1_vcd8o")
@@ -5366,6 +5369,13 @@ max_hp = 22
 hp = 22
 metadata/_custom_type_script = "uid://bxu1nri0o51p"
 
+[sub_resource type="Resource" id="Resource_k24f2"]
+resource_local_to_scene = true
+script = ExtResource("22_obrb3")
+name = "stinkyFly"
+texture = ExtResource("23_lmh80")
+metadata/_custom_type_script = "uid://3tvxh44mg67g"
+
 [node name="Node" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5490,6 +5500,10 @@ position = Vector2(840, 524)
 collision_mask = 19
 stats = SubResource("Resource_nt1ml")
 group_str = "noobcooks"
+
+[node name="gas_collectable" parent="." instance=ExtResource("21_tjax3")]
+position = Vector2(300, 259)
+item = SubResource("Resource_k24f2")
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]

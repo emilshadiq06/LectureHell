@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="weapon" load_steps=3 format=3 uid="uid://c3j0vpm8beyyq"]
+
+[ext_resource type="Script" uid="uid://cvrib4clgrh1i" path="res://inventory/item/weapon/weapon.gd" id="1_dkxjs"]
+[ext_resource type="Texture2D" uid="uid://ba2mb3ex22cqt" path="res://inventory/img/chair.png" id="2_6a26t"]
+
+[resource]
+script = ExtResource("1_dkxjs")
+weapon_arrow = Array[Array]([[8, 1.2], [4, 1.0]])
+hp_changed = 20
+pp_changed = 20
+walk_changed = 250.0
+dash_window_changed = 0.1
+name = "chair"
+texture = ExtResource("2_6a26t")
+metadata/_custom_type_script = "uid://cvrib4clgrh1i"

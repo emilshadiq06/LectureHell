@@ -53,3 +53,10 @@ shape = SubResource("SegmentShape2D_bcvnr")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 position = Vector2(464, 176)
 shape = SubResource("SegmentShape2D_bcvnr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 470.0
+offset_top = 140.0
+offset_right = 531.0
+offset_bottom = 163.0
+text = "DASHES"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment" load_steps=3 format=3 uid="uid://d0xm7l7mxg00e"]
+
+[ext_resource type="Script" uid="uid://jiv0rpbirird" path="res://inventory/item/gear/equipment.gd" id="1_sll3b"]
+[ext_resource type="Texture2D" uid="uid://bb11lowqo0v1t" path="res://inventory/img/card_board.png" id="2_2jdeh"]
+
+[resource]
+script = ExtResource("1_sll3b")
+hp_changed = 25
+pp_changed = 15
+walk_changed = 250.0
+dash_window_changed = 0.1
+name = "card_board"
+texture = ExtResource("2_2jdeh")
+metadata/_custom_type_script = "uid://jiv0rpbirird"

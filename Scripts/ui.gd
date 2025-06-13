@@ -68,15 +68,20 @@ func init_boss_health_bar(max_health: int):
 	wave_counter.visible = false
 	
 func on_player_died():
+	StatLoader.was_just_inBattle = true
+	var playerIRL = load("res://Game/Player/player_stats.tres") 
+	playerIRL.hp = 3
 	label.text = "You lost!!!"
 	game_over_container.show()
+	StatLoader.money -= 30.33
 	
 func _on_button_pressed():
-	StatLoader.money = 50.33
+	StatLoader.was_just_inBattle = true
+	StatLoader.money += 20.33
 	#for i in get_tree().get_root().get_children():
 	#print(get_tree().current_scene.get_children())
 		#i.queue_free()
-	get_tree().change_scene_to_file(StatLoader.previous_scene)
+	get_tree().call_deferred("change_scene_to_file",(StatLoader.previous_scene))
 	
 	#var scene_tree = 
 	

@@ -29,7 +29,7 @@ func _on_enemy_group_start_turn() -> void:
 		$CanvasLayer.hide()
 		StatLoader.money = 50.33
 		var player_stat = preload("res://Game/Player/player_stats.tres")
-		if  player_stat.hp >0:
+		if   group_player_array[0].hp >0:
 			player_stat.hp = group_player_array[0].hp
 		else:
 			player_stat.hp = 1

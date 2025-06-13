@@ -45,6 +45,11 @@ func _ready() -> void:
 	dialogue_player._ready()
 	DialogueManagerScript.finish_lines.connect(next_line)
 	
+	if dialoges == Dialogue.Third:
+		
+				$end.monitorable = true
+				$end.monitoring = true
+	
 
 func next_line():
 		player = dialogue_player.player
@@ -86,9 +91,4 @@ func next_line():
 					battlefr.monitoring = true
 					StatLoader.quest_array.append(dialogue_player.dialogue.quest_name)
 					#pass
-			
-			Dialogue.Third:
-				
-
-				$end.monitorable = true
-				$end.monitoring = true
+		

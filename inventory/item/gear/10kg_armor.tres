@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="equipment" load_steps=3 format=3 uid="uid://bkus01ryyldxa"]
+
+[ext_resource type="Script" uid="uid://jiv0rpbirird" path="res://inventory/item/gear/equipment.gd" id="1_rrm56"]
+[ext_resource type="Texture2D" uid="uid://bf2bbedp25u70" path="res://inventory/img/10kg armor.png" id="2_h66kg"]
+
+[resource]
+script = ExtResource("1_rrm56")
+hp_changed = 50
+pp_changed = 12
+walk_changed = 250.0
+dash_window_changed = 0.1
+name = "10kg armor"
+texture = ExtResource("2_h66kg")
+metadata/_custom_type_script = "uid://jiv0rpbirird"

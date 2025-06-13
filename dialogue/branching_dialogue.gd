@@ -1,8 +1,8 @@
 extends Area2D
 class_name DialogueBranch
 #@export var quest_name : String
-#var quest_completed:bool = false
-
+signal option_pressed
+@export var no_end:bool = false
 @export var dialogue: dialogue_lines  
 #@export var move_if_true: bool = false
 var item: InvItem
@@ -60,18 +60,23 @@ func item_pressed(item_index:int):
 		print(item_count)
 		for i in range(dialog_branch[dialogue.position[dialogue.index]].size()-1):
 			$DialogueOptions.remove_child($DialogueOptions.get_child($DialogueOptions.get_children().size()-1))
-			
+		
+		
 		dialogue.index = dialog_branch[dialogue.position[dialogue.index]][item_index][1]
+		option_pressed.emit()
 		if item != null and dialogue.index == dialogue.event_index and player.find_item(item).size()>=item_count:
-			print("item count")
-			print(item_count)
-			print(player.find_item(item).size())
-			print("item count")
+			#print("item count")
+			var limit = (item_count)
+			var items_list = player.find_item(item)
+			#print("item count")
 			if lose_on_found:
 				
-				for i in range(item_count):
-					
-					player.inv.throw(player.find_item(item)[0],player.inv.items[player.find_item(item)[0]])
+				for i in  items_list:
+					print(items_list)
+					limit -= 1
+					player.inv.throw(i,player.inv.items[i])
+					if limit == 0:
+						break
 			if prized_item != null:
 				print("empties")
 				print(player.find_item(null).size())
@@ -85,7 +90,7 @@ func item_pressed(item_index:int):
 				var team = load("res://Game/Player/player_team.tscn").instantiate()
 				StatLoader.addplayer_to_group(team.get_child(add_to_group).duplicate())
 				team = null
-			if dialogue.quest_name not in StatLoader.quest_array:
+			if dialogue.quest_name not in StatLoader.quest_array and !no_end:
 				StatLoader.quest_array.append(dialogue.quest_name)
 			player.buy(-money) 
 			#print(StatLoader.quest_array)

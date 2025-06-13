@@ -1,10 +1,10 @@
 class_name Portal
 extends Area2D
-@export var new_inv: Inv
+#@export var new_inv: Inv
 @export var connected_scene : String
 @export var enter_pos : Vector2
 @export var one_shot : bool
-@export var stats : playerStat
+#@export var stats : playerStat
 var scene_folder = "res://scene/"
 
 func _on_body_entered(body: Node2D) -> void:

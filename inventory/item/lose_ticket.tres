@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://csvwocgt4o2ob"]
+
+[ext_resource type="Script" uid="uid://3tvxh44mg67g" path="res://inventory/item/inventory_item_script.gd" id="1_td1hp"]
+[ext_resource type="Texture2D" uid="uid://dpesag041tenl" path="res://Game/Player/sprites/win_ticket.png" id="2_yp0xi"]
+
+[resource]
+script = ExtResource("1_td1hp")
+name = "You Lose"
+texture = ExtResource("2_yp0xi")
+metadata/_custom_type_script = "uid://3tvxh44mg67g"

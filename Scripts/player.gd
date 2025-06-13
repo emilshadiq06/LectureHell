@@ -34,7 +34,7 @@ func on_spell_selected(spell_index: int):
 	spell_selected.emit(spell_index)
 
 func _process(delta):
-
+	
 	var next_position = position + direction * speed * delta
 	if !is_withing_screen_bounds(next_position):
 		return
@@ -43,16 +43,17 @@ func _process(delta):
 
 
 func _input(event):
-	if Input.is_action_pressed("up"):
-		direction = Vector2.UP
-	elif Input.is_action_pressed("down"):
-		direction = Vector2.DOWN
-	elif Input.is_action_pressed("left"):
-		direction = Vector2.LEFT
-	elif Input.is_action_pressed("right"):
-		direction = Vector2.RIGHT
-	else:
-		direction = Vector2.ZERO
+	direction = Vector2(Input.get_axis("left","right"),Input.get_axis("up","down")).normalized()
+#	if Input.is_action_pressed("up"):
+#		direction = Vector2.UP
+	#elif Input.is_action_pressed("down"):
+#		direction = Vector2.DOWN
+#	elif Input.is_action_pressed("left"):
+#		direction = Vector2.LEFT
+#	elif Input.is_action_pressed("right"):
+	#	direction = Vector2.RIGHT
+#	else:
+	#	direction = Vector2.ZERO
 	
 
 
