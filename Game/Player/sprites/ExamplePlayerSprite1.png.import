@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdt1sosi4vpk3"
-path="res://.godot/imported/16x16 top down character 10-2.png-5d7e3df69ba71d75f6922bc18b54407e.ctex"
+uid="uid://cli23p1uwf38e"
+path="res://.godot/imported/ExamplePlayerSprite1.png-df8483216ff60b1a906eea042c7dd868.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://character/16x16 top down characters pixel art/character 10/16x16 top down character 10-2.png"
-dest_files=["res://.godot/imported/16x16 top down character 10-2.png-5d7e3df69ba71d75f6922bc18b54407e.ctex"]
+source_file="res://Game/Player/sprites/ExamplePlayerSprite1.png"
+dest_files=["res://.godot/imported/ExamplePlayerSprite1.png-df8483216ff60b1a906eea042c7dd868.ctex"]
 
 [params]
 

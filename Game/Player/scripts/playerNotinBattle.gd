@@ -9,7 +9,7 @@ extends Player
 @export var stats : playerStat
 
 func _ready() -> void:
-	#$Sprite2D.texture =  GlobalSettings.characters[GlobalSettings.selected_character]
+	$Sprite2D.texture =  GlobalSettings.characters[GlobalSettings.selected_character]
 	dash_window_duration = stats.dash #0.1 #
 	#$StateMachine/walk. move_speed =  $"../../PlayerGroup".walk_speed# 250 #
 	run = 1

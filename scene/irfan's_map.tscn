@@ -5369,7 +5369,7 @@ max_hp = 22
 hp = 22
 metadata/_custom_type_script = "uid://bxu1nri0o51p"
 
-[sub_resource type="Resource" id="Resource_k24f2"]
+[sub_resource type="Resource" id="Resource_obrb3"]
 resource_local_to_scene = true
 script = ExtResource("22_obrb3")
 name = "stinkyFly"
@@ -5503,7 +5503,7 @@ group_str = "noobcooks"
 
 [node name="gas_collectable" parent="." instance=ExtResource("21_tjax3")]
 position = Vector2(300, 259)
-item = SubResource("Resource_k24f2")
+item = SubResource("Resource_obrb3")
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal2" to="Portal2" method="_on_body_entered"]
