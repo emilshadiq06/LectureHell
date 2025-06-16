@@ -66,7 +66,7 @@ func next_line():
 					tween.tween_property(animsprite, "scale", Vector2(100,100), 0.2)
 					tween.tween_property(animsprite, "position", position + Vector2.DOWN*500, 0.2)
 					AudioPlayer.play_audio("res://sounds/explosion.mp3")
-					#StatLoader.quest_array.append(dialogue_player.dialogue.quest_name)
+					StatLoader.quest_array[next_dialogue[0].quest_name] =  true
 					print(StatLoader.quest_array)
 					await get_tree().create_timer(0.1).timeout
 					bullethell.monitorable = true
