@@ -7,5 +7,5 @@ func _on_body_entered(body: Node2D) -> void:
 		StatLoader.addplayer_to_group(team.get_child(StatLoader.player_group.size()).duplicate())
 		#print(StatLoader.player_group)
 		await get_tree().create_timer(0.2).timeout
-		body.collect_item(item.duplicate())
+#		body.collect_item(item.duplicate())
 		await get_tree().create_timer(0.2).timeout

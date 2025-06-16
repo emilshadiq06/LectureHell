@@ -9,7 +9,7 @@ func _ready() -> void:
 	skill_desc = "increase damage but also arrow speed"
 	#hp_regen = 5
 	turns_duration = 3
-	cooldown += 3
+	cooldown = 4
 	dmg_multiplier_attack = 2
 	pass
 

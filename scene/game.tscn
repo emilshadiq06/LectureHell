@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dwgrq1dk6kn6d"]
+[gd_scene load_steps=33 format=3 uid="uid://dwgrq1dk6kn6d"]
 
 [ext_resource type="Script" uid="uid://bk82njof5b8lm" path="res://Game/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://coareivipklba" path="res://scene/world1.tscn" id="2_ll5lq"]
@@ -120,6 +120,8 @@ _data = {
 &"dance": SubResource("Animation_ghpu6"),
 &"hurt": SubResource("Animation_xuk3e")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhlss"]
 
 [node name="game" type="Node"]
 script = ExtResource("1_33cqm")
@@ -255,6 +257,13 @@ volume_db = -20.0
 libraries = {
 &"": SubResource("AnimationLibrary_ghpu6")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(41, 39)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-18, 119)
+shape = SubResource("RectangleShape2D_jhlss")
 
 [connection signal="body_entered" from="Idler" to="Idler" method="_on_body_entered"]
 [connection signal="body_exited" from="Idler" to="Idler" method="_on_body_exited"]

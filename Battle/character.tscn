@@ -152,7 +152,8 @@ animations = [{
 }]
 
 [node name="Character" type="CharacterBody2D"]
-position = Vector2(83, 122)
+z_index = 10
+position = Vector2(46, 48)
 script = ExtResource("1_fssi7")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

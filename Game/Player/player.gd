@@ -202,7 +202,7 @@ func take_damage(damage,object):
 			animation_player.stop()
 	elif parry >= 0.45 and parry<0.75:
 		parry= 0.15
-		if object and get_tree()!=null:
+		if object and self!=null:
 			
 			var tween = get_tree().create_tween().bind_node(object)
 			tween.tween_property(object, "position",(object.position-position)*30, 0.2).set_delay(0.05)

@@ -72,7 +72,7 @@ func _on_throw_pressed() -> void:
 		var throws = load("res://scene/gas_collectable.tscn").instantiate()
 		throws.item = inv.items[selected_items]
 		throws.global_position = target.global_position +target.cardinal_direction*40
-		get_tree().get_root().add_child(throws)
+		get_parent().get_parent().add_child(throws)
 		inv.throw(selected_items,inv.items[selected_items])
 		selected_items = 999
 
@@ -116,7 +116,8 @@ func _on_deequip_pressed() -> void:
 		elif selected_items == 13:
 			var bare_handed : Array[Array] = [[2,1.0],[1,1.0],[2,1.0]]
 			target.change_weapon(bare_handed)
-
+		if target.find_item(null).size()==0:
+			inv.throw(0, inv.items[0])
 		inv.insert(inv.items[selected_items])
 		inv.throw(selected_items,inv.items[selected_items])
 		selected_items = 999

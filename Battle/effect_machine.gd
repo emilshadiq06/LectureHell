@@ -22,44 +22,53 @@ func initialize()->void:
 		DoEffect()
 	started = true
 		#process_mode = Node.PROCESS_MODE_INHERIT
-
+func add_turns():
+	for i in skill:
+		if i != null:
+			i.turn += 1
+			
 func DoEffect():
 	var skill_increment = 0
+	skill.erase(null)
+	origin.erase(null)
 	for i in skill:
 		 
 		if i.turn == 0:
 			i.Enter()
+			i.turn += 1
 			
-		if i.turn < i.turns_duration and i.turn > 0:
+		elif i.turn < i.turns_duration and i.turn > 0:
 			#enemies.damage_multiplier = i.dmg_multiplier_attack
 			i.Process()
-		if i.turn == i.turns_duration:
+		elif i.turn == i.turns_duration:
 
 			i.Exit()
 		
-		if i.turn > i.cooldown:
+		elif i.turn > i.cooldown:
 			#print(skill)
 			i.turn = 0
-			skill.erase(i)
-			origin.remove_at(skill_increment)
-			skill_increment -= 1
+			skill[skill_increment] = null
+			origin[skill_increment] = null
+			#skill_increment -= 1
 			remove_child(i)
-		i.turn += 1
+
 		skill_increment += 1
-		
+
+	
 	
 
 
 func _on_enemy_group_start_turn() -> void:
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.05).timeout
 	if skill.size()>0 and started and players.index == 0:
 		DoEffect()
-	pass
+		add_turns()
+	#pass
 
 
 func _on_enemy_group_next_player() -> void:
-	if skill.size()>0 and started and players.index > 0:
+	if skill.size()>0 and started and  players.index != 0:
 		for i in skill:
-			if i.turn < i.turns_duration and i.turn > 0 and enemies.action_queue.size()<players.players.size():
+			if i != null and i.turn < i.turns_duration and i.turn > 0:# and enemies.action_queue.size()<players.players.size():
 				i.Process()
 		print(enemies.action_queue)

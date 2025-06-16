@@ -5816,6 +5816,7 @@ monitoring = false
 monitorable = false
 script = ExtResource("22_6p47p")
 lines = Array[String](["Theres still stuff i wanna do... ", "I can go to the park in front", "or ill just chill at the library..", "or at the canteen area..", "anywhere thats not here"])
+idler_name = "ender"
 
 [node name="State_Idle" type="Node" parent="Idler2"]
 script = ExtResource("23_w357m")

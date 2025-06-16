@@ -16,10 +16,10 @@ script = ExtResource("1_5pv0p")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 self_modulate = Color(0, 0, 0, 0.635294)
 z_index = -2
-offset_left = -4.0
-offset_top = -9.0
-offset_right = 1281.0
-offset_bottom = 719.0
+offset_left = -246.0
+offset_top = -1.0
+offset_right = 1574.0
+offset_bottom = 985.0
 texture = ExtResource("2_0lqow")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 8
@@ -28,15 +28,16 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 
 [node name="PlayerGroup" parent="." instance=ExtResource("1_ksnli")]
-position = Vector2(1036, 115)
+position = Vector2(1033, 233)
 inv = ExtResource("3_ploow")
 
 [node name="EnemyGroup" parent="." instance=ExtResource("2_o5tja")]
-position = Vector2(158, 115)
+position = Vector2(136, 231)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="inventory" parent="CanvasLayer" instance=ExtResource("3_do635")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -84,10 +85,10 @@ text = "act"
 
 [node name="attackChoice" type="VBoxContainer" parent="CanvasLayer"]
 visible = false
-offset_left = 762.0
-offset_top = 377.0
-offset_right = 882.0
-offset_bottom = 478.0
+offset_left = 758.0
+offset_top = 455.0
+offset_right = 878.0
+offset_bottom = 556.0
 
 [node name="normalAttack" type="Button" parent="CanvasLayer/attackChoice"]
 layout_mode = 2
