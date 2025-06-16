@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://ktcymjpur37t"]
+[gd_scene load_steps=99 format=3 uid="uid://ktcymjpur37t"]
 
 [ext_resource type="PackedScene" uid="uid://btggau11lqgdm" path="res://scene/pause.tscn" id="1_4wg8t"]
 [ext_resource type="Texture2D" uid="uid://jgnifuo03lqm" path="res://map/32x32/Room_Builder_free_32x32.png" id="1_cepea"]
@@ -48,6 +48,8 @@
 [ext_resource type="Resource" uid="uid://tk7nynr4pn6i" path="res://Game/thug3.tres" id="45_0dlxi"]
 [ext_resource type="Resource" uid="uid://dug3c3k62dfnp" path="res://Game/thug2.tres" id="46_0dlxi"]
 [ext_resource type="Resource" uid="uid://blpw6uqbxjtph" path="res://Game/thug1.tres" id="47_0dlxi"]
+[ext_resource type="PackedScene" uid="uid://dmr348bxfldom" path="res://scene/gas_collectable.tscn" id="49_mfjdu"]
+[ext_resource type="Resource" uid="uid://c7bol0of7sp0x" path="res://inventory/item/consumables/red_apple.tres" id="50_c0l1w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka32h"]
 texture = ExtResource("1_cepea")
@@ -7168,6 +7170,10 @@ stats = ExtResource("46_0dlxi")
 position = Vector2(1053, 454)
 collision_mask = 19
 stats = ExtResource("47_0dlxi")
+
+[node name="gas_collectable" parent="." instance=ExtResource("49_mfjdu")]
+position = Vector2(852, 605)
+item = ExtResource("50_c0l1w")
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Sleepy Skateman/battle_teleport" to="Sleepy Skateman/battle_teleport" method="_on_body_entered"]
