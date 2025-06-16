@@ -1,7 +1,8 @@
 extends Node
 var skill_node
 var dead_array : Array
-var quest_array : Array
+var quest_array : Dictionary
+
 signal update_group(member_stats:stat,position:int)
 
 var money : float

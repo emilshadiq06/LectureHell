@@ -21,7 +21,7 @@ func _ready() -> void:
 	animsprite.play("default")
 	next_dialogue[0] = dialogue_player.dialogue  
 	if self.name in StatLoader.dead_array:
-		StatLoader.quest_array.append(next_dialogue[1].quest_name)
+		StatLoader.quest_array[next_dialogue[1].quest_name] = true
 		
 	
 
@@ -89,6 +89,6 @@ func next_line():
 					chase = true
 					battlefr.monitorable = true
 					battlefr.monitoring = true
-					StatLoader.quest_array.append(dialogue_player.dialogue.quest_name)
+					StatLoader.quest_array[next_dialogue[1].quest_name] = true
 					#pass
 		

@@ -56,12 +56,12 @@ func next_line():
 func item_pressed(item_index:int):
 	#print(item_index)
 	#if dialog_branch[index][item_index][1] and index<1:
-		print("item count")
-		print(item_count)
+		#print("item count")
+		#print(item_count)
 		for i in range(dialog_branch[dialogue.position[dialogue.index]].size()-1):
 			$DialogueOptions.remove_child($DialogueOptions.get_child($DialogueOptions.get_children().size()-1))
 		
-		
+		var previous = dialogue.index
 		dialogue.index = dialog_branch[dialogue.position[dialogue.index]][item_index][1]
 		option_pressed.emit()
 		if item != null and dialogue.index == dialogue.event_index and player.find_item(item).size()>=item_count:
@@ -90,12 +90,17 @@ func item_pressed(item_index:int):
 				var team = load("res://Game/Player/player_team.tscn").instantiate()
 				StatLoader.addplayer_to_group(team.get_child(add_to_group).duplicate())
 				team = null
-			if dialogue.quest_name not in StatLoader.quest_array and !no_end:
-				StatLoader.quest_array.append(dialogue.quest_name)
+			if dialogue.quest_name in StatLoader.quest_array and !no_end:
+				StatLoader.quest_array[dialogue.quest_name] = true
 			player.buy(-money) 
 			#print(StatLoader.quest_array)
 		elif item != null and dialogue.index == dialogue.event_index and player.find_item(item).size()<item_count and dialogue.quest_name not in StatLoader.quest_array:
-			dialogue.index = lines_array.size()-1
+			print("index is : "+str(item_index))
+			#print("index is : "+str(item_index))
+			if dialog_branch[dialogue.position[previous]][item_index].size()>2:
+				dialogue.index = dialog_branch[dialogue.position[previous]][item_index][2]
+			else:
+				dialogue.index = lines_array.size()-1
 			print("item count")
 			print(item_count)
 			print(player.find_item(item).size())

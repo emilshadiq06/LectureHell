@@ -26,6 +26,7 @@ func _on_enemy_group_start_turn() -> void:
 	print(win)
 	var scene_tree = get_tree()
 	if win == true:
+		removeFromDeadArray(group_player_array)
 		$CanvasLayer.hide()
 		StatLoader.money = 50.33
 		var player_stat = preload("res://Game/Player/player_stats.tres")
@@ -41,7 +42,11 @@ func _on_enemy_group_start_turn() -> void:
 		await get_tree().create_timer(2).timeout
 		scene_tree.call_deferred("change_scene_to_file", StatLoader.previous_scene)
 	elif lose == true:
-		print("aaa"+str(StatLoader.dead_array))
+		
+		#print("aaa"+str(StatLoader.dead_array))
+		removeFromDeadArray(group_enemy_array)
+		removeFromDeadArray(group_player_array)
+
 		$CanvasLayer.hide()
 		StatLoader.money = -20.1
 		var player_stat = preload("res://Game/Player/player_stats.tres")
@@ -73,3 +78,8 @@ func count_hp(group) -> bool:
 func _on_battlesong_finished() -> void:
 	await get_tree().create_timer(2).timeout
 	$battlesong.play()
+
+func removeFromDeadArray(group):
+	for i in group:
+			if i.battle_name.text in StatLoader.dead_array:
+				StatLoader.dead_array.erase(i.battle_name.text)

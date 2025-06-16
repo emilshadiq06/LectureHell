@@ -8,7 +8,7 @@
 script = ExtResource("1_g6c5i")
 quest_name = "Odd pet"
 item = ExtResource("1_skqax")
-item_count = 0
+item_count = 1
 lose_on_found = true
 prized_item = ExtResource("2_h5p8p")
 add_to_group = 999

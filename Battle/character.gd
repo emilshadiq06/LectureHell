@@ -38,7 +38,10 @@ func change_sprite(new_sprite):
 	$Sprite2D.texture = new_sprite.texture
 func set_stats(stats):
 	#$Sprite2D 
-	hp = stats.hp
+	if  stats.hp > 0:
+		hp = stats.hp
+	else:
+		hp = 1
 	MAX_HP = stats.max_hp
 	$Name.text = stats.name
 	if stats is playerStat:
