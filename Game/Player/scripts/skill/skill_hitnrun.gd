@@ -38,7 +38,7 @@ func Enter() ->void:
 	tween.tween_property(bomber, "global_position",hitted.global_position-bomber.global_position,0.35)
 	
 	bomber.hp -= 15
-	hitted.removehealth(25)
+	hitted.removehealth(25*enemies.damage_multiplier)
 	
 
 	var sfx = load("res://sounds/zoom.wav")
