@@ -27,7 +27,7 @@ func Process(_delta:float)->State:
 	player.velocity = (player.direction * move_speed) 
 	if player.grav_affected:
 	
-		player.velocity += player.grav #+ (player.direction * move_speed)/10
+		player.velocity += player.grav/2 #+ (player.direction * move_speed)/10
 	#else:
 	#	player.velocity += -player.grav  + (player.direction * move_speed)/7.5
 		

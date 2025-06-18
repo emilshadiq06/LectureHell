@@ -85,10 +85,15 @@ func _process(delta):
 	direction = Vector2(Input.get_axis("left","right"),Input.get_axis("up","down")).normalized()
 	if parry >= 0.45 and parry<0.75:
 		pass
+
 	if dash_window > 0 and dashing:
-		direction*=2.4
-		#current_anim = animation_player.current_animation
 		
+		
+		
+
+		
+		direction*=2.4
+	
 		animation_player.play("dash")
 	elif dash_window <= 0:
 		sprite.modulate.a = 1
@@ -109,12 +114,10 @@ func compare_pos(last_col_normal:Vector2,grav_dir:Vector2):
 	
 	if on_floor:
 		grav_affected =false
-	#if last_col_normal==grav_dir:
-		#velocity -= grav
+
 		accumulate = 0
 		grav *= 0
-		#print("buttass")
-	#elif if abs(grav_dir.y) > 0 and ceil(last_col_normal.y)==grav_dir.y:
+
 	else:
 		await get_tree().create_timer(0.05).timeout
 		grav_affected =true
@@ -135,7 +138,11 @@ func _input(event: InputEvent):
 	if Input.is_action_just_pressed("left")||Input.is_action_just_pressed("right")||Input.is_action_just_pressed("up")||Input.is_action_just_pressed("down") :
 		
 		if last_keycode == event.keycode and  doubletap_time >= 0 and doubletap_time < 0.2: 
-			
+			if grav_affected and (grav_from_outside.x > 0 and grav_from_outside.x > 1 + direction.x) or (grav_from_outside.x < 0 and grav_from_outside.x < -1 + direction.x) or (grav_from_outside.y > 0 and grav_from_outside.y >  1 + direction.y) or (grav_from_outside.y < 0 and grav_from_outside.y < -1  + direction.y) :
+				
+				grav *= 0
+				accumulate = 0
+				
 			last_keycode = 0
 			run = 2
 			if dashes>0 and dash_window<=0:
